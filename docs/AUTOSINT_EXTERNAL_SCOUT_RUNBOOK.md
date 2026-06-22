@@ -1,0 +1,132 @@
+# AUTOSINT External Scout Runbook
+
+External Scout is the preferred external public-information input layer for AUTOSINT. ChatGPT produces structured public candidate packets; AUTOSINT captures, validates, quality-checks, and previews them. Packets remain candidate input only until a future explicit approval path imports selected source URLs.
+
+## ChatGPT Project
+
+Project name:
+
+```text
+AUTOSINT External Scout
+```
+
+The Project Instructions should require:
+
+- Event-centric case packets.
+- Facts first, source relationships second, system status third.
+- The eight source families:
+  - Official / Advisory
+  - Public News
+  - Social OSINT
+  - Traffic / Movement
+  - Satellite / Geospatial
+  - Markets / Finance
+  - Prediction Markets
+  - Weather / Environment
+- Exact source-family status values:
+  - Checked and found
+  - Checked and not found
+  - Candidate found, not imported
+  - Not checked
+  - Stale
+  - Blocked / login required
+- Separation of claim, counter-claim, observed, advisory, context, and missing.
+- Operator fields: `operator_bluf`, `what_changed`, `so_what`, `source_relationships`, `decision`, `collection_plan`, `system_status`, `audit_notes`, and `quality_self_check`.
+- `commander_ready=false` and `mutation_performed=false`.
+- No private data, cookies, sessions, tokens, browser storage, credential files, login-wall bypass, CAPTCHA bypass, or paywall bypass.
+
+## Scheduled Task Timing
+
+Observed ChatGPT hourly task output has appeared around minute `:03`.
+
+Preferred local capture timing:
+
+```text
+Every hour at :08
+```
+
+Do not install or load launchd until manual dry-run and real one-shot capture are consistently valid.
+
+## Capture Bridge
+
+Manual status check:
+
+```bash
+.venv/bin/python scripts/capture_chatgpt_external_scout_visible.py --status
+```
+
+Manual dry-run capture:
+
+```bash
+.venv/bin/python scripts/capture_chatgpt_external_scout_visible.py --once --dry-run --prefer-files
+```
+
+Manual one-shot capture after approval:
+
+```bash
+.venv/bin/python scripts/capture_chatgpt_external_scout_visible.py --once --prefer-files
+```
+
+The capture bridge:
+
+- Finds the visible `AUTOSINT External Scout` ChatGPT tab by safe title/URL metadata.
+- Prefers visible downloadable JSON/Markdown files when available.
+- Falls back to visible page text extraction.
+- Never reads cookies, localStorage, sessionStorage, browser profile files, tokens, credential files, or `.env`.
+- Writes captures through staging first.
+- Promotes to inbox only when validation errors are zero.
+- Moves invalid captures to quarantine.
+- Writes receipts under ignored local artifacts.
+- Applies recency and duplicate guards before refreshing active reports.
+
+## Local Artifact Flow
+
+```text
+visible ChatGPT output
+-> artifacts/external_scout/staging/
+-> validator
+-> artifacts/external_scout/inbox/ if valid
+-> artifacts/external_scout/quarantine/ if invalid
+-> artifacts/external_scout/latest/ report refresh
+```
+
+All of these paths are local-only and ignored by git.
+
+## Latest Active Capture
+
+Default External Scout review uses only the latest validated capture.
+
+- `/external-scout` shows active latest packets only.
+- `/api/v1/external-scout` returns active latest packets only.
+- History is explicit through `?include_history=true` or `/api/v1/external-scout/history`.
+- Older inbox captures remain archived locally but are not default promotion candidates.
+
+## Quality And Validation
+
+Validation errors block inbox promotion.
+
+Quality warnings do not necessarily block display, but they tell the operator that the packet may need review. Common non-fatal warnings include incomplete market snapshots and missing prediction-market metrics.
+
+Pseudo-tool rows such as `finance_tool:*`, `weather_tool:*`, `not_available_from_finance_tool`, and `not_available_from_weather_tool` remain context-only and must not become proposed Evidence inserts or case links.
+
+## Safety Boundary
+
+External Scout capture and review must not:
+
+- Mutate DB rows.
+- Rewrite raw Evidence.
+- Create case links.
+- Change source configuration.
+- Open OSIR gates.
+- Promote commander-ready outputs.
+- Add browser write controls.
+- Read private browser state.
+
+## Recommended Launchd Sequence
+
+1. Verify Chrome visible capture works with dry-run.
+2. Run one approved real capture.
+3. Verify `--status` reports active packets, zero validation errors, and `stale=false`.
+4. Install launchd only after separate approval.
+5. Schedule local capture around minute `:08`.
+6. Keep launchd logs under ignored local artifacts/logs.
