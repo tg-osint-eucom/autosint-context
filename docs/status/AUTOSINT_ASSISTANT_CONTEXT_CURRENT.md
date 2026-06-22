@@ -7,8 +7,8 @@ This is a public, sanitized context file for restoring AUTOSINT project context 
 - Private code/runtime repo: `tg-osint-eucom/autosint`
 - Public context mirror: `tg-osint-eucom/autosint-context`
 - Source branch: `main`
-- Source HEAD: `2948f109ef735974973c46a14cd33152a204b6ae`
-- Generated at: `2026-06-22T18:51:58Z`
+- Source HEAD: `570e415fc08b501c812266225e098e543b300bda`
+- Generated at: `2026-06-22T19:20:23Z`
 
 ## Primary Workflow
 
@@ -32,10 +32,10 @@ This is a public, sanitized context file for restoring AUTOSINT project context 
 
 - Available: `True`
 - Active selection policy: `latest_validated_capture_only`
-- Active packet count: `0`
-- History packet count: `24`
-- Latest packet timestamp: `2026-06-22T15:04:15Z`
-- Stale: `True`
+- Active packet count: `1`
+- History packet count: `25`
+- Latest packet timestamp: `2026-06-22T19:13:58Z`
+- Stale: `False`
 - Read-only: `True`
 - Private browser state read: `False`
 - Cookies read: `False`
@@ -61,6 +61,7 @@ The following are local-only and are not mirrored here:
 
 ## Latest Source Commits
 
+- `570e415 fix(scout): accept structured source family statuses`
 - `2948f10 feat(scout): require full case coverage matrix`
 - `30f0477 fix(scout): tolerate safe external scout schema drift`
 - `23f61cf fix(ui): keep mission control launch page responsive`
