@@ -7,8 +7,8 @@ This is a public, sanitized context file for restoring AUTOSINT project context 
 - Private code/runtime repo: `tg-osint-eucom/autosint`
 - Public context mirror: `tg-osint-eucom/autosint-context`
 - Source branch: `main`
-- Source HEAD: `83d63c2b1c0ea058933a7dff29ec759aa7753640`
-- Generated at: `2026-06-22T16:17:06Z`
+- Source HEAD: `eb265cb37ce444963cc7d437015e6b251d5ec48e`
+- Generated at: `2026-06-22T16:54:19Z`
 
 ## Primary Workflow
 
@@ -35,7 +35,7 @@ This is a public, sanitized context file for restoring AUTOSINT project context 
 - Active packet count: `5`
 - History packet count: `24`
 - Latest packet timestamp: `2026-06-22T15:04:15Z`
-- Stale: `False`
+- Stale: `True`
 - Read-only: `True`
 - Private browser state read: `False`
 - Cookies read: `False`
@@ -61,6 +61,7 @@ The following are local-only and are not mirrored here:
 
 ## Latest Source Commits
 
+- `eb265cb feat(scout): add external scout live case board`
 - `83d63c2 Merge pull request #1 from tg-osint-eucom/feat/external-scout-capture-isolation`
 - `c439c64 refactor(scout): isolate external scout capture subsystem`
 - `7e21893 fix(scout): harden scheduled external scout capture`
