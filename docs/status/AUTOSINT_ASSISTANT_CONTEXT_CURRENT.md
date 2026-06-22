@@ -7,8 +7,8 @@ This is a public, sanitized context file for restoring AUTOSINT project context 
 - Private code/runtime repo: `tg-osint-eucom/autosint`
 - Public context mirror: `tg-osint-eucom/autosint-context`
 - Source branch: `main`
-- Source HEAD: `30f04775f7dc66998568af6412ef4e8421e2dda4`
-- Generated at: `2026-06-22T18:16:13Z`
+- Source HEAD: `2948f109ef735974973c46a14cd33152a204b6ae`
+- Generated at: `2026-06-22T18:51:58Z`
 
 ## Primary Workflow
 
@@ -61,6 +61,7 @@ The following are local-only and are not mirrored here:
 
 ## Latest Source Commits
 
+- `2948f10 feat(scout): require full case coverage matrix`
 - `30f0477 fix(scout): tolerate safe external scout schema drift`
 - `23f61cf fix(ui): keep mission control launch page responsive`
 - `0e349f1 docs: mark external scout live board current`
