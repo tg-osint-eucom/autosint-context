@@ -52,19 +52,19 @@ Do not install or load launchd until manual dry-run and real one-shot capture ar
 Manual status check:
 
 ```bash
-.venv/bin/python scripts/capture_chatgpt_external_scout_visible.py --status
+PYTHONPATH=src:. .venv/bin/python -m autosint_external_scout_capture.cli --status
 ```
 
 Manual dry-run capture:
 
 ```bash
-.venv/bin/python scripts/capture_chatgpt_external_scout_visible.py --once --dry-run --prefer-files
+PYTHONPATH=src:. .venv/bin/python -m autosint_external_scout_capture.cli --once --dry-run --prefer-files
 ```
 
 Manual one-shot capture after approval:
 
 ```bash
-.venv/bin/python scripts/capture_chatgpt_external_scout_visible.py --once --prefer-files
+PYTHONPATH=src:. .venv/bin/python -m autosint_external_scout_capture.cli --once --prefer-files
 ```
 
 The capture bridge:
@@ -72,6 +72,12 @@ The capture bridge:
 - Finds the visible `AUTOSINT External Scout` ChatGPT tab by safe title/URL metadata.
 - Prefers visible downloadable JSON/Markdown files when available.
 - Falls back to visible page text extraction.
+
+The legacy script path remains as a compatibility wrapper:
+
+```bash
+.venv/bin/python scripts/capture_chatgpt_external_scout_visible.py --status
+```
 - Never reads cookies, localStorage, sessionStorage, browser profile files, tokens, credential files, or `.env`.
 - Writes captures through staging first.
 - Promotes to inbox only when validation errors are zero.

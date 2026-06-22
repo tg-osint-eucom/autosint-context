@@ -6,9 +6,9 @@ This is a public, sanitized context file for restoring AUTOSINT project context 
 
 - Private code/runtime repo: `tg-osint-eucom/autosint`
 - Public context mirror: `tg-osint-eucom/autosint-context`
-- Source branch: `main`
-- Source HEAD: `7e218936a83daa1c624383d7eb7cb26ec462df56`
-- Generated at: `2026-06-22T13:23:43Z`
+- Source branch: `feat/external-scout-capture-isolation`
+- Source HEAD: `c439c64a406cce72ce79399ed9386f4a09f926fb`
+- Generated at: `2026-06-22T15:43:21Z`
 
 ## Primary Workflow
 
@@ -32,9 +32,9 @@ This is a public, sanitized context file for restoring AUTOSINT project context 
 
 - Available: `True`
 - Active selection policy: `latest_validated_capture_only`
-- Active packet count: `4`
-- History packet count: `9`
-- Latest packet timestamp: `2026-06-22T12:06:00Z`
+- Active packet count: `5`
+- History packet count: `24`
+- Latest packet timestamp: `2026-06-22T15:04:15Z`
 - Stale: `False`
 - Read-only: `True`
 - Private browser state read: `False`
@@ -61,6 +61,7 @@ The following are local-only and are not mirrored here:
 
 ## Latest Source Commits
 
+- `c439c64 refactor(scout): isolate external scout capture subsystem`
 - `7e21893 fix(scout): harden scheduled external scout capture`
 - `0ebe895 fix(docs): mark case threads implemented in context mirror`
 - `0921d1e feat(scout): add external scout case threads`
