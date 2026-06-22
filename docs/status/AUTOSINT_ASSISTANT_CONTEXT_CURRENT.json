@@ -20,7 +20,7 @@
     "status_only": true,
     "validated_packet_count": 1
   },
-  "generated_at": "2026-06-22T20:57:52Z",
+  "generated_at": "2026-06-22T20:58:45Z",
   "havoc_rfi_behavior": "HAVOC/RFI uses External Scout Case Thread current state when available, then falls back to the best validated External Scout packet; canonical cases, Case Genesis, TSOC/HAVOC, source coverage, and provenance remain audit material.",
   "latest_commits": [
     "0a1bcad feat(ops): add AUTOSINT long-running work loop",
