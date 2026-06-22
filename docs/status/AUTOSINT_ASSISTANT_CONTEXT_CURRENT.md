@@ -7,8 +7,8 @@ This is a public, sanitized context file for restoring AUTOSINT project context 
 - Private code/runtime repo: `tg-osint-eucom/autosint`
 - Public context mirror: `tg-osint-eucom/autosint-context`
 - Source branch: `main`
-- Source HEAD: `0e349f16c49253c6bc2dd7d90bca8a5d8b8f4e0f`
-- Generated at: `2026-06-22T16:57:05Z`
+- Source HEAD: `23f61cfb07e067b3aeb83cbca3dedc8919103510`
+- Generated at: `2026-06-22T17:29:55Z`
 
 ## Primary Workflow
 
@@ -61,6 +61,7 @@ The following are local-only and are not mirrored here:
 
 ## Latest Source Commits
 
+- `23f61cf fix(ui): keep mission control launch page responsive`
 - `0e349f1 docs: mark external scout live board current`
 - `eb265cb feat(scout): add external scout live case board`
 - `83d63c2 Merge pull request #1 from tg-osint-eucom/feat/external-scout-capture-isolation`
