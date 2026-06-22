@@ -6,9 +6,9 @@ This is a public, sanitized context file for restoring AUTOSINT project context 
 
 - Private code/runtime repo: `tg-osint-eucom/autosint`
 - Public context mirror: `tg-osint-eucom/autosint-context`
-- Source branch: `feat/external-scout-capture-isolation`
-- Source HEAD: `c439c64a406cce72ce79399ed9386f4a09f926fb`
-- Generated at: `2026-06-22T15:43:21Z`
+- Source branch: `main`
+- Source HEAD: `83d63c2b1c0ea058933a7dff29ec759aa7753640`
+- Generated at: `2026-06-22T16:17:06Z`
 
 ## Primary Workflow
 
@@ -61,6 +61,7 @@ The following are local-only and are not mirrored here:
 
 ## Latest Source Commits
 
+- `83d63c2 Merge pull request #1 from tg-osint-eucom/feat/external-scout-capture-isolation`
 - `c439c64 refactor(scout): isolate external scout capture subsystem`
 - `7e21893 fix(scout): harden scheduled external scout capture`
 - `0ebe895 fix(docs): mark case threads implemented in context mirror`
