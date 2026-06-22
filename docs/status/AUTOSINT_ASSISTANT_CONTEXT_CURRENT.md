@@ -7,8 +7,8 @@ This is a public, sanitized context file for restoring AUTOSINT project context 
 - Private code/runtime repo: `tg-osint-eucom/autosint`
 - Public context mirror: `tg-osint-eucom/autosint-context`
 - Source branch: `main`
-- Source HEAD: `27a32e9ab022d1a49ba5c82be567f5cad831e4bd`
-- Generated at: `2026-06-22T20:01:52Z`
+- Source HEAD: `0a1bcad98f113b3bc1aede6817e83bad08eb03e2`
+- Generated at: `2026-06-22T20:57:52Z`
 
 ## Primary Workflow
 
@@ -33,8 +33,8 @@ This is a public, sanitized context file for restoring AUTOSINT project context 
 - Available: `True`
 - Active selection policy: `latest_validated_capture_only`
 - Active packet count: `1`
-- History packet count: `25`
-- Latest packet timestamp: `2026-06-22T19:13:58Z`
+- History packet count: `26`
+- Latest packet timestamp: `2026-06-22T19:57:30Z`
 - Stale: `False`
 - Read-only: `True`
 - Private browser state read: `False`
@@ -61,6 +61,7 @@ The following are local-only and are not mirrored here:
 
 ## Latest Source Commits
 
+- `0a1bcad feat(ops): add AUTOSINT long-running work loop`
 - `27a32e9 chore(context): mirror ChatGPT project operating model`
 - `93d1d28 docs: define AUTOSINT ChatGPT project operating model`
 - `570e415 fix(scout): accept structured source family statuses`

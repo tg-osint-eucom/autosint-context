@@ -6,11 +6,11 @@
     "active_selection_policy": "latest_validated_capture_only",
     "available": true,
     "cookies_read": false,
-    "history_capture_count": 6,
-    "history_packet_count": 25,
-    "latest_capture_generated_at": "2026-06-22T19:13:58Z",
+    "history_capture_count": 7,
+    "history_packet_count": 26,
+    "latest_capture_generated_at": "2026-06-22T19:57:30Z",
     "latest_capture_packet_count": 1,
-    "latest_packet_generated_at": "2026-06-22T19:13:58Z",
+    "latest_packet_generated_at": "2026-06-22T19:57:30Z",
     "local_storage_read": false,
     "mutation_performed": false,
     "private_browser_state_read": false,
@@ -20,9 +20,10 @@
     "status_only": true,
     "validated_packet_count": 1
   },
-  "generated_at": "2026-06-22T20:01:52Z",
+  "generated_at": "2026-06-22T20:57:52Z",
   "havoc_rfi_behavior": "HAVOC/RFI uses External Scout Case Thread current state when available, then falls back to the best validated External Scout packet; canonical cases, Case Genesis, TSOC/HAVOC, source coverage, and provenance remain audit material.",
   "latest_commits": [
+    "0a1bcad feat(ops): add AUTOSINT long-running work loop",
     "27a32e9 chore(context): mirror ChatGPT project operating model",
     "93d1d28 docs: define AUTOSINT ChatGPT project operating model",
     "570e415 fix(scout): accept structured source family statuses",
@@ -65,10 +66,12 @@
     "docs/AUTOSINT_CHATGPT_PROJECT_OPERATING_MODEL.md": "https://raw.githubusercontent.com/tg-osint-eucom/autosint-context/main/docs/AUTOSINT_CHATGPT_PROJECT_OPERATING_MODEL.md",
     "docs/AUTOSINT_EXTERNAL_SCOUT_CAPTURE_BOUNDARY.md": "https://raw.githubusercontent.com/tg-osint-eucom/autosint-context/main/docs/AUTOSINT_EXTERNAL_SCOUT_CAPTURE_BOUNDARY.md",
     "docs/AUTOSINT_EXTERNAL_SCOUT_RUNBOOK.md": "https://raw.githubusercontent.com/tg-osint-eucom/autosint-context/main/docs/AUTOSINT_EXTERNAL_SCOUT_RUNBOOK.md",
+    "docs/AUTOSINT_LONG_RUNNING_WORK_MODEL.md": "https://raw.githubusercontent.com/tg-osint-eucom/autosint-context/main/docs/AUTOSINT_LONG_RUNNING_WORK_MODEL.md",
     "docs/AUTOSINT_OPERATING_MODEL_CURRENT.md": "https://raw.githubusercontent.com/tg-osint-eucom/autosint-context/main/docs/AUTOSINT_OPERATING_MODEL_CURRENT.md",
     "docs/AUTOSINT_PRIMARY_WORKFLOW.md": "https://raw.githubusercontent.com/tg-osint-eucom/autosint-context/main/docs/AUTOSINT_PRIMARY_WORKFLOW.md",
     "docs/status/AUTOSINT_ASSISTANT_CONTEXT_CURRENT.md": "https://raw.githubusercontent.com/tg-osint-eucom/autosint-context/main/docs/status/AUTOSINT_ASSISTANT_CONTEXT_CURRENT.md",
-    "docs/status/AUTOSINT_CONTEXT_INDEX.md": "https://raw.githubusercontent.com/tg-osint-eucom/autosint-context/main/docs/status/AUTOSINT_CONTEXT_INDEX.md"
+    "docs/status/AUTOSINT_CONTEXT_INDEX.md": "https://raw.githubusercontent.com/tg-osint-eucom/autosint-context/main/docs/status/AUTOSINT_CONTEXT_INDEX.md",
+    "docs/status/AUTOSINT_WORKSTREAMS.md": "https://raw.githubusercontent.com/tg-osint-eucom/autosint-context/main/docs/status/AUTOSINT_WORKSTREAMS.md"
   },
   "safety_boundary": {
     "candidate_input_only": true,
@@ -83,7 +86,7 @@
   },
   "source_branch": "main",
   "source_dirty_state": [],
-  "source_head": "27a32e9ab022d1a49ba5c82be567f5cad831e4bd",
+  "source_head": "0a1bcad98f113b3bc1aede6817e83bad08eb03e2",
   "source_repo": "tg-osint-eucom/autosint",
   "source_repo_url": "https://github.com/tg-osint-eucom/autosint",
   "supporting_routes": [

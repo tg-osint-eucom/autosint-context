@@ -11,7 +11,9 @@ The private runtime/code repository is `tg-osint-eucom/autosint`. Use this mirro
 - Primary workflow reference.
 - External Scout runbook.
 - ChatGPT Project operating model.
+- Long-running workstream model.
 - External Scout capture boundary.
+- Workstream status summary.
 - Sanitized assistant context status.
 - Raw URL index for fast ChatGPT ingestion.
 
@@ -42,8 +44,10 @@ For context recovery, read these files in order:
 3. `docs/AUTOSINT_PRIMARY_WORKFLOW.md`
 4. `docs/AUTOSINT_EXTERNAL_SCOUT_RUNBOOK.md`
 5. `docs/AUTOSINT_CHATGPT_PROJECT_OPERATING_MODEL.md`
-6. `docs/AUTOSINT_EXTERNAL_SCOUT_CAPTURE_BOUNDARY.md`
-7. `docs/status/AUTOSINT_ASSISTANT_CONTEXT_CURRENT.md`
-8. `docs/status/AUTOSINT_CONTEXT_INDEX.md`
+6. `docs/AUTOSINT_LONG_RUNNING_WORK_MODEL.md`
+7. `docs/AUTOSINT_EXTERNAL_SCOUT_CAPTURE_BOUNDARY.md`
+8. `docs/status/AUTOSINT_WORKSTREAMS.md`
+9. `docs/status/AUTOSINT_ASSISTANT_CONTEXT_CURRENT.md`
+10. `docs/status/AUTOSINT_CONTEXT_INDEX.md`
 
 This repo is documentation-only. Do not treat it as a runtime source, package source, artifact store, or evidence store.
