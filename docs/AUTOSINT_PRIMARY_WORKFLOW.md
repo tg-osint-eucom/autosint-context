@@ -11,7 +11,8 @@ Mission Control -> External Scout -> TSOC/HAVOC -> HAVOC/RFI -> future controlle
 | Route | Role | Primary Question | Must Not Do |
 | --- | --- | --- | --- |
 | `/mission-control` | Primary launch page | Where should the operator start? | No writes, imports, OSIR bypass, or commander-ready promotion. |
-| `/external-scout` | Primary external packet review | What fresh external candidate packets are active? | No Evidence or case-link creation; latest active capture only by default. |
+| `/external-scout/threads` | Primary External Scout Live Case Board | Which current case threads are new, updated, escalating, stale, source-gapped, or HAVOC/RFI-ready? | No Evidence or case-link creation; no apply/import controls. |
+| `/external-scout` | Supporting external packet inbox | What fresh external candidate packets are active? | No Evidence or case-link creation; latest active capture only by default. |
 | `/external-scout/{packet_id}` | Packet detail | What does one candidate packet say and what are its audit details? | No promotion/apply controls. |
 | `/tsoc-havoc` | Theater/workspace organization | Which TSOC/workspace owns the topic and what is missing? | No case creation, source mutation, or OSIR bypass. |
 | `/havoc-rfi/SOCCENT` | Human-readable package preview | What would the current SOCCENT HAVOC/RFI response package say? | Preview only; not commander-ready or OSIR export. |
@@ -42,6 +43,7 @@ DAGRBook assets and helpers may remain in the repo for future frontend-thread wo
 ## Workflow Rules
 
 - External Scout is the preferred external information-gathering input layer.
+- `/external-scout/threads` is the primary 24/7 External Scout Live Case Board; `/external-scout` remains the packet inbox/support view.
 - AUTOSINT validates, normalizes, deduplicates, maps, previews, and gates.
 - HAVOC/RFI should lead with validated External Scout operator fields when a suitable packet exists.
 - Canonical cases, Case Genesis, source coverage, evidence passports, PIR, OSIR, and agent records are supporting/audit layers.
@@ -52,8 +54,7 @@ DAGRBook assets and helpers may remain in the repo for future frontend-thread wo
 ## Next Architecture Milestones
 
 1. Keep External Scout card/detail views operator-first and audit metadata collapsed.
-2. Enable hourly local capture only after repeated dry-run and real capture validation.
-3. Add External Scout Case Threads so repeated captures append to stable topic threads.
-4. Integrate PIR Hunter as a priority-question / exception layer over External Scout threads and TSOC/HAVOC workspaces.
-5. Simplify Source Library and hide audit-only coverage surfaces from the primary path.
-6. Design a controlled apply/import path as a separate approval-gated workflow.
+2. Keep hourly local capture monitored through capture health and quarantine receipts.
+3. Integrate PIR Hunter as a priority-question / exception layer over External Scout threads and TSOC/HAVOC workspaces.
+4. Simplify Source Library and hide audit-only coverage surfaces from the primary path.
+5. Design a controlled apply/import path as a separate approval-gated workflow.

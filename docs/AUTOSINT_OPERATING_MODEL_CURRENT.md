@@ -92,20 +92,20 @@ The package leads with External Scout operator fields:
 
 Canonical cases, Case Genesis, TSOC/HAVOC, source coverage, and provenance remain available as Audit Details or supporting material. If no suitable External Scout packet exists, HAVOC/RFI falls back to committed baseline TSOC/canonical/case-genesis material and should clearly state that no validated External Scout packet was selected.
 
-## Current Gap: Case Threads / Append Updates
+## External Scout Live Case Board
 
-The system currently shows the latest active capture by default and preserves history, but it does not yet maintain durable topic threads.
+`/external-scout/threads` is the primary External Scout Live Case Board. It rebuilds durable read-only topic threads from validated External Scout history, while `/external-scout` remains the latest active packet inbox and support view.
 
-Future `External Scout Case Threads v1` should:
+The Live Case Board:
 
-- Group packets by stable topic.
-- Append new captures to existing topic threads.
-- Show what changed since the previous capture.
-- Maintain per-topic timelines and previous packets.
-- Mark threads as New, Updated, or Stale.
-- Let HAVOC/RFI consume current thread state rather than a raw packet list.
+- Groups packets by stable topic.
+- Appends new captures to existing topic threads.
+- Shows what changed since the previous capture.
+- Maintains per-topic timelines and previous packets.
+- Marks threads as New, Updated, Stale, Escalating, or Needs Review.
+- Lets HAVOC/RFI consume current thread state before raw-packet fallback.
 
-Initial thread topics should include:
+Initial thread topics include:
 
 - Hormuz / Strait of Hormuz / Iran Gulf maritime risk
 - Lebanon / Israel / Hezbollah ceasefire

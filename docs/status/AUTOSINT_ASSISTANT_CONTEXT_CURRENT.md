@@ -7,8 +7,8 @@ This is a public, sanitized context file for restoring AUTOSINT project context 
 - Private code/runtime repo: `tg-osint-eucom/autosint`
 - Public context mirror: `tg-osint-eucom/autosint-context`
 - Source branch: `main`
-- Source HEAD: `eb265cb37ce444963cc7d437015e6b251d5ec48e`
-- Generated at: `2026-06-22T16:54:19Z`
+- Source HEAD: `0e349f16c49253c6bc2dd7d90bca8a5d8b8f4e0f`
+- Generated at: `2026-06-22T16:57:05Z`
 
 ## Primary Workflow
 
@@ -18,7 +18,7 @@ This is a public, sanitized context file for restoring AUTOSINT project context 
 
 - `/mission-control`: operator launch page and workflow overview.
 - `/external-scout`: latest active validated External Scout packet review.
-- `/external-scout/threads`: morning review over durable External Scout topic threads.
+- `/external-scout/threads`: 24/7 External Scout Live Case Board over durable topic threads.
 - `/tsoc-havoc`: theater/workspace organization.
 - `/havoc-rfi/SOCCENT`: thread-current HAVOC/RFI preview with raw-packet fallback.
 
@@ -61,6 +61,7 @@ The following are local-only and are not mirrored here:
 
 ## Latest Source Commits
 
+- `0e349f1 docs: mark external scout live board current`
 - `eb265cb feat(scout): add external scout live case board`
 - `83d63c2 Merge pull request #1 from tg-osint-eucom/feat/external-scout-capture-isolation`
 - `c439c64 refactor(scout): isolate external scout capture subsystem`
@@ -81,7 +82,7 @@ The following are local-only and are not mirrored here:
 
 - Keep the mirror refreshed after major workflow changes.
 - Install/load hourly capture only after separate operator approval.
-- External Scout Case Threads v1 is implemented; use threads as the hourly packet continuity layer.
+- External Scout Live Case Board v1 is implemented; use /external-scout/threads as the 24/7 thread board.
 - Design controlled approval before Evidence or case-link mutation.
 
 ## Safety Boundary
