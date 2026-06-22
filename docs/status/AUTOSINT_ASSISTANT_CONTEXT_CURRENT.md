@@ -7,8 +7,8 @@ This is a public, sanitized context file for restoring AUTOSINT project context 
 - Private code/runtime repo: `tg-osint-eucom/autosint`
 - Public context mirror: `tg-osint-eucom/autosint-context`
 - Source branch: `main`
-- Source HEAD: `0921d1e0c5c4670f2b5a1f3928b83145979c6722`
-- Generated at: `2026-06-22T03:18:18Z`
+- Source HEAD: `0ebe895ad4cee3f00ef78cc03a2253bc5f64476d`
+- Generated at: `2026-06-22T03:23:20Z`
 
 ## Primary Workflow
 
@@ -18,8 +18,9 @@ This is a public, sanitized context file for restoring AUTOSINT project context 
 
 - `/mission-control`: operator launch page and workflow overview.
 - `/external-scout`: latest active validated External Scout packet review.
+- `/external-scout/threads`: morning review over durable External Scout topic threads.
 - `/tsoc-havoc`: theater/workspace organization.
-- `/havoc-rfi/SOCCENT`: packet-driven HAVOC/RFI preview.
+- `/havoc-rfi/SOCCENT`: thread-current HAVOC/RFI preview with raw-packet fallback.
 
 ## Supporting And Audit Surfaces
 
@@ -42,7 +43,7 @@ This is a public, sanitized context file for restoring AUTOSINT project context 
 
 ## HAVOC/RFI Behavior
 
-HAVOC/RFI uses the best validated External Scout packet when available; canonical cases, Case Genesis, TSOC/HAVOC, source coverage, and provenance remain audit material.
+HAVOC/RFI uses External Scout Case Thread current state when available, then falls back to the best validated External Scout packet; canonical cases, Case Genesis, TSOC/HAVOC, source coverage, and provenance remain audit material.
 
 ## Capture Bridge
 
@@ -60,6 +61,7 @@ The following are local-only and are not mirrored here:
 
 ## Latest Source Commits
 
+- `0ebe895 fix(docs): mark case threads implemented in context mirror`
 - `0921d1e feat(scout): add external scout case threads`
 - `6975210 docs: add External Scout case thread design questions`
 - `dc8851f feat(docs): automate AUTOSINT context mirror publishing`
@@ -75,7 +77,7 @@ The following are local-only and are not mirrored here:
 
 - Keep the mirror refreshed after major workflow changes.
 - Install/load hourly capture only after separate operator approval.
-- Build External Scout Case Threads before relying on hourly packet history as case continuity.
+- External Scout Case Threads v1 is implemented; use threads as the hourly packet continuity layer.
 - Design controlled approval before Evidence or case-link mutation.
 
 ## Safety Boundary
