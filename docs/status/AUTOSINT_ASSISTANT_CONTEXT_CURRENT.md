@@ -7,8 +7,8 @@ This is a public, sanitized context file for restoring AUTOSINT project context 
 - Private code/runtime repo: `tg-osint-eucom/autosint`
 - Public context mirror: `tg-osint-eucom/autosint-context`
 - Source branch: `main`
-- Source HEAD: `23f61cfb07e067b3aeb83cbca3dedc8919103510`
-- Generated at: `2026-06-22T17:29:55Z`
+- Source HEAD: `30f04775f7dc66998568af6412ef4e8421e2dda4`
+- Generated at: `2026-06-22T18:16:13Z`
 
 ## Primary Workflow
 
@@ -32,7 +32,7 @@ This is a public, sanitized context file for restoring AUTOSINT project context 
 
 - Available: `True`
 - Active selection policy: `latest_validated_capture_only`
-- Active packet count: `5`
+- Active packet count: `0`
 - History packet count: `24`
 - Latest packet timestamp: `2026-06-22T15:04:15Z`
 - Stale: `True`
@@ -61,6 +61,7 @@ The following are local-only and are not mirrored here:
 
 ## Latest Source Commits
 
+- `30f0477 fix(scout): tolerate safe external scout schema drift`
 - `23f61cf fix(ui): keep mission control launch page responsive`
 - `0e349f1 docs: mark external scout live board current`
 - `eb265cb feat(scout): add external scout live case board`
