@@ -7,8 +7,8 @@ This is a public, sanitized context file for restoring AUTOSINT project context 
 - Private code/runtime repo: `tg-osint-eucom/autosint`
 - Public context mirror: `tg-osint-eucom/autosint-context`
 - Source branch: `main`
-- Source HEAD: `dc8851f18338c1d03b93d508887e388d13f11360`
-- Generated at: `2026-06-22T02:00:17Z`
+- Source HEAD: `0921d1e0c5c4670f2b5a1f3928b83145979c6722`
+- Generated at: `2026-06-22T03:18:18Z`
 
 ## Primary Workflow
 
@@ -60,6 +60,8 @@ The following are local-only and are not mirrored here:
 
 ## Latest Source Commits
 
+- `0921d1e feat(scout): add external scout case threads`
+- `6975210 docs: add External Scout case thread design questions`
 - `dc8851f feat(docs): automate AUTOSINT context mirror publishing`
 - `bcc4baa docs: add AUTOSINT autopush policy`
 - `7809c01 chore(github): add AUTOSINT CI workflow`
