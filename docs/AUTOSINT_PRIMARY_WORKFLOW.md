@@ -2,6 +2,12 @@
 
 This document is the tracked source of truth for the current AUTOSINT operator path.
 
+ChatGPT Project chats are workspaces only. The External Scout Live Case Board
+is the durable case memory. See
+`docs/AUTOSINT_CHATGPT_PROJECT_OPERATING_MODEL.md` for the three allowed chat
+roles: Daily Scout machine output, System Control, and optional human-created
+case deep dives.
+
 ```text
 Mission Control -> External Scout -> TSOC/HAVOC -> HAVOC/RFI -> future controlled approval
 ```
@@ -44,6 +50,9 @@ DAGRBook assets and helpers may remain in the repo for future frontend-thread wo
 
 - External Scout is the preferred external information-gathering input layer.
 - `/external-scout/threads` is the primary 24/7 External Scout Live Case Board; `/external-scout` remains the packet inbox/support view.
+- Do not create automatic ChatGPT chats per case, per packet, or per hourly capture.
+- The Daily Scout ChatGPT scheduled chat is machine-output only.
+- Optional `CASE - <topic>` chats must start from AUTOSINT thread data and are not source of truth.
 - AUTOSINT validates, normalizes, deduplicates, maps, previews, and gates.
 - HAVOC/RFI should lead with validated External Scout operator fields when a suitable packet exists.
 - Canonical cases, Case Genesis, source coverage, evidence passports, PIR, OSIR, and agent records are supporting/audit layers.

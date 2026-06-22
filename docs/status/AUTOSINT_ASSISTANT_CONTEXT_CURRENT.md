@@ -7,8 +7,8 @@ This is a public, sanitized context file for restoring AUTOSINT project context 
 - Private code/runtime repo: `tg-osint-eucom/autosint`
 - Public context mirror: `tg-osint-eucom/autosint-context`
 - Source branch: `main`
-- Source HEAD: `570e415fc08b501c812266225e098e543b300bda`
-- Generated at: `2026-06-22T19:20:23Z`
+- Source HEAD: `27a32e9ab022d1a49ba5c82be567f5cad831e4bd`
+- Generated at: `2026-06-22T20:01:52Z`
 
 ## Primary Workflow
 
@@ -61,6 +61,8 @@ The following are local-only and are not mirrored here:
 
 ## Latest Source Commits
 
+- `27a32e9 chore(context): mirror ChatGPT project operating model`
+- `93d1d28 docs: define AUTOSINT ChatGPT project operating model`
 - `570e415 fix(scout): accept structured source family statuses`
 - `2948f10 feat(scout): require full case coverage matrix`
 - `30f0477 fix(scout): tolerate safe external scout schema drift`

@@ -10,6 +10,21 @@ Project name:
 AUTOSINT External Scout
 ```
 
+ChatGPT Project operating model:
+
+- AUTOSINT Live Case Board threads are case memory.
+- ChatGPT Project chats are workspaces only.
+- `AUTOSINT Daily External Scout` is the scheduled machine-output chat and
+  must produce strict JSON/Markdown only.
+- `AUTOSINT System Control` is the human/admin chat for Codex tasks, GitHub,
+  launchd, prompt updates, architecture, debugging, and roadmap work.
+- Optional `CASE - <topic>` chats are human-created deep dives only. Do not
+  auto-create one per packet, thread, or capture.
+- Case deep-dive chats must start from AUTOSINT thread data and are not
+  Evidence or source of truth.
+
+See `docs/AUTOSINT_CHATGPT_PROJECT_OPERATING_MODEL.md`.
+
 The Project Instructions should require:
 
 - Event-centric case packets.

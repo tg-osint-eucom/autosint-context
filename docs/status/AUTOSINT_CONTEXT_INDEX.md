@@ -7,6 +7,7 @@ Use these public raw URLs to restore AUTOSINT operating context without private 
 - `docs/AUTOSINT_OPERATING_MODEL_CURRENT.md`: https://raw.githubusercontent.com/tg-osint-eucom/autosint-context/main/docs/AUTOSINT_OPERATING_MODEL_CURRENT.md
 - `docs/AUTOSINT_PRIMARY_WORKFLOW.md`: https://raw.githubusercontent.com/tg-osint-eucom/autosint-context/main/docs/AUTOSINT_PRIMARY_WORKFLOW.md
 - `docs/AUTOSINT_EXTERNAL_SCOUT_RUNBOOK.md`: https://raw.githubusercontent.com/tg-osint-eucom/autosint-context/main/docs/AUTOSINT_EXTERNAL_SCOUT_RUNBOOK.md
+- `docs/AUTOSINT_CHATGPT_PROJECT_OPERATING_MODEL.md`: https://raw.githubusercontent.com/tg-osint-eucom/autosint-context/main/docs/AUTOSINT_CHATGPT_PROJECT_OPERATING_MODEL.md
 - `docs/AUTOSINT_EXTERNAL_SCOUT_CAPTURE_BOUNDARY.md`: https://raw.githubusercontent.com/tg-osint-eucom/autosint-context/main/docs/AUTOSINT_EXTERNAL_SCOUT_CAPTURE_BOUNDARY.md
 - `docs/status/AUTOSINT_ASSISTANT_CONTEXT_CURRENT.md`: https://raw.githubusercontent.com/tg-osint-eucom/autosint-context/main/docs/status/AUTOSINT_ASSISTANT_CONTEXT_CURRENT.md
 

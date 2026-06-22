@@ -6,6 +6,11 @@ ChatGPT packets are candidate input only. Nothing becomes Evidence, no case link
 
 Repo-level Codex execution rules, including the active autopush gate, are maintained in `AGENTS.md`.
 
+ChatGPT Project operating rules are maintained in
+`docs/AUTOSINT_CHATGPT_PROJECT_OPERATING_MODEL.md`. The key rule is that
+AUTOSINT Live Case Board threads are durable case memory, while ChatGPT Project
+chats are controlled workspaces only.
+
 ## Primary Operator Workflow
 
 The current primary workflow is:
@@ -104,6 +109,11 @@ The Live Case Board:
 - Maintains per-topic timelines and previous packets.
 - Marks threads as New, Updated, Stale, Escalating, or Needs Review.
 - Lets HAVOC/RFI consume current thread state before raw-packet fallback.
+
+ChatGPT Project chats must not replace this board as case memory. The scheduled
+Daily Scout chat is machine-output only, `AUTOSINT System Control` is the
+human/admin workspace, and optional `CASE - <topic>` chats are human-created
+deep dives only for important cases.
 
 Initial thread topics include:
 
