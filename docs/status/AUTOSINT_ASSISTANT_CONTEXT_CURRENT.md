@@ -7,8 +7,8 @@ This is a public, sanitized context file for restoring AUTOSINT project context 
 - Private code/runtime repo: `tg-osint-eucom/autosint`
 - Public context mirror: `tg-osint-eucom/autosint-context`
 - Source branch: `main`
-- Source HEAD: `0a1bcad98f113b3bc1aede6817e83bad08eb03e2`
-- Generated at: `2026-06-22T20:58:45Z`
+- Source HEAD: `892dc9e1db2ee8171606ac58a198190aae359f56`
+- Generated at: `2026-06-23T13:20:32Z`
 
 ## Primary Workflow
 
@@ -33,8 +33,8 @@ This is a public, sanitized context file for restoring AUTOSINT project context 
 - Available: `True`
 - Active selection policy: `latest_validated_capture_only`
 - Active packet count: `1`
-- History packet count: `26`
-- Latest packet timestamp: `2026-06-22T19:57:30Z`
+- History packet count: `39`
+- Latest packet timestamp: `2026-06-23T13:04:28Z`
 - Stale: `False`
 - Read-only: `True`
 - Private browser state read: `False`
@@ -61,6 +61,9 @@ The following are local-only and are not mirrored here:
 
 ## Latest Source Commits
 
+- `892dc9e chore(ops): verify strict external scout capture workstream`
+- `e7628fb fix(scout): extend launchd capture timeouts`
+- `720e628 fix(scout): target external scout daily task capture`
 - `0a1bcad feat(ops): add AUTOSINT long-running work loop`
 - `27a32e9 chore(context): mirror ChatGPT project operating model`
 - `93d1d28 docs: define AUTOSINT ChatGPT project operating model`
@@ -78,8 +81,6 @@ The following are local-only and are not mirrored here:
 - `6975210 docs: add External Scout case thread design questions`
 - `dc8851f feat(docs): automate AUTOSINT context mirror publishing`
 - `bcc4baa docs: add AUTOSINT autopush policy`
-- `7809c01 chore(github): add AUTOSINT CI workflow`
-- `f93b412 feat: initialize AUTOSINT operator review stack`
 
 ## Source Dirty State
 

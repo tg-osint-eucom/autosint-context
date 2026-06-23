@@ -14,7 +14,7 @@ finding -> validation -> dedupe -> false-positive check -> targeted fix -> tests
 
 | Workstream | Current status | Purpose |
 | --- | --- | --- |
-| `external_scout_strict_capture` | Needs Verification | Prove hourly strict ChatGPT output keeps validating and promoting through staging. |
+| `external_scout_strict_capture` | Complete | Natural hourly strict ChatGPT output validated and promoted through staging overnight. |
 | `external_scout_live_case_board` | Active | Keep `/external-scout/threads` current, fresh, and operator-readable. |
 | `case_coverage_matrix` | Active | Maintain full strict coverage matrices in packets and thread rollups. |
 | `chatgpt_project_operating_model` | Complete | Keep ChatGPT Project chats as workspaces, not case memory. |
@@ -23,13 +23,13 @@ finding -> validation -> dedupe -> false-positive check -> targeted fix -> tests
 | `pir_hunter_thread_overlay` | Planned | Design PIR Hunter as a priority-question overlay on Live Case Board threads. |
 | `havoc_rfi_thread_current` | Active | Keep HAVOC/RFI consuming thread current state before packet fallback. |
 | `source_catalog_policy` | Blocked | Await explicit decision before tracking or mirroring source catalog policy. |
-| `launchd_runtime_health` | Needs Verification | Prove scheduled capture keeps firing naturally at `:08` and stays strict-valid. |
+| `launchd_runtime_health` | Complete | Scheduled capture fired naturally at `:08` with clear receipts and fresh Live Case Board state. |
 
 ## Next Recommended Codex Task
 
-Verify the next natural scheduled External Scout capture at `:08` and confirm
-it promoted a strict valid packet with `validation_error_count=0`, refreshed the
-Live Case Board, and left all mutation/private-state flags false.
+Keep monitoring `source_catalog_policy` for the explicit tracking decision, and
+reopen capture workstreams only if scheduled receipts stop, quarantine strict
+output, or Live Case Board freshness diverges from the latest valid capture.
 
 ## Safety Boundary
 
