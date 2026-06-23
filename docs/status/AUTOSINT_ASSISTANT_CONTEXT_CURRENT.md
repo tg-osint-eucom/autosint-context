@@ -7,8 +7,8 @@ This is a public, sanitized context file for restoring AUTOSINT project context 
 - Private code/runtime repo: `tg-osint-eucom/autosint`
 - Public context mirror: `tg-osint-eucom/autosint-context`
 - Source branch: `main`
-- Source HEAD: `892dc9e1db2ee8171606ac58a198190aae359f56`
-- Generated at: `2026-06-23T13:20:32Z`
+- Source HEAD: `bed03f136b0169a11f497ff3004a7e55ea67958a`
+- Generated at: `2026-06-23T14:32:10Z`
 
 ## Primary Workflow
 
@@ -61,6 +61,7 @@ The following are local-only and are not mirrored here:
 
 ## Latest Source Commits
 
+- `bed03f1 fix(scout): improve live case board correctness`
 - `892dc9e chore(ops): verify strict external scout capture workstream`
 - `e7628fb fix(scout): extend launchd capture timeouts`
 - `720e628 fix(scout): target external scout daily task capture`
@@ -80,7 +81,6 @@ The following are local-only and are not mirrored here:
 - `0921d1e feat(scout): add external scout case threads`
 - `6975210 docs: add External Scout case thread design questions`
 - `dc8851f feat(docs): automate AUTOSINT context mirror publishing`
-- `bcc4baa docs: add AUTOSINT autopush policy`
 
 ## Source Dirty State
 
