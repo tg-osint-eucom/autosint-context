@@ -7,8 +7,8 @@ This is a public, sanitized context file for restoring AUTOSINT project context 
 - Private code/runtime repo: `tg-osint-eucom/autosint`
 - Public context mirror: `tg-osint-eucom/autosint-context`
 - Source branch: `main`
-- Source HEAD: `b330a722eddc0cd04b7c98e1cab23e5228c77679`
-- Generated at: `2026-06-23T18:19:25Z`
+- Source HEAD: `00e9ebc18b1330e39d616f7c106e98b18d88782c`
+- Generated at: `2026-06-23T18:34:46Z`
 
 ## Primary Workflow
 
@@ -61,6 +61,7 @@ The following are local-only and are not mirrored here:
 
 ## Latest Source Commits
 
+- `00e9ebc fix(scout): require current multilingual context for preview readiness`
 - `b330a72 fix(scout): separate current thread status from historical warnings`
 - `7169a7f fix(ui): make live case board the primary first read`
 - `c35e9de fix(ui): keep live board audit details out of operator path`
@@ -80,7 +81,6 @@ The following are local-only and are not mirrored here:
 - `83d63c2 Merge pull request #1 from tg-osint-eucom/feat/external-scout-capture-isolation`
 - `c439c64 refactor(scout): isolate external scout capture subsystem`
 - `7e21893 fix(scout): harden scheduled external scout capture`
-- `0ebe895 fix(docs): mark case threads implemented in context mirror`
 
 ## Source Dirty State
 
