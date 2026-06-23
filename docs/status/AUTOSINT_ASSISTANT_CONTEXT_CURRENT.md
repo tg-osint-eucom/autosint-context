@@ -7,8 +7,8 @@ This is a public, sanitized context file for restoring AUTOSINT project context 
 - Private code/runtime repo: `tg-osint-eucom/autosint`
 - Public context mirror: `tg-osint-eucom/autosint-context`
 - Source branch: `main`
-- Source HEAD: `7169a7fe11c6da1dc4ecede32b72db9b696c2060`
-- Generated at: `2026-06-23T15:25:24Z`
+- Source HEAD: `b330a722eddc0cd04b7c98e1cab23e5228c77679`
+- Generated at: `2026-06-23T18:19:25Z`
 
 ## Primary Workflow
 
@@ -33,8 +33,8 @@ This is a public, sanitized context file for restoring AUTOSINT project context 
 - Available: `True`
 - Active selection policy: `latest_validated_capture_only`
 - Active packet count: `1`
-- History packet count: `40`
-- Latest packet timestamp: `2026-06-23T15:02:52Z`
+- History packet count: `43`
+- Latest packet timestamp: `2026-06-23T18:03:01Z`
 - Stale: `False`
 - Read-only: `True`
 - Private browser state read: `False`
@@ -61,6 +61,7 @@ The following are local-only and are not mirrored here:
 
 ## Latest Source Commits
 
+- `b330a72 fix(scout): separate current thread status from historical warnings`
 - `7169a7f fix(ui): make live case board the primary first read`
 - `c35e9de fix(ui): keep live board audit details out of operator path`
 - `bed03f1 fix(scout): improve live case board correctness`
@@ -80,7 +81,6 @@ The following are local-only and are not mirrored here:
 - `c439c64 refactor(scout): isolate external scout capture subsystem`
 - `7e21893 fix(scout): harden scheduled external scout capture`
 - `0ebe895 fix(docs): mark case threads implemented in context mirror`
-- `0921d1e feat(scout): add external scout case threads`
 
 ## Source Dirty State
 
