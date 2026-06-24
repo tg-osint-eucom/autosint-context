@@ -7,8 +7,8 @@ This is a public, sanitized context file for restoring AUTOSINT project context 
 - Private code/runtime repo: `tg-osint-eucom/autosint`
 - Public context mirror: `tg-osint-eucom/autosint-context`
 - Source branch: `main`
-- Source HEAD: `f3b6e4e89cc9ee4c60d22ec6a014c06434136279`
-- Generated at: `2026-06-23T23:39:36Z`
+- Source HEAD: `340fa0ecc1539ff021888cf1caa686c0ead5e17f`
+- Generated at: `2026-06-24T00:28:06Z`
 
 ## Primary Workflow
 
@@ -35,7 +35,7 @@ This is a public, sanitized context file for restoring AUTOSINT project context 
 - Active packet count: `1`
 - History packet count: `47`
 - Latest packet timestamp: `2026-06-23T22:37:00Z`
-- Stale: `False`
+- Stale: `True`
 - Read-only: `True`
 - Private browser state read: `False`
 - Cookies read: `False`
@@ -61,6 +61,7 @@ The following are local-only and are not mirrored here:
 
 ## Latest Source Commits
 
+- `340fa0e fix(ui): separate HAVOC current coverage from legacy linkage audit`
 - `f3b6e4e fix(scout): preserve best thread current state across lower quality updates`
 - `76efc6e chore(debug): add read-only page dump utility`
 - `f9147d6 fix(ui): clean remaining operator path audit leakage`
@@ -80,7 +81,6 @@ The following are local-only and are not mirrored here:
 - `2948f10 feat(scout): require full case coverage matrix`
 - `30f0477 fix(scout): tolerate safe external scout schema drift`
 - `23f61cf fix(ui): keep mission control launch page responsive`
-- `0e349f1 docs: mark external scout live board current`
 
 ## Source Dirty State
 
