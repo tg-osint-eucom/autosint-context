@@ -7,8 +7,8 @@ This is a public, sanitized context file for restoring AUTOSINT project context 
 - Private code/runtime repo: `tg-osint-eucom/autosint`
 - Public context mirror: `tg-osint-eucom/autosint-context`
 - Source branch: `main`
-- Source HEAD: `a5e9bada16e9bad3c471c8aac0c97348a2bf701a`
-- Generated at: `2026-06-24T15:53:52Z`
+- Source HEAD: `9ed368ea603a0750ceac2d6b6799c13be8beaa59`
+- Generated at: `2026-06-24T16:15:57Z`
 
 ## Primary Workflow
 
@@ -33,8 +33,8 @@ This is a public, sanitized context file for restoring AUTOSINT project context 
 - Available: `True`
 - Active selection policy: `latest_validated_capture_only`
 - Active packet count: `1`
-- History packet count: `53`
-- Latest packet timestamp: `2026-06-24T15:27:46Z`
+- History packet count: `54`
+- Latest packet timestamp: `2026-06-24T15:55:49Z`
 - Stale: `False`
 - Read-only: `True`
 - Private browser state read: `False`
@@ -61,6 +61,7 @@ The following are local-only and are not mirrored here:
 
 ## Latest Source Commits
 
+- `9ed368e fix(scout): remove keystroke dependency from prompt trigger`
 - `a5e9bad fix(scout): require verified prompt trigger delivery`
 - `6b6116f fix(scout): harden prompt trigger submission`
 - `924fa0c fix(scout): verify prompt trigger submission`
@@ -80,7 +81,6 @@ The following are local-only and are not mirrored here:
 - `892dc9e chore(ops): verify strict external scout capture workstream`
 - `e7628fb fix(scout): extend launchd capture timeouts`
 - `720e628 fix(scout): target external scout daily task capture`
-- `0a1bcad feat(ops): add AUTOSINT long-running work loop`
 
 ## Source Dirty State
 
