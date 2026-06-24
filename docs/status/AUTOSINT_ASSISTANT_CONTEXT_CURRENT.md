@@ -7,8 +7,8 @@ This is a public, sanitized context file for restoring AUTOSINT project context 
 - Private code/runtime repo: `tg-osint-eucom/autosint`
 - Public context mirror: `tg-osint-eucom/autosint-context`
 - Source branch: `main`
-- Source HEAD: `c10f6619a5753aa832fff58667db9f62140da97d`
-- Generated at: `2026-06-24T17:23:36Z`
+- Source HEAD: `854c69f521f632338fb482014e2daa15405ae2b1`
+- Generated at: `2026-06-24T17:56:53Z`
 
 ## Primary Workflow
 
@@ -61,6 +61,7 @@ The following are local-only and are not mirrored here:
 
 ## Latest Source Commits
 
+- `854c69f fix(scout): improve scheduled prompt trigger reliability`
 - `c10f661 fix(scout): stabilize prompt trigger composer submit`
 - `9ed368e fix(scout): remove keystroke dependency from prompt trigger`
 - `a5e9bad fix(scout): require verified prompt trigger delivery`
@@ -80,7 +81,6 @@ The following are local-only and are not mirrored here:
 - `c35e9de fix(ui): keep live board audit details out of operator path`
 - `bed03f1 fix(scout): improve live case board correctness`
 - `892dc9e chore(ops): verify strict external scout capture workstream`
-- `e7628fb fix(scout): extend launchd capture timeouts`
 
 ## Source Dirty State
 
