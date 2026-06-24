@@ -8,7 +8,7 @@ This is a public, sanitized context file for restoring AUTOSINT project context 
 - Public context mirror: `tg-osint-eucom/autosint-context`
 - Source branch: `main`
 - Source HEAD: `dc933d0b0a1ef5cf853ffd5d6ef385745db4ae61`
-- Generated at: `2026-06-24T18:19:13Z`
+- Generated at: `2026-06-24T19:10:04Z`
 
 ## Primary Workflow
 
@@ -33,8 +33,8 @@ This is a public, sanitized context file for restoring AUTOSINT project context 
 - Available: `True`
 - Active selection policy: `latest_validated_capture_only`
 - Active packet count: `1`
-- History packet count: `56`
-- Latest packet timestamp: `2026-06-24T18:03:02Z`
+- History packet count: `57`
+- Latest packet timestamp: `2026-06-24T18:56:00Z`
 - Stale: `False`
 - Read-only: `True`
 - Private browser state read: `False`
