@@ -7,8 +7,8 @@ This is a public, sanitized context file for restoring AUTOSINT project context 
 - Private code/runtime repo: `tg-osint-eucom/autosint`
 - Public context mirror: `tg-osint-eucom/autosint-context`
 - Source branch: `main`
-- Source HEAD: `854c69f521f632338fb482014e2daa15405ae2b1`
-- Generated at: `2026-06-24T17:56:53Z`
+- Source HEAD: `dc933d0b0a1ef5cf853ffd5d6ef385745db4ae61`
+- Generated at: `2026-06-24T18:19:13Z`
 
 ## Primary Workflow
 
@@ -33,8 +33,8 @@ This is a public, sanitized context file for restoring AUTOSINT project context 
 - Available: `True`
 - Active selection policy: `latest_validated_capture_only`
 - Active packet count: `1`
-- History packet count: `55`
-- Latest packet timestamp: `2026-06-24T16:56:00Z`
+- History packet count: `56`
+- Latest packet timestamp: `2026-06-24T18:03:02Z`
 - Stale: `False`
 - Read-only: `True`
 - Private browser state read: `False`
@@ -61,6 +61,7 @@ The following are local-only and are not mirrored here:
 
 ## Latest Source Commits
 
+- `dc933d0 fix(scout): target visible ChatGPT composer for prompt trigger`
 - `854c69f fix(scout): improve scheduled prompt trigger reliability`
 - `c10f661 fix(scout): stabilize prompt trigger composer submit`
 - `9ed368e fix(scout): remove keystroke dependency from prompt trigger`
@@ -80,7 +81,6 @@ The following are local-only and are not mirrored here:
 - `7169a7f fix(ui): make live case board the primary first read`
 - `c35e9de fix(ui): keep live board audit details out of operator path`
 - `bed03f1 fix(scout): improve live case board correctness`
-- `892dc9e chore(ops): verify strict external scout capture workstream`
 
 ## Source Dirty State
 
