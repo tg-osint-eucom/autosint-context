@@ -7,8 +7,8 @@ This is a public, sanitized context file for restoring AUTOSINT project context 
 - Private code/runtime repo: `tg-osint-eucom/autosint`
 - Public context mirror: `tg-osint-eucom/autosint-context`
 - Source branch: `main`
-- Source HEAD: `340fa0ecc1539ff021888cf1caa686c0ead5e17f`
-- Generated at: `2026-06-24T00:28:06Z`
+- Source HEAD: `8fbcaff7cf0d18ed43fa78803894131ee7d95887`
+- Generated at: `2026-06-24T01:30:14Z`
 
 ## Primary Workflow
 
@@ -61,6 +61,7 @@ The following are local-only and are not mirrored here:
 
 ## Latest Source Commits
 
+- `8fbcaff fix(scout): require exact packet chat target for launchd capture`
 - `340fa0e fix(ui): separate HAVOC current coverage from legacy linkage audit`
 - `f3b6e4e fix(scout): preserve best thread current state across lower quality updates`
 - `76efc6e chore(debug): add read-only page dump utility`
@@ -80,7 +81,6 @@ The following are local-only and are not mirrored here:
 - `570e415 fix(scout): accept structured source family statuses`
 - `2948f10 feat(scout): require full case coverage matrix`
 - `30f0477 fix(scout): tolerate safe external scout schema drift`
-- `23f61cf fix(ui): keep mission control launch page responsive`
 
 ## Source Dirty State
 
