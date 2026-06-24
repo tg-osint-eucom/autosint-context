@@ -7,8 +7,8 @@ This is a public, sanitized context file for restoring AUTOSINT project context 
 - Private code/runtime repo: `tg-osint-eucom/autosint`
 - Public context mirror: `tg-osint-eucom/autosint-context`
 - Source branch: `main`
-- Source HEAD: `8fbcaff7cf0d18ed43fa78803894131ee7d95887`
-- Generated at: `2026-06-24T01:30:14Z`
+- Source HEAD: `8b06ac0a80f77b8e701f8740e3a92cddf934c2ad`
+- Generated at: `2026-06-24T03:33:41Z`
 
 ## Primary Workflow
 
@@ -33,9 +33,9 @@ This is a public, sanitized context file for restoring AUTOSINT project context 
 - Available: `True`
 - Active selection policy: `latest_validated_capture_only`
 - Active packet count: `1`
-- History packet count: `47`
-- Latest packet timestamp: `2026-06-23T22:37:00Z`
-- Stale: `True`
+- History packet count: `48`
+- Latest packet timestamp: `2026-06-24T03:24:08Z`
+- Stale: `False`
 - Read-only: `True`
 - Private browser state read: `False`
 - Cookies read: `False`
@@ -61,6 +61,7 @@ The following are local-only and are not mirrored here:
 
 ## Latest Source Commits
 
+- `8b06ac0 feat(scout): add local external scout prompt trigger`
 - `8fbcaff fix(scout): require exact packet chat target for launchd capture`
 - `340fa0e fix(ui): separate HAVOC current coverage from legacy linkage audit`
 - `f3b6e4e fix(scout): preserve best thread current state across lower quality updates`
@@ -80,7 +81,6 @@ The following are local-only and are not mirrored here:
 - `93d1d28 docs: define AUTOSINT ChatGPT project operating model`
 - `570e415 fix(scout): accept structured source family statuses`
 - `2948f10 feat(scout): require full case coverage matrix`
-- `30f0477 fix(scout): tolerate safe external scout schema drift`
 
 ## Source Dirty State
 
