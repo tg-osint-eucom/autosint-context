@@ -7,8 +7,8 @@ This is a public, sanitized context file for restoring AUTOSINT project context 
 - Private code/runtime repo: `tg-osint-eucom/autosint`
 - Public context mirror: `tg-osint-eucom/autosint-context`
 - Source branch: `main`
-- Source HEAD: `a7b663266fc4fc5b10b048fbc5bffea988009431`
-- Generated at: `2026-06-24T11:44:45Z`
+- Source HEAD: `924fa0caf7ca4985f27c26a16398aee5195e9644`
+- Generated at: `2026-06-24T13:49:59Z`
 
 ## Primary Workflow
 
@@ -33,9 +33,9 @@ This is a public, sanitized context file for restoring AUTOSINT project context 
 - Available: `True`
 - Active selection policy: `latest_validated_capture_only`
 - Active packet count: `1`
-- History packet count: `48`
-- Latest packet timestamp: `2026-06-24T03:24:08Z`
-- Stale: `True`
+- History packet count: `51`
+- Latest packet timestamp: `2026-06-24T13:31:00Z`
+- Stale: `False`
 - Read-only: `True`
 - Private browser state read: `False`
 - Cookies read: `False`
@@ -61,6 +61,7 @@ The following are local-only and are not mirrored here:
 
 ## Latest Source Commits
 
+- `924fa0c fix(scout): verify prompt trigger submission`
 - `a7b6632 fix(scout): harden launchd prompt trigger submit`
 - `8b06ac0 feat(scout): add local external scout prompt trigger`
 - `8fbcaff fix(scout): require exact packet chat target for launchd capture`
@@ -80,7 +81,6 @@ The following are local-only and are not mirrored here:
 - `0a1bcad feat(ops): add AUTOSINT long-running work loop`
 - `27a32e9 chore(context): mirror ChatGPT project operating model`
 - `93d1d28 docs: define AUTOSINT ChatGPT project operating model`
-- `570e415 fix(scout): accept structured source family statuses`
 
 ## Source Dirty State
 
