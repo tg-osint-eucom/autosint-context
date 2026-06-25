@@ -7,8 +7,8 @@ This is a public, sanitized context file for restoring AUTOSINT project context 
 - Private code/runtime repo: `tg-osint-eucom/autosint`
 - Public context mirror: `tg-osint-eucom/autosint-context`
 - Source branch: `main`
-- Source HEAD: `d2f4e139fcfc013aa0a565e09d1c8e0ae509e65b`
-- Generated at: `2026-06-25T19:09:07Z`
+- Source HEAD: `cce3205a216c02b7697c551e8fc5fd9c1a549fca`
+- Generated at: `2026-06-25T19:34:28Z`
 
 ## Primary Workflow
 
@@ -61,6 +61,8 @@ The following are local-only and are not mirrored here:
 
 ## Latest Source Commits
 
+- `cce3205 docs: sanitize Codex host instructions for context mirror`
+- `3a2a443 docs: update Codex host instructions for current AUTOSINT`
 - `d2f4e13 docs: persist Codex memory source-of-truth rule`
 - `6b9f1ba fix(scout): preserve stronger market cues during enrichment`
 - `5a10656 feat(scout): add market prediction finance enrichment`
@@ -79,8 +81,6 @@ The following are local-only and are not mirrored here:
 - `81e88fe docs: add AUTOSINT orchestration roadmap`
 - `ce6c6eb fix(scout): harden prompt trigger verification`
 - `dc933d0 fix(scout): target visible ChatGPT composer for prompt trigger`
-- `854c69f fix(scout): improve scheduled prompt trigger reliability`
-- `c10f661 fix(scout): stabilize prompt trigger composer submit`
 
 ## Source Dirty State
 
