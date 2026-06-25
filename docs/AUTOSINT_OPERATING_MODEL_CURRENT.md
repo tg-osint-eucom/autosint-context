@@ -111,6 +111,11 @@ The Live Case Board:
 - Keeps latest-capture topics current, retains recently unupdated topics as
   stale tracked threads for 72 hours, and moves older threads to audit/history.
 - Lets HAVOC/RFI consume current thread state before raw-packet fallback.
+- Shows theater watch summaries when supplied by strict output:
+  SOCCENT, SOCEUR, SOCPAC, SOCAFRICA, SOCSOUTH, SOCKOR, and SOCOMD must be
+  explicitly checked, no-case, or omitted/overflow with a reason.
+- Keeps omitted or overflow candidate cases visible as review context without
+  letting them replace active validated thread state.
 
 ChatGPT Project chats must not replace this board as case memory. The scheduled
 Daily Scout chat is machine-output only, `AUTOSINT System Control` is the
@@ -125,6 +130,25 @@ Initial thread topics include:
 - Taiwan grey-zone activity
 - Scarborough Shoal
 - Niamey airport
+
+## Global Sensor Coverage
+
+External Scout packets must not silently omit required source/sensor lanes.
+The policy is tracked in `docs/AUTOSINT_GLOBAL_SENSOR_COVERAGE_POLICY.md` and
+`config/autosint_sensor_coverage_policy.yml`.
+
+Required packet output includes explicit rows for case coverage,
+market/finance, prediction markets, multilingual/regional context, traffic and
+movement, geospatial/satellite, weather/environment, social/public reaction,
+and cue-only lanes. Each row must use an explicit state such as checked and
+found, checked and not found, candidate found but not imported, not checked,
+stale, or blocked/login required.
+
+Theater watch behavior is tracked in `docs/AUTOSINT_THEATER_WATCH_POLICY.md`
+and `config/autosint_theater_watch_policy.yml`. ChatGPT output may emit up to
+five active packets, but the theater watch summary must still report what was
+checked across all major theaters and list omitted or overflow candidates when
+the credible case set exceeds the active packet limit.
 
 ## Agents, PIR, And Legacy Surfaces
 

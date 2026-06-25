@@ -17,6 +17,8 @@ finding -> validation -> dedupe -> false-positive check -> targeted fix -> tests
 | `external_scout_strict_capture` | Complete | Natural hourly strict ChatGPT output validated and promoted through staging overnight. |
 | `external_scout_live_case_board` | Active | Keep `/external-scout/threads` current, fresh, and operator-readable. |
 | `case_coverage_matrix` | Active | Maintain full strict coverage matrices in packets and thread rollups. |
+| `global_sensor_coverage_policy` | Active | Enforce no-silent-omission source/sensor coverage policy across packets, reports, Live Board, and HAVOC/RFI preview. |
+| `theater_watch_summary` | Needs Verification | Prove live Packet output reports checked/no-case/overflow state for SOCCENT, SOCEUR, SOCPAC, SOCAFRICA, SOCSOUTH, SOCKOR, and SOCOMD. |
 | `chatgpt_project_operating_model` | Complete | Keep ChatGPT Project chats as workspaces, not case memory. |
 | `context_mirror_automation` | Active | Keep public sanitized context mirror current after source-of-truth changes. |
 | `external_scout_capture_isolation` | Complete | Keep capture code isolated behind the package CLI and launchd wrapper. |
@@ -32,10 +34,12 @@ finding -> validation -> dedupe -> false-positive check -> targeted fix -> tests
 
 ## Next Recommended Codex Task
 
-Work `orchestration_prefect_spike` next if orchestration work is still desired.
-Keep it read-only: wrap current launchd receipts, capture status, thread report
-dry-run, route smoke, and context mirror dry-run without replacing launchd or
-adding agent/write automation.
+Work `theater_watch_summary` next. The code/reporting path can now preserve
+top-level `theater_watch_summary` and `overflow_candidate_cases`, but live
+Packet output still needs proof that all major theaters are checked and either
+emitted, explicitly no-case, or omitted/overflow with a reason. Keep it
+read-only: prompt/capture proof, validator/report dry-run, route smoke, and
+context mirror refresh only.
 
 Current prompt-trigger note: short-interval wrapper tests after the verifier
 hardening promoted strict Packet-chat captures at `2026-06-25T00:16:46Z` and

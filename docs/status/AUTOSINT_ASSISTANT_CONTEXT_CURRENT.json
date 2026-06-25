@@ -6,11 +6,11 @@
     "active_selection_policy": "latest_validated_capture_only",
     "available": true,
     "cookies_read": false,
-    "history_capture_count": 59,
-    "history_packet_count": 124,
-    "latest_capture_generated_at": "2026-06-25T14:50:51Z",
+    "history_capture_count": 60,
+    "history_packet_count": 129,
+    "latest_capture_generated_at": "2026-06-25T15:50:51Z",
     "latest_capture_packet_count": 5,
-    "latest_packet_generated_at": "2026-06-25T14:50:51Z",
+    "latest_packet_generated_at": "2026-06-25T15:50:51Z",
     "local_storage_read": false,
     "mutation_performed": false,
     "private_browser_state_read": false,
@@ -20,9 +20,10 @@
     "status_only": true,
     "validated_packet_count": 5
   },
-  "generated_at": "2026-06-25T15:42:13Z",
+  "generated_at": "2026-06-25T16:09:10Z",
   "havoc_rfi_behavior": "HAVOC/RFI uses External Scout Case Thread current state when available, then falls back to the best validated External Scout packet; canonical cases, Case Genesis, TSOC/HAVOC, source coverage, and provenance remain audit material.",
   "latest_commits": [
+    "5d8fddb feat(scout): add global sensor coverage to live board",
     "1d41aa1 fix(scout): clarify coverage versus source checks",
     "d7bd727 chore(ops): verify natural multi-case live board cycle",
     "aebbb4d chore(ops): record multi-case short-loop proof",
@@ -41,8 +42,7 @@
     "924fa0c fix(scout): verify prompt trigger submission",
     "a7b6632 fix(scout): harden launchd prompt trigger submit",
     "8b06ac0 feat(scout): add local external scout prompt trigger",
-    "8fbcaff fix(scout): require exact packet chat target for launchd capture",
-    "340fa0e fix(ui): separate HAVOC current coverage from legacy linkage audit"
+    "8fbcaff fix(scout): require exact packet chat target for launchd capture"
   ],
   "launchd_status": "Local-only; not represented in this public mirror.",
   "mirror_repo": "tg-osint-eucom/autosint-context",
@@ -51,6 +51,7 @@
     "Keep the mirror refreshed after major workflow changes.",
     "Install/load hourly capture only after separate operator approval.",
     "External Scout Live Case Board v1 is implemented; use /external-scout/threads as the 24/7 thread board.",
+    "Global sensor coverage policy is implemented; theater_watch_summary still needs live Packet-output verification.",
     "Design controlled approval before Evidence or case-link mutation."
   ],
   "primary_routes": [
@@ -67,10 +68,13 @@
     "docs/AUTOSINT_CHATGPT_PROJECT_OPERATING_MODEL.md": "https://raw.githubusercontent.com/tg-osint-eucom/autosint-context/main/docs/AUTOSINT_CHATGPT_PROJECT_OPERATING_MODEL.md",
     "docs/AUTOSINT_EXTERNAL_SCOUT_CAPTURE_BOUNDARY.md": "https://raw.githubusercontent.com/tg-osint-eucom/autosint-context/main/docs/AUTOSINT_EXTERNAL_SCOUT_CAPTURE_BOUNDARY.md",
     "docs/AUTOSINT_EXTERNAL_SCOUT_RUNBOOK.md": "https://raw.githubusercontent.com/tg-osint-eucom/autosint-context/main/docs/AUTOSINT_EXTERNAL_SCOUT_RUNBOOK.md",
+    "docs/AUTOSINT_GLOBAL_SENSOR_COVERAGE_POLICY.md": "https://raw.githubusercontent.com/tg-osint-eucom/autosint-context/main/docs/AUTOSINT_GLOBAL_SENSOR_COVERAGE_POLICY.md",
     "docs/AUTOSINT_LONG_RUNNING_WORK_MODEL.md": "https://raw.githubusercontent.com/tg-osint-eucom/autosint-context/main/docs/AUTOSINT_LONG_RUNNING_WORK_MODEL.md",
     "docs/AUTOSINT_OPERATING_MODEL_CURRENT.md": "https://raw.githubusercontent.com/tg-osint-eucom/autosint-context/main/docs/AUTOSINT_OPERATING_MODEL_CURRENT.md",
     "docs/AUTOSINT_ORCHESTRATION_ROADMAP.md": "https://raw.githubusercontent.com/tg-osint-eucom/autosint-context/main/docs/AUTOSINT_ORCHESTRATION_ROADMAP.md",
     "docs/AUTOSINT_PRIMARY_WORKFLOW.md": "https://raw.githubusercontent.com/tg-osint-eucom/autosint-context/main/docs/AUTOSINT_PRIMARY_WORKFLOW.md",
+    "docs/AUTOSINT_THEATER_WATCH_POLICY.md": "https://raw.githubusercontent.com/tg-osint-eucom/autosint-context/main/docs/AUTOSINT_THEATER_WATCH_POLICY.md",
+    "docs/product/AUTOSINT_SENSOR_COVERAGE_REQUIREMENTS_TRACE.md": "https://raw.githubusercontent.com/tg-osint-eucom/autosint-context/main/docs/product/AUTOSINT_SENSOR_COVERAGE_REQUIREMENTS_TRACE.md",
     "docs/status/AUTOSINT_ASSISTANT_CONTEXT_CURRENT.md": "https://raw.githubusercontent.com/tg-osint-eucom/autosint-context/main/docs/status/AUTOSINT_ASSISTANT_CONTEXT_CURRENT.md",
     "docs/status/AUTOSINT_CONTEXT_INDEX.md": "https://raw.githubusercontent.com/tg-osint-eucom/autosint-context/main/docs/status/AUTOSINT_CONTEXT_INDEX.md",
     "docs/status/AUTOSINT_WORKSTREAMS.md": "https://raw.githubusercontent.com/tg-osint-eucom/autosint-context/main/docs/status/AUTOSINT_WORKSTREAMS.md"
@@ -88,7 +92,7 @@
   },
   "source_branch": "main",
   "source_dirty_state": [],
-  "source_head": "1d41aa182a53ce061b2fa3c9d4c26440f9b80c7f",
+  "source_head": "5d8fddba2e7e547beed28115bd420dd84d353ad5",
   "source_repo": "tg-osint-eucom/autosint",
   "source_repo_url": "https://github.com/tg-osint-eucom/autosint",
   "supporting_routes": [

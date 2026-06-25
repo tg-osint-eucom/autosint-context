@@ -7,8 +7,8 @@ This is a public, sanitized context file for restoring AUTOSINT project context 
 - Private code/runtime repo: `tg-osint-eucom/autosint`
 - Public context mirror: `tg-osint-eucom/autosint-context`
 - Source branch: `main`
-- Source HEAD: `1d41aa182a53ce061b2fa3c9d4c26440f9b80c7f`
-- Generated at: `2026-06-25T15:42:13Z`
+- Source HEAD: `5d8fddba2e7e547beed28115bd420dd84d353ad5`
+- Generated at: `2026-06-25T16:09:10Z`
 
 ## Primary Workflow
 
@@ -33,8 +33,8 @@ This is a public, sanitized context file for restoring AUTOSINT project context 
 - Available: `True`
 - Active selection policy: `latest_validated_capture_only`
 - Active packet count: `5`
-- History packet count: `124`
-- Latest packet timestamp: `2026-06-25T14:50:51Z`
+- History packet count: `129`
+- Latest packet timestamp: `2026-06-25T15:50:51Z`
 - Stale: `False`
 - Read-only: `True`
 - Private browser state read: `False`
@@ -61,6 +61,7 @@ The following are local-only and are not mirrored here:
 
 ## Latest Source Commits
 
+- `5d8fddb feat(scout): add global sensor coverage to live board`
 - `1d41aa1 fix(scout): clarify coverage versus source checks`
 - `d7bd727 chore(ops): verify natural multi-case live board cycle`
 - `aebbb4d chore(ops): record multi-case short-loop proof`
@@ -80,7 +81,6 @@ The following are local-only and are not mirrored here:
 - `a7b6632 fix(scout): harden launchd prompt trigger submit`
 - `8b06ac0 feat(scout): add local external scout prompt trigger`
 - `8fbcaff fix(scout): require exact packet chat target for launchd capture`
-- `340fa0e fix(ui): separate HAVOC current coverage from legacy linkage audit`
 
 ## Source Dirty State
 
@@ -91,6 +91,7 @@ The following are local-only and are not mirrored here:
 - Keep the mirror refreshed after major workflow changes.
 - Install/load hourly capture only after separate operator approval.
 - External Scout Live Case Board v1 is implemented; use /external-scout/threads as the 24/7 thread board.
+- Global sensor coverage policy is implemented; theater_watch_summary still needs live Packet-output verification.
 - Design controlled approval before Evidence or case-link mutation.
 
 ## Safety Boundary

@@ -49,10 +49,19 @@ Rules:
   - `market_finance_matrix`
   - `prediction_market_matrix`
   - `multilingual_regional_context`
+  - `theater_watch_summary` for SOCCENT, SOCEUR, SOCPAC, SOCAFRICA,
+    SOCSOUTH, SOCKOR, and SOCOMD
+  - `overflow_candidate_cases` when credible cases exceed the active packet
+    limit
   - source relationships
   - source URLs and citations
+  - source quality fields: `strong_sources`, `weak_sources`,
+    `missing_source_lanes`, `cue_only_lanes`, and `next_collection_priority`
   - `commander_ready=false`
   - `mutation_performed=false`
+- Emit up to five active candidate packets by default. Do not omit other
+  theaters silently; record no-case, not-checked, blocked, stale, or overflow
+  states explicitly.
 
 If the output fails schema validation, AUTOSINT quarantines it and the Live
 Case Board does not update from that capture.

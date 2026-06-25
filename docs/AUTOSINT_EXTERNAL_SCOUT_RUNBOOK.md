@@ -29,15 +29,26 @@ The Project Instructions should require:
 
 - Event-centric case packets.
 - Facts first, source relationships second, system status third.
-- The eight source families:
+- Up to five active candidate packets by default. If more credible cases exist,
+  the extra cases go into top-level `overflow_candidate_cases` with an omitted
+  reason and next check.
+- A top-level `theater_watch_summary` covering SOCCENT, SOCEUR, SOCPAC,
+  SOCAFRICA, SOCSOUTH, SOCKOR, and SOCOMD, even when a theater has no active
+  packet.
+- The required source/sensor coverage lanes:
   - Official / Advisory
   - Public News
   - Social OSINT
   - Traffic / Movement
   - Satellite / Geospatial
+  - Weather / Environment
   - Markets / Finance
   - Prediction Markets
-  - Weather / Environment
+  - Crypto / Risk Sentiment
+  - Defense-Industrial Markets
+  - Shipping / Logistics / Insurance
+  - Multilingual / Regional Media
+  - Public Comments / Reaction
 - Exact source-family status values:
   - Checked and found
   - Checked and not found
@@ -47,8 +58,15 @@ The Project Instructions should require:
   - Blocked / login required
 - Separation of claim, counter-claim, observed, advisory, context, and missing.
 - Operator fields: `operator_bluf`, `what_changed`, `so_what`, `source_relationships`, `decision`, `collection_plan`, `system_status`, `audit_notes`, and `quality_self_check`.
+- Source quality fields: `strong_sources`, `weak_sources`,
+  `missing_source_lanes`, `cue_only_lanes`, and
+  `next_collection_priority`, plus optional source quality scores when useful.
 - `commander_ready=false` and `mutation_performed=false`.
 - No private data, cookies, sessions, tokens, browser storage, credential files, login-wall bypass, CAPTCHA bypass, or paywall bypass.
+
+See `docs/AUTOSINT_GLOBAL_SENSOR_COVERAGE_POLICY.md` and
+`docs/AUTOSINT_THEATER_WATCH_POLICY.md` for the durable coverage and theater
+watch contract.
 
 ## Scheduled Task Timing
 
@@ -84,7 +102,8 @@ PYTHONPATH=src:. .venv/bin/python -m autosint_external_scout_capture.cli --once 
 
 The capture bridge:
 
-- Finds the visible `AUTOSINT External Scout` ChatGPT tab by safe title/URL metadata.
+- Finds the visible `AUTOSINT External Scout Packet` ChatGPT tab by safe
+  title/URL metadata.
 - Prefers visible downloadable JSON/Markdown files when available.
 - Falls back to visible page text extraction.
 
@@ -137,6 +156,9 @@ history and applies rolling retention:
 - Threads older than the tracked window move to archived/history summaries.
 - Invalid or quarantined packets never update current thread state.
 - HAVOC/RFI consumes thread current state first and remains review-only.
+- Theater watch summaries and overflow candidate cases are displayed as
+  operator context when supplied, but they do not bypass packet validation and
+  do not create active threads unless a valid packet is present.
 
 ## Quality And Validation
 
