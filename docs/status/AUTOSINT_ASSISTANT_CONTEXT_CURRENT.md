@@ -7,8 +7,8 @@ This is a public, sanitized context file for restoring AUTOSINT project context 
 - Private code/runtime repo: `tg-osint-eucom/autosint`
 - Public context mirror: `tg-osint-eucom/autosint-context`
 - Source branch: `main`
-- Source HEAD: `eee70316300eaace3720b87ae471be11e16560aa`
-- Generated at: `2026-06-25T17:04:11Z`
+- Source HEAD: `0d10cd6846b806aa72b356ee6f72b0983683fd93`
+- Generated at: `2026-06-25T17:10:41Z`
 
 ## Primary Workflow
 
@@ -33,8 +33,8 @@ This is a public, sanitized context file for restoring AUTOSINT project context 
 - Available: `True`
 - Active selection policy: `latest_validated_capture_only`
 - Active packet count: `5`
-- History packet count: `134`
-- Latest packet timestamp: `2026-06-25T16:50:51Z`
+- History packet count: `139`
+- Latest packet timestamp: `2026-06-25T16:51:19Z`
 - Stale: `False`
 - Read-only: `True`
 - Private browser state read: `False`
@@ -61,6 +61,7 @@ The following are local-only and are not mirrored here:
 
 ## Latest Source Commits
 
+- `0d10cd6 chore(ops): record theater watch natural proof`
 - `eee7031 fix(scout): normalize theater watch summary output`
 - `5e79e3d fix(scout): harden external scout prompt trigger verification`
 - `5d8fddb feat(scout): add global sensor coverage to live board`
@@ -80,7 +81,6 @@ The following are local-only and are not mirrored here:
 - `a5e9bad fix(scout): require verified prompt trigger delivery`
 - `6b6116f fix(scout): harden prompt trigger submission`
 - `924fa0c fix(scout): verify prompt trigger submission`
-- `a7b6632 fix(scout): harden launchd prompt trigger submit`
 
 ## Source Dirty State
 

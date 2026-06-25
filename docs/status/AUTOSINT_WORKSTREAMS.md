@@ -40,6 +40,12 @@ with `validation_error_count=0`, generated_at `2026-06-25T16:50:51Z`, five
 valid packets, seven normalized `theater_watch_summary` rows, and three
 `overflow_candidate_cases`.
 
+The next natural `:08` capture also proved the production path. Receipt
+`20260625T170810Z_capture_receipt.json` promoted generated_at
+`2026-06-25T16:51:19Z` with `validation_error_count=0`, five valid packets,
+seven normalized theater rows, three overflow candidates, and Live Case Board
+`stale=false`.
+
 Normalized theater rows accounted for every required theater:
 `SOCCENT`, `SOCEUR`, `SOCPAC`, `SOCAFRICA`, `SOCSOUTH`, `SOCKOR`, and
 `SOCOMD`. Status counts were `active_case_found=3`, `no_active_case=1`, and
