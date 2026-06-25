@@ -18,7 +18,7 @@ finding -> validation -> dedupe -> false-positive check -> targeted fix -> tests
 | `external_scout_live_case_board` | Active | Keep `/external-scout/threads` current, fresh, and operator-readable. |
 | `case_coverage_matrix` | Active | Maintain full strict coverage matrices in packets and thread rollups. |
 | `global_sensor_coverage_policy` | Active | Enforce no-silent-omission source/sensor coverage policy across packets, reports, Live Board, and HAVOC/RFI preview. |
-| `theater_watch_summary` | Needs Verification | Prove live Packet output reports checked/no-case/overflow state for SOCCENT, SOCEUR, SOCPAC, SOCAFRICA, SOCSOUTH, SOCKOR, and SOCOMD. |
+| `theater_watch_summary` | Complete | Live Packet output now reports checked/no-case/overflow state for SOCCENT, SOCEUR, SOCPAC, SOCAFRICA, SOCSOUTH, SOCKOR, and SOCOMD. |
 | `chatgpt_project_operating_model` | Complete | Keep ChatGPT Project chats as workspaces, not case memory. |
 | `context_mirror_automation` | Active | Keep public sanitized context mirror current after source-of-truth changes. |
 | `external_scout_capture_isolation` | Complete | Keep capture code isolated behind the package CLI and launchd wrapper. |
@@ -34,12 +34,18 @@ finding -> validation -> dedupe -> false-positive check -> targeted fix -> tests
 
 ## Next Recommended Codex Task
 
-Work `theater_watch_summary` next. The code/reporting path can now preserve
-top-level `theater_watch_summary` and `overflow_candidate_cases`, but live
-Packet output still needs proof that all major theaters are checked and either
-emitted, explicitly no-case, or omitted/overflow with a reason. Keep it
-read-only: prompt/capture proof, validator/report dry-run, route smoke, and
-context mirror refresh only.
+Theater-watch summary is verified. The 2026-06-25 short-loop Packet-chat
+prompt/capture proof promoted receipt `20260625T165421Z_capture_receipt.json`
+with `validation_error_count=0`, generated_at `2026-06-25T16:50:51Z`, five
+valid packets, seven normalized `theater_watch_summary` rows, and three
+`overflow_candidate_cases`.
+
+Normalized theater rows accounted for every required theater:
+`SOCCENT`, `SOCEUR`, `SOCPAC`, `SOCAFRICA`, `SOCSOUTH`, `SOCKOR`, and
+`SOCOMD`. Status counts were `active_case_found=3`, `no_active_case=1`, and
+`omitted_or_overflow=3`. Continue routine hourly monitoring; reopen the
+workstream only if a future capture omits a required theater row or fails to
+surface no-case/overflow state.
 
 Current prompt-trigger note: short-interval wrapper tests after the verifier
 hardening promoted strict Packet-chat captures at `2026-06-25T00:16:46Z` and
