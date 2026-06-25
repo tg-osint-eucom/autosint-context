@@ -7,8 +7,8 @@ This is a public, sanitized context file for restoring AUTOSINT project context 
 - Private code/runtime repo: `tg-osint-eucom/autosint`
 - Public context mirror: `tg-osint-eucom/autosint-context`
 - Source branch: `main`
-- Source HEAD: `e0503ae230cafca9beadd0d364eb5863965f2c8e`
-- Generated at: `2026-06-25T17:57:41Z`
+- Source HEAD: `5a106563e0ffa05100354400ec9e70fc1b83f72d`
+- Generated at: `2026-06-25T18:48:34Z`
 
 ## Primary Workflow
 
@@ -33,8 +33,8 @@ This is a public, sanitized context file for restoring AUTOSINT project context 
 - Available: `True`
 - Active selection policy: `latest_validated_capture_only`
 - Active packet count: `5`
-- History packet count: `139`
-- Latest packet timestamp: `2026-06-25T16:51:19Z`
+- History packet count: `149`
+- Latest packet timestamp: `2026-06-25T18:40:58Z`
 - Stale: `False`
 - Read-only: `True`
 - Private browser state read: `False`
@@ -61,6 +61,7 @@ The following are local-only and are not mirrored here:
 
 ## Latest Source Commits
 
+- `5a10656 feat(scout): add market prediction finance enrichment`
 - `e0503ae fix(scout): clarify theater watch overflow reasons`
 - `0d10cd6 chore(ops): record theater watch natural proof`
 - `eee7031 fix(scout): normalize theater watch summary output`
@@ -80,7 +81,6 @@ The following are local-only and are not mirrored here:
 - `c10f661 fix(scout): stabilize prompt trigger composer submit`
 - `9ed368e fix(scout): remove keystroke dependency from prompt trigger`
 - `a5e9bad fix(scout): require verified prompt trigger delivery`
-- `6b6116f fix(scout): harden prompt trigger submission`
 
 ## Source Dirty State
 
