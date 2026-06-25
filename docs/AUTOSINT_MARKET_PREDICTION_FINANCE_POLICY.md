@@ -38,6 +38,11 @@ Market/finance lanes:
 - Regional markets by theater: Gulf/Saudi/Qatar/UAE/Oman for SOCCENT, Europe/Ukraine/Russia-exposed proxies for SOCEUR, Taiwan/China/Japan/Korea/Philippines for SOCPAC, and relevant regional proxies for the remaining SOC workspaces.
 - Crypto / risk: BTC, ETH, and public stablecoin/risk-flow cues where relevant.
 
+`Insurance / freight / rates` must be present as the explicit
+`market_finance_matrix.insurance_freight_rates` lane. The broader
+`Shipping / Logistics / Insurance` case-coverage category is not sufficient by
+itself.
+
 ## Required Row Content
 
 Every lane should record:
