@@ -7,8 +7,8 @@ This is a public, sanitized context file for restoring AUTOSINT project context 
 - Private code/runtime repo: `tg-osint-eucom/autosint`
 - Public context mirror: `tg-osint-eucom/autosint-context`
 - Source branch: `main`
-- Source HEAD: `0d10cd6846b806aa72b356ee6f72b0983683fd93`
-- Generated at: `2026-06-25T17:10:41Z`
+- Source HEAD: `e0503ae230cafca9beadd0d364eb5863965f2c8e`
+- Generated at: `2026-06-25T17:57:41Z`
 
 ## Primary Workflow
 
@@ -61,6 +61,7 @@ The following are local-only and are not mirrored here:
 
 ## Latest Source Commits
 
+- `e0503ae fix(scout): clarify theater watch overflow reasons`
 - `0d10cd6 chore(ops): record theater watch natural proof`
 - `eee7031 fix(scout): normalize theater watch summary output`
 - `5e79e3d fix(scout): harden external scout prompt trigger verification`
@@ -80,7 +81,6 @@ The following are local-only and are not mirrored here:
 - `9ed368e fix(scout): remove keystroke dependency from prompt trigger`
 - `a5e9bad fix(scout): require verified prompt trigger delivery`
 - `6b6116f fix(scout): harden prompt trigger submission`
-- `924fa0c fix(scout): verify prompt trigger submission`
 
 ## Source Dirty State
 
