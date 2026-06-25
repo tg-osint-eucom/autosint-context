@@ -7,8 +7,8 @@ This is a public, sanitized context file for restoring AUTOSINT project context 
 - Private code/runtime repo: `tg-osint-eucom/autosint`
 - Public context mirror: `tg-osint-eucom/autosint-context`
 - Source branch: `main`
-- Source HEAD: `3f7d1996f7c16cdb8a9f82481467ad64b15809b3`
-- Generated at: `2026-06-25T02:33:28Z`
+- Source HEAD: `aebbb4d2960ebe277429a720717f79a5326212f4`
+- Generated at: `2026-06-25T02:35:03Z`
 
 ## Primary Workflow
 
@@ -61,6 +61,7 @@ The following are local-only and are not mirrored here:
 
 ## Latest Source Commits
 
+- `aebbb4d chore(ops): record multi-case short-loop proof`
 - `3f7d199 feat(scout): support multi-case live board`
 - `c6de334 chore(ops): record prompt trigger short-loop proof`
 - `5e78beb fix(scout): avoid prompt trigger response false positives`
@@ -80,7 +81,6 @@ The following are local-only and are not mirrored here:
 - `340fa0e fix(ui): separate HAVOC current coverage from legacy linkage audit`
 - `f3b6e4e fix(scout): preserve best thread current state across lower quality updates`
 - `76efc6e chore(debug): add read-only page dump utility`
-- `f9147d6 fix(ui): clean remaining operator path audit leakage`
 
 ## Source Dirty State
 

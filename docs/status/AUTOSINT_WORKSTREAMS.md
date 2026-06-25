@@ -24,7 +24,7 @@ finding -> validation -> dedupe -> false-positive check -> targeted fix -> tests
 | `havoc_rfi_thread_current` | Active | Keep HAVOC/RFI consuming thread current state before packet fallback. |
 | `source_catalog_policy` | Blocked | Await explicit decision before tracking or mirroring source catalog policy. |
 | `launchd_runtime_health` | Complete | Scheduled capture fired naturally at `:08` with clear receipts and fresh Live Case Board state. |
-| `external_scout_multi_case_board` | Needs Verification | Multi-case prompt, partial-promotion guard, and rolling current/stale/archive retention are being implemented; short-loop and natural-cycle proof remain required. |
+| `external_scout_multi_case_board` | Needs Verification | Multi-case prompt, partial-promotion guard, and rolling current/stale/archive retention are implemented; short-loop proof passed, natural-cycle proof remains required. |
 | `orchestration_prefect_spike` | Planned | Evaluate Prefect as a read-only observability wrapper over the current local loop. |
 | `agent_pir_langgraph_design` | Planned | Design future read-only LangGraph agent loops for PIR/source-gap/thread review. |
 | `local_knowledge_index_spike` | Planned | Design a sanitized local retrieval index over docs, context mirror, page dumps, briefs, and receipts. |
@@ -32,11 +32,11 @@ finding -> validation -> dedupe -> false-positive check -> targeted fix -> tests
 
 ## Next Recommended Codex Task
 
-Work `external_scout_multi_case_board` next. The product fix is to make the
-local trigger produce up to five strict current packets per cycle, allow valid
-packets from a mixed capture to update threads while invalid packet subsets are
-quarantined, and keep recent non-updated topics visible as stale tracked
-threads before archival.
+Work `external_scout_multi_case_board` next. The product fix is implemented:
+the local trigger can request up to five strict current packets per cycle,
+valid packets from a mixed capture can update threads while invalid packet
+subsets are quarantined, and recent non-updated topics remain visible as stale
+tracked threads before archival.
 
 Current prompt-trigger note: short-interval wrapper tests after the verifier
 hardening promoted strict Packet-chat captures at `2026-06-25T00:16:46Z` and
@@ -55,6 +55,15 @@ took several minutes; dry-run found a new strict packet generated_at
 `20260625T012932Z` promoted it with Live Case Board `stale=false`. Development
 debugging should use this short trigger -> dry-run -> capture loop instead of
 waiting for the next hourly window.
+
+Multi-case short-loop proof passed after the multi-case implementation:
+trigger receipt `20260625T021124Z` submitted the Packet-chat prompt and
+detected an assistant response; dry-run found four valid packets generated_at
+`2026-06-25T01:28:50Z` with `validation_error_count=0`; capture receipt
+`20260625T022732Z` promoted all four; and Live Case Board reported four active
+threads, all `Ready for HAVOC/RFI Preview`, with `stale=false`. The remaining
+gate is a natural scheduled prompt/capture cycle with the same clear receipt
+behavior.
 
 After that, evaluate `orchestration_prefect_spike` as a read-only observability
 wrapper. Do not replace launchd or add agent/write automation in that spike.
