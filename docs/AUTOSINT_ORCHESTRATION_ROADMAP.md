@@ -198,24 +198,18 @@ Stop conditions:
 - The spike cannot remain read-only.
 - The spike obscures the existing receipts/status proof chain.
 
-## Multi-Case Live Board Gap
+## Multi-Case Live Board Workstream
 
-The current production prompt-trigger prompt asks for exactly one strict packet
-for the highest-priority current case. The latest active captures therefore
-contain one packet. Older multi-topic packets exist in history, but many fail
-the current strict contract and are excluded from active threads because they
-lack required matrices and safety flags.
+The one-case board gap is being addressed by a bounded multi-case feature:
+the local trigger prompt requests up to five strict current packets, valid
+packet subsets from mixed captures can be promoted while invalid packet subsets
+are quarantined, and `/external-scout/threads` keeps recent non-updated topics
+visible as stale tracked threads before archival.
 
-Recommended product fix:
-
-1. Update the local trigger prompt to emit up to five strict current packets.
-2. Add a rolling active/stale thread retention policy so previously important
-   threads remain visible as stale/current-review items even when the latest
-   capture focuses on another case.
-3. Keep invalid or quarantined packets out of current state.
-
-This should be implemented as a separate feature after the 24/7 prompt/capture
-loop has at least two clean natural cycles after the latest prompt-trigger fix.
+Completion still requires proof, not just code: a short trigger -> dry-run
+capture -> real capture loop must show strict valid multi-packet or explained
+fewer-topic output, and a natural cycle must then keep the board current
+without invalid packets updating thread state.
 
 ## Monitoring Path
 

@@ -24,7 +24,7 @@ finding -> validation -> dedupe -> false-positive check -> targeted fix -> tests
 | `havoc_rfi_thread_current` | Active | Keep HAVOC/RFI consuming thread current state before packet fallback. |
 | `source_catalog_policy` | Blocked | Await explicit decision before tracking or mirroring source catalog policy. |
 | `launchd_runtime_health` | Complete | Scheduled capture fired naturally at `:08` with clear receipts and fresh Live Case Board state. |
-| `external_scout_multi_case_board` | Needs Verification | Fix the current one-case board gap by producing multiple strict current packets and/or retaining stale active threads. |
+| `external_scout_multi_case_board` | Needs Verification | Multi-case prompt, partial-promotion guard, and rolling current/stale/archive retention are being implemented; short-loop and natural-cycle proof remain required. |
 | `orchestration_prefect_spike` | Planned | Evaluate Prefect as a read-only observability wrapper over the current local loop. |
 | `agent_pir_langgraph_design` | Planned | Design future read-only LangGraph agent loops for PIR/source-gap/thread review. |
 | `local_knowledge_index_spike` | Planned | Design a sanitized local retrieval index over docs, context mirror, page dumps, briefs, and receipts. |
@@ -32,11 +32,11 @@ finding -> validation -> dedupe -> false-positive check -> targeted fix -> tests
 
 ## Next Recommended Codex Task
 
-Work `external_scout_multi_case_board` next. Current production prompt-trigger
-output is intentionally one highest-priority packet, while older multi-topic
-history predates the strict matrix contract and is skipped from current thread
-state. The product fix should be scoped separately: produce up to five strict
-current packets per cycle and add a rolling active/stale thread retention model.
+Work `external_scout_multi_case_board` next. The product fix is to make the
+local trigger produce up to five strict current packets per cycle, allow valid
+packets from a mixed capture to update threads while invalid packet subsets are
+quarantined, and keep recent non-updated topics visible as stale tracked
+threads before archival.
 
 Current prompt-trigger note: short-interval wrapper tests after the verifier
 hardening promoted strict Packet-chat captures at `2026-06-25T00:16:46Z` and

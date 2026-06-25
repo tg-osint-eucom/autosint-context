@@ -108,6 +108,8 @@ The Live Case Board:
 - Shows what changed since the previous capture.
 - Maintains per-topic timelines and previous packets.
 - Marks threads as New, Updated, Stale, Escalating, or Needs Review.
+- Keeps latest-capture topics current, retains recently unupdated topics as
+  stale tracked threads for 72 hours, and moves older threads to audit/history.
 - Lets HAVOC/RFI consume current thread state before raw-packet fallback.
 
 ChatGPT Project chats must not replace this board as case memory. The scheduled

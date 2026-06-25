@@ -96,7 +96,10 @@ The legacy script path remains as a compatibility wrapper:
 - Never reads cookies, localStorage, sessionStorage, browser profile files, tokens, credential files, or `.env`.
 - Writes captures through staging first.
 - Promotes to inbox only when validation errors are zero.
-- Moves invalid captures to quarantine.
+- For multi-packet captures, may promote strict-valid packet subsets while
+  quarantining invalid packet subsets with `partial_promotion=true` in the
+  receipt.
+- Moves fully invalid captures to quarantine.
 - Writes receipts under ignored local artifacts.
 - Applies recency and duplicate guards before refreshing active reports.
 
@@ -121,6 +124,19 @@ Default External Scout review uses only the latest validated capture.
 - `/api/v1/external-scout` returns active latest packets only.
 - History is explicit through `?include_history=true` or `/api/v1/external-scout/history`.
 - Older inbox captures remain archived locally but are not default promotion candidates.
+
+## Live Case Board Rolling Retention
+
+`/external-scout/threads` is the primary case board and intentionally differs
+from the latest-packet inbox. It rebuilds topic threads from validated packet
+history and applies rolling retention:
+
+- Threads updated in the latest active capture are `current`.
+- Valid threads not updated in the latest active capture remain visible as
+  `Stale` / `stale_tracked` for 72 hours.
+- Threads older than the tracked window move to archived/history summaries.
+- Invalid or quarantined packets never update current thread state.
+- HAVOC/RFI consumes thread current state first and remains review-only.
 
 ## Quality And Validation
 
