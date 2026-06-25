@@ -7,8 +7,8 @@ This is a public, sanitized context file for restoring AUTOSINT project context 
 - Private code/runtime repo: `tg-osint-eucom/autosint`
 - Public context mirror: `tg-osint-eucom/autosint-context`
 - Source branch: `main`
-- Source HEAD: `5d8fddba2e7e547beed28115bd420dd84d353ad5`
-- Generated at: `2026-06-25T16:09:10Z`
+- Source HEAD: `5e79e3dcf6e90b4ceca71fd2c3d493ab62b29b1b`
+- Generated at: `2026-06-25T16:52:35Z`
 
 ## Primary Workflow
 
@@ -61,6 +61,7 @@ The following are local-only and are not mirrored here:
 
 ## Latest Source Commits
 
+- `5e79e3d fix(scout): harden external scout prompt trigger verification`
 - `5d8fddb feat(scout): add global sensor coverage to live board`
 - `1d41aa1 fix(scout): clarify coverage versus source checks`
 - `d7bd727 chore(ops): verify natural multi-case live board cycle`
@@ -80,7 +81,6 @@ The following are local-only and are not mirrored here:
 - `924fa0c fix(scout): verify prompt trigger submission`
 - `a7b6632 fix(scout): harden launchd prompt trigger submit`
 - `8b06ac0 feat(scout): add local external scout prompt trigger`
-- `8fbcaff fix(scout): require exact packet chat target for launchd capture`
 
 ## Source Dirty State
 
