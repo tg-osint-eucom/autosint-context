@@ -7,8 +7,8 @@ This is a public, sanitized context file for restoring AUTOSINT project context 
 - Private code/runtime repo: `tg-osint-eucom/autosint`
 - Public context mirror: `tg-osint-eucom/autosint-context`
 - Source branch: `main`
-- Source HEAD: `dc933d0b0a1ef5cf853ffd5d6ef385745db4ae61`
-- Generated at: `2026-06-24T19:10:04Z`
+- Source HEAD: `81e88fe26ac49c3eddc9d97b721b79ede0b5cc3d`
+- Generated at: `2026-06-25T00:38:36Z`
 
 ## Primary Workflow
 
@@ -33,8 +33,8 @@ This is a public, sanitized context file for restoring AUTOSINT project context 
 - Available: `True`
 - Active selection policy: `latest_validated_capture_only`
 - Active packet count: `1`
-- History packet count: `57`
-- Latest packet timestamp: `2026-06-24T18:56:00Z`
+- History packet count: `62`
+- Latest packet timestamp: `2026-06-25T00:25:45Z`
 - Stale: `False`
 - Read-only: `True`
 - Private browser state read: `False`
@@ -61,6 +61,8 @@ The following are local-only and are not mirrored here:
 
 ## Latest Source Commits
 
+- `81e88fe docs: add AUTOSINT orchestration roadmap`
+- `ce6c6eb fix(scout): harden prompt trigger verification`
 - `dc933d0 fix(scout): target visible ChatGPT composer for prompt trigger`
 - `854c69f fix(scout): improve scheduled prompt trigger reliability`
 - `c10f661 fix(scout): stabilize prompt trigger composer submit`
@@ -79,8 +81,6 @@ The following are local-only and are not mirrored here:
 - `00e9ebc fix(scout): require current multilingual context for preview readiness`
 - `b330a72 fix(scout): separate current thread status from historical warnings`
 - `7169a7f fix(ui): make live case board the primary first read`
-- `c35e9de fix(ui): keep live board audit details out of operator path`
-- `bed03f1 fix(scout): improve live case board correctness`
 
 ## Source Dirty State
 

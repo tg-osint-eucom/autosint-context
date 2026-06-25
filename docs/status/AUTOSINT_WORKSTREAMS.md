@@ -24,12 +24,27 @@ finding -> validation -> dedupe -> false-positive check -> targeted fix -> tests
 | `havoc_rfi_thread_current` | Active | Keep HAVOC/RFI consuming thread current state before packet fallback. |
 | `source_catalog_policy` | Blocked | Await explicit decision before tracking or mirroring source catalog policy. |
 | `launchd_runtime_health` | Complete | Scheduled capture fired naturally at `:08` with clear receipts and fresh Live Case Board state. |
+| `external_scout_multi_case_board` | Needs Verification | Fix the current one-case board gap by producing multiple strict current packets and/or retaining stale active threads. |
+| `orchestration_prefect_spike` | Planned | Evaluate Prefect as a read-only observability wrapper over the current local loop. |
+| `agent_pir_langgraph_design` | Planned | Design future read-only LangGraph agent loops for PIR/source-gap/thread review. |
+| `local_knowledge_index_spike` | Planned | Design a sanitized local retrieval index over docs, context mirror, page dumps, briefs, and receipts. |
+| `run_observability_dashboard` | Planned | Design a local read-only run dashboard over receipts, status JSON, workstreams, and context mirror health. |
 
 ## Next Recommended Codex Task
 
-Keep monitoring `source_catalog_policy` for the explicit tracking decision, and
-reopen capture workstreams only if scheduled receipts stop, quarantine strict
-output, or Live Case Board freshness diverges from the latest valid capture.
+Work `external_scout_multi_case_board` next. Current production prompt-trigger
+output is intentionally one highest-priority packet, while older multi-topic
+history predates the strict matrix contract and is skipped from current thread
+state. The product fix should be scoped separately: produce up to five strict
+current packets per cycle and add a rolling active/stale thread retention model.
+
+Current prompt-trigger note: short-interval wrapper tests after the verifier
+hardening promoted strict Packet-chat captures at `2026-06-25T00:16:46Z` and
+`2026-06-25T00:25:45Z`. Natural `:50 -> :08` proof is still required before
+the current 24/7 loop is considered re-verified after this patch.
+
+After that, evaluate `orchestration_prefect_spike` as a read-only observability
+wrapper. Do not replace launchd or add agent/write automation in that spike.
 
 ## Safety Boundary
 
