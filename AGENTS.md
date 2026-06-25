@@ -2,6 +2,30 @@
 
 These instructions are the durable repo-level operating rules for Codex work in AUTOSINT.
 
+## Context And Memory Source Of Truth
+
+Codex memories are helpful recall only. They can speed up orientation, but they
+are not the AUTOSINT source of truth and must not override repo/runtime
+evidence, `AGENTS.md`, tracked docs, tests, launchd state, receipts, route
+responses, or release gates.
+
+Durable operating rules must live in this file or another tracked AUTOSINT doc.
+The current Codex/ChatGPT thread is temporary working context only.
+
+For substantial multi-step AUTOSINT work, use `/goal` so the objective,
+verification gates, and stop conditions survive long-running turns.
+
+Codex memories should be enabled for helper recall when available:
+
+```toml
+[features]
+memories = true
+```
+
+After meaningful commits that change workflow, architecture, validation status,
+or operator behavior, refresh the public `autosint-context` mirror after the
+private repo push.
+
 ## AUTOSINT Standing Autopush Policy
 
 Codex may stage, commit, and push automatically after implementation when the autopush gate passes.

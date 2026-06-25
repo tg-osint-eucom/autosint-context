@@ -4,12 +4,20 @@ AUTOSINT is a local-first operational intelligence review stack. ChatGPT Externa
 
 ChatGPT packets are candidate input only. Nothing becomes Evidence, no case link is created, no source configuration is changed, and no OSIR or commander-ready gate opens without a future explicit controlled approval workflow. Market, social OSINT, prediction-market, crypto, and public-comment material remains cue-only context.
 
-Repo-level Codex execution rules, including the active autopush gate, are maintained in `AGENTS.md`.
+Repo-level Codex execution rules, including the active autopush gate and
+Codex context/memory source-of-truth rule, are maintained in `AGENTS.md`.
+Codex memories are helper recall only; durable project rules must be tracked in
+`AGENTS.md` or repo docs, and current thread context is temporary.
 
 ChatGPT Project operating rules are maintained in
 `docs/AUTOSINT_CHATGPT_PROJECT_OPERATING_MODEL.md`. The key rule is that
 AUTOSINT Live Case Board threads are durable case memory, while ChatGPT Project
 chats are controlled workspaces only.
+
+For substantial multi-step work, use `/goal` so objectives, validation gates,
+and stop conditions are explicit. After meaningful commits that change
+workflow, architecture, validation status, or operator behavior, refresh the
+public `autosint-context` mirror.
 
 ## Primary Operator Workflow
 

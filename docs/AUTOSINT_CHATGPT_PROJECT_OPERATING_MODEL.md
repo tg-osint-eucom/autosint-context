@@ -176,6 +176,22 @@ The public context mirror is sanitized and does not contain code secrets, DB
 files, External Scout runtime artifacts, raw Evidence, browser state, cookies,
 tokens, or private session data.
 
+Codex memories may be enabled for helper recall, but they are not project
+source of truth. Durable operating rules must be in `AGENTS.md` or tracked
+AUTOSINT docs, and current thread context is temporary working context only.
+
+Recommended Codex memory setting:
+
+```toml
+[features]
+memories = true
+```
+
+Use `/goal` for substantial AUTOSINT work so objectives and verification gates
+remain explicit. After meaningful commits, refresh the public
+`autosint-context` mirror so ChatGPT/Codex can restore current project context
+from tracked, sanitized docs.
+
 ## Safety Boundary
 
 This operating model does not authorize:
