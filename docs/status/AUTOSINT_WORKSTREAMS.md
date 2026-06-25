@@ -41,12 +41,20 @@ current packets per cycle and add a rolling active/stale thread retention model.
 Current prompt-trigger note: short-interval wrapper tests after the verifier
 hardening promoted strict Packet-chat captures at `2026-06-25T00:16:46Z` and
 `2026-06-25T00:25:45Z`. The first natural post-patch cycle also passed:
-`20260625T005007Z` prompt receipt showed `prompt_submitted=true`,
-`response_started=true`, and `assistant_response_detected=true`; `20260625T010810Z`
-capture promoted generated_at `2026-06-25T00:40:00Z` with
-`validation_error_count=0` and Live Case Board `stale=false`. One more natural
-`:50 -> :08` cycle is still required before the current 24/7 loop is considered
-re-verified after this patch.
+`20260625T005007Z` prompt receipt showed Packet-chat delivery and
+`20260625T010810Z` capture promoted generated_at `2026-06-25T00:40:00Z`
+with `validation_error_count=0` and Live Case Board `stale=false`.
+
+Follow-up short-loop debugging found one more verifier false positive:
+static ChatGPT UI copy containing `Pro думает` was being counted as a
+busy/response-started signal. Commit `5e78beb` removed that false signal from
+prompt-trigger verification. After the fix, trigger receipt
+`20260625T011928Z` submitted to the Packet chat; Intelligence Pro generation
+took several minutes; dry-run found a new strict packet generated_at
+`2026-06-25T01:20:19Z` with `validation_error_count=0`; and capture receipt
+`20260625T012932Z` promoted it with Live Case Board `stale=false`. Development
+debugging should use this short trigger -> dry-run -> capture loop instead of
+waiting for the next hourly window.
 
 After that, evaluate `orchestration_prefect_spike` as a read-only observability
 wrapper. Do not replace launchd or add agent/write automation in that spike.
