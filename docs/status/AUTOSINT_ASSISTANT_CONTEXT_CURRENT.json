@@ -6,11 +6,11 @@
     "active_selection_policy": "latest_validated_capture_only",
     "available": true,
     "cookies_read": false,
-    "history_capture_count": 58,
-    "history_packet_count": 119,
-    "latest_capture_generated_at": "2026-06-25T12:50:51Z",
+    "history_capture_count": 59,
+    "history_packet_count": 124,
+    "latest_capture_generated_at": "2026-06-25T14:50:51Z",
     "latest_capture_packet_count": 5,
-    "latest_packet_generated_at": "2026-06-25T12:50:51Z",
+    "latest_packet_generated_at": "2026-06-25T14:50:51Z",
     "local_storage_read": false,
     "mutation_performed": false,
     "private_browser_state_read": false,
@@ -20,9 +20,10 @@
     "status_only": true,
     "validated_packet_count": 5
   },
-  "generated_at": "2026-06-25T13:10:45Z",
+  "generated_at": "2026-06-25T15:42:13Z",
   "havoc_rfi_behavior": "HAVOC/RFI uses External Scout Case Thread current state when available, then falls back to the best validated External Scout packet; canonical cases, Case Genesis, TSOC/HAVOC, source coverage, and provenance remain audit material.",
   "latest_commits": [
+    "1d41aa1 fix(scout): clarify coverage versus source checks",
     "d7bd727 chore(ops): verify natural multi-case live board cycle",
     "aebbb4d chore(ops): record multi-case short-loop proof",
     "3f7d199 feat(scout): support multi-case live board",
@@ -41,8 +42,7 @@
     "a7b6632 fix(scout): harden launchd prompt trigger submit",
     "8b06ac0 feat(scout): add local external scout prompt trigger",
     "8fbcaff fix(scout): require exact packet chat target for launchd capture",
-    "340fa0e fix(ui): separate HAVOC current coverage from legacy linkage audit",
-    "f3b6e4e fix(scout): preserve best thread current state across lower quality updates"
+    "340fa0e fix(ui): separate HAVOC current coverage from legacy linkage audit"
   ],
   "launchd_status": "Local-only; not represented in this public mirror.",
   "mirror_repo": "tg-osint-eucom/autosint-context",
@@ -88,7 +88,7 @@
   },
   "source_branch": "main",
   "source_dirty_state": [],
-  "source_head": "d7bd727227481822dc7a4b1ceba4bd8120b54c49",
+  "source_head": "1d41aa182a53ce061b2fa3c9d4c26440f9b80c7f",
   "source_repo": "tg-osint-eucom/autosint",
   "source_repo_url": "https://github.com/tg-osint-eucom/autosint",
   "supporting_routes": [

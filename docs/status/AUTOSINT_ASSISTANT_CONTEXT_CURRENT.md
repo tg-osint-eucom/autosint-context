@@ -7,8 +7,8 @@ This is a public, sanitized context file for restoring AUTOSINT project context 
 - Private code/runtime repo: `tg-osint-eucom/autosint`
 - Public context mirror: `tg-osint-eucom/autosint-context`
 - Source branch: `main`
-- Source HEAD: `d7bd727227481822dc7a4b1ceba4bd8120b54c49`
-- Generated at: `2026-06-25T13:10:45Z`
+- Source HEAD: `1d41aa182a53ce061b2fa3c9d4c26440f9b80c7f`
+- Generated at: `2026-06-25T15:42:13Z`
 
 ## Primary Workflow
 
@@ -33,8 +33,8 @@ This is a public, sanitized context file for restoring AUTOSINT project context 
 - Available: `True`
 - Active selection policy: `latest_validated_capture_only`
 - Active packet count: `5`
-- History packet count: `119`
-- Latest packet timestamp: `2026-06-25T12:50:51Z`
+- History packet count: `124`
+- Latest packet timestamp: `2026-06-25T14:50:51Z`
 - Stale: `False`
 - Read-only: `True`
 - Private browser state read: `False`
@@ -61,6 +61,7 @@ The following are local-only and are not mirrored here:
 
 ## Latest Source Commits
 
+- `1d41aa1 fix(scout): clarify coverage versus source checks`
 - `d7bd727 chore(ops): verify natural multi-case live board cycle`
 - `aebbb4d chore(ops): record multi-case short-loop proof`
 - `3f7d199 feat(scout): support multi-case live board`
@@ -80,7 +81,6 @@ The following are local-only and are not mirrored here:
 - `8b06ac0 feat(scout): add local external scout prompt trigger`
 - `8fbcaff fix(scout): require exact packet chat target for launchd capture`
 - `340fa0e fix(ui): separate HAVOC current coverage from legacy linkage audit`
-- `f3b6e4e fix(scout): preserve best thread current state across lower quality updates`
 
 ## Source Dirty State
 
