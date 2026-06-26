@@ -2,15 +2,15 @@
   "capture_bridge_status": "Visible/file-first capture is local-only and feeds staging/quarantine before inbox promotion.",
   "external_scout_status": {
     "active_capture_status": "active",
-    "active_packet_count": 3,
+    "active_packet_count": 5,
     "active_selection_policy": "latest_validated_capture_only",
     "available": true,
     "cookies_read": false,
-    "history_capture_count": 84,
-    "history_packet_count": 233,
-    "latest_capture_generated_at": "2026-06-26T14:50:02Z",
-    "latest_capture_packet_count": 3,
-    "latest_packet_generated_at": "2026-06-26T14:50:02Z",
+    "history_capture_count": 88,
+    "history_packet_count": 253,
+    "latest_capture_generated_at": "2026-06-26T17:33:07Z",
+    "latest_capture_packet_count": 5,
+    "latest_packet_generated_at": "2026-06-26T17:33:07Z",
     "local_storage_read": false,
     "mutation_performed": false,
     "private_browser_state_read": false,
@@ -18,11 +18,12 @@
     "stale": false,
     "stale_after_minutes": 90,
     "status_only": true,
-    "validated_packet_count": 3
+    "validated_packet_count": 5
   },
-  "generated_at": "2026-06-26T14:57:12Z",
+  "generated_at": "2026-06-26T17:45:45Z",
   "havoc_rfi_behavior": "HAVOC/RFI uses External Scout Case Thread current state when available, then falls back to the best validated External Scout packet; canonical cases, Case Genesis, TSOC/HAVOC, source coverage, and provenance remain audit material.",
   "latest_commits": [
+    "13145a2 fix(scout): run finance enrichment after new captures",
     "d871196 feat(scout): add Kalshi read-only enrichment",
     "95167ff fix(scout): canonicalize stale retained threads",
     "e367902 fix(scout): preserve finance enrichment across capture cycles",
@@ -41,8 +42,7 @@
     "aebbb4d chore(ops): record multi-case short-loop proof",
     "3f7d199 feat(scout): support multi-case live board",
     "c6de334 chore(ops): record prompt trigger short-loop proof",
-    "5e78beb fix(scout): avoid prompt trigger response false positives",
-    "8779669 chore(ops): record external scout natural cycle proof"
+    "5e78beb fix(scout): avoid prompt trigger response false positives"
   ],
   "launchd_status": "Local-only; not represented in this public mirror.",
   "mirror_repo": "tg-osint-eucom/autosint-context",
@@ -93,7 +93,7 @@
   },
   "source_branch": "main",
   "source_dirty_state": [],
-  "source_head": "d871196844d7a89680bf1ed26e33bc3896943f76",
+  "source_head": "13145a2e2d4eff7c571c5f7a72deb980e81e1ead",
   "source_repo": "tg-osint-eucom/autosint",
   "source_repo_url": "https://github.com/tg-osint-eucom/autosint",
   "supporting_routes": [

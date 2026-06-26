@@ -7,8 +7,8 @@ This is a public, sanitized context file for restoring AUTOSINT project context 
 - Private code/runtime repo: `tg-osint-eucom/autosint`
 - Public context mirror: `tg-osint-eucom/autosint-context`
 - Source branch: `main`
-- Source HEAD: `d871196844d7a89680bf1ed26e33bc3896943f76`
-- Generated at: `2026-06-26T14:57:12Z`
+- Source HEAD: `13145a2e2d4eff7c571c5f7a72deb980e81e1ead`
+- Generated at: `2026-06-26T17:45:45Z`
 
 ## Primary Workflow
 
@@ -32,9 +32,9 @@ This is a public, sanitized context file for restoring AUTOSINT project context 
 
 - Available: `True`
 - Active selection policy: `latest_validated_capture_only`
-- Active packet count: `3`
-- History packet count: `233`
-- Latest packet timestamp: `2026-06-26T14:50:02Z`
+- Active packet count: `5`
+- History packet count: `253`
+- Latest packet timestamp: `2026-06-26T17:33:07Z`
 - Stale: `False`
 - Read-only: `True`
 - Private browser state read: `False`
@@ -61,6 +61,7 @@ The following are local-only and are not mirrored here:
 
 ## Latest Source Commits
 
+- `13145a2 fix(scout): run finance enrichment after new captures`
 - `d871196 feat(scout): add Kalshi read-only enrichment`
 - `95167ff fix(scout): canonicalize stale retained threads`
 - `e367902 fix(scout): preserve finance enrichment across capture cycles`
@@ -80,7 +81,6 @@ The following are local-only and are not mirrored here:
 - `3f7d199 feat(scout): support multi-case live board`
 - `c6de334 chore(ops): record prompt trigger short-loop proof`
 - `5e78beb fix(scout): avoid prompt trigger response false positives`
-- `8779669 chore(ops): record external scout natural cycle proof`
 
 ## Source Dirty State
 
