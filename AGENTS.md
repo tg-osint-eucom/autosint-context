@@ -96,6 +96,8 @@ operator-surface, capture, or policy work:
 - `docs/AUTOSINT_THEATER_WATCH_POLICY.md`
 - `docs/AUTOSINT_MARKET_PREDICTION_FINANCE_POLICY.md`
 - `docs/AUTOSINT_GPT56_MODEL_UPGRADE_EVALUATION.md`
+- `docs/AUTOSINT_EVALUATION_DATASET_V0.md`
+- `docs/AUTOSINT_CHATGPT_CODEX_HANDOFF_QUEUE.md`
 - `docs/AUTOSINT_CONTEXT_MIRROR_RUNBOOK.md`
 - `docs/status/AUTOSINT_WORKSTREAMS.md`
 - `config/autosint_workstreams.yml`
@@ -212,6 +214,22 @@ Default role split for evaluation only: flagship models for hard Codex/root
 cause/deep review, balanced models for routine non-production replay, and fast
 low-cost models for helper summaries. Validators and route/report output remain
 the authority.
+
+## Evaluation Dataset And Handoff Queue
+
+`docs/AUTOSINT_EVALUATION_DATASET_V0.md` and
+`config/autosint_eval_grader_rules.yml` define deterministic local grading for
+good/bad AUTOSINT behavior before model migration, fine-tuning, local-model
+comparison, or automated handoff work. The dataset is sanitized evaluation
+memory only; generated cases belong under ignored `artifacts/model_eval/`.
+
+`docs/AUTOSINT_CHATGPT_CODEX_HANDOFF_QUEUE.md` defines the safe
+ChatGPT-review-to-Codex handoff boundary. V0 is file-based and copy-safe only:
+Codex may read sanitized files from the ignored handoff inbox and prepare a
+paste-ready prompt, but must not scrape ChatGPT private URLs, read browser
+state, use AppleScript/System Events, use the clipboard, or auto-post into
+ChatGPT/Codex unless a future official non-private-state path is verified and
+explicitly approved.
 
 ## Workstreams And Long-Running State
 

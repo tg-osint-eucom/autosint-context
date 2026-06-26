@@ -7,8 +7,8 @@ This is a public, sanitized context file for restoring AUTOSINT project context 
 - Private code/runtime repo: `tg-osint-eucom/autosint`
 - Public context mirror: `tg-osint-eucom/autosint-context`
 - Source branch: `main`
-- Source HEAD: `fdf3866deefc836afe6e22116488679dfe1464c7`
-- Generated at: `2026-06-26T23:04:51Z`
+- Source HEAD: `e4d56f7139fd8fd843a1c2ab5228692e57a803c7`
+- Generated at: `2026-06-26T23:34:08Z`
 
 ## Primary Workflow
 
@@ -61,6 +61,7 @@ The following are local-only and are not mirrored here:
 
 ## Latest Source Commits
 
+- `e4d56f7 feat(eval): add AUTOSINT evaluation dataset v0`
 - `fdf3866 chore(ops): add GPT-5.6 evaluation workstream`
 - `13145a2 fix(scout): run finance enrichment after new captures`
 - `d871196 feat(scout): add Kalshi read-only enrichment`
@@ -80,7 +81,6 @@ The following are local-only and are not mirrored here:
 - `d7bd727 chore(ops): verify natural multi-case live board cycle`
 - `aebbb4d chore(ops): record multi-case short-loop proof`
 - `3f7d199 feat(scout): support multi-case live board`
-- `c6de334 chore(ops): record prompt trigger short-loop proof`
 
 ## Source Dirty State
 

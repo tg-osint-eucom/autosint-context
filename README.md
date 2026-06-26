@@ -55,9 +55,11 @@ For context recovery, read these files in order:
 10. `docs/AUTOSINT_THEATER_WATCH_POLICY.md`
 11. `docs/AUTOSINT_MARKET_PREDICTION_FINANCE_POLICY.md`
 12. `docs/AUTOSINT_GPT56_MODEL_UPGRADE_EVALUATION.md`
-13. `docs/product/AUTOSINT_SENSOR_COVERAGE_REQUIREMENTS_TRACE.md`
-14. `docs/status/AUTOSINT_WORKSTREAMS.md`
-15. `docs/status/AUTOSINT_ASSISTANT_CONTEXT_CURRENT.md`
-16. `docs/status/AUTOSINT_CONTEXT_INDEX.md`
+13. `docs/AUTOSINT_EVALUATION_DATASET_V0.md`
+14. `docs/AUTOSINT_CHATGPT_CODEX_HANDOFF_QUEUE.md`
+15. `docs/product/AUTOSINT_SENSOR_COVERAGE_REQUIREMENTS_TRACE.md`
+16. `docs/status/AUTOSINT_WORKSTREAMS.md`
+17. `docs/status/AUTOSINT_ASSISTANT_CONTEXT_CURRENT.md`
+18. `docs/status/AUTOSINT_CONTEXT_INDEX.md`
 
 This repo is documentation-only. Do not treat it as a runtime source, package source, artifact store, or evidence store.

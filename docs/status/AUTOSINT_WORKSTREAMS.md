@@ -32,6 +32,7 @@ finding -> validation -> dedupe -> false-positive check -> targeted fix -> tests
 | `local_knowledge_index_spike` | Planned | Design a sanitized local retrieval index over docs, context mirror, page dumps, briefs, and receipts. |
 | `run_observability_dashboard` | Planned | Design a local read-only run dashboard over receipts, status JSON, workstreams, and context mirror health. |
 | `gpt56_model_upgrade_evaluation` | Needs Verification | Evaluate GPT-5.6 model-family availability and non-production AUTOSINT replay before any production migration. |
+| `autosint_eval_dataset_v0` | Active | Maintain sanitized AUTOSINT eval taxonomy, deterministic graders, safe fixtures, and copy-safe ChatGPT-to-Codex handoff queue. |
 
 ## Next Recommended Codex Task
 
@@ -99,6 +100,12 @@ Next proof should verify actual ChatGPT/Codex/API availability without reading
 secrets or private browser state, then run sanitized offline replay against the
 strict External Scout packet contract, Live Case Board readability, and
 HAVOC/RFI review-only boundaries.
+
+`autosint_eval_dataset_v0` now supports the model-upgrade workstream with a
+sanitized label taxonomy, deterministic local graders, committed safe fixtures,
+ignored generated datasets, and a copy-safe ChatGPT review to Codex handoff
+queue. It does not scrape ChatGPT, read browser state, call model APIs, mutate
+runtime state, or approve production model migration by itself.
 
 ## Safety Boundary
 
