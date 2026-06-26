@@ -95,6 +95,7 @@ operator-surface, capture, or policy work:
 - `docs/AUTOSINT_GLOBAL_SENSOR_COVERAGE_POLICY.md`
 - `docs/AUTOSINT_THEATER_WATCH_POLICY.md`
 - `docs/AUTOSINT_MARKET_PREDICTION_FINANCE_POLICY.md`
+- `docs/AUTOSINT_GPT56_MODEL_UPGRADE_EVALUATION.md`
 - `docs/AUTOSINT_CONTEXT_MIRROR_RUNBOOK.md`
 - `docs/status/AUTOSINT_WORKSTREAMS.md`
 - `config/autosint_workstreams.yml`
@@ -189,6 +190,28 @@ finance enrichment is in scope:
 These lanes remain cue-only. They may support HAVOC/RFI preview context, but
 they do not create Evidence, case links, source-config changes, OSIR release,
 apply/import, or commander-ready status.
+
+## Model Upgrade Evaluation
+
+Model announcements and ChatGPT/Codex review text are product input, not
+AUTOSINT runtime truth. The current model-upgrade evaluation source of truth is
+`docs/AUTOSINT_GPT56_MODEL_UPGRADE_EVALUATION.md`.
+
+Do not change production prompts, External Scout capture behavior, validator
+authority, Live Case Board readiness, HAVOC/RFI selection, or scheduled model
+defaults for a new model family until a non-production replay has proven:
+
+- actual model availability in the intended ChatGPT, Codex, or API surface;
+- strict packet validation with required coverage matrices and cue-only
+  language;
+- no DB, Evidence, case-link, source-config, OSIR, apply/import,
+  commander-ready, launchd, secret, or private-browser-state mutation;
+- acceptable latency, reliability, and cost for the intended role.
+
+Default role split for evaluation only: flagship models for hard Codex/root
+cause/deep review, balanced models for routine non-production replay, and fast
+low-cost models for helper summaries. Validators and route/report output remain
+the authority.
 
 ## Workstreams And Long-Running State
 

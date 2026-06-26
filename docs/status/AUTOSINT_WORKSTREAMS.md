@@ -31,6 +31,7 @@ finding -> validation -> dedupe -> false-positive check -> targeted fix -> tests
 | `agent_pir_langgraph_design` | Planned | Design future read-only LangGraph agent loops for PIR/source-gap/thread review. |
 | `local_knowledge_index_spike` | Planned | Design a sanitized local retrieval index over docs, context mirror, page dumps, briefs, and receipts. |
 | `run_observability_dashboard` | Planned | Design a local read-only run dashboard over receipts, status JSON, workstreams, and context mirror health. |
+| `gpt56_model_upgrade_evaluation` | Needs Verification | Evaluate GPT-5.6 model-family availability and non-production AUTOSINT replay before any production migration. |
 
 ## Next Recommended Codex Task
 
@@ -91,6 +92,13 @@ with `validation_error_count=0`. Latest verified Live Case Board state is
 
 Evaluate `orchestration_prefect_spike` only as a read-only observability
 wrapper. Do not replace launchd or add agent/write automation in that spike.
+
+New model-family evaluation is now tracked as
+`gpt56_model_upgrade_evaluation`. It is not a production migration approval.
+Next proof should verify actual ChatGPT/Codex/API availability without reading
+secrets or private browser state, then run sanitized offline replay against the
+strict External Scout packet contract, Live Case Board readability, and
+HAVOC/RFI review-only boundaries.
 
 ## Safety Boundary
 

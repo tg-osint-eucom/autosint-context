@@ -7,8 +7,8 @@ This is a public, sanitized context file for restoring AUTOSINT project context 
 - Private code/runtime repo: `tg-osint-eucom/autosint`
 - Public context mirror: `tg-osint-eucom/autosint-context`
 - Source branch: `main`
-- Source HEAD: `13145a2e2d4eff7c571c5f7a72deb980e81e1ead`
-- Generated at: `2026-06-26T17:45:45Z`
+- Source HEAD: `fdf3866deefc836afe6e22116488679dfe1464c7`
+- Generated at: `2026-06-26T23:04:51Z`
 
 ## Primary Workflow
 
@@ -33,9 +33,9 @@ This is a public, sanitized context file for restoring AUTOSINT project context 
 - Available: `True`
 - Active selection policy: `latest_validated_capture_only`
 - Active packet count: `5`
-- History packet count: `253`
-- Latest packet timestamp: `2026-06-26T17:33:07Z`
-- Stale: `False`
+- History packet count: `268`
+- Latest packet timestamp: `2026-06-26T19:51:00Z`
+- Stale: `True`
 - Read-only: `True`
 - Private browser state read: `False`
 - Cookies read: `False`
@@ -61,6 +61,7 @@ The following are local-only and are not mirrored here:
 
 ## Latest Source Commits
 
+- `fdf3866 chore(ops): add GPT-5.6 evaluation workstream`
 - `13145a2 fix(scout): run finance enrichment after new captures`
 - `d871196 feat(scout): add Kalshi read-only enrichment`
 - `95167ff fix(scout): canonicalize stale retained threads`
@@ -80,7 +81,6 @@ The following are local-only and are not mirrored here:
 - `aebbb4d chore(ops): record multi-case short-loop proof`
 - `3f7d199 feat(scout): support multi-case live board`
 - `c6de334 chore(ops): record prompt trigger short-loop proof`
-- `5e78beb fix(scout): avoid prompt trigger response false positives`
 
 ## Source Dirty State
 
