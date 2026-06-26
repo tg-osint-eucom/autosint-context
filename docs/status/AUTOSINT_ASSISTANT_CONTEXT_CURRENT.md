@@ -7,8 +7,8 @@ This is a public, sanitized context file for restoring AUTOSINT project context 
 - Private code/runtime repo: `tg-osint-eucom/autosint`
 - Public context mirror: `tg-osint-eucom/autosint-context`
 - Source branch: `main`
-- Source HEAD: `e3679020fd7612766fe38bed88c13673436e582c`
-- Generated at: `2026-06-25T23:11:18Z`
+- Source HEAD: `95167ffdae95a45df57e7695a130a9e94a099134`
+- Generated at: `2026-06-26T13:32:43Z`
 
 ## Primary Workflow
 
@@ -32,9 +32,9 @@ This is a public, sanitized context file for restoring AUTOSINT project context 
 
 - Available: `True`
 - Active selection policy: `latest_validated_capture_only`
-- Active packet count: `4`
-- History packet count: `178`
-- Latest packet timestamp: `2026-06-25T22:40:00Z`
+- Active packet count: `5`
+- History packet count: `227`
+- Latest packet timestamp: `2026-06-26T12:40:00Z`
 - Stale: `False`
 - Read-only: `True`
 - Private browser state read: `False`
@@ -61,6 +61,7 @@ The following are local-only and are not mirrored here:
 
 ## Latest Source Commits
 
+- `95167ff fix(scout): canonicalize stale retained threads`
 - `e367902 fix(scout): preserve finance enrichment across capture cycles`
 - `cce3205 docs: sanitize Codex host instructions for context mirror`
 - `3a2a443 docs: update Codex host instructions for current AUTOSINT`
@@ -80,7 +81,6 @@ The following are local-only and are not mirrored here:
 - `5e78beb fix(scout): avoid prompt trigger response false positives`
 - `8779669 chore(ops): record external scout natural cycle proof`
 - `81e88fe docs: add AUTOSINT orchestration roadmap`
-- `ce6c6eb fix(scout): harden prompt trigger verification`
 
 ## Source Dirty State
 
