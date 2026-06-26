@@ -7,8 +7,8 @@ This is a public, sanitized context file for restoring AUTOSINT project context 
 - Private code/runtime repo: `tg-osint-eucom/autosint`
 - Public context mirror: `tg-osint-eucom/autosint-context`
 - Source branch: `main`
-- Source HEAD: `95167ffdae95a45df57e7695a130a9e94a099134`
-- Generated at: `2026-06-26T13:32:43Z`
+- Source HEAD: `d871196844d7a89680bf1ed26e33bc3896943f76`
+- Generated at: `2026-06-26T14:57:12Z`
 
 ## Primary Workflow
 
@@ -32,9 +32,9 @@ This is a public, sanitized context file for restoring AUTOSINT project context 
 
 - Available: `True`
 - Active selection policy: `latest_validated_capture_only`
-- Active packet count: `5`
-- History packet count: `227`
-- Latest packet timestamp: `2026-06-26T12:40:00Z`
+- Active packet count: `3`
+- History packet count: `233`
+- Latest packet timestamp: `2026-06-26T14:50:02Z`
 - Stale: `False`
 - Read-only: `True`
 - Private browser state read: `False`
@@ -61,6 +61,7 @@ The following are local-only and are not mirrored here:
 
 ## Latest Source Commits
 
+- `d871196 feat(scout): add Kalshi read-only enrichment`
 - `95167ff fix(scout): canonicalize stale retained threads`
 - `e367902 fix(scout): preserve finance enrichment across capture cycles`
 - `cce3205 docs: sanitize Codex host instructions for context mirror`
@@ -80,7 +81,6 @@ The following are local-only and are not mirrored here:
 - `c6de334 chore(ops): record prompt trigger short-loop proof`
 - `5e78beb fix(scout): avoid prompt trigger response false positives`
 - `8779669 chore(ops): record external scout natural cycle proof`
-- `81e88fe docs: add AUTOSINT orchestration roadmap`
 
 ## Source Dirty State
 
