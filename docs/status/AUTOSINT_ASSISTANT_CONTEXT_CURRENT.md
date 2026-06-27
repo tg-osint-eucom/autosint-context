@@ -7,8 +7,8 @@ This is a public, sanitized context file for restoring AUTOSINT project context 
 - Private code/runtime repo: `tg-osint-eucom/autosint`
 - Public context mirror: `tg-osint-eucom/autosint-context`
 - Source branch: `main`
-- Source HEAD: `0949cec0d763e3dfa25e842f22ed9b87dc3ce1ea`
-- Generated at: `2026-06-27T19:19:09Z`
+- Source HEAD: `43af14d8654f899bbf375d811072102bec50c685`
+- Generated at: `2026-06-27T21:13:01Z`
 
 ## Primary Workflow
 
@@ -33,8 +33,8 @@ This is a public, sanitized context file for restoring AUTOSINT project context 
 - Available: `True`
 - Active selection policy: `latest_validated_capture_only`
 - Active packet count: `5`
-- History packet count: `332`
-- Latest packet timestamp: `2026-06-27T19:02:30Z`
+- History packet count: `337`
+- Latest packet timestamp: `2026-06-27T20:06:40Z`
 - Stale: `False`
 - Read-only: `True`
 - Private browser state read: `False`
@@ -61,6 +61,7 @@ The following are local-only and are not mirrored here:
 
 ## Latest Source Commits
 
+- `43af14d chore(export): add case deep-dive handoff exporter`
 - `0949cec fix(scout): extend prompt packet readiness window`
 - `567d039 fix(scout): harden prompt submit state machine`
 - `fe29a90 fix(scout): bind prompt readiness to trigger request id`
@@ -80,13 +81,10 @@ The following are local-only and are not mirrored here:
 - `5a10656 feat(scout): add market prediction finance enrichment`
 - `e0503ae fix(scout): clarify theater watch overflow reasons`
 - `0d10cd6 chore(ops): record theater watch natural proof`
-- `eee7031 fix(scout): normalize theater watch summary output`
 
 ## Source Dirty State
 
-- `M tests/test_script_entrypoints.py`
-- `?? scripts/export_case_deep_dive_prompts.py`
-- `?? tests/test_case_deep_dive_exporter.py`
+- clean
 
 ## Pending Decisions
 

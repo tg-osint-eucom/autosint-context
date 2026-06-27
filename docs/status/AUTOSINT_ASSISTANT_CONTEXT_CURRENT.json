@@ -6,11 +6,11 @@
     "active_selection_policy": "latest_validated_capture_only",
     "available": true,
     "cookies_read": false,
-    "history_capture_count": 105,
-    "history_packet_count": 332,
-    "latest_capture_generated_at": "2026-06-27T19:02:30Z",
+    "history_capture_count": 106,
+    "history_packet_count": 337,
+    "latest_capture_generated_at": "2026-06-27T20:06:40Z",
     "latest_capture_packet_count": 5,
-    "latest_packet_generated_at": "2026-06-27T19:02:30Z",
+    "latest_packet_generated_at": "2026-06-27T20:06:40Z",
     "local_storage_read": false,
     "mutation_performed": false,
     "private_browser_state_read": false,
@@ -20,9 +20,10 @@
     "status_only": true,
     "validated_packet_count": 5
   },
-  "generated_at": "2026-06-27T19:19:09Z",
+  "generated_at": "2026-06-27T21:13:01Z",
   "havoc_rfi_behavior": "HAVOC/RFI uses External Scout Case Thread current state when available, then falls back to the best validated External Scout packet; canonical cases, Case Genesis, TSOC/HAVOC, source coverage, and provenance remain audit material.",
   "latest_commits": [
+    "43af14d chore(export): add case deep-dive handoff exporter",
     "0949cec fix(scout): extend prompt packet readiness window",
     "567d039 fix(scout): harden prompt submit state machine",
     "fe29a90 fix(scout): bind prompt readiness to trigger request id",
@@ -41,8 +42,7 @@
     "6b9f1ba fix(scout): preserve stronger market cues during enrichment",
     "5a10656 feat(scout): add market prediction finance enrichment",
     "e0503ae fix(scout): clarify theater watch overflow reasons",
-    "0d10cd6 chore(ops): record theater watch natural proof",
-    "eee7031 fix(scout): normalize theater watch summary output"
+    "0d10cd6 chore(ops): record theater watch natural proof"
   ],
   "launchd_status": "Local-only; not represented in this public mirror.",
   "mirror_repo": "tg-osint-eucom/autosint-context",
@@ -95,12 +95,8 @@
     "no_source_config_mutation": true
   },
   "source_branch": "main",
-  "source_dirty_state": [
-    "M tests/test_script_entrypoints.py",
-    "?? scripts/export_case_deep_dive_prompts.py",
-    "?? tests/test_case_deep_dive_exporter.py"
-  ],
-  "source_head": "0949cec0d763e3dfa25e842f22ed9b87dc3ce1ea",
+  "source_dirty_state": [],
+  "source_head": "43af14d8654f899bbf375d811072102bec50c685",
   "source_repo": "tg-osint-eucom/autosint",
   "source_repo_url": "https://github.com/tg-osint-eucom/autosint",
   "supporting_routes": [
