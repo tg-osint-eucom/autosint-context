@@ -7,8 +7,8 @@ This is a public, sanitized context file for restoring AUTOSINT project context 
 - Private code/runtime repo: `tg-osint-eucom/autosint`
 - Public context mirror: `tg-osint-eucom/autosint-context`
 - Source branch: `main`
-- Source HEAD: `e0f10a62dd7306f44a0b1af4c4d6e6db0a4daf88`
-- Generated at: `2026-06-27T00:41:11Z`
+- Source HEAD: `1506e05926516e0c4e52c10efd9463a4d7b1e083`
+- Generated at: `2026-06-27T01:33:02Z`
 
 ## Primary Workflow
 
@@ -33,9 +33,9 @@ This is a public, sanitized context file for restoring AUTOSINT project context 
 - Available: `True`
 - Active selection policy: `latest_validated_capture_only`
 - Active packet count: `5`
-- History packet count: `268`
-- Latest packet timestamp: `2026-06-26T19:51:00Z`
-- Stale: `True`
+- History packet count: `273`
+- Latest packet timestamp: `2026-06-27T01:15:45Z`
+- Stale: `False`
 - Read-only: `True`
 - Private browser state read: `False`
 - Cookies read: `False`
@@ -61,6 +61,7 @@ The following are local-only and are not mirrored here:
 
 ## Latest Source Commits
 
+- `1506e05 fix(scout): require packet readiness after prompt trigger`
 - `e0f10a6 feat(eval): expand AUTOSINT evaluation dataset`
 - `e4d56f7 feat(eval): add AUTOSINT evaluation dataset v0`
 - `fdf3866 chore(ops): add GPT-5.6 evaluation workstream`
@@ -80,7 +81,6 @@ The following are local-only and are not mirrored here:
 - `5d8fddb feat(scout): add global sensor coverage to live board`
 - `1d41aa1 fix(scout): clarify coverage versus source checks`
 - `d7bd727 chore(ops): verify natural multi-case live board cycle`
-- `aebbb4d chore(ops): record multi-case short-loop proof`
 
 ## Source Dirty State
 
