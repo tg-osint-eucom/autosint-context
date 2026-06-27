@@ -6,11 +6,11 @@
     "active_selection_policy": "latest_validated_capture_only",
     "available": true,
     "cookies_read": false,
-    "history_capture_count": 92,
-    "history_packet_count": 273,
-    "latest_capture_generated_at": "2026-06-27T01:15:45Z",
+    "history_capture_count": 93,
+    "history_packet_count": 278,
+    "latest_capture_generated_at": "2026-06-27T02:00:00Z",
     "latest_capture_packet_count": 5,
-    "latest_packet_generated_at": "2026-06-27T01:15:45Z",
+    "latest_packet_generated_at": "2026-06-27T02:00:00Z",
     "local_storage_read": false,
     "mutation_performed": false,
     "private_browser_state_read": false,
@@ -20,9 +20,10 @@
     "status_only": true,
     "validated_packet_count": 5
   },
-  "generated_at": "2026-06-27T01:33:02Z",
+  "generated_at": "2026-06-27T02:14:20Z",
   "havoc_rfi_behavior": "HAVOC/RFI uses External Scout Case Thread current state when available, then falls back to the best validated External Scout packet; canonical cases, Case Genesis, TSOC/HAVOC, source coverage, and provenance remain audit material.",
   "latest_commits": [
+    "0e2d0d3 chore(ops): record external scout launchd repair",
     "1506e05 fix(scout): require packet readiness after prompt trigger",
     "e0f10a6 feat(eval): expand AUTOSINT evaluation dataset",
     "e4d56f7 feat(eval): add AUTOSINT evaluation dataset v0",
@@ -41,8 +42,7 @@
     "eee7031 fix(scout): normalize theater watch summary output",
     "5e79e3d fix(scout): harden external scout prompt trigger verification",
     "5d8fddb feat(scout): add global sensor coverage to live board",
-    "1d41aa1 fix(scout): clarify coverage versus source checks",
-    "d7bd727 chore(ops): verify natural multi-case live board cycle"
+    "1d41aa1 fix(scout): clarify coverage versus source checks"
   ],
   "launchd_status": "Local-only; not represented in this public mirror.",
   "mirror_repo": "tg-osint-eucom/autosint-context",
@@ -96,7 +96,7 @@
   },
   "source_branch": "main",
   "source_dirty_state": [],
-  "source_head": "1506e05926516e0c4e52c10efd9463a4d7b1e083",
+  "source_head": "0e2d0d3861e3ffd146c727f427badd886fa3df7a",
   "source_repo": "tg-osint-eucom/autosint",
   "source_repo_url": "https://github.com/tg-osint-eucom/autosint",
   "supporting_routes": [

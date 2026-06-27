@@ -70,15 +70,37 @@ watch contract.
 
 ## Scheduled Task Timing
 
-Observed ChatGPT hourly task output has appeared around minute `:03`.
-
-Preferred local capture timing:
+Current local generation/capture timing:
 
 ```text
-Every hour at :08
+Prompt trigger every hour at :50.
+Capture every hour at :08.
 ```
 
-Do not install or load launchd until manual dry-run and real one-shot capture are consistently valid.
+The prompt trigger posts the strict Daily Scout prompt to the visible Packet
+chat and waits for `packet_ready_for_capture=true`. Capture then validates and
+promotes the latest strict packet, or safely skips when the visible packet is
+already in the inbox.
+
+Do not install or load launchd until manual dry-run and real one-shot capture
+are consistently valid.
+
+The installed External Scout LaunchAgents should rely on the wrapper scripts'
+timestamped logs under ignored `artifacts/external_scout/*_logs/`. Avoid
+`StandardOutPath` / `StandardErrorPath` entries in the LaunchAgent plists for
+these jobs; on 2026-06-27 those unused launchd stdout/stderr paths caused
+pre-exec `EX_CONFIG` failures before the wrapper could start. The local repair
+removed those keys, reloaded only:
+
+- `com.autosint.external-scout-prompt-trigger`
+- `com.autosint.external-scout-capture`
+
+Post-repair launchd kickstart proof wrote prompt receipt
+`20260627T015843Z_prompt_trigger_receipt.json` with
+`packet_ready_for_capture=true`, `strict_packet_validation_error_count=0`, and
+generated_at `2026-06-27T02:00:00Z`; capture receipt
+`20260627T021023Z_capture_receipt.json` promoted five valid packets with
+`validation_error_count=0` and Live Case Board `stale=false`.
 
 ## Capture Bridge
 

@@ -91,6 +91,22 @@ prompts, detected assistant responses, and promoted four to five valid packets
 with `validation_error_count=0`. Latest verified Live Case Board state is
 `stale=false` with five active threads.
 
+Launchd runtime repair note: on 2026-06-27, both External Scout LaunchAgents
+were failing pre-exec with `EX_CONFIG` before wrapper logs were written. The
+installed plists were repaired by removing unused `StandardOutPath` and
+`StandardErrorPath` entries; the wrapper scripts already write timestamped
+ignored logs under `artifacts/external_scout/*_logs/`. After reloading only
+`com.autosint.external-scout-prompt-trigger` and
+`com.autosint.external-scout-capture`, launchd kickstart proof produced prompt
+receipt `20260627T015843Z` with `packet_ready_for_capture=true`,
+`strict_packet_validation_error_count=0`, and generated_at
+`2026-06-27T02:00:00Z`. Capture receipt `20260627T021023Z` then promoted five
+valid packets with `validation_error_count=0`; Live Case Board reported
+`stale=false`, five active threads, one stale tracked thread, and eval v1
+reported no current runtime hard-fails. Verify the next natural `:50 -> :08`
+cycle to close the production-schedule proof after this local LaunchAgent
+repair.
+
 Evaluate `orchestration_prefect_spike` only as a read-only observability
 wrapper. Do not replace launchd or add agent/write automation in that spike.
 
