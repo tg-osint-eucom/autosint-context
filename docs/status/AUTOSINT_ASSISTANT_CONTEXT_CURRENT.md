@@ -7,8 +7,8 @@ This is a public, sanitized context file for restoring AUTOSINT project context 
 - Private code/runtime repo: `tg-osint-eucom/autosint`
 - Public context mirror: `tg-osint-eucom/autosint-context`
 - Source branch: `main`
-- Source HEAD: `43af14d8654f899bbf375d811072102bec50c685`
-- Generated at: `2026-06-27T21:13:01Z`
+- Source HEAD: `bab9fec971cdd4c9ce33ca9d4f6f3aad7c964b28`
+- Generated at: `2026-06-27T22:00:03Z`
 
 ## Primary Workflow
 
@@ -35,7 +35,7 @@ This is a public, sanitized context file for restoring AUTOSINT project context 
 - Active packet count: `5`
 - History packet count: `337`
 - Latest packet timestamp: `2026-06-27T20:06:40Z`
-- Stale: `False`
+- Stale: `True`
 - Read-only: `True`
 - Private browser state read: `False`
 - Cookies read: `False`
@@ -61,6 +61,7 @@ The following are local-only and are not mirrored here:
 
 ## Latest Source Commits
 
+- `bab9fec fix(scout): add external scout health monitor and stale draft cleanup`
 - `43af14d chore(export): add case deep-dive handoff exporter`
 - `0949cec fix(scout): extend prompt packet readiness window`
 - `567d039 fix(scout): harden prompt submit state machine`
@@ -80,7 +81,6 @@ The following are local-only and are not mirrored here:
 - `6b9f1ba fix(scout): preserve stronger market cues during enrichment`
 - `5a10656 feat(scout): add market prediction finance enrichment`
 - `e0503ae fix(scout): clarify theater watch overflow reasons`
-- `0d10cd6 chore(ops): record theater watch natural proof`
 
 ## Source Dirty State
 
