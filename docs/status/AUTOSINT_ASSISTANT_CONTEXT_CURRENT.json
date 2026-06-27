@@ -2,15 +2,15 @@
   "capture_bridge_status": "Visible/file-first capture is local-only and feeds staging/quarantine before inbox promotion.",
   "external_scout_status": {
     "active_capture_status": "active",
-    "active_packet_count": 4,
+    "active_packet_count": 5,
     "active_selection_policy": "latest_validated_capture_only",
     "available": true,
     "cookies_read": false,
-    "history_capture_count": 103,
-    "history_packet_count": 323,
-    "latest_capture_generated_at": "2026-06-27T17:31:40Z",
-    "latest_capture_packet_count": 4,
-    "latest_packet_generated_at": "2026-06-27T17:31:40Z",
+    "history_capture_count": 105,
+    "history_packet_count": 332,
+    "latest_capture_generated_at": "2026-06-27T19:02:30Z",
+    "latest_capture_packet_count": 5,
+    "latest_packet_generated_at": "2026-06-27T19:02:30Z",
     "local_storage_read": false,
     "mutation_performed": false,
     "private_browser_state_read": false,
@@ -18,11 +18,12 @@
     "stale": false,
     "stale_after_minutes": 90,
     "status_only": true,
-    "validated_packet_count": 4
+    "validated_packet_count": 5
   },
-  "generated_at": "2026-06-27T17:45:13Z",
+  "generated_at": "2026-06-27T19:19:09Z",
   "havoc_rfi_behavior": "HAVOC/RFI uses External Scout Case Thread current state when available, then falls back to the best validated External Scout packet; canonical cases, Case Genesis, TSOC/HAVOC, source coverage, and provenance remain audit material.",
   "latest_commits": [
+    "0949cec fix(scout): extend prompt packet readiness window",
     "567d039 fix(scout): harden prompt submit state machine",
     "fe29a90 fix(scout): bind prompt readiness to trigger request id",
     "0e2d0d3 chore(ops): record external scout launchd repair",
@@ -41,8 +42,7 @@
     "5a10656 feat(scout): add market prediction finance enrichment",
     "e0503ae fix(scout): clarify theater watch overflow reasons",
     "0d10cd6 chore(ops): record theater watch natural proof",
-    "eee7031 fix(scout): normalize theater watch summary output",
-    "5e79e3d fix(scout): harden external scout prompt trigger verification"
+    "eee7031 fix(scout): normalize theater watch summary output"
   ],
   "launchd_status": "Local-only; not represented in this public mirror.",
   "mirror_repo": "tg-osint-eucom/autosint-context",
@@ -100,7 +100,7 @@
     "?? scripts/export_case_deep_dive_prompts.py",
     "?? tests/test_case_deep_dive_exporter.py"
   ],
-  "source_head": "567d0394b37f3bf82a4b67b13cffa9a26c810903",
+  "source_head": "0949cec0d763e3dfa25e842f22ed9b87dc3ce1ea",
   "source_repo": "tg-osint-eucom/autosint",
   "source_repo_url": "https://github.com/tg-osint-eucom/autosint",
   "supporting_routes": [
