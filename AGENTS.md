@@ -220,8 +220,11 @@ the authority.
 `docs/AUTOSINT_EVALUATION_DATASET_V0.md` and
 `config/autosint_eval_grader_rules.yml` define deterministic local grading for
 good/bad AUTOSINT behavior before model migration, fine-tuning, local-model
-comparison, or automated handoff work. The dataset is sanitized evaluation
-memory only; generated cases belong under ignored `artifacts/model_eval/`.
+comparison, or automated handoff work. The current benchmark is the v1
+expansion while retaining the compatibility output path under ignored
+`artifacts/model_eval/autosint_eval_dataset_v0/latest/`. The dataset is
+sanitized evaluation memory only; generated cases and review packages must
+remain ignored.
 
 `docs/AUTOSINT_CHATGPT_CODEX_HANDOFF_QUEUE.md` defines the safe
 ChatGPT-review-to-Codex handoff boundary. V0 is file-based and copy-safe only:

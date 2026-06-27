@@ -1,18 +1,20 @@
-# AUTOSINT Evaluation Dataset v0
+# AUTOSINT Evaluation Dataset v0 / v1 Expansion
 
 ## Purpose
 
-AUTOSINT Evaluation Dataset v0 turns recurring project lessons into small,
-sanitized, deterministic examples. The dataset exists before any future model
-migration, GPT-5.6 replay, fine-tuning, local-model comparison, or automated
-ChatGPT-to-Codex workflow.
+AUTOSINT Evaluation Dataset v0 started as a smoke test. The current v1
+expansion turns recurring project lessons into a meaningful sanitized benchmark
+covering External Scout, Live Case Board, theater watch, market/prediction/
+finance enrichment, prompt trigger, capture, HAVOC/RFI, context mirror, and
+model-upgrade failure modes.
 
 This dataset is not an Evidence store, source catalog, DB export, browser-state
 dump, prompt-capture runner, or model API harness. It is a read-only evaluation
 surface over synthetic fixtures and sanitized snippets from tracked docs or
 ignored runtime artifacts.
 
-Generated datasets belong under:
+For compatibility with existing commands and review package paths, generated
+datasets still belong under:
 
 ```text
 artifacts/model_eval/autosint_eval_dataset_v0/latest/
@@ -20,6 +22,12 @@ artifacts/model_eval/autosint_eval_dataset_v0/latest/
 
 Generated artifacts remain ignored. Only the taxonomy, grader rules, scripts,
 tests, and small sanitized fixtures are tracked.
+
+The generated manifest carries:
+
+- `dataset_id=autosint_eval_dataset_v0`
+- `dataset_generation=v1_expansion`
+- `benchmark_version=autosint_eval_dataset_v1`
 
 ## Safety Boundary
 
@@ -102,6 +110,23 @@ and preserves cue-only discipline.
 .venv/bin/python scripts/build_autosint_eval_dataset.py --dry-run --no-write
 .venv/bin/python scripts/build_autosint_eval_dataset.py --include-synthetic-fixtures
 .venv/bin/python scripts/run_autosint_eval_graders.py artifacts/model_eval/autosint_eval_dataset_v0/latest/eval_cases.jsonl
+.venv/bin/python scripts/package_autosint_eval_review.py
 ```
 
 The graders are deterministic Python checks. They do not call a model API.
+
+## V1 Expansion Requirements
+
+The v1 expansion target is at least 30 eval cases. It includes committed
+sanitized fixtures and real-derived sanitized cases from ignored operator
+reading, prompt-trigger, and capture artifacts when safe.
+
+Every case must include a non-empty `input_excerpt` showing the exact signal
+being graded. Review packages must not render `None` for excerpts or live-state
+fields; if runtime status is unavailable, the package states an explicit reason.
+
+The sanitizer must distinguish policy text from private-state values. Text such
+as `cookies_read=false`, `private_browser_state_read=false`, or "do not read
+cookies" is safe policy language. Actual tokens, cookie/session values, private
+browser-profile contents, DB dumps, raw Evidence bodies, source catalog content,
+and private unredacted local paths remain hard-skip or hard-fail material.
