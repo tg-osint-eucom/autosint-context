@@ -7,8 +7,8 @@ This is a public, sanitized context file for restoring AUTOSINT project context 
 - Private code/runtime repo: `tg-osint-eucom/autosint`
 - Public context mirror: `tg-osint-eucom/autosint-context`
 - Source branch: `main`
-- Source HEAD: `0e2d0d3861e3ffd146c727f427badd886fa3df7a`
-- Generated at: `2026-06-27T02:14:20Z`
+- Source HEAD: `fe29a90b22c4b0c83fab029d1753ce1be959d736`
+- Generated at: `2026-06-27T14:33:25Z`
 
 ## Primary Workflow
 
@@ -33,9 +33,9 @@ This is a public, sanitized context file for restoring AUTOSINT project context 
 - Available: `True`
 - Active selection policy: `latest_validated_capture_only`
 - Active packet count: `5`
-- History packet count: `278`
-- Latest packet timestamp: `2026-06-27T02:00:00Z`
-- Stale: `False`
+- History packet count: `310`
+- Latest packet timestamp: `2026-06-27T09:00:00Z`
+- Stale: `True`
 - Read-only: `True`
 - Private browser state read: `False`
 - Cookies read: `False`
@@ -61,6 +61,7 @@ The following are local-only and are not mirrored here:
 
 ## Latest Source Commits
 
+- `fe29a90 fix(scout): bind prompt readiness to trigger request id`
 - `0e2d0d3 chore(ops): record external scout launchd repair`
 - `1506e05 fix(scout): require packet readiness after prompt trigger`
 - `e0f10a6 feat(eval): expand AUTOSINT evaluation dataset`
@@ -80,11 +81,12 @@ The following are local-only and are not mirrored here:
 - `eee7031 fix(scout): normalize theater watch summary output`
 - `5e79e3d fix(scout): harden external scout prompt trigger verification`
 - `5d8fddb feat(scout): add global sensor coverage to live board`
-- `1d41aa1 fix(scout): clarify coverage versus source checks`
 
 ## Source Dirty State
 
-- clean
+- `M tests/test_script_entrypoints.py`
+- `?? scripts/export_case_deep_dive_prompts.py`
+- `?? tests/test_case_deep_dive_exporter.py`
 
 ## Pending Decisions
 
