@@ -149,7 +149,22 @@ selected the Packet chat and safe-skipped `older_than_latest_inbox`. The local
 fallback LaunchAgent was restored; prompt receipt
 `20260628T192327Z_prompt_trigger_receipt.json` and capture receipt
 `20260628T193810Z_capture_receipt.json` recovered Live Board `stale=false`
-with five active packets generated_at `2026-06-28T19:24:32Z`.
+with five active packets generated_at `2026-06-28T19:24:32Z`. An outside-project
+task-result conversation later appeared with generated_at `2026-06-28T19:34:28Z`, but
+dry-run validation against the exact conversation failed with twelve
+`source_relationships` bucket type errors. The live Scheduled Task prompt and
+ignored prompt artifact were tightened to require array buckets, but the next
+Scheduled Task run again stayed visible as `Выполняется` while the local Packet
+fallback generated `2026-06-28T20:06:30Z`; capture receipt
+`20260628T200809Z_capture_receipt.json` promoted five valid packets. Scheduled
+Task proof now uses the dedicated scheduled-task capture probe so invalid or
+late task output cannot disturb the working Packet target. The first probe
+receipt `20260628T202500Z_scheduled_task_capture_probe_receipt.json` selected
+the task-result conversation and found `packet_count=5`,
+`validation_error_count=0`, and generated_at `2026-06-28T20:05:53Z`, but
+safe-skipped because the Packet fallback inbox was already newer. That
+outside-project result chat was deleted by the user and must not be used as a
+production target.
 
 ## Safety Boundary
 

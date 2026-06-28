@@ -7,8 +7,8 @@ This is a public, sanitized context file for restoring AUTOSINT project context 
 - Private code/runtime repo: `tg-osint-eucom/autosint`
 - Public context mirror: `tg-osint-eucom/autosint-context`
 - Source branch: `main`
-- Source HEAD: `dde1a0e05a264b5fd5ebb2d80a7ed467623766c3`
-- Generated at: `2026-06-28T19:45:42Z`
+- Source HEAD: `e7245d4aceb115ffd19ccb8ae3e8e6efe2a51490`
+- Generated at: `2026-06-28T20:39:19Z`
 
 ## Primary Workflow
 
@@ -33,8 +33,8 @@ This is a public, sanitized context file for restoring AUTOSINT project context 
 - Available: `True`
 - Active selection policy: `latest_validated_capture_only`
 - Active packet count: `5`
-- History packet count: `434`
-- Latest packet timestamp: `2026-06-28T19:24:32Z`
+- History packet count: `439`
+- Latest packet timestamp: `2026-06-28T20:06:30Z`
 - Stale: `False`
 - Read-only: `True`
 - Private browser state read: `False`
@@ -61,6 +61,7 @@ The following are local-only and are not mirrored here:
 
 ## Latest Source Commits
 
+- `e7245d4 fix(scout): isolate scheduled task capture probe`
 - `dde1a0e docs(scout): record scheduled task upstream proof failure`
 - `458a1a5 fix(scout): split scheduled task and fallback targets`
 - `54ac575 fix(scout): harden packet target selection for scheduled path`
@@ -80,7 +81,6 @@ The following are local-only and are not mirrored here:
 - `13145a2 fix(scout): run finance enrichment after new captures`
 - `d871196 feat(scout): add Kalshi read-only enrichment`
 - `95167ff fix(scout): canonicalize stale retained threads`
-- `e367902 fix(scout): preserve finance enrichment across capture cycles`
 
 ## Source Dirty State
 

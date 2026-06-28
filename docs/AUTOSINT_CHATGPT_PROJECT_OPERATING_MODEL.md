@@ -82,7 +82,12 @@ stayed visible as `Выполняется` for more than ten minutes, did not ex
 run-now/result-chat control, and did not advance the Packet chat before the
 natural capture. The Packet-chat local prompt trigger remains the working
 production upstream until a stable Scheduled Task output conversation is
-identified and two natural cycles are proven.
+identified and two natural cycles are proven. When a task-result chat is found,
+validate it with the scheduled-task probe first; do not repoint the production
+Packet capture target until the task output is strict-valid and newer than the
+inbox. Outside-project `chatgpt.com/c/...` task result chats are not production
+targets for AUTOSINT; production proof must remain inside the AUTOSINT External
+Scout Project or the canonical Project Packet chat.
 
 ### AUTOSINT System Control
 

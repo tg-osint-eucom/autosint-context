@@ -77,8 +77,19 @@ ChatGPT Scheduled Tasks remain an active but unverified upstream candidate. On
 run did not expose a capturable output conversation or advance the Packet chat
 before `:08`; the local Packet-chat trigger restored the board with receipt
 `20260628T192327Z_prompt_trigger_receipt.json` and capture receipt
-`20260628T193810Z_capture_receipt.json`. Do not treat Scheduled Tasks as
-production-primary until two natural output -> capture cycles pass.
+`20260628T193810Z_capture_receipt.json`. A later outside-project task-result
+conversation was visible, but dry-run validation found twelve
+`source_relationships` bucket type errors; the prompt was tightened and the
+task was updated, while Packet fallback again promoted five valid packets with capture receipt
+`20260628T200809Z_capture_receipt.json`. Do not treat Scheduled Tasks as
+production-primary until two natural output -> capture cycles pass through the
+dedicated scheduled-task probe or capture path. The same proof found a
+strict-valid Scheduled Task result generated_at `2026-06-28T20:05:53Z`, but it
+was not promoted because the Packet fallback had already produced a newer inbox
+packet and because outside-project result chats are not production targets.
+This means proof must avoid upstream competition and must stay inside the
+AUTOSINT External Scout Project; otherwise Packet fallback remains the correct
+production source.
 
 Operational rules:
 
@@ -88,7 +99,9 @@ Operational rules:
 - History remains available through explicit history mode and ignored local artifacts.
 - Capture receipts, logs, inbox files, staging files, quarantine files, and latest generated reports are local-only and ignored.
 - The stale rule is currently 90 minutes.
-- ChatGPT scheduled output has been observed around minute `:03` of each hour.
+- ChatGPT scheduled output timing has drifted and may remain visible as
+  `Выполняется` past the local capture window; prove with the scheduled-task
+  probe before changing production targets.
 - Planned local AUTOSINT capture timing is minute `:08` of each hour.
 - The launchd template may exist locally, but installing/loading launchd is a separate approval.
 

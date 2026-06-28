@@ -84,10 +84,12 @@ quarantine, active inbox selection, Live Case Board freshness, health monitor,
 and eval decide whether output becomes current. ChatGPT Scheduled Task output
 is candidate material only, not Evidence, not OSIR, and not commander-ready.
 If ChatGPT routes Scheduled Task output into a dedicated task-result
-conversation instead of the Packet chat, configure capture by exact
-conversation id in ignored `artifacts/external_scout/capture_target.json`.
-Keep local fallback prompt submission pointed at the Packet chat through
-ignored `artifacts/external_scout/prompt_trigger_target.json`.
+conversation instead of the Packet chat, do not overwrite the working Packet
+capture target during proof. Put the task-result conversation id in ignored
+`artifacts/external_scout/scheduled_task_capture_target.json` and probe it
+with `scripts/probe_external_scout_scheduled_task_capture.py`. Keep local
+fallback prompt submission pointed at the Packet chat through ignored
+`artifacts/external_scout/prompt_trigger_target.json`.
 
 Current proven production upstream remains the local Packet-chat prompt
 trigger. On 2026-06-28, the existing `AUTOSINT Daily External Scout` Scheduled
@@ -103,6 +105,30 @@ receipt `20260628T192327Z_prompt_trigger_receipt.json` produced a fresh strict
 Packet-chat response with `validation_error_count=0`; capture receipt
 `20260628T193810Z_capture_receipt.json` promoted five packets generated_at
 `2026-06-28T19:24:32Z` and returned the Live Board to `stale=false`.
+
+Later in the same session, ChatGPT exposed an outside-project task-result conversation
+`4 new candidate packets emitted for review`
+(`.../c/6a4179c7-3460-83e8-80a8-3a6087319e50`) with generated_at
+`2026-06-28T19:34:28Z`, but a dry-run capture against that exact conversation
+found `packet_count=4`, `valid_packet_count=0`, and
+`validation_error_count=12` because `source_relationships` buckets such as
+`claim`, `counter_claim`, and `context` were strings instead of arrays. The
+ignored live Scheduled Task prompt artifact was tightened to require array
+buckets, and the live task prompt was updated through the visible Scheduled
+Tasks UI. The next observed Scheduled Task run still remained visible as
+`Выполняется` after the local Packet fallback had already generated
+generated_at `2026-06-28T20:06:30Z`; capture receipt
+`20260628T200809Z_capture_receipt.json` promoted five Packet-chat packets with
+`validation_error_count=0`. A scheduled-task probe against the exact task
+result conversation then found a strict-valid Scheduled Task packet set
+generated_at `2026-06-28T20:05:53Z` with `packet_count=5` and
+`validation_error_count=0`, but it correctly did not promote because the Packet
+fallback inbox was already newer. The user deleted that outside-project
+conversation; it must not be treated as the AUTOSINT Project Packet target.
+This confirms the current bottleneck is
+upstream competition and target/timing, not the Packet-chat capture bridge:
+Scheduled Task output can become valid, but it is not production-primary while
+the local prompt trigger is also generating a newer packet before capture.
 
 Do not demote or disable the local Packet-chat prompt trigger again until a
 Scheduled Task output chat is proven capturable and two natural Scheduled Task
@@ -127,6 +153,31 @@ output cycles have generated fresh strict packets in the exact configured
 Scheduled Task output conversation, capture has promoted or safely skipped
 equivalent strict packets with `validation_error_count=0`, Live Board has
 stayed `stale=false`, and eval has no current-runtime hard-fails.
+
+Scheduled Task probe command:
+
+```bash
+.venv/bin/python scripts/probe_external_scout_scheduled_task_capture.py
+```
+
+The probe reads ignored
+`artifacts/external_scout/scheduled_task_capture_target.json`, runs an
+External Scout capture dry-run with `--require-target`, writes a probe receipt
+under ignored `artifacts/external_scout/scheduled_task_probe_receipts/`, and
+does not promote unless `--promote-if-valid` is explicitly passed and the
+dry-run finds a new target-matching packet set with `validation_error_count=0`.
+Use this for delayed Scheduled Task proof; keep the normal
+`artifacts/external_scout/capture_target.json` pointed at the Packet chat until
+the Scheduled Task path has two proven natural cycles.
+By default, the probe rejects non-project `https://chatgpt.com/c/...` result
+URLs; production proof must use a ChatGPT Project URL such as
+`https://chatgpt.com/g/.../c/...` or the canonical Project Packet chat.
+
+For a clean Scheduled Task proof window, pause or unload only the local
+`com.autosint.external-scout-prompt-trigger` fallback if explicitly needed,
+leave `com.autosint.external-scout-capture` and
+`com.autosint.external-scout-health-monitor` alone, and restore the fallback if
+the Scheduled Task output is late, stuck, missing, or schema-invalid.
 
 If the existing Scheduled Task cannot be safely resumed or edited, stop and
 request approval before creating or replacing tasks. Do not create duplicate
