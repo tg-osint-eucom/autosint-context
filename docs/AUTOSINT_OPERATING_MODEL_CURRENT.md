@@ -58,10 +58,10 @@ These legacy routes should remain removed from primary navigation unless a futur
 
 ## External Scout Pipeline
 
-The External Scout path is:
+The current proven External Scout path is:
 
 ```text
-ChatGPT Project / scheduled task
+ChatGPT Project / Packet-chat prompt trigger
 -> visible-browser capture bridge
 -> staging
 -> validation
@@ -71,6 +71,14 @@ ChatGPT Project / scheduled task
 -> /external-scout
 -> /havoc-rfi
 ```
+
+ChatGPT Scheduled Tasks remain an active but unverified upstream candidate. On
+2026-06-28, the existing Scheduled Task was updated and resumed, but its proof
+run did not expose a capturable output conversation or advance the Packet chat
+before `:08`; the local Packet-chat trigger restored the board with receipt
+`20260628T192327Z_prompt_trigger_receipt.json` and capture receipt
+`20260628T193810Z_capture_receipt.json`. Do not treat Scheduled Tasks as
+production-primary until two natural output -> capture cycles pass.
 
 Operational rules:
 

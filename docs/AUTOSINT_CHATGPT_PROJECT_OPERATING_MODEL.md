@@ -75,6 +75,15 @@ fresh generated_at before capture promotes output. If a Scheduled Task cannot
 be edited to write into the canonical Packet chat, stop and request approval
 before replacing it or creating a duplicate.
 
+Current status as of 2026-06-28: Scheduled Tasks are configured but not
+production-primary. The existing `AUTOSINT Daily External Scout` task was
+updated with the strict self-contained prompt and resumed, but its proof run
+stayed visible as `Выполняется` for more than ten minutes, did not expose a
+run-now/result-chat control, and did not advance the Packet chat before the
+natural capture. The Packet-chat local prompt trigger remains the working
+production upstream until a stable Scheduled Task output conversation is
+identified and two natural cycles are proven.
+
 ### AUTOSINT System Control
 
 `AUTOSINT System Control` is the human/admin chat.

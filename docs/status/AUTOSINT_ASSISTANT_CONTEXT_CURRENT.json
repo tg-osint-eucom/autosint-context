@@ -2,15 +2,15 @@
   "capture_bridge_status": "Visible/file-first capture is local-only and feeds staging/quarantine before inbox promotion.",
   "external_scout_status": {
     "active_capture_status": "active",
-    "active_packet_count": 4,
+    "active_packet_count": 5,
     "active_selection_policy": "latest_validated_capture_only",
     "available": true,
     "cookies_read": false,
-    "history_capture_count": 125,
-    "history_packet_count": 429,
-    "latest_capture_generated_at": "2026-06-28T17:50:30Z",
-    "latest_capture_packet_count": 4,
-    "latest_packet_generated_at": "2026-06-28T17:50:30Z",
+    "history_capture_count": 126,
+    "history_packet_count": 434,
+    "latest_capture_generated_at": "2026-06-28T19:24:32Z",
+    "latest_capture_packet_count": 5,
+    "latest_packet_generated_at": "2026-06-28T19:24:32Z",
     "local_storage_read": false,
     "mutation_performed": false,
     "private_browser_state_read": false,
@@ -18,11 +18,12 @@
     "stale": false,
     "stale_after_minutes": 90,
     "status_only": true,
-    "validated_packet_count": 4
+    "validated_packet_count": 5
   },
-  "generated_at": "2026-06-28T18:43:14Z",
+  "generated_at": "2026-06-28T19:45:42Z",
   "havoc_rfi_behavior": "HAVOC/RFI uses External Scout Case Thread current state when available, then falls back to the best validated External Scout packet; canonical cases, Case Genesis, TSOC/HAVOC, source coverage, and provenance remain audit material.",
   "latest_commits": [
+    "dde1a0e docs(scout): record scheduled task upstream proof failure",
     "458a1a5 fix(scout): split scheduled task and fallback targets",
     "54ac575 fix(scout): harden packet target selection for scheduled path",
     "70c480d fix(ops): tune external scout health monitor signals",
@@ -41,8 +42,7 @@
     "13145a2 fix(scout): run finance enrichment after new captures",
     "d871196 feat(scout): add Kalshi read-only enrichment",
     "95167ff fix(scout): canonicalize stale retained threads",
-    "e367902 fix(scout): preserve finance enrichment across capture cycles",
-    "cce3205 docs: sanitize Codex host instructions for context mirror"
+    "e367902 fix(scout): preserve finance enrichment across capture cycles"
   ],
   "launchd_status": "Local-only; not represented in this public mirror.",
   "mirror_repo": "tg-osint-eucom/autosint-context",
@@ -96,7 +96,7 @@
   },
   "source_branch": "main",
   "source_dirty_state": [],
-  "source_head": "458a1a57a4eace1e41f621e3362c7911b4c29f75",
+  "source_head": "dde1a0e05a264b5fd5ebb2d80a7ed467623766c3",
   "source_repo": "tg-osint-eucom/autosint",
   "source_repo_url": "https://github.com/tg-osint-eucom/autosint",
   "supporting_routes": [

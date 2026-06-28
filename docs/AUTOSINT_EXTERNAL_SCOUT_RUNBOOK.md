@@ -70,7 +70,7 @@ watch contract.
 
 ## Generation And Capture Timing
 
-Target production upstream:
+Target desired upstream:
 
 ```text
 ChatGPT Scheduled Task generates strict output hourly.
@@ -88,6 +88,27 @@ conversation instead of the Packet chat, configure capture by exact
 conversation id in ignored `artifacts/external_scout/capture_target.json`.
 Keep local fallback prompt submission pointed at the Packet chat through
 ignored `artifacts/external_scout/prompt_trigger_target.json`.
+
+Current proven production upstream remains the local Packet-chat prompt
+trigger. On 2026-06-28, the existing `AUTOSINT Daily External Scout` Scheduled
+Task was updated with the strict self-contained prompt and resumed, but the
+proof run was not capturable: the Scheduled Tasks page showed `Выполняется`
+for more than ten minutes, exposed no run-now control, no output/result chat
+link, and no readable task-associated output conversation, and the Packet chat
+did not advance before the natural `:08` capture. Capture receipt
+`20260628T190806Z_capture_receipt.json` correctly selected the Packet chat but
+safe-skipped `older_than_latest_inbox` against generated_at
+`2026-06-28T17:50:30Z`. The local fallback prompt trigger was restored and
+receipt `20260628T192327Z_prompt_trigger_receipt.json` produced a fresh strict
+Packet-chat response with `validation_error_count=0`; capture receipt
+`20260628T193810Z_capture_receipt.json` promoted five packets generated_at
+`2026-06-28T19:24:32Z` and returned the Live Board to `stale=false`.
+
+Do not demote or disable the local Packet-chat prompt trigger again until a
+Scheduled Task output chat is proven capturable and two natural Scheduled Task
+output -> capture cycles pass. If ChatGPT Scheduled Tasks cannot expose a
+stable readable output conversation, keep them as unverified product input and
+continue using the local prompt-trigger loop as the production upstream.
 
 Current proven fallback timing:
 

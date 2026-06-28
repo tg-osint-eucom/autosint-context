@@ -7,8 +7,8 @@ This is a public, sanitized context file for restoring AUTOSINT project context 
 - Private code/runtime repo: `tg-osint-eucom/autosint`
 - Public context mirror: `tg-osint-eucom/autosint-context`
 - Source branch: `main`
-- Source HEAD: `458a1a57a4eace1e41f621e3362c7911b4c29f75`
-- Generated at: `2026-06-28T18:43:14Z`
+- Source HEAD: `dde1a0e05a264b5fd5ebb2d80a7ed467623766c3`
+- Generated at: `2026-06-28T19:45:42Z`
 
 ## Primary Workflow
 
@@ -32,9 +32,9 @@ This is a public, sanitized context file for restoring AUTOSINT project context 
 
 - Available: `True`
 - Active selection policy: `latest_validated_capture_only`
-- Active packet count: `4`
-- History packet count: `429`
-- Latest packet timestamp: `2026-06-28T17:50:30Z`
+- Active packet count: `5`
+- History packet count: `434`
+- Latest packet timestamp: `2026-06-28T19:24:32Z`
 - Stale: `False`
 - Read-only: `True`
 - Private browser state read: `False`
@@ -61,6 +61,7 @@ The following are local-only and are not mirrored here:
 
 ## Latest Source Commits
 
+- `dde1a0e docs(scout): record scheduled task upstream proof failure`
 - `458a1a5 fix(scout): split scheduled task and fallback targets`
 - `54ac575 fix(scout): harden packet target selection for scheduled path`
 - `70c480d fix(ops): tune external scout health monitor signals`
@@ -80,7 +81,6 @@ The following are local-only and are not mirrored here:
 - `d871196 feat(scout): add Kalshi read-only enrichment`
 - `95167ff fix(scout): canonicalize stale retained threads`
 - `e367902 fix(scout): preserve finance enrichment across capture cycles`
-- `cce3205 docs: sanitize Codex host instructions for context mirror`
 
 ## Source Dirty State
 

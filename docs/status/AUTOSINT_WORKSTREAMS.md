@@ -27,7 +27,7 @@ finding -> validation -> dedupe -> false-positive check -> targeted fix -> tests
 | `source_catalog_policy` | Blocked | Await explicit decision before tracking or mirroring source catalog policy. |
 | `launchd_runtime_health` | Complete | Scheduled capture fired naturally at `:08` with clear receipts and fresh Live Case Board state. |
 | `external_scout_multi_case_board` | Complete | Multi-case prompt, partial-promotion guard, rolling current/stale/archive retention, and natural-cycle proof are complete. |
-| `chatgpt_scheduled_tasks_production_path` | Active | Move External Scout upstream generation back to ChatGPT Scheduled Tasks as primary, with local prompt trigger retained as fallback until two natural cycles are proven. |
+| `chatgpt_scheduled_tasks_production_path` | Needs Verification | Move External Scout upstream generation back to ChatGPT Scheduled Tasks as primary only after two natural capturable output cycles; local prompt trigger remains production upstream until then. |
 | `orchestration_prefect_spike` | Planned | Evaluate Prefect as a read-only observability wrapper over the current local loop. |
 | `agent_pir_langgraph_design` | Planned | Design future read-only LangGraph agent loops for PIR/source-gap/thread review. |
 | `local_knowledge_index_spike` | Planned | Design a sanitized local retrieval index over docs, context mirror, page dumps, briefs, and receipts. |
@@ -124,13 +124,14 @@ ignored generated datasets, and a copy-safe ChatGPT review to Codex handoff
 queue. It does not scrape ChatGPT, read browser state, call model APIs, mutate
 runtime state, or approve production model migration by itself.
 
-`chatgpt_scheduled_tasks_production_path` is now tracked as active. The target
+`chatgpt_scheduled_tasks_production_path` is tracked as Needs Verification. The target
 operating model is ChatGPT Scheduled Tasks as the primary upstream generator
 for strict External Scout packets; AUTOSINT capture, validator, quarantine,
 Live Case Board, health monitor, and eval remain the source of truth. The
-local Packet-chat prompt trigger remains fallback until an existing Scheduled
-Task can be safely configured and two natural Scheduled Task -> capture cycles
-are proven. On 2026-06-28, a fallback prompt-trigger foreground drift inserted
+local Packet-chat prompt trigger remains the current proven production upstream
+until an existing Scheduled Task can be safely configured and two natural
+Scheduled Task -> capture cycles are proven. On 2026-06-28, a fallback
+prompt-trigger foreground drift inserted
 a draft into the non-target `autosint` chat; the draft was cleared, target
 scripts were hardened to revalidate the foreground Packet tab before executing
 JavaScript, and recovery receipts `20260628T174230Z_prompt_trigger_receipt.json`
@@ -139,9 +140,16 @@ request-id match, `validation_error_count=0`, four promoted packets, and Live
 Board `stale=false`. Later on 2026-06-28 the live
 Scheduled Tasks UI showed `AUTOSINT Daily External Scout` was paused and still
 had a stale prompt. The existing task was updated from the current strict local
-prompt artifact and resumed. ChatGPT Scheduled Tasks currently emit through a
-dedicated task-result conversation, so capture/fallback target separation is
-required before this workstream can be verified as production-primary.
+prompt artifact and resumed. The first proof window did not produce a usable
+capture target: the task stayed visible as `Выполняется` for more than ten
+minutes, exposed no run-now or result-chat link, did not create a new open
+task-output tab, and did not advance the Packet chat before the natural `:08`
+capture. Capture receipt `20260628T190806Z_capture_receipt.json` correctly
+selected the Packet chat and safe-skipped `older_than_latest_inbox`. The local
+fallback LaunchAgent was restored; prompt receipt
+`20260628T192327Z_prompt_trigger_receipt.json` and capture receipt
+`20260628T193810Z_capture_receipt.json` recovered Live Board `stale=false`
+with five active packets generated_at `2026-06-28T19:24:32Z`.
 
 ## Safety Boundary
 
