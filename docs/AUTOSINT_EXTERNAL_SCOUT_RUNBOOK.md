@@ -207,6 +207,17 @@ visible `Открыть чат` menu action in the Scheduled Tasks UI as a read-
 handoff step and verify the resulting URL is Project-scoped before configuring
 `scheduled_task_capture_target.json`.
 
+After the existing task was proven orphaned, a replacement creation request was
+submitted from the canonical Project Packet chat with the full self-contained
+strict Scheduled Task prompt and a hard guard: create the replacement only if it
+can remain associated with the current AUTOSINT External Scout Project /
+Packet conversation. ChatGPT returned exactly
+`TASK_CREATION_BLOCKED_PROJECT_OUTPUT_UNAVAILABLE`. This confirms the current
+ChatGPT UI/Tasks capability cannot create the required Project-scoped Scheduled
+Task output path from the Packet chat. Keep the local Packet-chat prompt trigger
+as the production upstream until ChatGPT exposes a Project-scoped Scheduled Task
+output conversation.
+
 On 2026-06-28 a fallback prompt trigger exposed a wrong-window foreground
 drift: metadata selected the Packet chat, but JavaScript could run in a
 non-target ChatGPT window after Chrome window reordering. The recovery patch

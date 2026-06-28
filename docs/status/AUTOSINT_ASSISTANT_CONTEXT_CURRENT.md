@@ -7,8 +7,8 @@ This is a public, sanitized context file for restoring AUTOSINT project context 
 - Private code/runtime repo: `tg-osint-eucom/autosint`
 - Public context mirror: `tg-osint-eucom/autosint-context`
 - Source branch: `main`
-- Source HEAD: `961327f888b51678846974973306366d0da1c791`
-- Generated at: `2026-06-28T20:55:36Z`
+- Source HEAD: `65aefa570d81f7ea3e52dfd5608d7d3e43af8f27`
+- Generated at: `2026-06-28T21:20:28Z`
 
 ## Primary Workflow
 
@@ -33,8 +33,8 @@ This is a public, sanitized context file for restoring AUTOSINT project context 
 - Available: `True`
 - Active selection policy: `latest_validated_capture_only`
 - Active packet count: `5`
-- History packet count: `439`
-- Latest packet timestamp: `2026-06-28T20:06:30Z`
+- History packet count: `444`
+- Latest packet timestamp: `2026-06-28T21:06:30Z`
 - Stale: `False`
 - Read-only: `True`
 - Private browser state read: `False`
@@ -61,6 +61,7 @@ The following are local-only and are not mirrored here:
 
 ## Latest Source Commits
 
+- `65aefa5 docs(scout): record scheduled task replacement blocker`
 - `961327f docs(scout): mark scheduled task output path blocked`
 - `8f05a70 docs(scout): record scheduled task chat menu risk`
 - `4f60ddf docs(scout): record scheduled task output blocker`
@@ -80,7 +81,6 @@ The following are local-only and are not mirrored here:
 - `0e2d0d3 chore(ops): record external scout launchd repair`
 - `1506e05 fix(scout): require packet readiness after prompt trigger`
 - `e0f10a6 feat(eval): expand AUTOSINT evaluation dataset`
-- `e4d56f7 feat(eval): add AUTOSINT evaluation dataset v0`
 
 ## Source Dirty State
 

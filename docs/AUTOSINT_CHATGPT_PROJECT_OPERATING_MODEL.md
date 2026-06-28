@@ -99,7 +99,12 @@ explicitly wants to inspect that task-associated chat. When clicked with
 explicit approval, `Открыть чат` navigated to `https://chatgpt.com/` rather
 than a conversation, with no packet output visible. The existing Scheduled Task
 is therefore not a usable primary upstream until a Project-scoped task output
-conversation exists.
+conversation exists. A guarded replacement request was then submitted from the
+canonical Project Packet chat; it instructed ChatGPT to create a replacement
+only if the task could remain associated with the current Project/Packet
+conversation. ChatGPT replied exactly
+`TASK_CREATION_BLOCKED_PROJECT_OUTPUT_UNAVAILABLE`, so Scheduled Tasks remain
+blocked for production use on this host.
 
 ### AUTOSINT System Control
 

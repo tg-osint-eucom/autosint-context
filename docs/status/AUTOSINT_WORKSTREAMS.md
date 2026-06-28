@@ -27,7 +27,7 @@ finding -> validation -> dedupe -> false-positive check -> targeted fix -> tests
 | `source_catalog_policy` | Blocked | Await explicit decision before tracking or mirroring source catalog policy. |
 | `launchd_runtime_health` | Complete | Scheduled capture fired naturally at `:08` with clear receipts and fresh Live Case Board state. |
 | `external_scout_multi_case_board` | Complete | Multi-case prompt, partial-promotion guard, rolling current/stale/archive retention, and natural-cycle proof are complete. |
-| `chatgpt_scheduled_tasks_production_path` | Blocked | Existing Scheduled Task output chat is orphaned/unusable: `Открыть чат` navigates to ChatGPT home with no conversation id or packet output. Local prompt trigger remains production upstream until a Project-scoped Scheduled Task output conversation exists. |
+| `chatgpt_scheduled_tasks_production_path` | Blocked | Existing Scheduled Task output chat is orphaned/unusable, and a guarded Project Packet-chat replacement request returned `TASK_CREATION_BLOCKED_PROJECT_OUTPUT_UNAVAILABLE`. Local prompt trigger remains production upstream until ChatGPT exposes a Project-scoped Scheduled Task output conversation. |
 | `orchestration_prefect_spike` | Planned | Evaluate Prefect as a read-only observability wrapper over the current local loop. |
 | `agent_pir_langgraph_design` | Planned | Design future read-only LangGraph agent loops for PIR/source-gap/thread review. |
 | `local_knowledge_index_spike` | Planned | Design a sanitized local retrieval index over docs, context mirror, page dumps, briefs, and receipts. |
@@ -176,7 +176,12 @@ task-result chat. After explicit approval, `Открыть чат` was clicked r
 and navigated to `https://chatgpt.com/` with no conversation id, no packet
 output, and no `generated_at`. The current Scheduled Task is therefore
 orphaned/unusable for production capture; keep local Packet-chat fallback as
-production until a Project-scoped task output conversation is available.
+production until a Project-scoped task output conversation is available. A
+guarded replacement request was then sent from the canonical Project Packet
+chat with the full self-contained strict Scheduled Task prompt. It required
+ChatGPT to create the replacement only if output could remain associated with
+the current Project/Packet conversation; ChatGPT replied exactly
+`TASK_CREATION_BLOCKED_PROJECT_OUTPUT_UNAVAILABLE`.
 
 ## Safety Boundary
 
