@@ -27,7 +27,7 @@ finding -> validation -> dedupe -> false-positive check -> targeted fix -> tests
 | `source_catalog_policy` | Blocked | Await explicit decision before tracking or mirroring source catalog policy. |
 | `launchd_runtime_health` | Complete | Scheduled capture fired naturally at `:08` with clear receipts and fresh Live Case Board state. |
 | `external_scout_multi_case_board` | Complete | Multi-case prompt, partial-promotion guard, rolling current/stale/archive retention, and natural-cycle proof are complete. |
-| `chatgpt_scheduled_tasks_production_path` | Needs Verification | Move External Scout upstream generation back to ChatGPT Scheduled Tasks as primary only after two natural capturable output cycles; local prompt trigger remains production upstream until then. |
+| `chatgpt_scheduled_tasks_production_path` | Blocked | Existing Scheduled Task output chat is orphaned/unusable: `Открыть чат` navigates to ChatGPT home with no conversation id or packet output. Local prompt trigger remains production upstream until a Project-scoped Scheduled Task output conversation exists. |
 | `orchestration_prefect_spike` | Planned | Evaluate Prefect as a read-only observability wrapper over the current local loop. |
 | `agent_pir_langgraph_design` | Planned | Design future read-only LangGraph agent loops for PIR/source-gap/thread review. |
 | `local_knowledge_index_spike` | Planned | Design a sanitized local retrieval index over docs, context mirror, page dumps, briefs, and receipts. |
@@ -172,7 +172,11 @@ hourly repeat interval, and end time controls; no output chat, Project, or
 conversation target selector was visible. The task actions menu exposed
 `Запустить сейчас` and `Открыть чат`, but no URL or target was visible; do not
 click `Открыть чат` automatically because it may navigate to an outside-project
-task-result chat.
+task-result chat. After explicit approval, `Открыть чат` was clicked read-only
+and navigated to `https://chatgpt.com/` with no conversation id, no packet
+output, and no `generated_at`. The current Scheduled Task is therefore
+orphaned/unusable for production capture; keep local Packet-chat fallback as
+production until a Project-scoped task output conversation is available.
 
 ## Safety Boundary
 

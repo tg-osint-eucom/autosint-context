@@ -95,7 +95,11 @@ showed title, instructions, hourly repeat interval, and end time controls, but
 no output chat, Project, or conversation target selector. Its actions menu
 showed `Запустить сейчас` and `Открыть чат`, but no visible URL or target for
 the associated chat; do not click `Открыть чат` automatically unless the user
-explicitly wants to inspect that task-associated chat.
+explicitly wants to inspect that task-associated chat. When clicked with
+explicit approval, `Открыть чат` navigated to `https://chatgpt.com/` rather
+than a conversation, with no packet output visible. The existing Scheduled Task
+is therefore not a usable primary upstream until a Project-scoped task output
+conversation exists.
 
 ### AUTOSINT System Control
 

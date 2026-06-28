@@ -134,6 +134,11 @@ selector. The task actions menu exposed `Запустить сейчас` and `�
 but the `Открыть чат` control did not expose a URL or target in the DOM; do not
 click it automatically because it may reopen or navigate to an outside-project
 task-result chat.
+After explicit approval, `Открыть чат` was clicked read-only and navigated to
+`https://chatgpt.com/` with no conversation id, no `candidate_packets`, no
+`generated_at`, and no task output. Treat the existing Scheduled Task as
+orphaned/unusable for production capture until ChatGPT exposes or creates a
+Project-scoped task output conversation.
 Keep it paused until a Project-scoped output path is available; do not resume
 it if it will create outside-project `chatgpt.com/c/...` result chats.
 This confirms the current bottleneck is
@@ -192,9 +197,11 @@ leave `com.autosint.external-scout-capture` and
 `com.autosint.external-scout-health-monitor` alone, and restore the fallback if
 the Scheduled Task output is late, stuck, missing, or schema-invalid.
 
-If the existing Scheduled Task cannot be safely resumed or edited, stop and
-request approval before creating or replacing tasks. Do not create duplicate
-tasks by default and do not create automatic per-case chats.
+If the existing Scheduled Task cannot be safely resumed, edited, or opened to a
+Project-scoped output chat, do not use it as production upstream. Create or
+replace a Scheduled Task only if the replacement can be proven to write to a
+Project-scoped task output chat; do not create duplicate tasks by default and
+do not create automatic per-case chats.
 If a human explicitly wants to inspect the associated task chat, use the
 visible `Открыть чат` menu action in the Scheduled Tasks UI as a read-only
 handoff step and verify the resulting URL is Project-scoped before configuring
