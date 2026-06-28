@@ -7,8 +7,8 @@ This is a public, sanitized context file for restoring AUTOSINT project context 
 - Private code/runtime repo: `tg-osint-eucom/autosint`
 - Public context mirror: `tg-osint-eucom/autosint-context`
 - Source branch: `main`
-- Source HEAD: `54ac57523b538d758ba3d10177ef727842bb2f5a`
-- Generated at: `2026-06-28T18:08:42Z`
+- Source HEAD: `458a1a57a4eace1e41f621e3362c7911b4c29f75`
+- Generated at: `2026-06-28T18:43:14Z`
 
 ## Primary Workflow
 
@@ -61,6 +61,7 @@ The following are local-only and are not mirrored here:
 
 ## Latest Source Commits
 
+- `458a1a5 fix(scout): split scheduled task and fallback targets`
 - `54ac575 fix(scout): harden packet target selection for scheduled path`
 - `70c480d fix(ops): tune external scout health monitor signals`
 - `6211b97 feat(ops): alert on external scout red health`
@@ -80,7 +81,6 @@ The following are local-only and are not mirrored here:
 - `95167ff fix(scout): canonicalize stale retained threads`
 - `e367902 fix(scout): preserve finance enrichment across capture cycles`
 - `cce3205 docs: sanitize Codex host instructions for context mirror`
-- `3a2a443 docs: update Codex host instructions for current AUTOSINT`
 
 ## Source Dirty State
 

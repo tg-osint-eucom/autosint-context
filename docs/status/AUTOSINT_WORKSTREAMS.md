@@ -136,7 +136,12 @@ scripts were hardened to revalidate the foreground Packet tab before executing
 JavaScript, and recovery receipts `20260628T174230Z_prompt_trigger_receipt.json`
 and `20260628T175854Z_capture_receipt.json` proved Packet-chat delivery,
 request-id match, `validation_error_count=0`, four promoted packets, and Live
-Board `stale=false`.
+Board `stale=false`. Later on 2026-06-28 the live
+Scheduled Tasks UI showed `AUTOSINT Daily External Scout` was paused and still
+had a stale prompt. The existing task was updated from the current strict local
+prompt artifact and resumed. ChatGPT Scheduled Tasks currently emit through a
+dedicated task-result conversation, so capture/fallback target separation is
+required before this workstream can be verified as production-primary.
 
 ## Safety Boundary
 

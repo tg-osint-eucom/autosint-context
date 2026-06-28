@@ -73,8 +73,9 @@ watch contract.
 Target production upstream:
 
 ```text
-ChatGPT Scheduled Task generates strict Packet-chat output hourly.
-AUTOSINT capture validates the latest Packet-chat output at :08.
+ChatGPT Scheduled Task generates strict output hourly.
+AUTOSINT capture validates the exact configured Scheduled Task output
+conversation at :08.
 ```
 
 The Scheduled Task production path is the preferred upstream generator once it
@@ -82,6 +83,11 @@ is proven. AUTOSINT remains authoritative: capture, staging, validation,
 quarantine, active inbox selection, Live Case Board freshness, health monitor,
 and eval decide whether output becomes current. ChatGPT Scheduled Task output
 is candidate material only, not Evidence, not OSIR, and not commander-ready.
+If ChatGPT routes Scheduled Task output into a dedicated task-result
+conversation instead of the Packet chat, configure capture by exact
+conversation id in ignored `artifacts/external_scout/capture_target.json`.
+Keep local fallback prompt submission pointed at the Packet chat through
+ignored `artifacts/external_scout/prompt_trigger_target.json`.
 
 Current proven fallback timing:
 
@@ -96,15 +102,14 @@ not the desired primary path. Capture then validates and promotes the latest
 strict packet, or safely skips when the visible packet is already in the inbox.
 
 Do not mark Scheduled Tasks production-ready until two natural Scheduled Task
-output cycles have generated fresh strict packets in the canonical Packet chat,
-capture has promoted or safely skipped equivalent strict packets with
-`validation_error_count=0`, Live Board has stayed `stale=false`, and eval has
-no current-runtime hard-fails.
+output cycles have generated fresh strict packets in the exact configured
+Scheduled Task output conversation, capture has promoted or safely skipped
+equivalent strict packets with `validation_error_count=0`, Live Board has
+stayed `stale=false`, and eval has no current-runtime hard-fails.
 
-If the Scheduled Task cannot be updated to write strict readable output into
-the canonical Packet chat, stop and request approval before creating or
-replacing tasks. Do not create duplicate tasks by default and do not create
-automatic per-case chats.
+If the existing Scheduled Task cannot be safely resumed or edited, stop and
+request approval before creating or replacing tasks. Do not create duplicate
+tasks by default and do not create automatic per-case chats.
 
 On 2026-06-28 a fallback prompt trigger exposed a wrong-window foreground
 drift: metadata selected the Packet chat, but JavaScript could run in a
