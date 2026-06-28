@@ -7,8 +7,8 @@ This is a public, sanitized context file for restoring AUTOSINT project context 
 - Private code/runtime repo: `tg-osint-eucom/autosint`
 - Public context mirror: `tg-osint-eucom/autosint-context`
 - Source branch: `main`
-- Source HEAD: `9934bea7914e08426b8065288b430cf8b15ff661`
-- Generated at: `2026-06-28T00:45:51Z`
+- Source HEAD: `6211b97c1871722640a925238176cb2361390c67`
+- Generated at: `2026-06-28T15:00:45Z`
 
 ## Primary Workflow
 
@@ -33,8 +33,8 @@ This is a public, sanitized context file for restoring AUTOSINT project context 
 - Available: `True`
 - Active selection policy: `latest_validated_capture_only`
 - Active packet count: `5`
-- History packet count: `352`
-- Latest packet timestamp: `2026-06-28T00:39:20Z`
+- History packet count: `420`
+- Latest packet timestamp: `2026-06-28T14:06:30Z`
 - Stale: `False`
 - Read-only: `True`
 - Private browser state read: `False`
@@ -61,6 +61,7 @@ The following are local-only and are not mirrored here:
 
 ## Latest Source Commits
 
+- `6211b97 feat(ops): alert on external scout red health`
 - `9934bea fix(scout): harden packet extraction and health monitor recovery`
 - `bab9fec fix(scout): add external scout health monitor and stale draft cleanup`
 - `43af14d chore(export): add case deep-dive handoff exporter`
@@ -80,7 +81,6 @@ The following are local-only and are not mirrored here:
 - `3a2a443 docs: update Codex host instructions for current AUTOSINT`
 - `d2f4e13 docs: persist Codex memory source-of-truth rule`
 - `6b9f1ba fix(scout): preserve stronger market cues during enrichment`
-- `5a10656 feat(scout): add market prediction finance enrichment`
 
 ## Source Dirty State
 
