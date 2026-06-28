@@ -91,7 +91,10 @@ This means proof must avoid upstream competition and must stay inside the
 AUTOSINT External Scout Project; otherwise Packet fallback remains the correct
 production source. The current live Scheduled Task state is paused, which is
 intentional containment until ChatGPT can produce output in the Project Packet
-chat or another Project-scoped output conversation.
+chat or another Project-scoped output conversation. After the outside-project
+result chat was deleted, the visible task editor was checked read-only and
+showed no output chat, Project, or conversation target selector, so there is no
+safe UI control currently available to bind the task to the Project Packet chat.
 
 Operational rules:
 

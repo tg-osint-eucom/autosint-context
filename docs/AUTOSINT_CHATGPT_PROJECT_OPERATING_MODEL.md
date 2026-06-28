@@ -89,7 +89,10 @@ inbox. Outside-project `chatgpt.com/c/...` task result chats are not production
 targets for AUTOSINT; production proof must remain inside the AUTOSINT External
 Scout Project or the canonical Project Packet chat. The current live task is
 paused after the outside-project result-chat test; keep it paused until a
-Project-scoped Scheduled Task output path is available.
+Project-scoped Scheduled Task output path is available. The visible task editor
+was checked read-only after the outside-project result chat was deleted; it
+showed title, instructions, hourly repeat interval, and end time controls, but
+no output chat, Project, or conversation target selector.
 
 ### AUTOSINT System Control
 

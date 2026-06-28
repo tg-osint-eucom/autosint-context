@@ -20,9 +20,10 @@
     "status_only": true,
     "validated_packet_count": 5
   },
-  "generated_at": "2026-06-28T20:42:16Z",
+  "generated_at": "2026-06-28T20:47:54Z",
   "havoc_rfi_behavior": "HAVOC/RFI uses External Scout Case Thread current state when available, then falls back to the best validated External Scout packet; canonical cases, Case Genesis, TSOC/HAVOC, source coverage, and provenance remain audit material.",
   "latest_commits": [
+    "4f60ddf docs(scout): record scheduled task output blocker",
     "d3ce97b docs(scout): record scheduled task containment",
     "e7245d4 fix(scout): isolate scheduled task capture probe",
     "dde1a0e docs(scout): record scheduled task upstream proof failure",
@@ -41,8 +42,7 @@
     "e0f10a6 feat(eval): expand AUTOSINT evaluation dataset",
     "e4d56f7 feat(eval): add AUTOSINT evaluation dataset v0",
     "fdf3866 chore(ops): add GPT-5.6 evaluation workstream",
-    "13145a2 fix(scout): run finance enrichment after new captures",
-    "d871196 feat(scout): add Kalshi read-only enrichment"
+    "13145a2 fix(scout): run finance enrichment after new captures"
   ],
   "launchd_status": "Local-only; not represented in this public mirror.",
   "mirror_repo": "tg-osint-eucom/autosint-context",
@@ -96,7 +96,7 @@
   },
   "source_branch": "main",
   "source_dirty_state": [],
-  "source_head": "d3ce97b8f0f694935ac01bea01e9b45aec574cf3",
+  "source_head": "4f60ddf168ac3d29a99c641b4b27c065896b3524",
   "source_repo": "tg-osint-eucom/autosint",
   "source_repo_url": "https://github.com/tg-osint-eucom/autosint",
   "supporting_routes": [

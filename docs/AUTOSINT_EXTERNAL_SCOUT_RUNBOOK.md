@@ -127,6 +127,10 @@ fallback inbox was already newer. The user deleted that outside-project
 conversation; it must not be treated as the AUTOSINT Project Packet target.
 The Scheduled Tasks page was then rechecked through the visible UI and showed
 `AUTOSINT Daily External Scout` as `Приостановлено · Последний запуск Сегодня`.
+The task editor was opened read-only after the outside-project result chat was
+deleted; it exposed only task title, instructions, hourly repeat interval, and
+end time controls, with no visible output chat, Project, or conversation target
+selector.
 Keep it paused until a Project-scoped output path is available; do not resume
 it if it will create outside-project `chatgpt.com/c/...` result chats.
 This confirms the current bottleneck is
