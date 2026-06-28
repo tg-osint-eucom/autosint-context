@@ -7,8 +7,8 @@ This is a public, sanitized context file for restoring AUTOSINT project context 
 - Private code/runtime repo: `tg-osint-eucom/autosint`
 - Public context mirror: `tg-osint-eucom/autosint-context`
 - Source branch: `main`
-- Source HEAD: `6211b97c1871722640a925238176cb2361390c67`
-- Generated at: `2026-06-28T15:00:45Z`
+- Source HEAD: `70c480dcd663b39f685a9c1cfbc654fe25dcdce5`
+- Generated at: `2026-06-28T15:29:27Z`
 
 ## Primary Workflow
 
@@ -61,6 +61,7 @@ The following are local-only and are not mirrored here:
 
 ## Latest Source Commits
 
+- `70c480d fix(ops): tune external scout health monitor signals`
 - `6211b97 feat(ops): alert on external scout red health`
 - `9934bea fix(scout): harden packet extraction and health monitor recovery`
 - `bab9fec fix(scout): add external scout health monitor and stale draft cleanup`
@@ -80,7 +81,6 @@ The following are local-only and are not mirrored here:
 - `cce3205 docs: sanitize Codex host instructions for context mirror`
 - `3a2a443 docs: update Codex host instructions for current AUTOSINT`
 - `d2f4e13 docs: persist Codex memory source-of-truth rule`
-- `6b9f1ba fix(scout): preserve stronger market cues during enrichment`
 
 ## Source Dirty State
 
