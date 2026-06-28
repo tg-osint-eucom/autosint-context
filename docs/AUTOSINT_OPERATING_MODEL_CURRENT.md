@@ -89,7 +89,9 @@ was not promoted because the Packet fallback had already produced a newer inbox
 packet and because outside-project result chats are not production targets.
 This means proof must avoid upstream competition and must stay inside the
 AUTOSINT External Scout Project; otherwise Packet fallback remains the correct
-production source.
+production source. The current live Scheduled Task state is paused, which is
+intentional containment until ChatGPT can produce output in the Project Packet
+chat or another Project-scoped output conversation.
 
 Operational rules:
 
@@ -102,6 +104,8 @@ Operational rules:
 - ChatGPT scheduled output timing has drifted and may remain visible as
   `Выполняется` past the local capture window; prove with the scheduled-task
   probe before changing production targets.
+- Do not resume a Scheduled Task that only creates outside-project
+  `chatgpt.com/c/...` result chats.
 - Planned local AUTOSINT capture timing is minute `:08` of each hour.
 - The launchd template may exist locally, but installing/loading launchd is a separate approval.
 

@@ -7,8 +7,8 @@ This is a public, sanitized context file for restoring AUTOSINT project context 
 - Private code/runtime repo: `tg-osint-eucom/autosint`
 - Public context mirror: `tg-osint-eucom/autosint-context`
 - Source branch: `main`
-- Source HEAD: `e7245d4aceb115ffd19ccb8ae3e8e6efe2a51490`
-- Generated at: `2026-06-28T20:39:19Z`
+- Source HEAD: `d3ce97b8f0f694935ac01bea01e9b45aec574cf3`
+- Generated at: `2026-06-28T20:42:16Z`
 
 ## Primary Workflow
 
@@ -61,6 +61,7 @@ The following are local-only and are not mirrored here:
 
 ## Latest Source Commits
 
+- `d3ce97b docs(scout): record scheduled task containment`
 - `e7245d4 fix(scout): isolate scheduled task capture probe`
 - `dde1a0e docs(scout): record scheduled task upstream proof failure`
 - `458a1a5 fix(scout): split scheduled task and fallback targets`
@@ -80,7 +81,6 @@ The following are local-only and are not mirrored here:
 - `fdf3866 chore(ops): add GPT-5.6 evaluation workstream`
 - `13145a2 fix(scout): run finance enrichment after new captures`
 - `d871196 feat(scout): add Kalshi read-only enrichment`
-- `95167ff fix(scout): canonicalize stale retained threads`
 
 ## Source Dirty State
 

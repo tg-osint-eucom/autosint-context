@@ -87,7 +87,9 @@ validate it with the scheduled-task probe first; do not repoint the production
 Packet capture target until the task output is strict-valid and newer than the
 inbox. Outside-project `chatgpt.com/c/...` task result chats are not production
 targets for AUTOSINT; production proof must remain inside the AUTOSINT External
-Scout Project or the canonical Project Packet chat.
+Scout Project or the canonical Project Packet chat. The current live task is
+paused after the outside-project result-chat test; keep it paused until a
+Project-scoped Scheduled Task output path is available.
 
 ### AUTOSINT System Control
 

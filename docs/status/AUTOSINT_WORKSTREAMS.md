@@ -164,7 +164,9 @@ the task-result conversation and found `packet_count=5`,
 `validation_error_count=0`, and generated_at `2026-06-28T20:05:53Z`, but
 safe-skipped because the Packet fallback inbox was already newer. That
 outside-project result chat was deleted by the user and must not be used as a
-production target.
+production target. The Scheduled Tasks page currently shows
+`AUTOSINT Daily External Scout` paused; keep it paused unless a Project-scoped
+output path is available.
 
 ## Safety Boundary
 

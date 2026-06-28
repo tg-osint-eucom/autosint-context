@@ -125,6 +125,10 @@ generated_at `2026-06-28T20:05:53Z` with `packet_count=5` and
 `validation_error_count=0`, but it correctly did not promote because the Packet
 fallback inbox was already newer. The user deleted that outside-project
 conversation; it must not be treated as the AUTOSINT Project Packet target.
+The Scheduled Tasks page was then rechecked through the visible UI and showed
+`AUTOSINT Daily External Scout` as `Приостановлено · Последний запуск Сегодня`.
+Keep it paused until a Project-scoped output path is available; do not resume
+it if it will create outside-project `chatgpt.com/c/...` result chats.
 This confirms the current bottleneck is
 upstream competition and target/timing, not the Packet-chat capture bridge:
 Scheduled Task output can become valid, but it is not production-primary while
@@ -172,6 +176,8 @@ the Scheduled Task path has two proven natural cycles.
 By default, the probe rejects non-project `https://chatgpt.com/c/...` result
 URLs; production proof must use a ChatGPT Project URL such as
 `https://chatgpt.com/g/.../c/...` or the canonical Project Packet chat.
+If the Scheduled Task UI can only emit outside-project result chats, leave it
+paused and continue using the local Project Packet-chat trigger/capture loop.
 
 For a clean Scheduled Task proof window, pause or unload only the local
 `com.autosint.external-scout-prompt-trigger` fallback if explicitly needed,
