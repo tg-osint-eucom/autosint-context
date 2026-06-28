@@ -7,8 +7,8 @@ This is a public, sanitized context file for restoring AUTOSINT project context 
 - Private code/runtime repo: `tg-osint-eucom/autosint`
 - Public context mirror: `tg-osint-eucom/autosint-context`
 - Source branch: `main`
-- Source HEAD: `70c480dcd663b39f685a9c1cfbc654fe25dcdce5`
-- Generated at: `2026-06-28T15:29:27Z`
+- Source HEAD: `54ac57523b538d758ba3d10177ef727842bb2f5a`
+- Generated at: `2026-06-28T18:08:42Z`
 
 ## Primary Workflow
 
@@ -32,9 +32,9 @@ This is a public, sanitized context file for restoring AUTOSINT project context 
 
 - Available: `True`
 - Active selection policy: `latest_validated_capture_only`
-- Active packet count: `5`
-- History packet count: `420`
-- Latest packet timestamp: `2026-06-28T14:06:30Z`
+- Active packet count: `4`
+- History packet count: `429`
+- Latest packet timestamp: `2026-06-28T17:50:30Z`
 - Stale: `False`
 - Read-only: `True`
 - Private browser state read: `False`
@@ -61,6 +61,7 @@ The following are local-only and are not mirrored here:
 
 ## Latest Source Commits
 
+- `54ac575 fix(scout): harden packet target selection for scheduled path`
 - `70c480d fix(ops): tune external scout health monitor signals`
 - `6211b97 feat(ops): alert on external scout red health`
 - `9934bea fix(scout): harden packet extraction and health monitor recovery`
@@ -80,7 +81,6 @@ The following are local-only and are not mirrored here:
 - `e367902 fix(scout): preserve finance enrichment across capture cycles`
 - `cce3205 docs: sanitize Codex host instructions for context mirror`
 - `3a2a443 docs: update Codex host instructions for current AUTOSINT`
-- `d2f4e13 docs: persist Codex memory source-of-truth rule`
 
 ## Source Dirty State
 

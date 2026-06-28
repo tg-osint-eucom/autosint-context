@@ -68,19 +68,53 @@ See `docs/AUTOSINT_GLOBAL_SENSOR_COVERAGE_POLICY.md` and
 `docs/AUTOSINT_THEATER_WATCH_POLICY.md` for the durable coverage and theater
 watch contract.
 
-## Scheduled Task Timing
+## Generation And Capture Timing
 
-Current local generation/capture timing:
+Target production upstream:
+
+```text
+ChatGPT Scheduled Task generates strict Packet-chat output hourly.
+AUTOSINT capture validates the latest Packet-chat output at :08.
+```
+
+The Scheduled Task production path is the preferred upstream generator once it
+is proven. AUTOSINT remains authoritative: capture, staging, validation,
+quarantine, active inbox selection, Live Case Board freshness, health monitor,
+and eval decide whether output becomes current. ChatGPT Scheduled Task output
+is candidate material only, not Evidence, not OSIR, and not commander-ready.
+
+Current proven fallback timing:
 
 ```text
 Prompt trigger every hour at :50.
 Capture every hour at :08.
 ```
 
-The prompt trigger posts the strict Daily Scout prompt to the visible Packet
-chat and waits for `packet_ready_for_capture=true`. Capture then validates and
-promotes the latest strict packet, or safely skips when the visible packet is
-already in the inbox.
+The local prompt trigger posts the strict Daily Scout prompt to the visible
+Packet chat and waits for `packet_ready_for_capture=true`. It is fallback,
+not the desired primary path. Capture then validates and promotes the latest
+strict packet, or safely skips when the visible packet is already in the inbox.
+
+Do not mark Scheduled Tasks production-ready until two natural Scheduled Task
+output cycles have generated fresh strict packets in the canonical Packet chat,
+capture has promoted or safely skipped equivalent strict packets with
+`validation_error_count=0`, Live Board has stayed `stale=false`, and eval has
+no current-runtime hard-fails.
+
+If the Scheduled Task cannot be updated to write strict readable output into
+the canonical Packet chat, stop and request approval before creating or
+replacing tasks. Do not create duplicate tasks by default and do not create
+automatic per-case chats.
+
+On 2026-06-28 a fallback prompt trigger exposed a wrong-window foreground
+drift: metadata selected the Packet chat, but JavaScript could run in a
+non-target ChatGPT window after Chrome window reordering. The recovery patch
+requires prompt/capture target scripts to revalidate the foreground Packet tab
+before executing JavaScript. Receipt `20260628T174230Z_prompt_trigger_receipt.json`
+then proved Packet-chat request-id delivery with
+`strict_packet_validation_error_count=0`; capture receipt
+`20260628T175854Z_capture_receipt.json` promoted four valid packets generated_at
+`2026-06-28T17:50:30Z` and restored Live Board `stale=false`.
 
 Do not install or load launchd until manual dry-run and real one-shot capture
 are consistently valid.

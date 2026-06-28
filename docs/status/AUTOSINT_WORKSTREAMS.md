@@ -27,6 +27,7 @@ finding -> validation -> dedupe -> false-positive check -> targeted fix -> tests
 | `source_catalog_policy` | Blocked | Await explicit decision before tracking or mirroring source catalog policy. |
 | `launchd_runtime_health` | Complete | Scheduled capture fired naturally at `:08` with clear receipts and fresh Live Case Board state. |
 | `external_scout_multi_case_board` | Complete | Multi-case prompt, partial-promotion guard, rolling current/stale/archive retention, and natural-cycle proof are complete. |
+| `chatgpt_scheduled_tasks_production_path` | Active | Move External Scout upstream generation back to ChatGPT Scheduled Tasks as primary, with local prompt trigger retained as fallback until two natural cycles are proven. |
 | `orchestration_prefect_spike` | Planned | Evaluate Prefect as a read-only observability wrapper over the current local loop. |
 | `agent_pir_langgraph_design` | Planned | Design future read-only LangGraph agent loops for PIR/source-gap/thread review. |
 | `local_knowledge_index_spike` | Planned | Design a sanitized local retrieval index over docs, context mirror, page dumps, briefs, and receipts. |
@@ -122,6 +123,20 @@ sanitized label taxonomy, deterministic local graders, committed safe fixtures,
 ignored generated datasets, and a copy-safe ChatGPT review to Codex handoff
 queue. It does not scrape ChatGPT, read browser state, call model APIs, mutate
 runtime state, or approve production model migration by itself.
+
+`chatgpt_scheduled_tasks_production_path` is now tracked as active. The target
+operating model is ChatGPT Scheduled Tasks as the primary upstream generator
+for strict External Scout packets; AUTOSINT capture, validator, quarantine,
+Live Case Board, health monitor, and eval remain the source of truth. The
+local Packet-chat prompt trigger remains fallback until an existing Scheduled
+Task can be safely configured and two natural Scheduled Task -> capture cycles
+are proven. On 2026-06-28, a fallback prompt-trigger foreground drift inserted
+a draft into the non-target `autosint` chat; the draft was cleared, target
+scripts were hardened to revalidate the foreground Packet tab before executing
+JavaScript, and recovery receipts `20260628T174230Z_prompt_trigger_receipt.json`
+and `20260628T175854Z_capture_receipt.json` proved Packet-chat delivery,
+request-id match, `validation_error_count=0`, four promoted packets, and Live
+Board `stale=false`.
 
 ## Safety Boundary
 

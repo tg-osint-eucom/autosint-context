@@ -31,7 +31,8 @@ Exactly three chat types are allowed in the project model.
 
 Purpose:
 
-- Generate hourly strict External Scout packets.
+- Generate hourly strict External Scout packets. The target production model is
+  ChatGPT Scheduled Tasks as the primary upstream generator once proven.
 - Output strict JSON/Markdown only.
 - Feed the visible capture bridge, staging gate, validator, quarantine path,
   active inbox, and Live Case Board.
@@ -65,6 +66,14 @@ Rules:
 
 If the output fails schema validation, AUTOSINT quarantines it and the Live
 Case Board does not update from that capture.
+
+Until Scheduled Tasks are proven over two natural output -> capture cycles, the
+local Packet-chat prompt trigger remains fallback. Fallback trigger receipts
+must prove exact Packet-chat target selection, request-id visibility in the
+user turn, strict packet request-id match, `validation_error_count=0`, and a
+fresh generated_at before capture promotes output. If a Scheduled Task cannot
+be edited to write into the canonical Packet chat, stop and request approval
+before replacing it or creating a duplicate.
 
 ### AUTOSINT System Control
 
