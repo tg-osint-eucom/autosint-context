@@ -7,8 +7,8 @@ This is a public, sanitized context file for restoring AUTOSINT project context 
 - Private code/runtime repo: `tg-osint-eucom/autosint`
 - Public context mirror: `tg-osint-eucom/autosint-context`
 - Source branch: `main`
-- Source HEAD: `bab9fec971cdd4c9ce33ca9d4f6f3aad7c964b28`
-- Generated at: `2026-06-27T22:00:03Z`
+- Source HEAD: `9934bea7914e08426b8065288b430cf8b15ff661`
+- Generated at: `2026-06-28T00:45:51Z`
 
 ## Primary Workflow
 
@@ -33,9 +33,9 @@ This is a public, sanitized context file for restoring AUTOSINT project context 
 - Available: `True`
 - Active selection policy: `latest_validated_capture_only`
 - Active packet count: `5`
-- History packet count: `337`
-- Latest packet timestamp: `2026-06-27T20:06:40Z`
-- Stale: `True`
+- History packet count: `352`
+- Latest packet timestamp: `2026-06-28T00:39:20Z`
+- Stale: `False`
 - Read-only: `True`
 - Private browser state read: `False`
 - Cookies read: `False`
@@ -61,6 +61,7 @@ The following are local-only and are not mirrored here:
 
 ## Latest Source Commits
 
+- `9934bea fix(scout): harden packet extraction and health monitor recovery`
 - `bab9fec fix(scout): add external scout health monitor and stale draft cleanup`
 - `43af14d chore(export): add case deep-dive handoff exporter`
 - `0949cec fix(scout): extend prompt packet readiness window`
@@ -80,7 +81,6 @@ The following are local-only and are not mirrored here:
 - `d2f4e13 docs: persist Codex memory source-of-truth rule`
 - `6b9f1ba fix(scout): preserve stronger market cues during enrichment`
 - `5a10656 feat(scout): add market prediction finance enrichment`
-- `e0503ae fix(scout): clarify theater watch overflow reasons`
 
 ## Source Dirty State
 
