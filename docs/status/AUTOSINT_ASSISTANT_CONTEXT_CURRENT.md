@@ -7,8 +7,8 @@ This is a public, sanitized context file for restoring AUTOSINT project context 
 - Private code/runtime repo: `tg-osint-eucom/autosint`
 - Public context mirror: `tg-osint-eucom/autosint-context`
 - Source branch: `main`
-- Source HEAD: `4f60ddf168ac3d29a99c641b4b27c065896b3524`
-- Generated at: `2026-06-28T20:47:54Z`
+- Source HEAD: `8f05a700b992fadd1e2c37f867ba06041709b6ba`
+- Generated at: `2026-06-28T20:51:23Z`
 
 ## Primary Workflow
 
@@ -61,6 +61,7 @@ The following are local-only and are not mirrored here:
 
 ## Latest Source Commits
 
+- `8f05a70 docs(scout): record scheduled task chat menu risk`
 - `4f60ddf docs(scout): record scheduled task output blocker`
 - `d3ce97b docs(scout): record scheduled task containment`
 - `e7245d4 fix(scout): isolate scheduled task capture probe`
@@ -80,7 +81,6 @@ The following are local-only and are not mirrored here:
 - `e0f10a6 feat(eval): expand AUTOSINT evaluation dataset`
 - `e4d56f7 feat(eval): add AUTOSINT evaluation dataset v0`
 - `fdf3866 chore(ops): add GPT-5.6 evaluation workstream`
-- `13145a2 fix(scout): run finance enrichment after new captures`
 
 ## Source Dirty State
 

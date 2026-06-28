@@ -130,7 +130,10 @@ The Scheduled Tasks page was then rechecked through the visible UI and showed
 The task editor was opened read-only after the outside-project result chat was
 deleted; it exposed only task title, instructions, hourly repeat interval, and
 end time controls, with no visible output chat, Project, or conversation target
-selector.
+selector. The task actions menu exposed `Запустить сейчас` and `Открыть чат`,
+but the `Открыть чат` control did not expose a URL or target in the DOM; do not
+click it automatically because it may reopen or navigate to an outside-project
+task-result chat.
 Keep it paused until a Project-scoped output path is available; do not resume
 it if it will create outside-project `chatgpt.com/c/...` result chats.
 This confirms the current bottleneck is
@@ -192,6 +195,10 @@ the Scheduled Task output is late, stuck, missing, or schema-invalid.
 If the existing Scheduled Task cannot be safely resumed or edited, stop and
 request approval before creating or replacing tasks. Do not create duplicate
 tasks by default and do not create automatic per-case chats.
+If a human explicitly wants to inspect the associated task chat, use the
+visible `Открыть чат` menu action in the Scheduled Tasks UI as a read-only
+handoff step and verify the resulting URL is Project-scoped before configuring
+`scheduled_task_capture_target.json`.
 
 On 2026-06-28 a fallback prompt trigger exposed a wrong-window foreground
 drift: metadata selected the Packet chat, but JavaScript could run in a

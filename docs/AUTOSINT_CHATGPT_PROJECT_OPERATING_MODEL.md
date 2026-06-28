@@ -92,7 +92,10 @@ paused after the outside-project result-chat test; keep it paused until a
 Project-scoped Scheduled Task output path is available. The visible task editor
 was checked read-only after the outside-project result chat was deleted; it
 showed title, instructions, hourly repeat interval, and end time controls, but
-no output chat, Project, or conversation target selector.
+no output chat, Project, or conversation target selector. Its actions menu
+showed `Запустить сейчас` and `Открыть чат`, but no visible URL or target for
+the associated chat; do not click `Открыть чат` automatically unless the user
+explicitly wants to inspect that task-associated chat.
 
 ### AUTOSINT System Control
 

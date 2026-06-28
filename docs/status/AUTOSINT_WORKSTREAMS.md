@@ -169,7 +169,10 @@ production target. The Scheduled Tasks page currently shows
 output path is available. The task editor was checked read-only after deletion
 of the outside-project result chat and showed only task title, instructions,
 hourly repeat interval, and end time controls; no output chat, Project, or
-conversation target selector was visible.
+conversation target selector was visible. The task actions menu exposed
+`Запустить сейчас` and `Открыть чат`, but no URL or target was visible; do not
+click `Открыть чат` automatically because it may navigate to an outside-project
+task-result chat.
 
 ## Safety Boundary
 
