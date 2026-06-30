@@ -7,8 +7,8 @@ This is a public, sanitized context file for restoring AUTOSINT project context 
 - Private code/runtime repo: `tg-osint-eucom/autosint`
 - Public context mirror: `tg-osint-eucom/autosint-context`
 - Source branch: `main`
-- Source HEAD: `510cb5655d5d156a0db1b16204bceedae828ef55`
-- Generated at: `2026-06-30T11:52:58Z`
+- Source HEAD: `ff42103837147458fe6c89dccd8a042a7665c537`
+- Generated at: `2026-06-30T12:09:41Z`
 
 ## Primary Workflow
 
@@ -61,6 +61,7 @@ The following are local-only and are not mirrored here:
 
 ## Latest Source Commits
 
+- `ff42103 fix(scout): summarize active source health todos`
 - `510cb56 fix(scout): surface warn source causes on 24-7 page`
 - `4006336 fix(scout): allow late packet readiness recovery`
 - `97faffc fix(scout): expose source recovery verification stages`
@@ -80,7 +81,6 @@ The following are local-only and are not mirrored here:
 - `e7245d4 fix(scout): isolate scheduled task capture probe`
 - `dde1a0e docs(scout): record scheduled task upstream proof failure`
 - `458a1a5 fix(scout): split scheduled task and fallback targets`
-- `54ac575 fix(scout): harden packet target selection for scheduled path`
 
 ## Source Dirty State
 
