@@ -164,6 +164,137 @@ Packet chat and waits for `packet_ready_for_capture=true`. It is fallback,
 not the desired primary path. Capture then validates and promotes the latest
 strict packet, or safely skips when the visible packet is already in the inbox.
 
+## Runtime Adapter Environment
+
+External Scout wrappers load one optional ignored runtime environment file:
+
+```text
+artifacts/external_scout/runtime_env.sh
+```
+
+This file is for local runtime names only and must never be committed or
+printed. The wrappers log only whether the file was loaded, not any values.
+
+Use this path for read-only adapter credentials such as Kalshi when approved:
+
+```bash
+export AUTOSINT_KALSHI_CREDENTIALS_ENABLED=1
+export KALSHI_API_KEY_ID=...
+export KALSHI_API_PRIVATE_KEY_PEM='...'
+```
+
+Alternative accepted names are `KALSHI_ACCESS_KEY` or `KALSHI_API_KEY` for the
+key id and `KALSHI_PRIVATE_KEY_PEM` for the private key. Do not put browser
+cookies, browser sessions, Chrome profile paths, localStorage/sessionStorage,
+or personal web-login state in this file.
+
+To create that ignored file without printing credential values, use the helper
+and enter values interactively:
+
+```bash
+.venv/bin/python scripts/configure_external_scout_runtime_env.py
+.venv/bin/python scripts/check_external_scout_runtime_env.py
+```
+
+The helper writes only the ignored runtime env file, sets file mode `0600`, and
+reports only env-name presence. It must not be used to ingest browser cookies,
+sessions, Chrome profiles, localStorage/sessionStorage, `.env` dumps, or
+credential files. After the checker reports the required Kalshi env names are
+visible, run post-capture enrichment or wait for the next capture wrapper.
+
+A pinned logged-in Kalshi browser tab is allowed for human review only.
+AUTOSINT 24/7 enrichment must use public/API adapters and must not read browser
+cookies, sessions, localStorage/sessionStorage, or Chrome profile state.
+
+To verify runtime visibility without reading or printing credential values:
+
+```bash
+.venv/bin/python scripts/check_external_scout_runtime_env.py
+```
+
+The checker reports only file presence and env-name presence. It never prints
+credential values and does not read browser private state.
+
+## Source URL Inventory
+
+After a successful capture and post-capture enrichment, the wrapper refreshes a
+read-only candidate source URL inventory and public candidate-source
+verification:
+
+```bash
+.venv/bin/python scripts/build_external_scout_source_url_inventory.py
+.venv/bin/python scripts/verify_external_scout_candidate_sources.py --include-history --limit 220 --timeout 3 --max-seconds 240
+```
+
+Verification intentionally includes current plus stale/retained candidate URLs
+so the pinned `/external-scout/24-7` page can show provider/source health for
+active cases and retained continuity cases from the same canonical proof
+report. Current URLs are prioritized before stale/retained and history-only
+URLs, and the wall-clock budget prevents this diagnostic pass from becoming an
+unbounded capture blocker.
+
+Generated outputs:
+
+```text
+artifacts/source_coverage/latest/all_source_urls.json
+artifacts/source_coverage/latest/all_source_urls.md
+artifacts/source_coverage/latest/candidate_source_verification.json
+artifacts/source_coverage/latest/candidate_source_verification.md
+```
+
+This inventory and verification output are local candidate memory for dedupe,
+operator review, and source-gap triage only. They do not import Evidence, create
+case links, mutate source config, open OSIR, perform apply/import, change
+commander-ready state, use browser cookies/sessions, read Chrome profile state,
+bypass login/CAPTCHA/paywalls, or print credential values. Candidate URLs can
+still appear as follow-up gaps until a read-only adapter or approved import path
+turns the lane into an explicit checked source.
+
+## 24/7 Proof Loop
+
+Do not call External Scout 24/7-ready after a single green run. The production
+loop is considered proven only after repeated natural cycles leave durable
+proof artifacts.
+
+Use the read-only proof reporter:
+
+```bash
+.venv/bin/python scripts/report_external_scout_24_7_proof.py --dry-run
+```
+
+Operator browser surface:
+
+```text
+/external-scout/24-7
+/api/v1/external-scout/24-7-proof
+```
+
+Keep `/external-scout/24-7` as the single pinned External Scout operator tab.
+It reads prompt-trigger receipts, capture receipts, current health, Live Board
+state, current/stale case health, source gaps, enrichment gates, logs, and the
+existing eval summary through the same canonical proof report builder as
+`/api/v1/external-scout/24-7-proof`. `/external-scout/threads`, HAVOC/RFI, JSON,
+logs, and artifacts are read-only drill-downs or verification views, not
+separate control sites. No additional app server is required. The proof script
+writes generated reports only under ignored `artifacts/external_scout/24_7_proof/latest/`
+unless `--no-write` is passed.
+
+Default pass criteria:
+
+- three consecutive natural `:50 -> :08` cycles are schedule-aligned;
+- each cycle has prompt submitted, user turn verified, request-id visibility,
+  `packet_ready_for_capture=true`, and prompt validation errors equal zero;
+- capture selects the Packet chat and either promotes or safely skips an
+  equivalent already-ingested packet with validation errors equal zero;
+- current health is not `RED`;
+- Live Board is `stale=false`;
+- active thread count is greater than zero;
+- eval current-runtime hard-fails are absent.
+
+If any cycle fails, record the exact blocker, use the bounded recovery playbook
+only when health is `RED` or the board is stale/zero-active, and restart the
+consecutive natural-cycle proof count after the fix.
+
 Do not mark Scheduled Tasks production-ready until two natural Scheduled Task
 output cycles have generated fresh strict packets in the exact configured
 Scheduled Task output conversation, capture has promoted or safely skipped
@@ -314,9 +445,11 @@ Default External Scout review uses only the latest validated capture.
 
 ## Live Case Board Rolling Retention
 
-`/external-scout/threads` is the primary case board and intentionally differs
-from the latest-packet inbox. It rebuilds topic threads from validated packet
-history and applies rolling retention:
+`/external-scout/threads` is the Live Case Board drill-down and intentionally
+differs from the latest-packet inbox. The pinned operational source remains
+`/external-scout/24-7`, which includes current and stale/retained thread health
+from the same report chain. The thread route rebuilds topic threads from
+validated packet history and applies rolling retention:
 
 - Threads updated in the latest active capture are `current`.
 - Valid threads not updated in the latest active capture remain visible as

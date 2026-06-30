@@ -40,7 +40,11 @@ private local path strings into the public context mirror.
 
 ## Current Primary Surfaces
 
-Primary operator routes:
+Primary pinned operator route:
+
+- `/external-scout/24-7`
+
+Read-only drill-down routes:
 
 - `/mission-control`
 - `/external-scout/threads`
@@ -121,6 +125,24 @@ External Scout capture/output rules:
 - Lower-quality packets may append to timeline without replacing best current
   state.
 - Generated artifacts stay under `artifacts/` and are not committed.
+- Do not claim the local Packet-chat prompt/capture loop is 24/7-proven from a
+  single green run or manual recovery. Use
+  `scripts/report_external_scout_24_7_proof.py`; the default gate is three
+  consecutive natural `:50 -> :08` cycles with prompt/capture proof, Live Board
+  `stale=false`, active threads, no RED health, and no eval runtime hard-fails.
+
+External Scout 24/7 control-page rules:
+
+- `/external-scout/24-7` is the single pinned operator page for 24/7
+  proof, Live Board freshness, source gaps, enrichment gates, health, logs,
+  and drill-down links.
+- Do not create a second dashboard, second app server, or parallel proof
+  source for External Scout 24/7 state. New operator sections should read from
+  the canonical proof report builder unless there is an explicit architecture
+  change.
+- `/external-scout/threads`, `/havoc-rfi/SOCCENT`, JSON routes, logs, and
+  artifacts are read-only drill-downs or verification views, not separate
+  control surfaces.
 
 Live Case Board rules:
 

@@ -15,7 +15,7 @@ finding -> validation -> dedupe -> false-positive check -> targeted fix -> tests
 | Workstream | Current status | Purpose |
 | --- | --- | --- |
 | `external_scout_strict_capture` | Complete | Natural hourly strict ChatGPT output validated and promoted through staging overnight. |
-| `external_scout_live_case_board` | Active | Keep `/external-scout/threads` current, fresh, and operator-readable. |
+| `external_scout_live_case_board` | Active | Keep `/external-scout/threads` current, fresh, and operator-readable as the drill-down behind the pinned `/external-scout/24-7` control page. |
 | `case_coverage_matrix` | Active | Maintain full strict coverage matrices in packets and thread rollups. |
 | `global_sensor_coverage_policy` | Active | Enforce no-silent-omission source/sensor coverage policy across packets, reports, Live Board, and HAVOC/RFI preview. |
 | `theater_watch_summary` | Complete | Live Packet output now reports checked/no-case/overflow state for SOCCENT, SOCEUR, SOCPAC, SOCAFRICA, SOCSOUTH, SOCKOR, and SOCOMD. |
@@ -26,12 +26,13 @@ finding -> validation -> dedupe -> false-positive check -> targeted fix -> tests
 | `havoc_rfi_thread_current` | Active | Keep HAVOC/RFI consuming thread current state before packet fallback. |
 | `source_catalog_policy` | Blocked | Await explicit decision before tracking or mirroring source catalog policy. |
 | `launchd_runtime_health` | Complete | Scheduled capture fired naturally at `:08` with clear receipts and fresh Live Case Board state. |
+| `external_scout_24_7_proof_loop` | Active | Keep `/external-scout/24-7` as the single pinned operator source and require three consecutive natural `:50 -> :08` proof cycles before calling the local Packet-chat loop 24/7-proven. |
 | `external_scout_multi_case_board` | Complete | Multi-case prompt, partial-promotion guard, rolling current/stale/archive retention, and natural-cycle proof are complete. |
 | `chatgpt_scheduled_tasks_production_path` | Blocked | Existing Scheduled Task output chat is orphaned/unusable, and a guarded Project Packet-chat replacement request returned `TASK_CREATION_BLOCKED_PROJECT_OUTPUT_UNAVAILABLE`. Local prompt trigger remains production upstream until ChatGPT exposes a Project-scoped Scheduled Task output conversation. |
 | `orchestration_prefect_spike` | Planned | Evaluate Prefect as a read-only observability wrapper over the current local loop. |
 | `agent_pir_langgraph_design` | Planned | Design future read-only LangGraph agent loops for PIR/source-gap/thread review. |
 | `local_knowledge_index_spike` | Planned | Design a sanitized local retrieval index over docs, context mirror, page dumps, briefs, and receipts. |
-| `run_observability_dashboard` | Planned | Design a local read-only run dashboard over receipts, status JSON, workstreams, and context mirror health. |
+| `run_observability_dashboard` | Active | Keep run observability consolidated into the pinned `/external-scout/24-7` source; extend that canonical proof page instead of creating a second dashboard/server. |
 | `gpt56_model_upgrade_evaluation` | Needs Verification | Evaluate GPT-5.6 model-family availability and non-production AUTOSINT replay before any production migration. |
 | `autosint_eval_dataset_v0` | Active | Maintain sanitized AUTOSINT eval taxonomy, deterministic graders, safe fixtures, and copy-safe ChatGPT-to-Codex handoff queue. |
 
@@ -124,7 +125,7 @@ ignored generated datasets, and a copy-safe ChatGPT review to Codex handoff
 queue. It does not scrape ChatGPT, read browser state, call model APIs, mutate
 runtime state, or approve production model migration by itself.
 
-`chatgpt_scheduled_tasks_production_path` is tracked as Needs Verification. The target
+`chatgpt_scheduled_tasks_production_path` is tracked as Blocked. The target
 operating model is ChatGPT Scheduled Tasks as the primary upstream generator
 for strict External Scout packets; AUTOSINT capture, validator, quarantine,
 Live Case Board, health monitor, and eval remain the source of truth. The
@@ -182,6 +183,16 @@ chat with the full self-contained strict Scheduled Task prompt. It required
 ChatGPT to create the replacement only if output could remain associated with
 the current Project/Packet conversation; ChatGPT replied exactly
 `TASK_CREATION_BLOCKED_PROJECT_OUTPUT_UNAVAILABLE`.
+
+`external_scout_24_7_proof_loop` is now the operator confidence gate for the
+working local Packet-chat production path. It uses
+`scripts/report_external_scout_24_7_proof.py` to bind prompt-trigger receipts,
+capture receipts, health status, Live Board freshness, and eval runtime
+hard-fails into one read-only PROVEN/NOT_PROVEN report. Do not call the loop
+24/7-proven until three consecutive natural `:50 -> :08` cycles pass. Manual
+short-loop or kickstart proof remains useful for debugging, but it does not
+replace natural-cycle proof. Operators can read the current proof and log
+history at `/external-scout/24-7`.
 
 ## Safety Boundary
 

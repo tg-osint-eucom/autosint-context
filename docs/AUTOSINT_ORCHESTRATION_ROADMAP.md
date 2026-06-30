@@ -17,12 +17,14 @@ replacement of the loop.
 
 Recommended staged path:
 
-1. Prefect spike for local workflow observability.
-2. LangGraph design later for controlled, read-only stateful agent loops.
-3. LlamaIndex spike later for local knowledge retrieval over docs, receipts,
+1. Native External Scout 24/7 proof reporter over local receipts and health.
+2. Prefect spike for local workflow observability if the native report needs a
+   run-history helper feeding the same `/external-scout/24-7` source.
+3. LangGraph design later for controlled, read-only stateful agent loops.
+4. LlamaIndex spike later for local knowledge retrieval over docs, receipts,
    page dumps, briefs, and context mirror files.
-4. AUTOSINT run dashboard over receipts and status artifacts before external
-   tracing/evaluation platforms.
+5. Keep AUTOSINT run observability inside the existing `/external-scout/24-7`
+   page before considering external tracing/evaluation platforms.
 
 Do not make Airflow, Dagster, CrewAI, AutoGen, n8n, LangSmith, or Arize the core
 AUTOSINT loop right now.
@@ -129,8 +131,8 @@ anything private.
 ### n8n
 
 n8n is not the AUTOSINT core orchestrator. It can be considered only for
-low-risk notifications or manual review dashboards after the authoritative loop
-is stable.
+low-risk notifications or manual review handoffs after the authoritative loop
+is stable, and it must not become a second External Scout operator site.
 
 n8n must not receive:
 
@@ -153,7 +155,8 @@ state, source credentials, or sensitive runtime artifacts.
 
 Use existing receipts first. Consider Phoenix/Arize later if AUTOSINT needs
 local/open-source LLM observability, evaluation runs, or retrieval/agent quality
-dashboards with explicit redaction rules.
+reports with explicit redaction rules. Any operator-facing summary should feed
+the existing `/external-scout/24-7` source instead of creating a parallel site.
 
 ## First Spike Proposal
 
@@ -225,7 +228,19 @@ V0, already present:
 
 V1, next:
 
-- AUTOSINT run dashboard over local receipts/status artifacts.
+- Native 24/7 proof report over the latest prompt/capture receipts, health,
+  Live Board state, and eval runtime hard-fails:
+
+```bash
+.venv/bin/python scripts/report_external_scout_24_7_proof.py --dry-run
+```
+
+- Browser/API views: `/external-scout/24-7` and
+  `/api/v1/external-scout/24-7-proof`.
+- Three consecutive natural `:50 -> :08` cycles are required before calling
+  the local Packet-chat production path 24/7-proven.
+- AUTOSINT run observability remains on the same `/external-scout/24-7`
+  route over local receipts/status artifacts.
 - Clear last-success, last-failure, freshness, and skipped/quarantined counts.
 - No external tracing.
 

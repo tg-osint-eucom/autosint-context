@@ -9,7 +9,7 @@ roles: Daily Scout machine output, System Control, and optional human-created
 case deep dives.
 
 ```text
-Mission Control -> External Scout -> TSOC/HAVOC -> HAVOC/RFI -> future controlled approval
+Mission Control -> External Scout 24/7 Control Page -> Live Case Board drill-down -> TSOC/HAVOC -> HAVOC/RFI -> future controlled approval
 ```
 
 ## Primary Pages
@@ -17,7 +17,8 @@ Mission Control -> External Scout -> TSOC/HAVOC -> HAVOC/RFI -> future controlle
 | Route | Role | Primary Question | Must Not Do |
 | --- | --- | --- | --- |
 | `/mission-control` | Primary launch page | Where should the operator start? | No writes, imports, OSIR bypass, or commander-ready promotion. |
-| `/external-scout/threads` | Primary External Scout Live Case Board | Which current case threads are new, updated, escalating, stale, source-gapped, or HAVOC/RFI-ready? | No Evidence or case-link creation; no apply/import controls. |
+| `/external-scout/24-7` | Single pinned External Scout operator source | Is the 24/7 loop working, which cases are active/stale, what source gaps remain, and what logs/receipts prove it? | No prompt/capture trigger, no Evidence or case-link creation, no source-config mutation, no private browser state. |
+| `/external-scout/threads` | External Scout Live Case Board drill-down | Which current case threads are new, updated, escalating, stale, source-gapped, or HAVOC/RFI-ready? | No Evidence or case-link creation; no apply/import controls. |
 | `/external-scout` | Supporting external packet inbox | What fresh external candidate packets are active? | No Evidence or case-link creation; latest active capture only by default. |
 | `/external-scout/{packet_id}` | Packet detail | What does one candidate packet say and what are its audit details? | No promotion/apply controls. |
 | `/tsoc-havoc` | Theater/workspace organization | Which TSOC/workspace owns the topic and what is missing? | No case creation, source mutation, or OSIR bypass. |
@@ -49,7 +50,9 @@ DAGRBook assets and helpers may remain in the repo for future frontend-thread wo
 ## Workflow Rules
 
 - External Scout is the preferred external information-gathering input layer.
-- `/external-scout/threads` is the primary 24/7 External Scout Live Case Board; `/external-scout` remains the packet inbox/support view.
+- `/external-scout/24-7` is the one pinned External Scout operator source for cycle proof, Live Board freshness, current/stale case health, source gaps, enrichment gates, logs, and drill-down links.
+- `/external-scout/threads` is the Live Case Board drill-down; `/external-scout` remains the packet inbox/support view.
+- Do not create a second dashboard, server, or parallel proof source for External Scout 24/7 state.
 - Do not create automatic ChatGPT chats per case, per packet, or per hourly capture.
 - The Daily Scout ChatGPT scheduled chat is machine-output only.
 - Optional `CASE - <topic>` chats must start from AUTOSINT thread data and are not source of truth.

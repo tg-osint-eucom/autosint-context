@@ -24,18 +24,21 @@ public `autosint-context` mirror.
 The current primary workflow is:
 
 ```text
-Mission Control -> External Scout -> TSOC/HAVOC -> HAVOC/RFI -> future controlled approval
+Mission Control -> External Scout 24/7 Control Page -> Live Case Board drill-down -> TSOC/HAVOC -> HAVOC/RFI -> future controlled approval
 ```
 
 Primary browser routes:
 
 - `/mission-control`
-- `/external-scout`
+- `/external-scout/24-7`
+- `/external-scout/threads`
 - `/tsoc-havoc`
 - `/havoc-rfi/SOCCENT`
 
 Supporting and audit routes:
 
+- `/external-scout`
+- `/api/v1/external-scout/24-7-proof`
 - `/case-genesis`
 - `/canonical-cases`
 - `/api/v1/cases/{case_id}/osir`
@@ -109,6 +112,15 @@ Operational rules:
   probe before changing production targets.
 - Do not resume a Scheduled Task that only creates outside-project
   `chatgpt.com/c/...` result chats.
+- The local Packet-chat loop is not considered 24/7-proven from a single green
+  run. Use `scripts/report_external_scout_24_7_proof.py` and require three
+  consecutive natural `:50 -> :08` proof cycles before declaring 24/7 readiness.
+- Operators should keep `/external-scout/24-7` as the single pinned External
+  Scout operator tab. It reads the same canonical proof report as
+  `/api/v1/external-scout/24-7-proof` and includes Live Board freshness,
+  current/stale case health, source gaps, enrichment gates, logs, and drill-down
+  links. `/external-scout/threads`, `/external-scout`, and HAVOC/RFI are
+  read-only drill-downs, not separate control surfaces.
 - Planned local AUTOSINT capture timing is minute `:08` of each hour.
 - The launchd template may exist locally, but installing/loading launchd is a separate approval.
 
@@ -135,7 +147,11 @@ Canonical cases, Case Genesis, TSOC/HAVOC, source coverage, and provenance remai
 
 ## External Scout Live Case Board
 
-`/external-scout/threads` is the primary External Scout Live Case Board. It rebuilds durable read-only topic threads from validated External Scout history, while `/external-scout` remains the latest active packet inbox and support view.
+`/external-scout/threads` is the External Scout Live Case Board drill-down. The
+pinned operational view is `/external-scout/24-7`, which reads the same
+AUTOSINT proof/report chain and shows the Live Board state, current/stale case
+source health, and source-gap queues in one place. `/external-scout` remains
+the latest active packet inbox and support view.
 
 The Live Case Board:
 

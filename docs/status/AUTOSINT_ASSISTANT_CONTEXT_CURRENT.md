@@ -7,8 +7,8 @@ This is a public, sanitized context file for restoring AUTOSINT project context 
 - Private code/runtime repo: `tg-osint-eucom/autosint`
 - Public context mirror: `tg-osint-eucom/autosint-context`
 - Source branch: `main`
-- Source HEAD: `65aefa570d81f7ea3e52dfd5608d7d3e43af8f27`
-- Generated at: `2026-06-28T21:20:28Z`
+- Source HEAD: `60dc8b2ab95db202a4e9660ab13d1df8a7cceb30`
+- Generated at: `2026-06-30T08:03:05Z`
 
 ## Primary Workflow
 
@@ -32,9 +32,9 @@ This is a public, sanitized context file for restoring AUTOSINT project context 
 
 - Available: `True`
 - Active selection policy: `latest_validated_capture_only`
-- Active packet count: `5`
-- History packet count: `444`
-- Latest packet timestamp: `2026-06-28T21:06:30Z`
+- Active packet count: `4`
+- History packet count: `556`
+- Latest packet timestamp: `2026-06-30T06:50:00Z`
 - Stale: `False`
 - Read-only: `True`
 - Private browser state read: `False`
@@ -61,6 +61,7 @@ The following are local-only and are not mirrored here:
 
 ## Latest Source Commits
 
+- `60dc8b2 feat(scout): add external scout 24/7 source health proof`
 - `65aefa5 docs(scout): record scheduled task replacement blocker`
 - `961327f docs(scout): mark scheduled task output path blocked`
 - `8f05a70 docs(scout): record scheduled task chat menu risk`
@@ -80,7 +81,6 @@ The following are local-only and are not mirrored here:
 - `fe29a90 fix(scout): bind prompt readiness to trigger request id`
 - `0e2d0d3 chore(ops): record external scout launchd repair`
 - `1506e05 fix(scout): require packet readiness after prompt trigger`
-- `e0f10a6 feat(eval): expand AUTOSINT evaluation dataset`
 
 ## Source Dirty State
 
