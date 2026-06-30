@@ -7,8 +7,8 @@ This is a public, sanitized context file for restoring AUTOSINT project context 
 - Private code/runtime repo: `tg-osint-eucom/autosint`
 - Public context mirror: `tg-osint-eucom/autosint-context`
 - Source branch: `main`
-- Source HEAD: `12346d82ebb617f96e7e9be08cdac7725d6b4de6`
-- Generated at: `2026-06-30T11:02:50Z`
+- Source HEAD: `97faffcc68375b942823c6a0cd85b6809ff4f627`
+- Generated at: `2026-06-30T11:19:58Z`
 
 ## Primary Workflow
 
@@ -61,6 +61,7 @@ The following are local-only and are not mirrored here:
 
 ## Latest Source Commits
 
+- `97faffc fix(scout): expose source recovery verification stages`
 - `12346d8 fix(scout): show per-case source verification stages`
 - `21daeeb fix(scout): show read-only source verification stage`
 - `c231c97 fix(scout): clarify 24/7 source gap actions`
@@ -80,7 +81,6 @@ The following are local-only and are not mirrored here:
 - `54ac575 fix(scout): harden packet target selection for scheduled path`
 - `70c480d fix(ops): tune external scout health monitor signals`
 - `6211b97 feat(ops): alert on external scout red health`
-- `9934bea fix(scout): harden packet extraction and health monitor recovery`
 
 ## Source Dirty State
 
