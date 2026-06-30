@@ -7,8 +7,8 @@ This is a public, sanitized context file for restoring AUTOSINT project context 
 - Private code/runtime repo: `tg-osint-eucom/autosint`
 - Public context mirror: `tg-osint-eucom/autosint-context`
 - Source branch: `main`
-- Source HEAD: `b7f7ff7911bb020fb40c78679bf2c665ddf826ee`
-- Generated at: `2026-06-30T15:00:17Z`
+- Source HEAD: `279f1f59a5af25a580b2543dc46b7594abee5804`
+- Generated at: `2026-06-30T15:08:31Z`
 
 ## Primary Workflow
 
@@ -61,6 +61,7 @@ The following are local-only and are not mirrored here:
 
 ## Latest Source Commits
 
+- `279f1f5 fix(ui): show retained source health on 24-7 page`
 - `b7f7ff7 fix(scout): expose per-case 24-7 source health counts`
 - `a50ce4a fix(scout): recover stalled packet prompt responses`
 - `a65ed0c fix(scout): use minimal recovery when prompt generation stalls`
@@ -80,7 +81,6 @@ The following are local-only and are not mirrored here:
 - `eb18958 fix(scout): bound packet readiness copy fallback`
 - `60dc8b2 feat(scout): add external scout 24/7 source health proof`
 - `65aefa5 docs(scout): record scheduled task replacement blocker`
-- `961327f docs(scout): mark scheduled task output path blocked`
 
 ## Source Dirty State
 
