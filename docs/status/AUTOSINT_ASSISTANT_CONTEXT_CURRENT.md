@@ -7,8 +7,8 @@ This is a public, sanitized context file for restoring AUTOSINT project context 
 - Private code/runtime repo: `tg-osint-eucom/autosint`
 - Public context mirror: `tg-osint-eucom/autosint-context`
 - Source branch: `main`
-- Source HEAD: `8b6085b264232b6b0c162ed45165e4c4f90fcbd9`
-- Generated at: `2026-06-30T12:23:28Z`
+- Source HEAD: `281429a305d3f41043f31222d9adff257efe46a0`
+- Generated at: `2026-06-30T12:36:54Z`
 
 ## Primary Workflow
 
@@ -35,7 +35,7 @@ This is a public, sanitized context file for restoring AUTOSINT project context 
 - Active packet count: `4`
 - History packet count: `568`
 - Latest packet timestamp: `2026-06-30T10:58:30Z`
-- Stale: `False`
+- Stale: `True`
 - Read-only: `True`
 - Private browser state read: `False`
 - Cookies read: `False`
@@ -61,6 +61,7 @@ The following are local-only and are not mirrored here:
 
 ## Latest Source Commits
 
+- `281429a fix(ui): surface 24/7 proof counters and source health`
 - `8b6085b fix(scout): clarify per-case source health blockers`
 - `ff42103 fix(scout): summarize active source health todos`
 - `510cb56 fix(scout): surface warn source causes on 24-7 page`
@@ -80,7 +81,6 @@ The following are local-only and are not mirrored here:
 - `4f60ddf docs(scout): record scheduled task output blocker`
 - `d3ce97b docs(scout): record scheduled task containment`
 - `e7245d4 fix(scout): isolate scheduled task capture probe`
-- `dde1a0e docs(scout): record scheduled task upstream proof failure`
 
 ## Source Dirty State
 
