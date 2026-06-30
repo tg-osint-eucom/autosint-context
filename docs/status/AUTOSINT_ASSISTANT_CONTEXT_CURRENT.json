@@ -20,9 +20,10 @@
     "status_only": true,
     "validated_packet_count": 4
   },
-  "generated_at": "2026-06-30T09:21:51Z",
+  "generated_at": "2026-06-30T09:38:54Z",
   "havoc_rfi_behavior": "HAVOC/RFI uses External Scout Case Thread current state when available, then falls back to the best validated External Scout packet; canonical cases, Case Genesis, TSOC/HAVOC, source coverage, and provenance remain audit material.",
   "latest_commits": [
+    "1e4bec8 fix(ops): keep stale source gaps informational",
     "68d0162 fix(scout): apply latest source gap closures to thread health",
     "eb18958 fix(scout): bound packet readiness copy fallback",
     "60dc8b2 feat(scout): add external scout 24/7 source health proof",
@@ -41,8 +42,7 @@
     "bab9fec fix(scout): add external scout health monitor and stale draft cleanup",
     "43af14d chore(export): add case deep-dive handoff exporter",
     "0949cec fix(scout): extend prompt packet readiness window",
-    "567d039 fix(scout): harden prompt submit state machine",
-    "fe29a90 fix(scout): bind prompt readiness to trigger request id"
+    "567d039 fix(scout): harden prompt submit state machine"
   ],
   "launchd_status": "Local-only; not represented in this public mirror.",
   "mirror_repo": "tg-osint-eucom/autosint-context",
@@ -96,7 +96,7 @@
   },
   "source_branch": "main",
   "source_dirty_state": [],
-  "source_head": "68d01627adc619bb786eab6d8ae860e9b25a0042",
+  "source_head": "1e4bec8f89f1fee855d50bd823f8fad2738f9714",
   "source_repo": "tg-osint-eucom/autosint",
   "source_repo_url": "https://github.com/tg-osint-eucom/autosint",
   "supporting_routes": [
