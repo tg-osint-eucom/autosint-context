@@ -7,8 +7,8 @@ This is a public, sanitized context file for restoring AUTOSINT project context 
 - Private code/runtime repo: `tg-osint-eucom/autosint`
 - Public context mirror: `tg-osint-eucom/autosint-context`
 - Source branch: `main`
-- Source HEAD: `97faffcc68375b942823c6a0cd85b6809ff4f627`
-- Generated at: `2026-06-30T11:19:58Z`
+- Source HEAD: `4006336a553bce9faae768ade55da9c45aa5298c`
+- Generated at: `2026-06-30T11:41:09Z`
 
 ## Primary Workflow
 
@@ -33,8 +33,8 @@ This is a public, sanitized context file for restoring AUTOSINT project context 
 - Available: `True`
 - Active selection policy: `latest_validated_capture_only`
 - Active packet count: `4`
-- History packet count: `564`
-- Latest packet timestamp: `2026-06-30T09:58:30Z`
+- History packet count: `568`
+- Latest packet timestamp: `2026-06-30T10:58:30Z`
 - Stale: `False`
 - Read-only: `True`
 - Private browser state read: `False`
@@ -61,6 +61,7 @@ The following are local-only and are not mirrored here:
 
 ## Latest Source Commits
 
+- `4006336 fix(scout): allow late packet readiness recovery`
 - `97faffc fix(scout): expose source recovery verification stages`
 - `12346d8 fix(scout): show per-case source verification stages`
 - `21daeeb fix(scout): show read-only source verification stage`
@@ -80,7 +81,6 @@ The following are local-only and are not mirrored here:
 - `458a1a5 fix(scout): split scheduled task and fallback targets`
 - `54ac575 fix(scout): harden packet target selection for scheduled path`
 - `70c480d fix(ops): tune external scout health monitor signals`
-- `6211b97 feat(ops): alert on external scout red health`
 
 ## Source Dirty State
 
