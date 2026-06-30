@@ -7,8 +7,8 @@ This is a public, sanitized context file for restoring AUTOSINT project context 
 - Private code/runtime repo: `tg-osint-eucom/autosint`
 - Public context mirror: `tg-osint-eucom/autosint-context`
 - Source branch: `main`
-- Source HEAD: `1e4bec8f89f1fee855d50bd823f8fad2738f9714`
-- Generated at: `2026-06-30T09:38:54Z`
+- Source HEAD: `9f42769f8a20a82342c9348424e6e0853d569bcc`
+- Generated at: `2026-06-30T10:17:25Z`
 
 ## Primary Workflow
 
@@ -33,8 +33,8 @@ This is a public, sanitized context file for restoring AUTOSINT project context 
 - Available: `True`
 - Active selection policy: `latest_validated_capture_only`
 - Active packet count: `4`
-- History packet count: `560`
-- Latest packet timestamp: `2026-06-30T08:18:00Z`
+- History packet count: `564`
+- Latest packet timestamp: `2026-06-30T09:58:30Z`
 - Stale: `False`
 - Read-only: `True`
 - Private browser state read: `False`
@@ -61,6 +61,7 @@ The following are local-only and are not mirrored here:
 
 ## Latest Source Commits
 
+- `9f42769 fix(scout): preserve late packet recovery and source closures`
 - `1e4bec8 fix(ops): keep stale source gaps informational`
 - `68d0162 fix(scout): apply latest source gap closures to thread health`
 - `eb18958 fix(scout): bound packet readiness copy fallback`
@@ -80,7 +81,6 @@ The following are local-only and are not mirrored here:
 - `bab9fec fix(scout): add external scout health monitor and stale draft cleanup`
 - `43af14d chore(export): add case deep-dive handoff exporter`
 - `0949cec fix(scout): extend prompt packet readiness window`
-- `567d039 fix(scout): harden prompt submit state machine`
 
 ## Source Dirty State
 
