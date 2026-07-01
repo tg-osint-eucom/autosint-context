@@ -160,8 +160,13 @@ The Live Case Board:
 - Shows what changed since the previous capture.
 - Maintains per-topic timelines and previous packets.
 - Marks threads as New, Updated, Stale, Escalating, or Needs Review.
-- Keeps latest-capture topics current, retains recently unupdated topics as
-  stale tracked threads for 72 hours, and moves older threads to audit/history.
+- Keeps latest-capture topics current, keeps recently unupdated topics current
+  inside the active window, retains older unupdated topics as stale tracked
+  threads until the 72-hour tracked window expires, and moves older threads to
+  audit/history.
+- Treats supplemental enrichment packets as thread-lane overlays; they can
+  improve current thread source status, but they do not define or shrink the
+  active capture universe.
 - Lets HAVOC/RFI consume current thread state before raw-packet fallback.
 - Shows theater watch summaries when supplied by strict output:
   SOCCENT, SOCEUR, SOCPAC, SOCAFRICA, SOCSOUTH, SOCKOR, and SOCOMD must be

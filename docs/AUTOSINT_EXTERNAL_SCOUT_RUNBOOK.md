@@ -452,8 +452,11 @@ from the same report chain. The thread route rebuilds topic threads from
 validated packet history and applies rolling retention:
 
 - Threads updated in the latest active capture are `current`.
-- Valid threads not updated in the latest active capture remain visible as
-  `Stale` / `stale_tracked` for 72 hours.
+- Valid threads not updated in the latest active capture remain `current`
+  inside the active window, then visible as `Stale` / `stale_tracked` until
+  the 72-hour tracked window expires.
+- Supplemental enrichment packets update thread-current source lanes and
+  timelines, but they do not define or shrink the active capture universe.
 - Threads older than the tracked window move to archived/history summaries.
 - Invalid or quarantined packets never update current thread state.
 - HAVOC/RFI consumes thread current state first and remains review-only.

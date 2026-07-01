@@ -75,10 +75,11 @@ WORLD / PUBLIC SIGNALS
 |
 |-- E. Thread Builder / Case Memory
 |   |-- canonical topic_key
-|   |-- active threads
+|   |-- active threads from latest capture plus still-fresh active-window memory
 |   |-- stale tracked threads
 |   |-- archived threads
 |   |-- timeline append
+|   |-- supplemental enrichment overlays that update lanes without shrinking active universe
 |   |-- source_topic_keys / lineage audit
 |   `-- preserve stronger current state if a later packet is weaker
 |

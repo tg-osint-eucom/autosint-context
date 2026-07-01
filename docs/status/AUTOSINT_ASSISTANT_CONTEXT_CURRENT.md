@@ -7,8 +7,8 @@ This is a public, sanitized context file for restoring AUTOSINT project context 
 - Private code/runtime repo: `tg-osint-eucom/autosint`
 - Public context mirror: `tg-osint-eucom/autosint-context`
 - Source branch: `main`
-- Source HEAD: `f6b709bd0217dd85e9173a11aeea87c53a2f3449`
-- Generated at: `2026-07-01T15:28:04Z`
+- Source HEAD: `ac659f97d6186377ce9951df5180501dcffd6436`
+- Generated at: `2026-07-01T15:50:12Z`
 
 ## Primary Workflow
 
@@ -33,7 +33,7 @@ This is a public, sanitized context file for restoring AUTOSINT project context 
 - Available: `True`
 - Active selection policy: `latest_validated_capture_only`
 - Active packet count: `1`
-- History packet count: `597`
+- History packet count: `601`
 - Latest packet timestamp: `2026-07-01T14:39:51Z`
 - Stale: `False`
 - Read-only: `True`
@@ -61,6 +61,7 @@ The following are local-only and are not mirrored here:
 
 ## Latest Source Commits
 
+- `ac659f9 fix(scout): preserve active board during enrichment follow-up`
 - `f6b709b fix(scout): keep source-lane enrichment follow-up active`
 - `bfa8d32 fix(scout): run signed kalshi enrichment without collapsing board`
 - `6af24f8 fix(scout): allow safe accidental packet composer cleanup`
@@ -80,7 +81,6 @@ The following are local-only and are not mirrored here:
 - `4006336 fix(scout): allow late packet readiness recovery`
 - `97faffc fix(scout): expose source recovery verification stages`
 - `12346d8 fix(scout): show per-case source verification stages`
-- `21daeeb fix(scout): show read-only source verification stage`
 
 ## Source Dirty State
 
