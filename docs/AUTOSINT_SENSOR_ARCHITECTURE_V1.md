@@ -194,7 +194,8 @@ adapters only when repeatability, metrics, or persistent gaps justify them.
   Telethon/session collection is a separate approved setup and must not use
   private browser state.
 - Finance/stocks: public checks first; provider key later if quote reliability
-  demands it.
+  demands it. Financial Modeling Prep stable API may be used through ignored
+  runtime env as `FMP_API_KEY` for read-only market/finance context.
 - Shipping/AIS/freight: public AIS/PortWatch and Global Fishing Watch first;
   paid provider later if maritime cases become central.
 - OpenSky/ADS-B: public REST works anonymously with rate limits; approved

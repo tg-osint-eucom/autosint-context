@@ -243,6 +243,7 @@ Conditional source roles:
 - Sentinel/Copernicus: geospatial context.
 - AIS/GFW/PortWatch: traffic/movement; Global Fishing Watch token goes through ignored runtime env.
 - OpenSky/ADS-B: aviation movement; OAuth2 client credentials go through ignored runtime env when configured, with anonymous public REST as bounded fallback.
+- Financial Modeling Prep: market/finance quote and profile context; `FMP_API_KEY` goes through ignored runtime env and remains cue-only.
 - Polymarket/Kalshi: probability/sentiment cue only.
 
 ## What Not To Delete Yet

@@ -190,7 +190,7 @@ source_lanes:
   - lane_id: broad_market
     lane_label: Broad Market
     source_family: Markets / Finance
-    provider: SPY, QQQ, VIX, DXY, treasuries/rates
+    provider: Financial Modeling Prep stable API, public Stooq, SPY, QQQ, VIX, DXY, treasuries/rates
     primary_checker: ChatGPT External Scout
     fallback_checker: Finance enrichment adapter
     output_field: market_finance_matrix.broad_market
@@ -198,12 +198,12 @@ source_lanes:
     cue_only: true
     proof_capable: false
     key_required: optional_for_quote_provider
-    credential_name: finance_provider_if_approved
+    credential_name: FMP_API_KEY or finance_provider_if_approved
     next_action_default: Keep broad market readings cue-only and timestamp visible values.
   - lane_id: oil_energy
     lane_label: Oil / Energy
     source_family: Markets / Finance
-    provider: Brent, WTI, USO, BNO, XLE, natural gas, LNG proxies
+    provider: Financial Modeling Prep stable API, public Stooq, Brent, WTI, USO, BNO, XLE, natural gas, LNG proxies
     primary_checker: ChatGPT External Scout
     fallback_checker: Finance enrichment adapter
     output_field: market_finance_matrix.oil_energy
@@ -211,12 +211,12 @@ source_lanes:
     cue_only: true
     proof_capable: false
     key_required: optional_for_quote_provider
-    credential_name: finance_provider_if_approved
+    credential_name: FMP_API_KEY or finance_provider_if_approved
     next_action_default: Treat oil/energy signals as context only.
   - lane_id: shipping_tanker
     lane_label: Shipping / Tanker
     source_family: Markets / Finance
-    provider: FRO, STNG, TNK, DHT, EURN, INSW, Maersk, ZIM, tanker/freight public sources
+    provider: Financial Modeling Prep stable API, public Stooq, FRO, STNG, TNK, DHT, EURN, INSW, Maersk, ZIM, tanker/freight public sources
     primary_checker: ChatGPT External Scout
     fallback_checker: Finance or shipping adapter
     output_field: market_finance_matrix.shipping_tanker
@@ -224,7 +224,7 @@ source_lanes:
     cue_only: true
     proof_capable: false
     key_required: optional_for_shipping_provider
-    credential_name: shipping_or_freight_provider_if_approved
+    credential_name: FMP_API_KEY or shipping_or_freight_provider_if_approved
     next_action_default: Report public tanker/freight checks explicitly even when no metric is found.
   - lane_id: insurance_freight_rates
     lane_label: Insurance / Freight / Rates
@@ -242,7 +242,7 @@ source_lanes:
   - lane_id: defense_large_cap
     lane_label: Defense Large-Cap
     source_family: Markets / Finance
-    provider: LMT, RTX, NOC, GD, HII, BA, BAE, Thales, Leonardo, Rheinmetall, Saab, Elbit
+    provider: Financial Modeling Prep stable API, public Stooq, LMT, RTX, NOC, GD, HII, BA, BAE, Thales, Leonardo, Rheinmetall, Saab, Elbit
     primary_checker: ChatGPT External Scout
     fallback_checker: Finance enrichment adapter
     output_field: market_finance_matrix.defense_large_cap
@@ -250,12 +250,12 @@ source_lanes:
     cue_only: true
     proof_capable: false
     key_required: optional_for_quote_provider
-    credential_name: finance_provider_if_approved
+    credential_name: FMP_API_KEY or finance_provider_if_approved
     next_action_default: Include large-cap defense proxies where relevant and cue-only.
   - lane_id: defense_mid_small
     lane_label: Defense Mid/Small
     source_family: Markets / Finance
-    provider: AVAV, KTOS, TXT, QinetiQ, drone/UAS/naval/sensor suppliers
+    provider: Financial Modeling Prep stable API, public Stooq, AVAV, KTOS, TXT, QinetiQ, drone/UAS/naval/sensor suppliers
     primary_checker: ChatGPT External Scout
     fallback_checker: Finance enrichment adapter
     output_field: market_finance_matrix.defense_mid_small
@@ -263,12 +263,12 @@ source_lanes:
     cue_only: true
     proof_capable: false
     key_required: optional_for_quote_provider
-    credential_name: finance_provider_if_approved
+    credential_name: FMP_API_KEY or finance_provider_if_approved
     next_action_default: Include mid/small defense proxies where relevant and cue-only.
   - lane_id: regional_markets
     lane_label: Regional Markets
     source_family: Markets / Finance
-    provider: Theater-specific regional market proxies
+    provider: Financial Modeling Prep stable API, public Stooq, theater-specific regional market proxies
     primary_checker: ChatGPT External Scout
     fallback_checker: Finance enrichment adapter
     output_field: market_finance_matrix.regional_market
@@ -276,7 +276,7 @@ source_lanes:
     cue_only: true
     proof_capable: false
     key_required: optional_for_quote_provider
-    credential_name: finance_provider_if_approved
+    credential_name: FMP_API_KEY or finance_provider_if_approved
     next_action_default: Report theater-specific market proxies or explicitly checked/not-found.
   - lane_id: crypto_risk
     lane_label: Crypto / Risk
