@@ -99,9 +99,9 @@ source_lanes:
   - lane_id: social_osint
     lane_label: Social OSINT / Public Reaction
     source_family: Social and public reaction
-    provider: Public X/Twitter, public Telegram mirrors, Reddit, public forums, public OSINT communities
+    provider: Public X/Twitter, public Telegram t.me pages, Reddit, public forums, public OSINT communities
     primary_checker: ChatGPT External Scout
-    fallback_checker: Future official X/API or public-social adapter
+    fallback_checker: Public t.me URL verifier / future official X/API or public-social adapter
     output_field: case_coverage_matrix.social_public_reaction
     owner: ChatGPT
     cue_only: true
@@ -112,29 +112,29 @@ source_lanes:
   - lane_id: traffic_movement
     lane_label: Traffic / Movement
     source_family: Movement
-    provider: AIS, IMF PortWatch, OpenSky, ADS-B, public port and vessel reporting
+    provider: AIS, IMF PortWatch, Global Fishing Watch, OpenSky OAuth2/public REST, ADS-B, public port and vessel reporting
     primary_checker: ChatGPT External Scout
-    fallback_checker: PortWatch, OpenSky, AIS, or public movement adapters
+    fallback_checker: PortWatch, Global Fishing Watch, OpenSky, AIS, or public movement adapters
     output_field: case_coverage_matrix.traffic_movement
     owner: ChatGPT
     cue_only: false
     proof_capable: true
     key_required: optional_for_paid_ais
-    credential_name: AIS_or_movement_provider_if_approved
+    credential_name: OPENSKY_CLIENT_ID + OPENSKY_CLIENT_SECRET or movement_provider_if_approved
     next_action_default: Use public movement checks first; paid AIS remains optional future work.
   - lane_id: satellite_geospatial
     lane_label: Satellite / Geospatial
     source_family: Geospatial
-    provider: NASA FIRMS, Sentinel, Copernicus, public SAR/optical/geospatial reporting
+    provider: NASA FIRMS area CSV, Sentinel, Copernicus, public SAR/optical/geospatial reporting
     primary_checker: ChatGPT External Scout
     fallback_checker: FIRMS, Copernicus, Sentinel, or paid imagery adapters if approved
     output_field: case_coverage_matrix.satellite_geospatial
     owner: ChatGPT
     cue_only: false
     proof_capable: true
-    key_required: optional_for_paid_imagery
-    credential_name: imagery_provider_if_approved
-    next_action_default: Verify public imagery or mark unavailable imagery explicitly.
+    key_required: optional_for_nasa_firms_map_key_or_paid_imagery
+    credential_name: NASA_FIRMS_MAP_KEY or imagery_provider_if_approved
+    next_action_default: Verify public imagery or mark unavailable imagery explicitly; use NASA_FIRMS_MAP_KEY for FIRMS area CSV checks when approved.
   - lane_id: weather_environment
     lane_label: Weather / Environment
     source_family: Environment

@@ -116,9 +116,9 @@ checked, blocked, stale, or unavailable, report that explicitly.
 | Official / Advisory | ChatGPT External Scout | Public URL verifier / official adapters | No |
 | Public News / Wires / Trade Press | ChatGPT External Scout | Public URL verifier / licensed news adapter if approved | No |
 | Multilingual / Regional | ChatGPT External Scout | Optional translation/search adapters | No |
-| Social OSINT / Public Reaction | ChatGPT External Scout | Optional X/API or public-social adapters | Yes |
-| Traffic / Movement | ChatGPT External Scout | PortWatch, OpenSky, AIS, or public movement adapters | No |
-| Satellite / Geospatial | ChatGPT External Scout | NASA FIRMS, Copernicus, Sentinel, or provider adapters | No |
+| Social OSINT / Public Reaction | ChatGPT External Scout | Public t.me URL checks; optional X/API or public-social adapters | Yes |
+| Traffic / Movement | ChatGPT External Scout | PortWatch, Global Fishing Watch, OpenSky OAuth2/public REST, AIS, or public movement adapters | No |
+| Satellite / Geospatial | ChatGPT External Scout | NASA FIRMS area CSV with `NASA_FIRMS_MAP_KEY`, Copernicus, Sentinel, or provider adapters | No |
 | Weather / Environment | ChatGPT External Scout | Public weather/environment adapters | Context only |
 | Prediction Markets | ChatGPT External Scout | Polymarket, Kalshi, Manifold read-only adapters | Yes |
 | Markets / Finance / Stocks / Crypto | ChatGPT External Scout | Finance/enrichment adapters | Yes |
@@ -189,14 +189,20 @@ adapters only when repeatability, metrics, or persistent gaps justify them.
 - Manifold / other prediction markets: public GET adapter first; no API key,
   login, browser session, or write endpoint is required for AUTOSINT
   cue-only market search/read checks.
-- X/Twitter and social OSINT: ChatGPT public check first; official API only if
-  automatic ingest becomes necessary.
+- X/Twitter and social OSINT: ChatGPT public check first. Public Telegram
+  `t.me` pages may be checked through plain public URL reads; Telegram
+  Telethon/session collection is a separate approved setup and must not use
+  private browser state.
 - Finance/stocks: public checks first; provider key later if quote reliability
   demands it.
-- Shipping/AIS/freight: public AIS/PortWatch first; paid provider later if
-  maritime cases become central.
-- Satellite/geospatial: NASA FIRMS/Copernicus/Sentinel first; paid imagery later
-  only for approved high-value cases.
+- Shipping/AIS/freight: public AIS/PortWatch and Global Fishing Watch first;
+  paid provider later if maritime cases become central.
+- OpenSky/ADS-B: public REST works anonymously with rate limits; approved
+  OAuth2 client credentials may be loaded through ignored runtime env as
+  `OPENSKY_CLIENT_ID` and `OPENSKY_CLIENT_SECRET`.
+- Satellite/geospatial: NASA FIRMS/Copernicus/Sentinel first. NASA FIRMS area
+  CSV requires a local `NASA_FIRMS_MAP_KEY`; paid imagery later only for
+  approved high-value cases.
 - News/paywall: public access only unless a licensed provider is explicitly
   approved.
 

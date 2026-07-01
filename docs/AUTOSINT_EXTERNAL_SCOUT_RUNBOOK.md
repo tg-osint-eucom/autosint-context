@@ -175,12 +175,17 @@ artifacts/external_scout/runtime_env.sh
 This file is for local runtime names only and must never be committed or
 printed. The wrappers log only whether the file was loaded, not any values.
 
-Use this path for read-only adapter credentials such as Kalshi when approved:
+Use this path for read-only adapter credentials such as Kalshi, OpenSky,
+Global Fishing Watch, or NASA FIRMS when approved:
 
 ```bash
 export AUTOSINT_KALSHI_CREDENTIALS_ENABLED=1
 export KALSHI_API_KEY_ID=...
 export KALSHI_API_PRIVATE_KEY_PEM='...'
+export OPENSKY_CLIENT_ID=...
+export OPENSKY_CLIENT_SECRET=...
+export GFW_API_TOKEN=...
+export NASA_FIRMS_MAP_KEY=...
 ```
 
 Alternative accepted names are `KALSHI_ACCESS_KEY` or `KALSHI_API_KEY` for the
@@ -205,6 +210,9 @@ visible, run post-capture enrichment or wait for the next capture wrapper.
 A pinned logged-in Kalshi browser tab is allowed for human review only.
 AUTOSINT 24/7 enrichment must use public/API adapters and must not read browser
 cookies, sessions, localStorage/sessionStorage, or Chrome profile state.
+Telegram public channel pages may be checked through ordinary public `t.me`
+GET requests. Telethon/API collection is a separate approved setup and is not
+the default automatic ingest path.
 
 To verify runtime visibility without reading or printing credential values:
 

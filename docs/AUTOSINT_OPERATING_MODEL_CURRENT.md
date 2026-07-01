@@ -239,10 +239,10 @@ Conditional source roles:
 
 - Etherscan: crypto/on-chain cue only.
 - ReliefWeb: humanitarian/logistics context only.
-- NASA FIRMS: geospatial/thermal cue only.
+- NASA FIRMS: geospatial/thermal cue only; API checks require local `NASA_FIRMS_MAP_KEY`.
 - Sentinel/Copernicus: geospatial context.
-- AIS/GFW/PortWatch: traffic/movement.
-- OpenSky/ADS-B: aviation movement.
+- AIS/GFW/PortWatch: traffic/movement; Global Fishing Watch token goes through ignored runtime env.
+- OpenSky/ADS-B: aviation movement; OAuth2 client credentials go through ignored runtime env when configured, with anonymous public REST as bounded fallback.
 - Polymarket/Kalshi: probability/sentiment cue only.
 
 ## What Not To Delete Yet
