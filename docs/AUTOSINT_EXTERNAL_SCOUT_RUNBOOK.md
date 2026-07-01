@@ -231,6 +231,35 @@ To verify runtime visibility without reading or printing credential values:
 The checker reports only file presence and env-name presence. It never prints
 credential values and does not read browser private state.
 
+## Provider Decision Rules
+
+Provider/source status on `/external-scout/24-7` follows the durable Sensor
+Architecture v1 contract in `docs/AUTOSINT_SENSOR_ARCHITECTURE_V1.md` and
+`config/autosint_sensor_architecture.yml`. Source URL status is separate from
+adapter health:
+
+- Polymarket and Manifold are public API lanes and do not need keys.
+- Kalshi, Global Fishing Watch, OpenSky, and Financial Modeling Prep are
+  configured read-only adapters when their ignored runtime env names are
+  present; display only presence/status, never values.
+- Telegram public `t.me` pages can be public-web checked; Telegram API
+  account/session reads are optional later and not a current blocker.
+- NASA FIRMS remains optional/unresolved unless `NASA_FIRMS_MAP_KEY` is present
+  and smoke passes.
+- Licensed news, X/Twitter API, Reddit API, arbitrary Telegram scraping,
+  translation/search API, paid AIS/freight/satellite, Polygon/Massive, and
+  similar paid/restricted sources are architecture references, not current
+  blockers unless a current active case requires them and public/configured
+  alternatives cannot satisfy the lane.
+
+Prompt artifacts and live ChatGPT Project Instructions must include Provider
+Decision Rules, Required Theater Watch, Required Source Search Itinerary,
+top-level `trigger_request_id` when provided, `scheduled_task_run_id` when
+scheduled, `generated_at`, `candidate_packets`, `theater_watch_summary`,
+`overflow_candidate_cases`, `insurance_freight_rates`, cue-only boundaries, and
+the no-private-state rule. Do not regress to a JSON-only
+`{"candidate_packets":[...]}` contract.
+
 ## Source URL Inventory
 
 After a successful capture and post-capture enrichment, the wrapper refreshes a

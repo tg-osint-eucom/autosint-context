@@ -3,304 +3,1030 @@ source: docs/AUTOSINT_SENSOR_ARCHITECTURE_V1.md
 single_pinned_operator_route: /external-scout/24-7
 canonical_api_route: /api/v1/external-scout/24-7-proof
 status_values:
-  - Checked and found
-  - Checked and not found
-  - Candidate found, not imported
-  - Not checked
-  - Stale
-  - Blocked / login required
+- Checked and found
+- Checked and not found
+- Candidate found, not imported
+- Not checked
+- Stale
+- Blocked / login required
 owner_values:
-  - ChatGPT
-  - AUTOSINT
-  - Adapter
-  - User key needed
-  - External source
+- ChatGPT
+- AUTOSINT
+- Adapter
+- User key needed
+- External source
 pipeline_nodes:
-  - id: chatgpt_external_scout
-    label: ChatGPT External Scout
-    stage: A
-    owner: ChatGPT
-    what_it_does: Discovers public signals and emits strict candidate packets.
-  - id: capture
-    label: Capture
-    stage: B
-    owner: AUTOSINT
-    what_it_does: Selects the exact output chat, extracts the latest strict packet, and writes ignored staging receipts.
-  - id: validator
-    label: Validator
-    stage: C
-    owner: AUTOSINT
-    what_it_does: Validates schema, required lanes, cue-only discipline, and no-mutation flags.
-  - id: promotion_quarantine
-    label: Promotion / Quarantine
-    stage: D
-    owner: AUTOSINT
-    what_it_does: Promotes valid packets and quarantines invalid packets without updating active state from invalid data.
-  - id: thread_memory
-    label: Thread Memory
-    stage: E
-    owner: AUTOSINT
-    what_it_does: Builds active, stale tracked, and archived case memory from validated packets.
-  - id: enrichment_adapters
-    label: Enrichment / Adapters
-    stage: F
-    owner: Adapter
-    what_it_does: Verifies source URLs and market/prediction/finance lanes through read-only adapters.
-  - id: operator_surfaces
-    label: Operator Surfaces
-    stage: G
-    owner: AUTOSINT
-    what_it_does: Renders the pinned proof page and drill-down operator views from the canonical proof report.
-  - id: health_eval_alerts
-    label: Health / Eval / Alerts
-    stage: H
-    owner: AUTOSINT
-    what_it_does: Watches GREEN/WARN/RED health, eval hard-fails, receipts, and recovery prompts.
+- id: chatgpt_external_scout
+  label: ChatGPT External Scout
+  stage: A
+  owner: ChatGPT
+  what_it_does: Discovers public signals and emits strict candidate packets.
+- id: capture
+  label: Capture
+  stage: B
+  owner: AUTOSINT
+  what_it_does: Selects the exact output chat, extracts the latest strict packet, and writes ignored staging receipts.
+- id: validator
+  label: Validator
+  stage: C
+  owner: AUTOSINT
+  what_it_does: Validates schema, required lanes, cue-only discipline, and no-mutation flags.
+- id: promotion_quarantine
+  label: Promotion / Quarantine
+  stage: D
+  owner: AUTOSINT
+  what_it_does: Promotes valid packets and quarantines invalid packets without updating active state from invalid data.
+- id: thread_memory
+  label: Thread Memory
+  stage: E
+  owner: AUTOSINT
+  what_it_does: Builds active, stale tracked, and archived case memory from validated packets.
+- id: enrichment_adapters
+  label: Enrichment / Adapters
+  stage: F
+  owner: Adapter
+  what_it_does: Verifies source URLs and market/prediction/finance lanes through read-only adapters.
+- id: operator_surfaces
+  label: Operator Surfaces
+  stage: G
+  owner: AUTOSINT
+  what_it_does: Renders the pinned proof page and drill-down operator views from the canonical proof report.
+- id: health_eval_alerts
+  label: Health / Eval / Alerts
+  stage: H
+  owner: AUTOSINT
+  what_it_does: Watches GREEN/WARN/RED health, eval hard-fails, receipts, and recovery prompts.
 source_lanes:
-  - lane_id: official_advisory
-    lane_label: Official / Advisory
-    source_family: Official and advisory
-    provider: Government, public commands, UN, NATO, EU, IMO, UKMTO, JMIC
-    primary_checker: ChatGPT External Scout
-    fallback_checker: Public URL verifier / official-source adapters
-    output_field: case_coverage_matrix.official_advisory
-    owner: ChatGPT
-    cue_only: false
-    proof_capable: true
-    key_required: not_required
-    credential_name: none
-    next_action_default: Check official/advisory URLs and mark unavailable sources explicitly.
-  - lane_id: public_news
-    lane_label: Public News / Wires / Trade Press
-    source_family: Public news
-    provider: Reuters, AP, AFP, BBC, Al Jazeera, regional media, trade press
-    primary_checker: ChatGPT External Scout
-    fallback_checker: Public URL verifier / approved licensed news adapter
-    output_field: case_coverage_matrix.public_news
-    owner: ChatGPT
-    cue_only: false
-    proof_capable: true
-    key_required: optional_for_licensed_access
-    credential_name: licensed_news_provider_if_approved
-    next_action_default: Avoid Reuters-only coverage; keep paywalled or blocked sources explicit.
-  - lane_id: multilingual_regional
-    lane_label: Multilingual / Regional
-    source_family: Regional context
-    provider: Theater-specific regional and local-language public sources
-    primary_checker: ChatGPT External Scout
-    fallback_checker: Translation/search adapters if approved
-    output_field: multilingual_regional_context
-    owner: ChatGPT
-    cue_only: false
-    proof_capable: true
-    key_required: optional_for_translation_api
-    credential_name: translation_or_search_provider_if_approved
-    next_action_default: Report languages checked and missing-language caveats explicitly.
-  - lane_id: social_osint
-    lane_label: Social OSINT / Public Reaction
-    source_family: Social and public reaction
-    provider: Public X/Twitter, public Telegram t.me pages, Reddit, public forums, public OSINT communities
-    primary_checker: ChatGPT External Scout
-    fallback_checker: Public t.me URL verifier / future official X/API or public-social adapter
-    output_field: case_coverage_matrix.social_public_reaction
-    owner: ChatGPT
-    cue_only: true
-    proof_capable: false
-    key_required: optional_for_automatic_ingest
-    credential_name: X_API_or_social_provider_if_approved
-    next_action_default: Keep social claims cue-only and never treat them as proof.
-  - lane_id: traffic_movement
-    lane_label: Traffic / Movement
-    source_family: Movement
-    provider: AIS, IMF PortWatch, Global Fishing Watch, OpenSky OAuth2/public REST, ADS-B, public port and vessel reporting
-    primary_checker: ChatGPT External Scout
-    fallback_checker: PortWatch, Global Fishing Watch, OpenSky, AIS, or public movement adapters
-    output_field: case_coverage_matrix.traffic_movement
-    owner: ChatGPT
-    cue_only: false
-    proof_capable: true
-    key_required: optional_for_paid_ais
-    credential_name: OPENSKY_CLIENT_ID + OPENSKY_CLIENT_SECRET or movement_provider_if_approved
-    next_action_default: Use public movement checks first; paid AIS remains optional future work.
-  - lane_id: satellite_geospatial
-    lane_label: Satellite / Geospatial
-    source_family: Geospatial
-    provider: NASA FIRMS area CSV, Sentinel, Copernicus, public SAR/optical/geospatial reporting
-    primary_checker: ChatGPT External Scout
-    fallback_checker: FIRMS, Copernicus, Sentinel, or paid imagery adapters if approved
-    output_field: case_coverage_matrix.satellite_geospatial
-    owner: ChatGPT
-    cue_only: false
-    proof_capable: true
-    key_required: optional_for_nasa_firms_map_key_or_paid_imagery
-    credential_name: NASA_FIRMS_MAP_KEY or imagery_provider_if_approved
-    next_action_default: Verify public imagery or mark unavailable imagery explicitly; use NASA_FIRMS_MAP_KEY for FIRMS area CSV checks when approved.
-  - lane_id: weather_environment
-    lane_label: Weather / Environment
-    source_family: Environment
-    provider: Public weather, sea state, smoke, fire, dust, haze, environmental context
-    primary_checker: ChatGPT External Scout
-    fallback_checker: Public weather/environment adapters
-    output_field: case_coverage_matrix.weather_environment
-    owner: ChatGPT
-    cue_only: true
-    proof_capable: false
-    key_required: not_required
-    credential_name: none
-    next_action_default: Treat weather as context and not as proof of intent or attribution.
-  - lane_id: prediction_polymarket
-    lane_label: Polymarket
-    source_family: Prediction Markets
-    provider: Polymarket
-    primary_checker: Polymarket public adapter
-    fallback_checker: ChatGPT External Scout public check
-    output_field: prediction_market_matrix.polymarket
-    owner: Adapter
-    cue_only: true
-    proof_capable: false
-    key_required: not_required
-    credential_name: none
-    next_action_default: Wire public read-only adapter/import when candidates remain not imported.
-  - lane_id: prediction_kalshi
-    lane_label: Kalshi
-    source_family: Prediction Markets
-    provider: Kalshi
-    primary_checker: AUTOSINT Kalshi read-only adapter
-    fallback_checker: ChatGPT External Scout public check
-    output_field: prediction_market_matrix.kalshi
-    owner: User key needed
-    cue_only: true
-    proof_capable: false
-    key_required: optional_for_rich_api
-    credential_name: KALSHI_API_KEY_ID + KALSHI_API_PRIVATE_KEY_PEM
-    next_action_default: Configure Kalshi through ignored runtime env helper if approved; never paste keys in chat.
-  - lane_id: prediction_other
-    lane_label: Manifold / Other Prediction Markets
-    source_family: Prediction Markets
-    provider: Manifold public API and other public prediction markets
-    primary_checker: Manifold public GET adapter
-    fallback_checker: ChatGPT External Scout public check
-    output_field: prediction_market_matrix.other_prediction_markets
-    owner: Adapter
-    cue_only: true
-    proof_capable: false
-    key_required: not_required
-    credential_name: none
-    next_action_default: Use Manifold public GET search/read first; keep other prediction markets cue-only and record checked/not-found where no market exists.
-  - lane_id: broad_market
-    lane_label: Broad Market
-    source_family: Markets / Finance
-    provider: Financial Modeling Prep stable API, public Stooq, SPY, QQQ, VIX, DXY, treasuries/rates
-    primary_checker: ChatGPT External Scout
-    fallback_checker: Finance enrichment adapter
-    output_field: market_finance_matrix.broad_market
-    owner: ChatGPT
-    cue_only: true
-    proof_capable: false
-    key_required: optional_for_quote_provider
-    credential_name: FMP_API_KEY or finance_provider_if_approved
-    next_action_default: Keep broad market readings cue-only and timestamp visible values.
-  - lane_id: oil_energy
-    lane_label: Oil / Energy
-    source_family: Markets / Finance
-    provider: Financial Modeling Prep stable API, public Stooq, Brent, WTI, USO, BNO, XLE, natural gas, LNG proxies
-    primary_checker: ChatGPT External Scout
-    fallback_checker: Finance enrichment adapter
-    output_field: market_finance_matrix.oil_energy
-    owner: ChatGPT
-    cue_only: true
-    proof_capable: false
-    key_required: optional_for_quote_provider
-    credential_name: FMP_API_KEY or finance_provider_if_approved
-    next_action_default: Treat oil/energy signals as context only.
-  - lane_id: shipping_tanker
-    lane_label: Shipping / Tanker
-    source_family: Markets / Finance
-    provider: Financial Modeling Prep stable API, public Stooq, FRO, STNG, TNK, DHT, EURN, INSW, Maersk, ZIM, tanker/freight public sources
-    primary_checker: ChatGPT External Scout
-    fallback_checker: Finance or shipping adapter
-    output_field: market_finance_matrix.shipping_tanker
-    owner: ChatGPT
-    cue_only: true
-    proof_capable: false
-    key_required: optional_for_shipping_provider
-    credential_name: FMP_API_KEY or shipping_or_freight_provider_if_approved
-    next_action_default: Report public tanker/freight checks explicitly even when no metric is found.
-  - lane_id: insurance_freight_rates
-    lane_label: Insurance / Freight / Rates
-    source_family: Markets / Finance
-    provider: Public P&I, insurer notes, war-risk premium reporting, Baltic tanker sources, day-rate reporting
-    primary_checker: ChatGPT External Scout
-    fallback_checker: Shipping/freight/insurance adapter
-    output_field: market_finance_matrix.insurance_freight_rates
-    owner: ChatGPT
-    cue_only: true
-    proof_capable: false
-    key_required: optional_for_shipping_provider
-    credential_name: shipping_or_freight_provider_if_approved
-    next_action_default: Keep insurance_freight_rates explicit; do not hide it under shipping/logistics.
-  - lane_id: defense_large_cap
-    lane_label: Defense Large-Cap
-    source_family: Markets / Finance
-    provider: Financial Modeling Prep stable API, public Stooq, LMT, RTX, NOC, GD, HII, BA, BAE, Thales, Leonardo, Rheinmetall, Saab, Elbit
-    primary_checker: ChatGPT External Scout
-    fallback_checker: Finance enrichment adapter
-    output_field: market_finance_matrix.defense_large_cap
-    owner: ChatGPT
-    cue_only: true
-    proof_capable: false
-    key_required: optional_for_quote_provider
-    credential_name: FMP_API_KEY or finance_provider_if_approved
-    next_action_default: Include large-cap defense proxies where relevant and cue-only.
-  - lane_id: defense_mid_small
-    lane_label: Defense Mid/Small
-    source_family: Markets / Finance
-    provider: Financial Modeling Prep stable API, public Stooq, AVAV, KTOS, TXT, QinetiQ, drone/UAS/naval/sensor suppliers
-    primary_checker: ChatGPT External Scout
-    fallback_checker: Finance enrichment adapter
-    output_field: market_finance_matrix.defense_mid_small
-    owner: ChatGPT
-    cue_only: true
-    proof_capable: false
-    key_required: optional_for_quote_provider
-    credential_name: FMP_API_KEY or finance_provider_if_approved
-    next_action_default: Include mid/small defense proxies where relevant and cue-only.
-  - lane_id: regional_markets
-    lane_label: Regional Markets
-    source_family: Markets / Finance
-    provider: Financial Modeling Prep stable API, public Stooq, theater-specific regional market proxies
-    primary_checker: ChatGPT External Scout
-    fallback_checker: Finance enrichment adapter
-    output_field: market_finance_matrix.regional_market
-    owner: ChatGPT
-    cue_only: true
-    proof_capable: false
-    key_required: optional_for_quote_provider
-    credential_name: FMP_API_KEY or finance_provider_if_approved
-    next_action_default: Report theater-specific market proxies or explicitly checked/not-found.
-  - lane_id: crypto_risk
-    lane_label: Crypto / Risk
-    source_family: Markets / Finance
-    provider: BTC, ETH, stablecoin/risk-flow public cues
-    primary_checker: ChatGPT External Scout
-    fallback_checker: Crypto/finance enrichment adapter
-    output_field: market_finance_matrix.crypto_risk
-    owner: ChatGPT
-    cue_only: true
-    proof_capable: false
-    key_required: not_required
-    credential_name: none
-    next_action_default: Keep crypto/risk cue-only and never treat it as event proof.
-  - lane_id: public_comments
-    lane_label: Public Comments / Reaction
-    source_family: Public reaction
-    provider: Public comments, Reddit/public forums, visible market comments where available
-    primary_checker: ChatGPT External Scout
-    fallback_checker: Optional public-comment adapter
-    output_field: case_coverage_matrix.public_comments_reaction
-    owner: ChatGPT
-    cue_only: true
-    proof_capable: false
-    key_required: optional_for_public_comment_provider
-    credential_name: public_comment_provider_if_approved
-    next_action_default: Treat public comments as cue-only and mark unavailable comments explicitly.
+- lane_id: official_advisory
+  lane_label: Official / Advisory
+  source_family: Official and advisory
+  provider: Government, public commands, UN, NATO, EU, IMO, UKMTO, JMIC
+  primary_checker: ChatGPT External Scout
+  fallback_checker: Public URL verifier / official-source adapters
+  output_field: case_coverage_matrix.official_advisory
+  owner: ChatGPT
+  cue_only: false
+  proof_capable: true
+  key_required: not_required
+  credential_name: none
+  next_action_default: Check official/advisory URLs and mark unavailable sources explicitly.
+  credential_policy: not_needed_now
+  provider_decision: not_blocking
+  provider_tier: public_first
+  blocker_scope: architecture_reference
+  activation_trigger: always_available_public_or_prompt_check
+  current_key_need: not_needed_now
+  recommended_provider_if_needed: public-first source check
+  adapter_status: public_first_prompt_check
+  last_smoke_status: not_applicable_public_first
+  last_http_status_summary: No direct adapter smoke required unless a deterministic adapter is enabled.
+- lane_id: public_news
+  lane_label: Public News / Wires / Trade Press
+  source_family: Public news
+  provider: Reuters, AP, AFP, BBC, Al Jazeera, regional media, trade press
+  primary_checker: ChatGPT External Scout
+  fallback_checker: Public URL verifier / approved licensed news adapter
+  output_field: case_coverage_matrix.public_news
+  owner: ChatGPT
+  cue_only: false
+  proof_capable: true
+  key_required: optional_for_licensed_access
+  credential_name: licensed_news_provider_if_approved
+  next_action_default: Avoid Reuters-only coverage; keep paywalled or blocked sources explicit.
+  credential_policy: optional_later
+  provider_decision: not_blocking
+  provider_tier: public_first
+  blocker_scope: architecture_reference
+  activation_trigger: activate_only_when_current_active_case_requires_deterministic_adapter_or_public_first_is_insufficient
+  current_key_need: optional_later
+  recommended_provider_if_needed: public-first source check
+  adapter_status: public_first_prompt_check
+  last_smoke_status: not_applicable_public_first
+  last_http_status_summary: No direct adapter smoke required unless a deterministic adapter is enabled.
+- lane_id: multilingual_regional
+  lane_label: Multilingual / Regional
+  source_family: Regional context
+  provider: Theater-specific regional and local-language public sources
+  primary_checker: ChatGPT External Scout
+  fallback_checker: Translation/search adapters if approved
+  output_field: multilingual_regional_context
+  owner: ChatGPT
+  cue_only: false
+  proof_capable: true
+  key_required: optional_for_translation_api
+  credential_name: translation_or_search_provider_if_approved
+  next_action_default: Report languages checked and missing-language caveats explicitly.
+  credential_policy: optional_later
+  provider_decision: not_blocking
+  provider_tier: public_first
+  blocker_scope: architecture_reference
+  activation_trigger: activate_only_when_current_active_case_requires_deterministic_adapter_or_public_first_is_insufficient
+  current_key_need: optional_later
+  recommended_provider_if_needed: public-first source check
+  adapter_status: public_first_prompt_check
+  last_smoke_status: not_applicable_public_first
+  last_http_status_summary: No direct adapter smoke required unless a deterministic adapter is enabled.
+- lane_id: social_osint
+  lane_label: Social OSINT / Public Reaction
+  source_family: Social and public reaction
+  provider: Public X/Twitter, public Telegram t.me pages, Reddit, public forums, public OSINT communities
+  primary_checker: ChatGPT External Scout
+  fallback_checker: Public t.me URL verifier / future official X/API or public-social adapter
+  output_field: case_coverage_matrix.social_public_reaction
+  owner: ChatGPT
+  cue_only: true
+  proof_capable: false
+  key_required: optional_for_automatic_ingest
+  credential_name: X_API_or_social_provider_if_approved
+  next_action_default: Keep social claims cue-only and never treat them as proof.
+  credential_policy: not_needed_now
+  provider_decision: not_blocking
+  provider_tier: public_first
+  blocker_scope: architecture_reference
+  activation_trigger: activate_only_when_current_active_case_requires_deterministic_adapter_or_public_first_is_insufficient
+  current_key_need: not_needed_now
+  recommended_provider_if_needed: ChatGPT public web plus public t.me checks
+  adapter_status: public_web_check_present
+  last_smoke_status: telegram_public_web_200; telegram_api_connect_unauthorized
+  last_http_status_summary: Configured public t.me pages returned HTTP 200; account-based Telegram reads are not enabled and
+    are not a current blocker.
+- lane_id: traffic_movement
+  lane_label: Traffic / Movement
+  source_family: Movement
+  provider: AIS, IMF PortWatch, Global Fishing Watch, OpenSky OAuth2/public REST, ADS-B, public port and vessel reporting
+  primary_checker: ChatGPT External Scout
+  fallback_checker: PortWatch, Global Fishing Watch, OpenSky, AIS, or public movement adapters
+  output_field: case_coverage_matrix.traffic_movement
+  owner: ChatGPT
+  cue_only: false
+  proof_capable: true
+  key_required: optional_for_paid_ais
+  credential_name: OPENSKY_CLIENT_ID + OPENSKY_CLIENT_SECRET or movement_provider_if_approved
+  next_action_default: Use public movement checks first; paid AIS remains optional future work.
+  credential_policy: configured_api
+  provider_decision: not_blocking
+  provider_tier: configured_api
+  blocker_scope: architecture_reference
+  activation_trigger: activate_only_when_current_active_case_requires_deterministic_adapter_or_public_first_is_insufficient
+  current_key_need: configured_api
+  recommended_provider_if_needed: Global Fishing Watch / OpenSky / public PortWatch
+  adapter_status: oauth_api_adapter_present
+  last_smoke_status: opensky_oauth_states_all_200; gfw_smoke_ok
+  last_http_status_summary: OpenSky OAuth2 states/all returned HTTP 200; Global Fishing Watch token present by status and
+    smoke passed.
+- lane_id: satellite_geospatial
+  lane_label: Satellite / Geospatial
+  source_family: Geospatial
+  provider: NASA FIRMS area CSV, Sentinel, Copernicus, public SAR/optical/geospatial reporting
+  primary_checker: ChatGPT External Scout
+  fallback_checker: FIRMS, Copernicus, Sentinel, or paid imagery adapters if approved
+  output_field: case_coverage_matrix.satellite_geospatial
+  owner: ChatGPT
+  cue_only: false
+  proof_capable: true
+  key_required: optional_for_nasa_firms_map_key_or_paid_imagery
+  credential_name: NASA_FIRMS_MAP_KEY or imagery_provider_if_approved
+  next_action_default: Verify public imagery or mark unavailable imagery explicitly; use NASA_FIRMS_MAP_KEY for FIRMS area
+    CSV checks when approved.
+  credential_policy: optional_later
+  provider_decision: optional_later
+  provider_tier: optional_later
+  blocker_scope: architecture_reference
+  activation_trigger: activate_only_when_current_active_case_requires_deterministic_adapter_or_public_first_is_insufficient
+  current_key_need: optional_later
+  recommended_provider_if_needed: NASA FIRMS MAP_KEY when approved
+  adapter_status: api_adapter_present_key_gated
+  last_smoke_status: not_tested_unless_nasa_firms_map_key_present
+  last_http_status_summary: NASA FIRMS is unresolved/not tested unless NASA_FIRMS_MAP_KEY is present and smoke passes.
+- lane_id: weather_environment
+  lane_label: Weather / Environment
+  source_family: Environment
+  provider: Public weather, sea state, smoke, fire, dust, haze, environmental context
+  primary_checker: ChatGPT External Scout
+  fallback_checker: Public weather/environment adapters
+  output_field: case_coverage_matrix.weather_environment
+  owner: ChatGPT
+  cue_only: true
+  proof_capable: false
+  key_required: not_required
+  credential_name: none
+  next_action_default: Treat weather as context and not as proof of intent or attribution.
+  credential_policy: not_needed_now
+  provider_decision: not_blocking
+  provider_tier: public_first
+  blocker_scope: architecture_reference
+  activation_trigger: always_available_public_or_prompt_check
+  current_key_need: not_needed_now
+  recommended_provider_if_needed: public-first source check
+  adapter_status: public_first_prompt_check
+  last_smoke_status: not_applicable_public_first
+  last_http_status_summary: No direct adapter smoke required unless a deterministic adapter is enabled.
+- lane_id: prediction_polymarket
+  lane_label: Polymarket
+  source_family: Prediction Markets
+  provider: Polymarket
+  primary_checker: Polymarket public adapter
+  fallback_checker: ChatGPT External Scout public check
+  output_field: prediction_market_matrix.polymarket
+  owner: Adapter
+  cue_only: true
+  proof_capable: false
+  key_required: not_required
+  credential_name: none
+  next_action_default: Wire public read-only adapter/import when candidates remain not imported.
+  credential_policy: not_needed_now
+  provider_decision: not_blocking
+  provider_tier: public_api
+  blocker_scope: architecture_reference
+  activation_trigger: always_available_public_or_prompt_check
+  current_key_need: not_needed_now
+  recommended_provider_if_needed: gamma-api.polymarket.com
+  adapter_status: public_api_adapter_present
+  last_smoke_status: http_200
+  last_http_status_summary: Polymarket Gamma public API returned HTTP 200; no key required.
+- lane_id: prediction_kalshi
+  lane_label: Kalshi
+  source_family: Prediction Markets
+  provider: Kalshi
+  primary_checker: AUTOSINT Kalshi read-only adapter
+  fallback_checker: ChatGPT External Scout public check
+  output_field: prediction_market_matrix.kalshi
+  owner: User key needed
+  cue_only: true
+  proof_capable: false
+  key_required: optional_for_rich_api
+  credential_name: KALSHI_API_KEY_ID + KALSHI_API_PRIVATE_KEY_PEM
+  next_action_default: Configure Kalshi through ignored runtime env helper if approved; never paste keys in chat.
+  credential_policy: configured_api
+  provider_decision: not_blocking
+  provider_tier: configured_api
+  blocker_scope: architecture_reference
+  activation_trigger: activate_only_when_current_active_case_requires_deterministic_adapter_or_public_first_is_insufficient
+  current_key_need: configured_api
+  recommended_provider_if_needed: external-api.kalshi.com
+  adapter_status: env_gated_read_only_adapter_present
+  last_smoke_status: configured_when_env_names_complete
+  last_http_status_summary: Kalshi read-only adapter uses ignored runtime env credentials when present; browser session is
+    not used.
+- lane_id: prediction_other
+  lane_label: Manifold / Other Prediction Markets
+  source_family: Prediction Markets
+  provider: Manifold public API and other public prediction markets
+  primary_checker: Manifold public GET adapter
+  fallback_checker: ChatGPT External Scout public check
+  output_field: prediction_market_matrix.other_prediction_markets
+  owner: Adapter
+  cue_only: true
+  proof_capable: false
+  key_required: not_required
+  credential_name: none
+  next_action_default: Use Manifold public GET search/read first; keep other prediction markets cue-only and record checked/not-found
+    where no market exists.
+  credential_policy: not_needed_now
+  provider_decision: not_blocking
+  provider_tier: public_api
+  blocker_scope: architecture_reference
+  activation_trigger: always_available_public_or_prompt_check
+  current_key_need: not_needed_now
+  recommended_provider_if_needed: api.manifold.markets
+  adapter_status: public_api_adapter_present
+  last_smoke_status: http_200
+  last_http_status_summary: Manifold public GET API returned HTTP 200; no key required.
+- lane_id: broad_market
+  lane_label: Broad Market
+  source_family: Markets / Finance
+  provider: Financial Modeling Prep stable API, public Stooq, SPY, QQQ, VIX, DXY, treasuries/rates
+  primary_checker: ChatGPT External Scout
+  fallback_checker: Finance enrichment adapter
+  output_field: market_finance_matrix.broad_market
+  owner: ChatGPT
+  cue_only: true
+  proof_capable: false
+  key_required: optional_for_quote_provider
+  credential_name: FMP_API_KEY or finance_provider_if_approved
+  next_action_default: Keep broad market readings cue-only and timestamp visible values.
+  credential_policy: configured_api
+  provider_decision: not_blocking
+  provider_tier: configured_api
+  blocker_scope: architecture_reference
+  activation_trigger: activate_only_when_current_active_case_requires_deterministic_adapter_or_public_first_is_insufficient
+  current_key_need: configured_api
+  recommended_provider_if_needed: Financial Modeling Prep stable API plus public fallback
+  adapter_status: api_adapter_present_key_gated
+  last_smoke_status: profile_quote_search_200
+  last_http_status_summary: FMP stable API smoke passed for AAPL profile, SPY quote, and search-symbol.
+- lane_id: oil_energy
+  lane_label: Oil / Energy
+  source_family: Markets / Finance
+  provider: Financial Modeling Prep stable API, public Stooq, Brent, WTI, USO, BNO, XLE, natural gas, LNG proxies
+  primary_checker: ChatGPT External Scout
+  fallback_checker: Finance enrichment adapter
+  output_field: market_finance_matrix.oil_energy
+  owner: ChatGPT
+  cue_only: true
+  proof_capable: false
+  key_required: optional_for_quote_provider
+  credential_name: FMP_API_KEY or finance_provider_if_approved
+  next_action_default: Treat oil/energy signals as context only.
+  credential_policy: configured_api
+  provider_decision: not_blocking
+  provider_tier: configured_api
+  blocker_scope: architecture_reference
+  activation_trigger: activate_only_when_current_active_case_requires_deterministic_adapter_or_public_first_is_insufficient
+  current_key_need: configured_api
+  recommended_provider_if_needed: Financial Modeling Prep stable API plus public fallback
+  adapter_status: api_adapter_present_key_gated
+  last_smoke_status: profile_quote_search_200
+  last_http_status_summary: FMP stable API smoke passed for AAPL profile, SPY quote, and search-symbol.
+- lane_id: shipping_tanker
+  lane_label: Shipping / Tanker
+  source_family: Markets / Finance
+  provider: Financial Modeling Prep stable API, public Stooq, FRO, STNG, TNK, DHT, EURN, INSW, Maersk, ZIM, tanker/freight
+    public sources
+  primary_checker: ChatGPT External Scout
+  fallback_checker: Finance or shipping adapter
+  output_field: market_finance_matrix.shipping_tanker
+  owner: ChatGPT
+  cue_only: true
+  proof_capable: false
+  key_required: optional_for_shipping_provider
+  credential_name: FMP_API_KEY or shipping_or_freight_provider_if_approved
+  next_action_default: Report public tanker/freight checks explicitly even when no metric is found.
+  credential_policy: configured_api
+  provider_decision: not_blocking
+  provider_tier: configured_api
+  blocker_scope: architecture_reference
+  activation_trigger: activate_only_when_current_active_case_requires_deterministic_adapter_or_public_first_is_insufficient
+  current_key_need: configured_api
+  recommended_provider_if_needed: Financial Modeling Prep stable API plus public fallback
+  adapter_status: api_adapter_present_key_gated
+  last_smoke_status: profile_quote_search_200
+  last_http_status_summary: FMP stable API smoke passed for AAPL profile, SPY quote, and search-symbol.
+- lane_id: insurance_freight_rates
+  lane_label: Insurance / Freight / Rates
+  source_family: Markets / Finance
+  provider: Public P&I, insurer notes, war-risk premium reporting, Baltic tanker sources, day-rate reporting
+  primary_checker: ChatGPT External Scout
+  fallback_checker: Shipping/freight/insurance adapter
+  output_field: market_finance_matrix.insurance_freight_rates
+  owner: ChatGPT
+  cue_only: true
+  proof_capable: false
+  key_required: optional_for_shipping_provider
+  credential_name: shipping_or_freight_provider_if_approved
+  next_action_default: Keep insurance_freight_rates explicit; do not hide it under shipping/logistics.
+  credential_policy: not_needed_now
+  provider_decision: not_blocking
+  provider_tier: public_first
+  blocker_scope: architecture_reference
+  activation_trigger: activate_only_when_current_active_case_requires_deterministic_adapter_or_public_first_is_insufficient
+  current_key_need: not_needed_now
+  recommended_provider_if_needed: public Freightos/P&I/trade press first; paid freight optional later
+  adapter_status: bounded_public_search_candidate_only
+  last_smoke_status: public_first_candidate_check
+  last_http_status_summary: No paid freight API required now; public sources and explicit checked/not-found status are expected.
+- lane_id: defense_large_cap
+  lane_label: Defense Large-Cap
+  source_family: Markets / Finance
+  provider: Financial Modeling Prep stable API, public Stooq, LMT, RTX, NOC, GD, HII, BA, BAE, Thales, Leonardo, Rheinmetall,
+    Saab, Elbit
+  primary_checker: ChatGPT External Scout
+  fallback_checker: Finance enrichment adapter
+  output_field: market_finance_matrix.defense_large_cap
+  owner: ChatGPT
+  cue_only: true
+  proof_capable: false
+  key_required: optional_for_quote_provider
+  credential_name: FMP_API_KEY or finance_provider_if_approved
+  next_action_default: Include large-cap defense proxies where relevant and cue-only.
+  credential_policy: configured_api
+  provider_decision: not_blocking
+  provider_tier: configured_api
+  blocker_scope: architecture_reference
+  activation_trigger: activate_only_when_current_active_case_requires_deterministic_adapter_or_public_first_is_insufficient
+  current_key_need: configured_api
+  recommended_provider_if_needed: Financial Modeling Prep stable API plus public fallback
+  adapter_status: api_adapter_present_key_gated
+  last_smoke_status: profile_quote_search_200
+  last_http_status_summary: FMP stable API smoke passed for AAPL profile, SPY quote, and search-symbol.
+- lane_id: defense_mid_small
+  lane_label: Defense Mid/Small
+  source_family: Markets / Finance
+  provider: Financial Modeling Prep stable API, public Stooq, AVAV, KTOS, TXT, QinetiQ, drone/UAS/naval/sensor suppliers
+  primary_checker: ChatGPT External Scout
+  fallback_checker: Finance enrichment adapter
+  output_field: market_finance_matrix.defense_mid_small
+  owner: ChatGPT
+  cue_only: true
+  proof_capable: false
+  key_required: optional_for_quote_provider
+  credential_name: FMP_API_KEY or finance_provider_if_approved
+  next_action_default: Include mid/small defense proxies where relevant and cue-only.
+  credential_policy: configured_api
+  provider_decision: not_blocking
+  provider_tier: configured_api
+  blocker_scope: architecture_reference
+  activation_trigger: activate_only_when_current_active_case_requires_deterministic_adapter_or_public_first_is_insufficient
+  current_key_need: configured_api
+  recommended_provider_if_needed: Financial Modeling Prep stable API plus public fallback
+  adapter_status: api_adapter_present_key_gated
+  last_smoke_status: profile_quote_search_200
+  last_http_status_summary: FMP stable API smoke passed for AAPL profile, SPY quote, and search-symbol.
+- lane_id: regional_markets
+  lane_label: Regional Markets
+  source_family: Markets / Finance
+  provider: Financial Modeling Prep stable API, public Stooq, theater-specific regional market proxies
+  primary_checker: ChatGPT External Scout
+  fallback_checker: Finance enrichment adapter
+  output_field: market_finance_matrix.regional_market
+  owner: ChatGPT
+  cue_only: true
+  proof_capable: false
+  key_required: optional_for_quote_provider
+  credential_name: FMP_API_KEY or finance_provider_if_approved
+  next_action_default: Report theater-specific market proxies or explicitly checked/not-found.
+  credential_policy: configured_api
+  provider_decision: not_blocking
+  provider_tier: configured_api
+  blocker_scope: architecture_reference
+  activation_trigger: activate_only_when_current_active_case_requires_deterministic_adapter_or_public_first_is_insufficient
+  current_key_need: configured_api
+  recommended_provider_if_needed: Financial Modeling Prep stable API plus public fallback
+  adapter_status: api_adapter_present_key_gated
+  last_smoke_status: profile_quote_search_200
+  last_http_status_summary: FMP stable API smoke passed for AAPL profile, SPY quote, and search-symbol.
+- lane_id: crypto_risk
+  lane_label: Crypto / Risk
+  source_family: Markets / Finance
+  provider: BTC, ETH, stablecoin/risk-flow public cues
+  primary_checker: ChatGPT External Scout
+  fallback_checker: Crypto/finance enrichment adapter
+  output_field: market_finance_matrix.crypto_risk
+  owner: ChatGPT
+  cue_only: true
+  proof_capable: false
+  key_required: not_required
+  credential_name: none
+  next_action_default: Keep crypto/risk cue-only and never treat it as event proof.
+  credential_policy: not_needed_now
+  provider_decision: not_blocking
+  provider_tier: public_first
+  blocker_scope: architecture_reference
+  activation_trigger: always_available_public_or_prompt_check
+  current_key_need: not_needed_now
+  recommended_provider_if_needed: public-first source check
+  adapter_status: public_first_prompt_check
+  last_smoke_status: not_applicable_public_first
+  last_http_status_summary: No direct adapter smoke required unless a deterministic adapter is enabled.
+- lane_id: public_comments
+  lane_label: Public Comments / Reaction
+  source_family: Public reaction
+  provider: Public comments, Reddit/public forums, visible market comments where available
+  primary_checker: ChatGPT External Scout
+  fallback_checker: Optional public-comment adapter
+  output_field: case_coverage_matrix.public_comments_reaction
+  owner: ChatGPT
+  cue_only: true
+  proof_capable: false
+  key_required: optional_for_public_comment_provider
+  credential_name: public_comment_provider_if_approved
+  next_action_default: Treat public comments as cue-only and mark unavailable comments explicitly.
+  credential_policy: optional_later
+  provider_decision: not_blocking
+  provider_tier: public_first
+  blocker_scope: architecture_reference
+  activation_trigger: activate_only_when_current_active_case_requires_deterministic_adapter_or_public_first_is_insufficient
+  current_key_need: optional_later
+  recommended_provider_if_needed: public-first source check
+  adapter_status: public_first_prompt_check
+  last_smoke_status: not_applicable_public_first
+  last_http_status_summary: No direct adapter smoke required unless a deterministic adapter is enabled.
+status_color_semantics:
+  GREEN: Public API works, configured adapter works, or public-first lane is healthy; no current active blocker.
+  AMBER: Candidate found/not imported, retained/stale follow-up, blocked source URL with public alternatives, optional future
+    provider not configured, or non-blocking warning.
+  RED: Current active blocker, Live Board stale/active_thread_count_zero, required lane missing from current active thread,
+    configured adapter failing when needed, credential required for current active blocker, or wrong-chat/prompt/capture validation
+    blocker.
+provider_decision_values:
+- public_first
+- public_api
+- configured_api
+- optional_later
+- paid_or_restricted
+- not_needed_now
+- current_active_blocker
+- retained_stale_followup
+- not_blocking
+blocker_scope_values:
+- current_active
+- retained_stale
+- architecture_reference
+- mixed
+source_url_adapter_boundary: A source URL can be blocked, paywalled, or candidate-only while the deterministic adapter for
+  the provider is healthy. URL-level access status must not override adapter health.
+pai_source_pack:
+- id: real_clear_defense
+  source_name: Real Clear Defense
+  source_family: Defense / Security Media
+  provider_tier: public_first
+  provider_decision: public_first
+  primary_checker: ChatGPT External Scout
+  fallback_checker: Public URL verifier
+  cue_only: false
+  proof_capable: true
+  key_required: not_required
+  current_key_need: not_needed_now
+  access_notes: Public-accessible articles; use as public-source context.
+- id: defense_news
+  source_name: Defense News
+  source_family: Defense / Security Media
+  provider_tier: public_first
+  provider_decision: public_first
+  primary_checker: ChatGPT External Scout
+  fallback_checker: Public URL verifier
+  cue_only: false
+  proof_capable: true
+  key_required: not_required
+  current_key_need: not_needed_now
+  access_notes: Public articles first; paywalled pages are blocked URL rows, not provider blockers.
+- id: defense_one
+  source_name: Defense One
+  source_family: Defense / Security Media
+  provider_tier: public_first
+  provider_decision: public_first
+  primary_checker: ChatGPT External Scout
+  fallback_checker: Public URL verifier
+  cue_only: false
+  proof_capable: true
+  key_required: not_required
+  current_key_need: not_needed_now
+  access_notes: Public articles first; paywalled pages are blocked URL rows, not provider blockers.
+- id: npr
+  source_name: NPR
+  source_family: Public News
+  provider_tier: public_first
+  provider_decision: public_first
+  primary_checker: ChatGPT External Scout
+  fallback_checker: Public URL verifier
+  cue_only: false
+  proof_capable: true
+  key_required: not_required
+  current_key_need: not_needed_now
+  access_notes: Public-accessible reporting.
+- id: bbc
+  source_name: BBC
+  source_family: Public News
+  provider_tier: public_first
+  provider_decision: public_first
+  primary_checker: ChatGPT External Scout
+  fallback_checker: Public URL verifier
+  cue_only: false
+  proof_capable: true
+  key_required: not_required
+  current_key_need: not_needed_now
+  access_notes: Public-accessible reporting.
+- id: al_jazeera
+  source_name: Al Jazeera
+  source_family: Public News / Regional
+  provider_tier: public_first
+  provider_decision: public_first
+  primary_checker: ChatGPT External Scout
+  fallback_checker: Public URL verifier
+  cue_only: false
+  proof_capable: true
+  key_required: not_required
+  current_key_need: not_needed_now
+  access_notes: Public-accessible reporting and regional context.
+- id: atlas_news
+  source_name: Atlas News
+  source_family: Defense / Security Media
+  provider_tier: public_first
+  provider_decision: public_first
+  primary_checker: ChatGPT External Scout
+  fallback_checker: Public URL verifier
+  cue_only: false
+  proof_capable: true
+  key_required: not_required
+  current_key_need: not_needed_now
+  access_notes: Use as cue/context; corroborate with official/public news.
+- id: newsnow
+  source_name: NewsNow
+  source_family: Public News Aggregator
+  provider_tier: public_first
+  provider_decision: public_first
+  primary_checker: ChatGPT External Scout
+  fallback_checker: Public URL verifier
+  cue_only: true
+  proof_capable: false
+  key_required: not_required
+  current_key_need: not_needed_now
+  access_notes: Aggregator only; use to discover primary public sources.
+- id: national_interest
+  source_name: National Interest
+  source_family: Defense / Security Media
+  provider_tier: public_first
+  provider_decision: public_first
+  primary_checker: ChatGPT External Scout
+  fallback_checker: Public URL verifier
+  cue_only: false
+  proof_capable: true
+  key_required: not_required
+  current_key_need: not_needed_now
+  access_notes: Analysis/context; not sole proof.
+- id: war_on_the_rocks
+  source_name: War on the Rocks
+  source_family: Defense / Security Analysis
+  provider_tier: public_first
+  provider_decision: public_first
+  primary_checker: ChatGPT External Scout
+  fallback_checker: Public URL verifier
+  cue_only: false
+  proof_capable: true
+  key_required: not_required
+  current_key_need: not_needed_now
+  access_notes: Analysis/context; paywall/access limits explicit.
+- id: foreign_policy
+  source_name: Foreign Policy
+  source_family: Defense / Security Analysis
+  provider_tier: public_first
+  provider_decision: public_first
+  primary_checker: ChatGPT External Scout
+  fallback_checker: Public URL verifier
+  cue_only: false
+  proof_capable: true
+  key_required: not_required
+  current_key_need: not_needed_now
+  access_notes: Public-accessible only; paywall explicit.
+- id: defense_iq
+  source_name: Defense IQ
+  source_family: Defense / Security Trade Press
+  provider_tier: public_first
+  provider_decision: public_first
+  primary_checker: ChatGPT External Scout
+  fallback_checker: Public URL verifier
+  cue_only: false
+  proof_capable: true
+  key_required: not_required
+  current_key_need: not_needed_now
+  access_notes: Public-accessible only; registration/paywall explicit.
+- id: c4isrnet
+  source_name: C4ISRNet
+  source_family: Defense / Security Trade Press
+  provider_tier: public_first
+  provider_decision: public_first
+  primary_checker: ChatGPT External Scout
+  fallback_checker: Public URL verifier
+  cue_only: false
+  proof_capable: true
+  key_required: not_required
+  current_key_need: not_needed_now
+  access_notes: Public-accessible reporting.
+- id: breaking_defense
+  source_name: Breaking Defense
+  source_family: Defense / Security Trade Press
+  provider_tier: public_first
+  provider_decision: public_first
+  primary_checker: ChatGPT External Scout
+  fallback_checker: Public URL verifier
+  cue_only: false
+  proof_capable: true
+  key_required: not_required
+  current_key_need: not_needed_now
+  access_notes: Public-accessible reporting.
+- id: the_diplomat
+  source_name: The Diplomat
+  source_family: Regional / Security Analysis
+  provider_tier: public_first
+  provider_decision: public_first
+  primary_checker: ChatGPT External Scout
+  fallback_checker: Public URL verifier
+  cue_only: false
+  proof_capable: true
+  key_required: not_required
+  current_key_need: not_needed_now
+  access_notes: Public-accessible reporting/analysis; paywall explicit.
+- id: oth_journal
+  source_name: OTH Journal
+  source_family: Military / Security Publication
+  provider_tier: public_first
+  provider_decision: public_first
+  primary_checker: ChatGPT External Scout
+  fallback_checker: Public URL verifier
+  cue_only: false
+  proof_capable: true
+  key_required: not_required
+  current_key_need: not_needed_now
+  access_notes: Public military/security analysis.
+- id: bellingcat
+  source_name: Bellingcat
+  source_family: Open Source Investigation
+  provider_tier: public_first
+  provider_decision: public_first
+  primary_checker: ChatGPT External Scout
+  fallback_checker: Public URL verifier
+  cue_only: false
+  proof_capable: true
+  key_required: not_required
+  current_key_need: not_needed_now
+  access_notes: Public OSINT investigation; corroborate claims.
+- id: aviationist
+  source_name: Aviationist
+  source_family: Aviation / Defense Media
+  provider_tier: public_first
+  provider_decision: public_first
+  primary_checker: ChatGPT External Scout
+  fallback_checker: Public URL verifier
+  cue_only: false
+  proof_capable: true
+  key_required: not_required
+  current_key_need: not_needed_now
+  access_notes: Aviation context; cue/corroboration only.
+- id: air_force_technology
+  source_name: Air Force Technology
+  source_family: Defense / Aerospace Trade Press
+  provider_tier: public_first
+  provider_decision: public_first
+  primary_checker: ChatGPT External Scout
+  fallback_checker: Public URL verifier
+  cue_only: false
+  proof_capable: true
+  key_required: not_required
+  current_key_need: not_needed_now
+  access_notes: Public trade context.
+- id: cia_world_factbook
+  source_name: CIA World Factbook
+  source_family: Reference / Regional Context
+  provider_tier: public_first
+  provider_decision: public_first
+  primary_checker: ChatGPT External Scout
+  fallback_checker: Public URL verifier
+  cue_only: false
+  proof_capable: true
+  key_required: not_required
+  current_key_need: not_needed_now
+  access_notes: Stable public reference; context only.
+- id: liveuamap
+  source_name: LiveUAMap
+  source_family: Public Geospatial / Conflict Map
+  provider_tier: public_first
+  provider_decision: public_first
+  primary_checker: ChatGPT External Scout
+  fallback_checker: Public URL verifier
+  cue_only: false
+  proof_capable: true
+  key_required: not_required
+  current_key_need: not_needed_now
+  access_notes: Cue/geospatial context; verify with primary sources.
+- id: adsb_exchange
+  source_name: ADS-B Exchange
+  source_family: Traffic / Movement
+  provider_tier: public_first
+  provider_decision: public_first
+  primary_checker: ChatGPT External Scout
+  fallback_checker: OpenSky/ADS-B adapter
+  cue_only: false
+  proof_capable: true
+  key_required: not_required
+  current_key_need: not_needed_now
+  access_notes: Public aviation movement context where accessible.
+- id: nga_map_of_the_world
+  source_name: NGA Map of the World
+  source_family: Geospatial Reference
+  provider_tier: public_first
+  provider_decision: public_first
+  primary_checker: ChatGPT External Scout
+  fallback_checker: Public geospatial verifier
+  cue_only: false
+  proof_capable: true
+  key_required: not_required
+  current_key_need: not_needed_now
+  access_notes: Use public-accessible layers only; restricted data not required now.
+- id: wayback_machine
+  source_name: Wayback Machine
+  source_family: Public Archive
+  provider_tier: public_first
+  provider_decision: public_first
+  primary_checker: ChatGPT External Scout
+  fallback_checker: Public URL verifier
+  cue_only: true
+  proof_capable: false
+  key_required: not_required
+  current_key_need: not_needed_now
+  access_notes: Archive/reference context; not a live-source proof by itself.
+- id: rand
+  source_name: RAND
+  source_family: Research / Think Tank
+  provider_tier: public_first
+  provider_decision: public_first
+  primary_checker: ChatGPT External Scout
+  fallback_checker: Public URL verifier
+  cue_only: false
+  proof_capable: true
+  key_required: not_required
+  current_key_need: not_needed_now
+  access_notes: Research context; public-accessible only.
+- id: stratfor
+  source_name: STRATFOR
+  source_family: Analysis / Restricted Provider
+  provider_tier: optional_later
+  provider_decision: optional_later
+  primary_checker: ChatGPT External Scout
+  fallback_checker: Public URL verifier
+  cue_only: false
+  proof_capable: true
+  key_required: optional_for_restricted_access
+  current_key_need: optional_later
+  access_notes: Paid/restricted provider; optional later, not a current blocker.
+- id: congressional_research_service
+  source_name: Congressional Research Service
+  source_family: Research / Government
+  provider_tier: public_first
+  provider_decision: public_first
+  primary_checker: ChatGPT External Scout
+  fallback_checker: Public URL verifier
+  cue_only: false
+  proof_capable: true
+  key_required: not_required
+  current_key_need: not_needed_now
+  access_notes: Public CRS reports where available.
+- id: institute_for_the_study_of_war
+  source_name: Institute for the Study of War
+  source_family: Research / Conflict Tracking
+  provider_tier: public_first
+  provider_decision: public_first
+  primary_checker: ChatGPT External Scout
+  fallback_checker: Public URL verifier
+  cue_only: false
+  proof_capable: true
+  key_required: not_required
+  current_key_need: not_needed_now
+  access_notes: Public conflict analysis/maps; corroborate with primary sources.
+- id: iiss
+  source_name: IISS
+  source_family: Research / Think Tank
+  provider_tier: public_first
+  provider_decision: public_first
+  primary_checker: ChatGPT External Scout
+  fallback_checker: Public URL verifier
+  cue_only: false
+  proof_capable: true
+  key_required: not_required
+  current_key_need: not_needed_now
+  access_notes: Public-accessible analysis only; paywall explicit.
+- id: csis
+  source_name: CSIS
+  source_family: Research / Think Tank
+  provider_tier: public_first
+  provider_decision: public_first
+  primary_checker: ChatGPT External Scout
+  fallback_checker: Public URL verifier
+  cue_only: false
+  proof_capable: true
+  key_required: not_required
+  current_key_need: not_needed_now
+  access_notes: Public-accessible analysis.
+- id: rusi
+  source_name: RUSI
+  source_family: Research / Think Tank
+  provider_tier: public_first
+  provider_decision: public_first
+  primary_checker: ChatGPT External Scout
+  fallback_checker: Public URL verifier
+  cue_only: false
+  proof_capable: true
+  key_required: not_required
+  current_key_need: not_needed_now
+  access_notes: Public-accessible analysis.
+- id: china_aerospace_studies_institute
+  source_name: China Aerospace Studies Institute
+  source_family: Research / Military Studies
+  provider_tier: public_first
+  provider_decision: public_first
+  primary_checker: ChatGPT External Scout
+  fallback_checker: Public URL verifier
+  cue_only: false
+  proof_capable: true
+  key_required: not_required
+  current_key_need: not_needed_now
+  access_notes: Public research context.
+- id: mitchell_institute_for_aerospace
+  source_name: Mitchell Institute for Aerospace
+  source_family: Research / Military Studies
+  provider_tier: public_first
+  provider_decision: public_first
+  primary_checker: ChatGPT External Scout
+  fallback_checker: Public URL verifier
+  cue_only: false
+  proof_capable: true
+  key_required: not_required
+  current_key_need: not_needed_now
+  access_notes: Public aerospace research context.
+- id: modern_war_institute
+  source_name: Modern War Institute
+  source_family: Military / Security Publication
+  provider_tier: public_first
+  provider_decision: public_first
+  primary_checker: ChatGPT External Scout
+  fallback_checker: Public URL verifier
+  cue_only: false
+  proof_capable: true
+  key_required: not_required
+  current_key_need: not_needed_now
+  access_notes: Public military analysis.
+- id: heritage_defense
+  source_name: Heritage Defense
+  source_family: Research / Think Tank
+  provider_tier: public_first
+  provider_decision: public_first
+  primary_checker: ChatGPT External Scout
+  fallback_checker: Public URL verifier
+  cue_only: false
+  proof_capable: true
+  key_required: not_required
+  current_key_need: not_needed_now
+  access_notes: Public policy analysis; contextual.
+- id: brookings
+  source_name: Brookings
+  source_family: Research / Think Tank
+  provider_tier: public_first
+  provider_decision: public_first
+  primary_checker: ChatGPT External Scout
+  fallback_checker: Public URL verifier
+  cue_only: false
+  proof_capable: true
+  key_required: not_required
+  current_key_need: not_needed_now
+  access_notes: Public policy analysis; contextual.
+- id: air_and_space_power_journal
+  source_name: Air and Space Power Journal
+  source_family: Military Publication
+  provider_tier: public_first
+  provider_decision: public_first
+  primary_checker: ChatGPT External Scout
+  fallback_checker: Public URL verifier
+  cue_only: false
+  proof_capable: true
+  key_required: not_required
+  current_key_need: not_needed_now
+  access_notes: Public military scholarship.
+- id: strategic_studies_quarterly
+  source_name: Strategic Studies Quarterly
+  source_family: Military Publication
+  provider_tier: public_first
+  provider_decision: public_first
+  primary_checker: ChatGPT External Scout
+  fallback_checker: Public URL verifier
+  cue_only: false
+  proof_capable: true
+  key_required: not_required
+  current_key_need: not_needed_now
+  access_notes: Public military scholarship.
+- id: air_force_journal_indo_pacific
+  source_name: Air Force Journal of Indo-Pacific Affairs
+  source_family: Military Publication
+  provider_tier: public_first
+  provider_decision: public_first
+  primary_checker: ChatGPT External Scout
+  fallback_checker: Public URL verifier
+  cue_only: false
+  proof_capable: true
+  key_required: not_required
+  current_key_need: not_needed_now
+  access_notes: Public theater scholarship.
+- id: air_force_journal_emea
+  source_name: Air Force Journal of European, Middle Eastern, and African Affairs
+  source_family: Military Publication
+  provider_tier: public_first
+  provider_decision: public_first
+  primary_checker: ChatGPT External Scout
+  fallback_checker: Public URL verifier
+  cue_only: false
+  proof_capable: true
+  key_required: not_required
+  current_key_need: not_needed_now
+  access_notes: Public theater scholarship.
+- id: naval_war_college_review
+  source_name: Naval War College Review
+  source_family: Military Publication
+  provider_tier: public_first
+  provider_decision: public_first
+  primary_checker: ChatGPT External Scout
+  fallback_checker: Public URL verifier
+  cue_only: false
+  proof_capable: true
+  key_required: not_required
+  current_key_need: not_needed_now
+  access_notes: Public naval/security scholarship.
+- id: army_parameters
+  source_name: Army Parameters
+  source_family: Military Publication
+  provider_tier: public_first
+  provider_decision: public_first
+  primary_checker: ChatGPT External Scout
+  fallback_checker: Public URL verifier
+  cue_only: false
+  proof_capable: true
+  key_required: not_required
+  current_key_need: not_needed_now
+  access_notes: Public military scholarship.

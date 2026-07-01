@@ -124,6 +124,78 @@ checked, blocked, stale, or unavailable, report that explicitly.
 | Markets / Finance / Stocks / Crypto | ChatGPT External Scout | Finance/enrichment adapters | Yes |
 | Public Comments / Reaction | ChatGPT External Scout | Optional public comment adapters | Yes |
 
+## Status Colors And Provider Decisions
+
+The pinned `/external-scout/24-7` page and
+`/api/v1/external-scout/24-7-proof` use one operator vocabulary for provider
+state. These colors describe current operational risk; they do not authorize
+Evidence import, source-config mutation, OSIR release, apply/import, or
+commander-ready promotion.
+
+| Color | Meaning |
+|---|---|
+| `GREEN` | A public API works, a configured read-only adapter works, or the lane is healthy with no current active blocker. Examples: Polymarket public Gamma API HTTP 200, Manifold public GET API HTTP 200, Kalshi env-gated adapter configured, Global Fishing Watch configured, OpenSky configured, FMP configured. |
+| `AMBER` | Candidate found/not imported, retained or stale follow-up, blocked source URL with public alternatives, optional future provider, or non-blocking warning. Example: Telegram public pages return HTTP 200 but account-based Telegram API reads are not enabled. |
+| `RED` | Current active blocker: stale or zero-active board, required lane missing from a current active thread, configured adapter failing when needed, credential required for a current active blocker, wrong chat, prompt not ready, or capture validation blocking current board. |
+
+Provider rows carry these scope and decision fields:
+
+- `credential_policy`: `public_first`, `public_api`, `configured_api`,
+  `optional_later`, `paid_or_restricted`, or `not_needed_now`.
+- `provider_decision`: `not_blocking`, `optional_later`,
+  `retained_stale_followup`, or `current_active_blocker`.
+- `provider_tier`: `public_first`, `public_api`, `configured_api`,
+  `optional_later`, or `paid_or_restricted`.
+- `blocker_scope`: `current_active`, `retained_stale`,
+  `architecture_reference`, or `mixed`.
+- `current_key_need`: `not_needed_now`, `configured_api`, `optional_later`, or
+  `current_active_blocker`.
+- `adapter_status`, `last_smoke_status`, and `last_http_status_summary`: safe
+  proof summaries only; no credential values.
+
+Optional future providers are architecture references, not current blockers,
+unless a current active thread requires that lane and no public/configured path
+can satisfy the check.
+
+## Current Provider Truth Table
+
+This table is the current source/provider decision contract. Credential rows
+show presence/status only and never values.
+
+| Provider / lane | Decision | Current state |
+|---|---|---|
+| Polymarket | `public_api` / `not_blocking` | Public Gamma API adapter present at `gamma-api.polymarket.com`; key not required; browser page blocking does not make the adapter blocked. |
+| Manifold | `public_api` / `not_blocking` | Public GET API present at `api.manifold.markets`; key not required. |
+| Kalshi | `configured_api` / `not_blocking` when env names are complete | Env-gated read-only signed adapter; credential presence/status only; no browser session or logged-in tab used for ingest. |
+| Global Fishing Watch | `configured_api` / `not_blocking` | Traffic/movement adapter configured; token presence/status only; smoke OK. |
+| OpenSky | `configured_api` / `not_blocking` | Aviation movement adapter configured; OAuth2 token path works; `states/all` smoke returned 200. |
+| Financial Modeling Prep | `configured_api` / `not_blocking` | Finance quote adapter configured; AAPL profile, SPY quote, and search-symbol smoke returned 200. |
+| Telegram public pages | `public_first` / `not_blocking` | Configured public `t.me` pages returned HTTP 200. |
+| Telegram API | `optional_later` / `not_blocking` | API connection works but user session is unauthorized; account-based reads are not enabled and are not a current blocker. |
+| NASA FIRMS | `optional_later` | Unresolved/not tested unless `NASA_FIRMS_MAP_KEY` is present and smoke passes. |
+
+Optional future providers are not current blockers: licensed Reuters/news,
+X/Twitter API, Reddit API, arbitrary Telegram scraping, translation/search API,
+paid AIS/Kpler/MarineTraffic/Spire, paid freight/Baltic/Kpler/Clarksons,
+Polygon/Massive, and paid satellite/Planet/Maxar/SAR.
+
+## Source URL Status Versus Adapter Health
+
+Source URL status and adapter health are separate. A source URL can be blocked,
+paywalled, rate-limited, stale, or candidate-only while the provider adapter is
+healthy.
+
+Examples:
+
+- A Kalshi web page can be blocked or login-required in a browser while the
+  env-gated Kalshi read-only API remains configured and non-blocking.
+- A Polymarket URL can be candidate-not-imported while the public Gamma API
+  smoke remains GREEN.
+- A public news URL can be paywalled without requiring a licensed news provider
+  when public official, AP/BBC/Al Jazeera/regional/trade alternatives exist.
+- Retained or stale thread source issues stay visible as follow-up memory but
+  do not become current active blockers.
+
 ## URL Lifecycle
 
 ```text
@@ -206,6 +278,24 @@ adapters only when repeatability, metrics, or persistent gaps justify them.
   approved high-value cases.
 - News/paywall: public access only unless a licensed provider is explicitly
   approved.
+
+## PAI Public-First Source Pack
+
+The PAI source pack is a public-first architecture/reference list. It expands
+the discovery itinerary without creating API blockers or a source registry. Each
+source is classified in `config/autosint_sensor_architecture.yml` with
+`source_family`, `provider_tier`, `provider_decision`, `primary_checker`,
+`fallback_checker`, `cue_only`, `proof_capable`, `key_required`,
+`current_key_need`, and access notes.
+
+The current pack includes defense/security media, regional and international
+public media, think tanks, military journals, public movement/geospatial
+sources, and public archives such as Real Clear Defense, Defense News, Defense
+One, BBC, Al Jazeera, War on the Rocks, Foreign Policy, Bellingcat, LiveUAMap,
+ADS-B Exchange, NGA Map of the World, Wayback Machine, RAND, ISW, IISS, CSIS,
+RUSI, Naval War College Review, Army Parameters, and related public-first
+sources. Paywalled, restricted, or licensed access is marked as optional/future
+unless it becomes an approved current active need.
 
 ## Operator Surface Contract
 

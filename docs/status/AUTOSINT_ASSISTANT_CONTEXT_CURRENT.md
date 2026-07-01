@@ -7,8 +7,8 @@ This is a public, sanitized context file for restoring AUTOSINT project context 
 - Private code/runtime repo: `tg-osint-eucom/autosint`
 - Public context mirror: `tg-osint-eucom/autosint-context`
 - Source branch: `main`
-- Source HEAD: `a480efa416b30c71ae34637f16fcb47a5e662c6d`
-- Generated at: `2026-07-01T21:38:53Z`
+- Source HEAD: `663c58e2263cfc8b56a8dedd0e0297dabf2346ea`
+- Generated at: `2026-07-01T22:52:00Z`
 
 ## Primary Workflow
 
@@ -61,6 +61,7 @@ The following are local-only and are not mirrored here:
 
 ## Latest Source Commits
 
+- `663c58e fix(ops): synchronize source sensor provider decisions`
 - `a480efa fix(ops): add telegram and fmp source adapter checks`
 - `eb5cc9f fix(ops): surface source adapter credential status`
 - `49a9138 fix(ops): show public prediction adapters in 24-7 proof`
@@ -80,7 +81,6 @@ The following are local-only and are not mirrored here:
 - `dcebdb3 fix(scout): fail closed hung prompt trigger recovery`
 - `281429a fix(ui): surface 24/7 proof counters and source health`
 - `8b6085b fix(scout): clarify per-case source health blockers`
-- `ff42103 fix(scout): summarize active source health todos`
 
 ## Source Dirty State
 
