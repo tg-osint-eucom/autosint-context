@@ -7,8 +7,8 @@ This is a public, sanitized context file for restoring AUTOSINT project context 
 - Private code/runtime repo: `tg-osint-eucom/autosint`
 - Public context mirror: `tg-osint-eucom/autosint-context`
 - Source branch: `main`
-- Source HEAD: `ac659f97d6186377ce9951df5180501dcffd6436`
-- Generated at: `2026-07-01T15:50:12Z`
+- Source HEAD: `50c8142f593831570352aed0f949da205a365183`
+- Generated at: `2026-07-01T16:09:44Z`
 
 ## Primary Workflow
 
@@ -33,7 +33,7 @@ This is a public, sanitized context file for restoring AUTOSINT project context 
 - Available: `True`
 - Active selection policy: `latest_validated_capture_only`
 - Active packet count: `1`
-- History packet count: `601`
+- History packet count: `605`
 - Latest packet timestamp: `2026-07-01T14:39:51Z`
 - Stale: `False`
 - Read-only: `True`
@@ -61,6 +61,7 @@ The following are local-only and are not mirrored here:
 
 ## Latest Source Commits
 
+- `50c8142 fix(scout): close hormuz source gaps with read-only adapters`
 - `ac659f9 fix(scout): preserve active board during enrichment follow-up`
 - `f6b709b fix(scout): keep source-lane enrichment follow-up active`
 - `bfa8d32 fix(scout): run signed kalshi enrichment without collapsing board`
@@ -80,7 +81,6 @@ The following are local-only and are not mirrored here:
 - `510cb56 fix(scout): surface warn source causes on 24-7 page`
 - `4006336 fix(scout): allow late packet readiness recovery`
 - `97faffc fix(scout): expose source recovery verification stages`
-- `12346d8 fix(scout): show per-case source verification stages`
 
 ## Source Dirty State
 

@@ -250,6 +250,12 @@ bypass login/CAPTCHA/paywalls, or print credential values. Candidate URLs can
 still appear as follow-up gaps until a read-only adapter or approved import path
 turns the lane into an explicit checked source.
 
+When a deterministic read-only adapter checks a candidate URL, it may write
+`source_gap_closure_notes` into a supplemental External Scout packet. Those
+notes close only the specific `source_area` / `lane` they name, remain
+review-only provenance, and do not create Evidence, case links, source-config
+state, OSIR release, apply/import action, or commander-ready status.
+
 ## 24/7 Proof Loop
 
 Do not call External Scout 24/7-ready after a single green run. The production

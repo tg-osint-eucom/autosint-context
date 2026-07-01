@@ -91,6 +91,7 @@ WORLD / PUBLIC SIGNALS
 |   |-- insurance / freight / rates
 |   |-- candidate source URL inventory
 |   |-- public URL verification
+|   |-- source_gap_closure_notes for exact read-only source_area / lane checks
 |   `-- future adapters: X API, AIS, satellite, finance provider
 |
 |-- G. Operator Surfaces
