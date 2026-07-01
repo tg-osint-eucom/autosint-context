@@ -7,8 +7,8 @@ This is a public, sanitized context file for restoring AUTOSINT project context 
 - Private code/runtime repo: `tg-osint-eucom/autosint`
 - Public context mirror: `tg-osint-eucom/autosint-context`
 - Source branch: `main`
-- Source HEAD: `5ae30c5325ec8992fa4b3da28d12164c5565d77b`
-- Generated at: `2026-06-30T15:40:18Z`
+- Source HEAD: `e15ecf561a393e805132dace3708de5e31db2dc1`
+- Generated at: `2026-07-01T00:03:46Z`
 
 ## Primary Workflow
 
@@ -61,6 +61,7 @@ The following are local-only and are not mirrored here:
 
 ## Latest Source Commits
 
+- `e15ecf5 feat(ops): add sensor architecture map to 24-7 proof`
 - `5ae30c5 fix(ui): show source urls in 24-7 source health`
 - `9cb6c4d fix(ops): surface packet stall recovery diagnostics`
 - `279f1f5 fix(ui): show retained source health on 24-7 page`
@@ -80,7 +81,6 @@ The following are local-only and are not mirrored here:
 - `9f42769 fix(scout): preserve late packet recovery and source closures`
 - `1e4bec8 fix(ops): keep stale source gaps informational`
 - `68d0162 fix(scout): apply latest source gap closures to thread health`
-- `eb18958 fix(scout): bound packet readiness copy fallback`
 
 ## Source Dirty State
 

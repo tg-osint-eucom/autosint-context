@@ -11,6 +11,8 @@ Use these public raw URLs to restore AUTOSINT operating context without private 
 - `docs/AUTOSINT_LONG_RUNNING_WORK_MODEL.md`: https://raw.githubusercontent.com/tg-osint-eucom/autosint-context/main/docs/AUTOSINT_LONG_RUNNING_WORK_MODEL.md
 - `docs/AUTOSINT_ORCHESTRATION_ROADMAP.md`: https://raw.githubusercontent.com/tg-osint-eucom/autosint-context/main/docs/AUTOSINT_ORCHESTRATION_ROADMAP.md
 - `docs/AUTOSINT_EXTERNAL_SCOUT_CAPTURE_BOUNDARY.md`: https://raw.githubusercontent.com/tg-osint-eucom/autosint-context/main/docs/AUTOSINT_EXTERNAL_SCOUT_CAPTURE_BOUNDARY.md
+- `docs/AUTOSINT_SENSOR_ARCHITECTURE_V1.md`: https://raw.githubusercontent.com/tg-osint-eucom/autosint-context/main/docs/AUTOSINT_SENSOR_ARCHITECTURE_V1.md
+- `config/autosint_sensor_architecture.yml`: https://raw.githubusercontent.com/tg-osint-eucom/autosint-context/main/config/autosint_sensor_architecture.yml
 - `docs/AUTOSINT_GLOBAL_SENSOR_COVERAGE_POLICY.md`: https://raw.githubusercontent.com/tg-osint-eucom/autosint-context/main/docs/AUTOSINT_GLOBAL_SENSOR_COVERAGE_POLICY.md
 - `docs/AUTOSINT_THEATER_WATCH_POLICY.md`: https://raw.githubusercontent.com/tg-osint-eucom/autosint-context/main/docs/AUTOSINT_THEATER_WATCH_POLICY.md
 - `docs/AUTOSINT_MARKET_PREDICTION_FINANCE_POLICY.md`: https://raw.githubusercontent.com/tg-osint-eucom/autosint-context/main/docs/AUTOSINT_MARKET_PREDICTION_FINANCE_POLICY.md

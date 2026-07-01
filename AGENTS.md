@@ -96,6 +96,7 @@ operator-surface, capture, or policy work:
 - `docs/AUTOSINT_PRIMARY_WORKFLOW.md`
 - `docs/AUTOSINT_EXTERNAL_SCOUT_RUNBOOK.md`
 - `docs/AUTOSINT_CHATGPT_PROJECT_OPERATING_MODEL.md`
+- `docs/AUTOSINT_SENSOR_ARCHITECTURE_V1.md`
 - `docs/AUTOSINT_GLOBAL_SENSOR_COVERAGE_POLICY.md`
 - `docs/AUTOSINT_THEATER_WATCH_POLICY.md`
 - `docs/AUTOSINT_MARKET_PREDICTION_FINANCE_POLICY.md`
@@ -104,6 +105,7 @@ operator-surface, capture, or policy work:
 - `docs/AUTOSINT_CHATGPT_CODEX_HANDOFF_QUEUE.md`
 - `docs/AUTOSINT_CONTEXT_MIRROR_RUNBOOK.md`
 - `docs/status/AUTOSINT_WORKSTREAMS.md`
+- `config/autosint_sensor_architecture.yml`
 - `config/autosint_workstreams.yml`
 - `scripts/validate_release_surface.sh`
 
@@ -174,6 +176,31 @@ shipping/logistics/insurance, and multilingual/regional context.
 Market, crypto, prediction-market, social, and public-comment lanes are cue-only
 and cannot independently prove closure, reopening, attribution, causality,
 intent, insider activity, OSIR release, or commander-ready status.
+
+## Sensor Architecture Rule
+
+For AUTOSINT source/sensor work, treat the sensor architecture as a durable
+system contract. Before changing External Scout prompts, source-health logic,
+enrichment, adapters, Live Board source status, HAVOC/RFI source fields, or any
+source/sensor-related workflow, read:
+
+- `docs/AUTOSINT_SENSOR_ARCHITECTURE_V1.md`
+- `config/autosint_sensor_architecture.yml`
+- `docs/AUTOSINT_GLOBAL_SENSOR_COVERAGE_POLICY.md`
+- `docs/AUTOSINT_MARKET_PREDICTION_FINANCE_POLICY.md`
+- `docs/AUTOSINT_THEATER_WATCH_POLICY.md`
+- `docs/AUTOSINT_EXTERNAL_SCOUT_RUNBOOK.md`
+
+Core rule: ChatGPT External Scout discovers broadly; AUTOSINT validates
+strictly; adapters verify deterministically; Live Board is case memory; health
+monitor watches the loop; HAVOC/RFI previews only. Nothing becomes Evidence,
+OSIR, case-linked, applied/imported, or commander-ready without a future
+explicit approval gate.
+
+No required source/sensor lane may be silently omitted. Cue-only lanes are never
+proof. Approved runtime credentials, such as Kalshi, must go only through
+ignored runtime env helpers and must never be pasted into chat, docs, commits,
+receipts, screenshots, logs, or the public context mirror.
 
 ## Theater Watch
 

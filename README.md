@@ -13,6 +13,7 @@ The private runtime/code repository is `tg-osint-eucom/autosint`. Use this mirro
 - ChatGPT Project operating model.
 - Long-running workstream model.
 - External Scout capture boundary.
+- Sensor architecture v1 and machine-readable lane/provider matrix.
 - Global sensor coverage policy.
 - Theater watch policy.
 - Market prediction finance policy.
@@ -51,15 +52,17 @@ For context recovery, read these files in order:
 6. `docs/AUTOSINT_LONG_RUNNING_WORK_MODEL.md`
 7. `docs/AUTOSINT_ORCHESTRATION_ROADMAP.md`
 8. `docs/AUTOSINT_EXTERNAL_SCOUT_CAPTURE_BOUNDARY.md`
-9. `docs/AUTOSINT_GLOBAL_SENSOR_COVERAGE_POLICY.md`
-10. `docs/AUTOSINT_THEATER_WATCH_POLICY.md`
-11. `docs/AUTOSINT_MARKET_PREDICTION_FINANCE_POLICY.md`
-12. `docs/AUTOSINT_GPT56_MODEL_UPGRADE_EVALUATION.md`
-13. `docs/AUTOSINT_EVALUATION_DATASET_V0.md`
-14. `docs/AUTOSINT_CHATGPT_CODEX_HANDOFF_QUEUE.md`
-15. `docs/product/AUTOSINT_SENSOR_COVERAGE_REQUIREMENTS_TRACE.md`
-16. `docs/status/AUTOSINT_WORKSTREAMS.md`
-17. `docs/status/AUTOSINT_ASSISTANT_CONTEXT_CURRENT.md`
-18. `docs/status/AUTOSINT_CONTEXT_INDEX.md`
+9. `docs/AUTOSINT_SENSOR_ARCHITECTURE_V1.md`
+10. `config/autosint_sensor_architecture.yml`
+11. `docs/AUTOSINT_GLOBAL_SENSOR_COVERAGE_POLICY.md`
+12. `docs/AUTOSINT_THEATER_WATCH_POLICY.md`
+13. `docs/AUTOSINT_MARKET_PREDICTION_FINANCE_POLICY.md`
+14. `docs/AUTOSINT_GPT56_MODEL_UPGRADE_EVALUATION.md`
+15. `docs/AUTOSINT_EVALUATION_DATASET_V0.md`
+16. `docs/AUTOSINT_CHATGPT_CODEX_HANDOFF_QUEUE.md`
+17. `docs/product/AUTOSINT_SENSOR_COVERAGE_REQUIREMENTS_TRACE.md`
+18. `docs/status/AUTOSINT_WORKSTREAMS.md`
+19. `docs/status/AUTOSINT_ASSISTANT_CONTEXT_CURRENT.md`
+20. `docs/status/AUTOSINT_CONTEXT_INDEX.md`
 
 This repo is documentation-only. Do not treat it as a runtime source, package source, artifact store, or evidence store.

@@ -33,6 +33,7 @@ finding -> validation -> dedupe -> false-positive check -> targeted fix -> tests
 | `agent_pir_langgraph_design` | Planned | Design future read-only LangGraph agent loops for PIR/source-gap/thread review. |
 | `local_knowledge_index_spike` | Planned | Design a sanitized local retrieval index over docs, context mirror, page dumps, briefs, and receipts. |
 | `run_observability_dashboard` | Active | Keep run observability consolidated into the pinned `/external-scout/24-7` source; extend that canonical proof page instead of creating a second dashboard/server. |
+| `sensor_architecture_v1` | Active | Keep Sensor Pipeline, Provider / Source Lane Matrix, Credential Blockers, and Next Safe Actions visible on the single pinned `/external-scout/24-7` proof page and matching JSON source. |
 | `gpt56_model_upgrade_evaluation` | Needs Verification | Evaluate GPT-5.6 model-family availability and non-production AUTOSINT replay before any production migration. |
 | `autosint_eval_dataset_v0` | Active | Maintain sanitized AUTOSINT eval taxonomy, deterministic graders, safe fixtures, and copy-safe ChatGPT-to-Codex handoff queue. |
 
