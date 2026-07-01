@@ -186,7 +186,9 @@ adapters only when repeatability, metrics, or persistent gaps justify them.
 - Polymarket: public adapter first; no key usually required.
 - Kalshi: read-only API is useful for richer deterministic checks; credentials
   must use ignored runtime env helpers and never be pasted into chat or commits.
-- Manifold / other prediction markets: public adapter first.
+- Manifold / other prediction markets: public GET adapter first; no API key,
+  login, browser session, or write endpoint is required for AUTOSINT
+  cue-only market search/read checks.
 - X/Twitter and social OSINT: ChatGPT public check first; official API only if
   automatic ingest becomes necessary.
 - Finance/stocks: public checks first; provider key later if quote reliability

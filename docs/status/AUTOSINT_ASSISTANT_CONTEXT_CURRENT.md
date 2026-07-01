@@ -7,8 +7,8 @@ This is a public, sanitized context file for restoring AUTOSINT project context 
 - Private code/runtime repo: `tg-osint-eucom/autosint`
 - Public context mirror: `tg-osint-eucom/autosint-context`
 - Source branch: `main`
-- Source HEAD: `50c8142f593831570352aed0f949da205a365183`
-- Generated at: `2026-07-01T16:09:44Z`
+- Source HEAD: `49a9138061be9117b33641dd72ac4116a0d0ec6b`
+- Generated at: `2026-07-01T20:43:11Z`
 
 ## Primary Workflow
 
@@ -33,9 +33,9 @@ This is a public, sanitized context file for restoring AUTOSINT project context 
 - Available: `True`
 - Active selection policy: `latest_validated_capture_only`
 - Active packet count: `1`
-- History packet count: `605`
-- Latest packet timestamp: `2026-07-01T14:39:51Z`
-- Stale: `False`
+- History packet count: `607`
+- Latest packet timestamp: `2026-07-01T17:54:30Z`
+- Stale: `True`
 - Read-only: `True`
 - Private browser state read: `False`
 - Cookies read: `False`
@@ -61,6 +61,7 @@ The following are local-only and are not mirrored here:
 
 ## Latest Source Commits
 
+- `49a9138 fix(ops): show public prediction adapters in 24-7 proof`
 - `50c8142 fix(scout): close hormuz source gaps with read-only adapters`
 - `ac659f9 fix(scout): preserve active board during enrichment follow-up`
 - `f6b709b fix(scout): keep source-lane enrichment follow-up active`
@@ -80,7 +81,6 @@ The following are local-only and are not mirrored here:
 - `ff42103 fix(scout): summarize active source health todos`
 - `510cb56 fix(scout): surface warn source causes on 24-7 page`
 - `4006336 fix(scout): allow late packet readiness recovery`
-- `97faffc fix(scout): expose source recovery verification stages`
 
 ## Source Dirty State
 

@@ -177,8 +177,8 @@ source_lanes:
   - lane_id: prediction_other
     lane_label: Manifold / Other Prediction Markets
     source_family: Prediction Markets
-    provider: Manifold and other public prediction markets
-    primary_checker: Public prediction-market adapters
+    provider: Manifold public API and other public prediction markets
+    primary_checker: Manifold public GET adapter
     fallback_checker: ChatGPT External Scout public check
     output_field: prediction_market_matrix.other_prediction_markets
     owner: Adapter
@@ -186,7 +186,7 @@ source_lanes:
     proof_capable: false
     key_required: not_required
     credential_name: none
-    next_action_default: Keep other prediction markets cue-only and record checked/not-found where no market exists.
+    next_action_default: Use Manifold public GET search/read first; keep other prediction markets cue-only and record checked/not-found where no market exists.
   - lane_id: broad_market
     lane_label: Broad Market
     source_family: Markets / Finance
