@@ -7,8 +7,8 @@ This is a public, sanitized context file for restoring AUTOSINT project context 
 - Private code/runtime repo: `tg-osint-eucom/autosint`
 - Public context mirror: `tg-osint-eucom/autosint-context`
 - Source branch: `main`
-- Source HEAD: `e15ecf561a393e805132dace3708de5e31db2dc1`
-- Generated at: `2026-07-01T00:03:46Z`
+- Source HEAD: `8af19521b640069626ad52a82a9431ec3bcf268d`
+- Generated at: `2026-07-01T03:49:00Z`
 
 ## Primary Workflow
 
@@ -32,10 +32,10 @@ This is a public, sanitized context file for restoring AUTOSINT project context 
 
 - Available: `True`
 - Active selection policy: `latest_validated_capture_only`
-- Active packet count: `4`
-- History packet count: `568`
-- Latest packet timestamp: `2026-06-30T10:58:30Z`
-- Stale: `True`
+- Active packet count: `1`
+- History packet count: `570`
+- Latest packet timestamp: `2026-07-01T03:29:30Z`
+- Stale: `False`
 - Read-only: `True`
 - Private browser state read: `False`
 - Cookies read: `False`
@@ -61,6 +61,7 @@ The following are local-only and are not mirrored here:
 
 ## Latest Source Commits
 
+- `8af1952 fix(scout): harden prompt recovery state machine`
 - `e15ecf5 feat(ops): add sensor architecture map to 24-7 proof`
 - `5ae30c5 fix(ui): show source urls in 24-7 source health`
 - `9cb6c4d fix(ops): surface packet stall recovery diagnostics`
@@ -80,7 +81,6 @@ The following are local-only and are not mirrored here:
 - `c231c97 fix(scout): clarify 24/7 source gap actions`
 - `9f42769 fix(scout): preserve late packet recovery and source closures`
 - `1e4bec8 fix(ops): keep stale source gaps informational`
-- `68d0162 fix(scout): apply latest source gap closures to thread health`
 
 ## Source Dirty State
 
