@@ -92,7 +92,21 @@ fallback prompt submission pointed at the Packet chat through ignored
 `artifacts/external_scout/prompt_trigger_target.json`.
 
 Current proven production upstream remains the local Packet-chat prompt
-trigger. On 2026-06-28, the existing `AUTOSINT Daily External Scout` Scheduled
+trigger, but the Pro Extended contract is now Scout Findings, not direct
+strict packets. The hourly wrapper defaults to
+`--scout-findings-mode`: ChatGPT may emit a downloadable
+`autosint_scout_findings_YYYYMMDDTHHMMSSZ.json` file with real source checks,
+and AUTOSINT fetches that visible attachment, normalizes it with
+`scripts/normalize_external_scout_findings_to_packets.py`, validates the strict
+packet candidate, applies the newer-than-inbox guard, and promotes only when
+`validation_error_count=0`. Receipts must record
+`normalized_promoted_to_inbox`, `normalized_validation_error_count`,
+`scout_findings_attachment_filename` when an attachment is used, and the usual
+no-DB/no-Evidence/no-OSIR/no-commander-ready safety flags. Set
+`AUTOSINT_PROMPT_TRIGGER_SCOUT_FINDINGS_MODE=0` only for explicit strict-packet
+fallback work.
+
+On 2026-06-28, the existing `AUTOSINT Daily External Scout` Scheduled
 Task was updated with the strict self-contained prompt and resumed, but the
 proof run was not capturable: the Scheduled Tasks page showed `Выполняется`
 for more than ten minutes, exposed no run-now control, no output/result chat
@@ -416,7 +430,13 @@ then proved Packet-chat request-id delivery with
 `2026-06-28T17:50:30Z` and restored Live Board `stale=false`.
 
 Do not install or load launchd until manual dry-run and real one-shot capture
-are consistently valid.
+are consistently valid. On 2026-07-02, Packet v2 with Pro Extended produced
+`autosint_scout_findings_20260702T174610Z.json`; the normalizer dry-run and
+promotion produced five validator-clean packets generated_at
+`2026-07-02T17:46:10Z`, Live Board `stale=false`, and health `WARN` only for
+paused prompt-trigger/source-lane warnings. Restart prompt-trigger only after
+this normalized path is intentionally used by the wrapper; keep Scheduled
+Tasks paused.
 
 The installed External Scout LaunchAgents should rely on the wrapper scripts'
 timestamped logs under ignored `artifacts/external_scout/*_logs/`. Avoid

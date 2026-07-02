@@ -64,16 +64,27 @@ These legacy routes should remain removed from primary navigation unless a futur
 The current proven External Scout path is:
 
 ```text
-ChatGPT Project / Packet-chat prompt trigger
--> visible-browser capture bridge
--> staging
+ChatGPT Project / Packet-chat prompt trigger in Scout Findings mode
+-> visible Scout Findings JSON or downloadable Scout Findings attachment
+-> deterministic AUTOSINT normalizer
+-> strict packet staging
 -> validation
 -> quarantine if invalid
--> active inbox if valid
+-> active inbox if valid and newer than latest inbox
 -> latest active capture only
 -> /external-scout
 -> /havoc-rfi
 ```
+
+As of 2026-07-02, Pro Extended is treated as a source-discovery/findings
+generator rather than the strict-packet author. The prompt-trigger wrapper
+defaults to `--scout-findings-mode`; it accepts current Scout Findings JSON or
+the visible `autosint_scout_findings_YYYYMMDDTHHMMSSZ.json` attachment,
+normalizes with
+`scripts/normalize_external_scout_findings_to_packets.py`, and promotes only a
+validator-clean packet set with `commander_ready=false` and
+`mutation_performed=false`. Direct ChatGPT strict packets remain candidate
+fallback material, not the preferred Pro Extended machine-output contract.
 
 ChatGPT Scheduled Tasks remain an active but unverified upstream candidate. On
 2026-06-28, the existing Scheduled Task was updated and resumed, but its proof

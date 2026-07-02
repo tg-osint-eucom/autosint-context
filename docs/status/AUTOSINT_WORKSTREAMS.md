@@ -168,7 +168,20 @@ safe-skipped because the Packet fallback inbox was already newer. That
 outside-project result chat was deleted by the user and must not be used as a
 production target. The Scheduled Tasks page currently shows
 `AUTOSINT Daily External Scout` paused; keep it paused unless a Project-scoped
-output path is available. The task editor was checked read-only after deletion
+output target becomes available.
+
+2026-07-02 update: Packet v2 / Pro Extended is now routed through Scout
+Findings normalization instead of direct strict-packet generation. The wrapper
+defaults to `--scout-findings-mode`, can read the visible
+`autosint_scout_findings_YYYYMMDDTHHMMSSZ.json` attachment, runs the
+deterministic normalizer, enforces `validation_error_count=0` plus
+newer-than-inbox before promotion, and leaves DB/Evidence/source-config/OSIR
+and commander-ready paths untouched. The one-shot recovery promoted five
+fresh packets generated_at `2026-07-02T17:46:10Z`; Live Board is fresh with
+five active threads, health is WARN rather than RED, and the only 24/7 proof
+blocker is the required three consecutive natural cycles. Keep prompt-trigger
+paused until restart is explicitly approved for this normalized wrapper.
+The task editor was checked read-only after deletion
 of the outside-project result chat and showed only task title, instructions,
 hourly repeat interval, and end time controls; no output chat, Project, or
 conversation target selector was visible. The task actions menu exposed

@@ -7,8 +7,8 @@ This is a public, sanitized context file for restoring AUTOSINT project context 
 - Private code/runtime repo: `tg-osint-eucom/autosint`
 - Public context mirror: `tg-osint-eucom/autosint-context`
 - Source branch: `main`
-- Source HEAD: `7275b51bd54fb622aac8c9fb5ff5216097e01e56`
-- Generated at: `2026-07-02T16:06:59Z`
+- Source HEAD: `b72ab88183deabe5134001cc6bb7207dcc908e19`
+- Generated at: `2026-07-02T18:33:47Z`
 
 ## Primary Workflow
 
@@ -32,9 +32,9 @@ This is a public, sanitized context file for restoring AUTOSINT project context 
 
 - Available: `True`
 - Active selection policy: `latest_validated_capture_only`
-- Active packet count: `1`
-- History packet count: `609`
-- Latest packet timestamp: `2026-07-02T15:39:46Z`
+- Active packet count: `5`
+- History packet count: `619`
+- Latest packet timestamp: `2026-07-02T17:46:10Z`
 - Stale: `False`
 - Read-only: `True`
 - Private browser state read: `False`
@@ -61,6 +61,7 @@ The following are local-only and are not mirrored here:
 
 ## Latest Source Commits
 
+- `b72ab88 feat(scout): normalize pro extended scout findings`
 - `7275b51 feat(scout): normalize scout findings into strict packets`
 - `6622376 fix(scout): harden stalled response detection`
 - `b63a411 fix(ops): reflect telegram session adapter readiness`
@@ -80,7 +81,6 @@ The following are local-only and are not mirrored here:
 - `279f1f5 fix(ui): show retained source health on 24-7 page`
 - `b7f7ff7 fix(scout): expose per-case 24-7 source health counts`
 - `a50ce4a fix(scout): recover stalled packet prompt responses`
-- `a65ed0c fix(scout): use minimal recovery when prompt generation stalls`
 
 ## Source Dirty State
 
