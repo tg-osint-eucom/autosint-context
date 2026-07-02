@@ -7,8 +7,8 @@ This is a public, sanitized context file for restoring AUTOSINT project context 
 - Private code/runtime repo: `tg-osint-eucom/autosint`
 - Public context mirror: `tg-osint-eucom/autosint-context`
 - Source branch: `main`
-- Source HEAD: `6622376c6a68023242927f3d1101516ab60c7f7a`
-- Generated at: `2026-07-02T14:41:25Z`
+- Source HEAD: `7275b51bd54fb622aac8c9fb5ff5216097e01e56`
+- Generated at: `2026-07-02T16:06:59Z`
 
 ## Primary Workflow
 
@@ -33,9 +33,9 @@ This is a public, sanitized context file for restoring AUTOSINT project context 
 - Available: `True`
 - Active selection policy: `latest_validated_capture_only`
 - Active packet count: `1`
-- History packet count: `608`
-- Latest packet timestamp: `2026-07-01T23:58:30Z`
-- Stale: `True`
+- History packet count: `609`
+- Latest packet timestamp: `2026-07-02T15:39:46Z`
+- Stale: `False`
 - Read-only: `True`
 - Private browser state read: `False`
 - Cookies read: `False`
@@ -61,6 +61,7 @@ The following are local-only and are not mirrored here:
 
 ## Latest Source Commits
 
+- `7275b51 feat(scout): normalize scout findings into strict packets`
 - `6622376 fix(scout): harden stalled response detection`
 - `b63a411 fix(ops): reflect telegram session adapter readiness`
 - `663c58e fix(ops): synchronize source sensor provider decisions`
@@ -80,7 +81,6 @@ The following are local-only and are not mirrored here:
 - `b7f7ff7 fix(scout): expose per-case 24-7 source health counts`
 - `a50ce4a fix(scout): recover stalled packet prompt responses`
 - `a65ed0c fix(scout): use minimal recovery when prompt generation stalls`
-- `dcebdb3 fix(scout): fail closed hung prompt trigger recovery`
 
 ## Source Dirty State
 
