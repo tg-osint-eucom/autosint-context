@@ -7,8 +7,8 @@ This is a public, sanitized context file for restoring AUTOSINT project context 
 - Private code/runtime repo: `tg-osint-eucom/autosint`
 - Public context mirror: `tg-osint-eucom/autosint-context`
 - Source branch: `main`
-- Source HEAD: `b63a4111fe0c6db15fa10352d17745fded6b58ff`
-- Generated at: `2026-07-02T01:19:01Z`
+- Source HEAD: `6622376c6a68023242927f3d1101516ab60c7f7a`
+- Generated at: `2026-07-02T14:41:25Z`
 
 ## Primary Workflow
 
@@ -35,7 +35,7 @@ This is a public, sanitized context file for restoring AUTOSINT project context 
 - Active packet count: `1`
 - History packet count: `608`
 - Latest packet timestamp: `2026-07-01T23:58:30Z`
-- Stale: `False`
+- Stale: `True`
 - Read-only: `True`
 - Private browser state read: `False`
 - Cookies read: `False`
@@ -61,6 +61,7 @@ The following are local-only and are not mirrored here:
 
 ## Latest Source Commits
 
+- `6622376 fix(scout): harden stalled response detection`
 - `b63a411 fix(ops): reflect telegram session adapter readiness`
 - `663c58e fix(ops): synchronize source sensor provider decisions`
 - `a480efa fix(ops): add telegram and fmp source adapter checks`
@@ -80,7 +81,6 @@ The following are local-only and are not mirrored here:
 - `a50ce4a fix(scout): recover stalled packet prompt responses`
 - `a65ed0c fix(scout): use minimal recovery when prompt generation stalls`
 - `dcebdb3 fix(scout): fail closed hung prompt trigger recovery`
-- `281429a fix(ui): surface 24/7 proof counters and source health`
 
 ## Source Dirty State
 
