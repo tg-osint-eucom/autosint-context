@@ -7,8 +7,8 @@ This is a public, sanitized context file for restoring AUTOSINT project context 
 - Private code/runtime repo: `tg-osint-eucom/autosint`
 - Public context mirror: `tg-osint-eucom/autosint-context`
 - Source branch: `main`
-- Source HEAD: `7eb9212697ee00434ef0945f8379fe111922bed3`
-- Generated at: `2026-07-02T20:03:37Z`
+- Source HEAD: `4a3c26c767d90c2d74fb65e80233735b75d327df`
+- Generated at: `2026-07-02T22:16:32Z`
 
 ## Primary Workflow
 
@@ -61,6 +61,7 @@ The following are local-only and are not mirrored here:
 
 ## Latest Source Commits
 
+- `4a3c26c fix(scout): fail closed when prompt trigger UI is locked`
 - `7eb9212 fix(scout): keep normalized prompt trigger on findings path`
 - `b72ab88 feat(scout): normalize pro extended scout findings`
 - `7275b51 feat(scout): normalize scout findings into strict packets`
@@ -80,7 +81,6 @@ The following are local-only and are not mirrored here:
 - `5ae30c5 fix(ui): show source urls in 24-7 source health`
 - `9cb6c4d fix(ops): surface packet stall recovery diagnostics`
 - `279f1f5 fix(ui): show retained source health on 24-7 page`
-- `b7f7ff7 fix(scout): expose per-case 24-7 source health counts`
 
 ## Source Dirty State
 
