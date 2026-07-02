@@ -135,7 +135,7 @@ commander-ready promotion.
 | Color | Meaning |
 |---|---|
 | `GREEN` | A public API works, a configured read-only adapter works, or the lane is healthy with no current active blocker. Examples: Polymarket public Gamma API HTTP 200, Manifold public GET API HTTP 200, Kalshi env-gated adapter configured, Global Fishing Watch configured, OpenSky configured, FMP configured. |
-| `AMBER` | Candidate found/not imported, retained or stale follow-up, blocked source URL with public alternatives, optional future provider, or non-blocking warning. Example: Telegram public pages return HTTP 200 but account-based Telegram API reads are not enabled. |
+| `AMBER` | Candidate found/not imported, retained or stale follow-up, blocked source URL with public alternatives, optional future provider, or non-blocking warning. Example: a social source URL is visible but no deterministic importer has been wired for that case lane. |
 | `RED` | Current active blocker: stale or zero-active board, required lane missing from a current active thread, configured adapter failing when needed, credential required for a current active blocker, wrong chat, prompt not ready, or capture validation blocking current board. |
 
 Provider rows carry these scope and decision fields:
@@ -171,7 +171,7 @@ show presence/status only and never values.
 | OpenSky | `configured_api` / `not_blocking` | Aviation movement adapter configured; OAuth2 token path works; `states/all` smoke returned 200. |
 | Financial Modeling Prep | `configured_api` / `not_blocking` | Finance quote adapter configured; AAPL profile, SPY quote, and search-symbol smoke returned 200. |
 | Telegram public pages | `public_first` / `not_blocking` | Configured public `t.me` pages returned HTTP 200. |
-| Telegram API | `optional_later` / `not_blocking` | API connection works but user session is unauthorized; account-based reads are not enabled and are not a current blocker. |
+| Telegram approved Telethon public-channel reads | `configured_api` / `not_blocking` | `TELEGRAM_API_ID`, `TELEGRAM_API_HASH`, approved channel names, and the ignored local Telethon session are present; no browser cookies, logged-in tabs, localStorage/sessionStorage, Chrome profile files, or private browser state are used. |
 | NASA FIRMS | `optional_later` | Unresolved/not tested unless `NASA_FIRMS_MAP_KEY` is present and smoke passes. |
 
 Optional future providers are not current blockers: licensed Reuters/news,
@@ -262,9 +262,10 @@ adapters only when repeatability, metrics, or persistent gaps justify them.
   login, browser session, or write endpoint is required for AUTOSINT
   cue-only market search/read checks.
 - X/Twitter and social OSINT: ChatGPT public check first. Public Telegram
-  `t.me` pages may be checked through plain public URL reads; Telegram
-  Telethon/session collection is a separate approved setup and must not use
-  private browser state.
+  `t.me` pages may be checked through plain public URL reads; approved Telegram
+  Telethon public-channel reads may be used when the ignored runtime env and
+  local session file are present. Telegram Telethon/session collection is an
+  approved local setup and must not use private browser state.
 - Finance/stocks: public checks first; provider key later if quote reliability
   demands it. Financial Modeling Prep stable API may be used through ignored
   runtime env as `FMP_API_KEY` for read-only market/finance context.

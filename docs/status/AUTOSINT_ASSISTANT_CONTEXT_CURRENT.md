@@ -7,8 +7,8 @@ This is a public, sanitized context file for restoring AUTOSINT project context 
 - Private code/runtime repo: `tg-osint-eucom/autosint`
 - Public context mirror: `tg-osint-eucom/autosint-context`
 - Source branch: `main`
-- Source HEAD: `663c58e2263cfc8b56a8dedd0e0297dabf2346ea`
-- Generated at: `2026-07-01T22:52:00Z`
+- Source HEAD: `b63a4111fe0c6db15fa10352d17745fded6b58ff`
+- Generated at: `2026-07-02T01:19:01Z`
 
 ## Primary Workflow
 
@@ -33,9 +33,9 @@ This is a public, sanitized context file for restoring AUTOSINT project context 
 - Available: `True`
 - Active selection policy: `latest_validated_capture_only`
 - Active packet count: `1`
-- History packet count: `607`
-- Latest packet timestamp: `2026-07-01T17:54:30Z`
-- Stale: `True`
+- History packet count: `608`
+- Latest packet timestamp: `2026-07-01T23:58:30Z`
+- Stale: `False`
 - Read-only: `True`
 - Private browser state read: `False`
 - Cookies read: `False`
@@ -61,6 +61,7 @@ The following are local-only and are not mirrored here:
 
 ## Latest Source Commits
 
+- `b63a411 fix(ops): reflect telegram session adapter readiness`
 - `663c58e fix(ops): synchronize source sensor provider decisions`
 - `a480efa fix(ops): add telegram and fmp source adapter checks`
 - `eb5cc9f fix(ops): surface source adapter credential status`
@@ -80,7 +81,6 @@ The following are local-only and are not mirrored here:
 - `a65ed0c fix(scout): use minimal recovery when prompt generation stalls`
 - `dcebdb3 fix(scout): fail closed hung prompt trigger recovery`
 - `281429a fix(ui): surface 24/7 proof counters and source health`
-- `8b6085b fix(scout): clarify per-case source health blockers`
 
 ## Source Dirty State
 

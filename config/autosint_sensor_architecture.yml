@@ -139,17 +139,17 @@ source_lanes:
   key_required: optional_for_automatic_ingest
   credential_name: X_API_or_social_provider_if_approved
   next_action_default: Keep social claims cue-only and never treat them as proof.
-  credential_policy: not_needed_now
+  credential_policy: configured_api
   provider_decision: not_blocking
-  provider_tier: public_first
+  provider_tier: configured_api
   blocker_scope: architecture_reference
-  activation_trigger: activate_only_when_current_active_case_requires_deterministic_adapter_or_public_first_is_insufficient
-  current_key_need: not_needed_now
-  recommended_provider_if_needed: ChatGPT public web plus public t.me checks
-  adapter_status: public_web_check_present
-  last_smoke_status: telegram_public_web_200; telegram_api_connect_unauthorized
-  last_http_status_summary: Configured public t.me pages returned HTTP 200; account-based Telegram reads are not enabled and
-    are not a current blocker.
+  activation_trigger: approved_telethon_public_channel_session_present
+  current_key_need: configured_api
+  recommended_provider_if_needed: ChatGPT public web plus approved Telethon public-channel adapter
+  adapter_status: public_web_and_telethon_adapter_present
+  last_smoke_status: telegram_public_web_200; telethon_session_authorized_smoke_succeeded
+  last_http_status_summary: Configured public t.me pages returned HTTP 200; approved Telethon public-channel reads are
+    enabled when runtime env and the ignored local session file are present.
 - lane_id: traffic_movement
   lane_label: Traffic / Movement
   source_family: Movement

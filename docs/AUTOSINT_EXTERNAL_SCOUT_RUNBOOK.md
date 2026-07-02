@@ -215,8 +215,11 @@ A pinned logged-in Kalshi browser tab is allowed for human review only.
 AUTOSINT 24/7 enrichment must use public/API adapters and must not read browser
 cookies, sessions, localStorage/sessionStorage, or Chrome profile state.
 Telegram public channel pages may be checked through ordinary public `t.me`
-GET requests. Telethon/API collection is a separate approved setup and is not
-the default automatic ingest path.
+GET requests. For more stable public-channel reads, the approved Telethon path
+uses `TELEGRAM_API_ID`, `TELEGRAM_API_HASH`, approved channel names, and an
+ignored local session file under `artifacts/telegram/`. It must not use browser
+cookies, logged-in tabs, localStorage/sessionStorage, Chrome profile files, or
+private browser state.
 Financial Modeling Prep (`FMP_API_KEY`) may be used for read-only
 market/finance quote and profile checks. These market/finance rows remain
 cue-only and cannot prove event causality, attribution, or commander-ready
@@ -242,8 +245,10 @@ adapter health:
 - Kalshi, Global Fishing Watch, OpenSky, and Financial Modeling Prep are
   configured read-only adapters when their ignored runtime env names are
   present; display only presence/status, never values.
-- Telegram public `t.me` pages can be public-web checked; Telegram API
-  account/session reads are optional later and not a current blocker.
+- Telegram public `t.me` pages can be public-web checked. Approved Telethon
+  public-channel reads are configured when `TELEGRAM_API_ID`,
+  `TELEGRAM_API_HASH`, approved channels, and the ignored local session file are
+  present; show presence/status only, never credential values.
 - NASA FIRMS remains optional/unresolved unless `NASA_FIRMS_MAP_KEY` is present
   and smoke passes.
 - Licensed news, X/Twitter API, Reddit API, arbitrary Telegram scraping,
