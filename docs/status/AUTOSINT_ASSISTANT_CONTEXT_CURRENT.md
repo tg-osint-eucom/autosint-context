@@ -7,8 +7,8 @@ This is a public, sanitized context file for restoring AUTOSINT project context 
 - Private code/runtime repo: `tg-osint-eucom/autosint`
 - Public context mirror: `tg-osint-eucom/autosint-context`
 - Source branch: `main`
-- Source HEAD: `20edd960efdd2703d6ca3c8a20ce9abf904796e4`
-- Generated at: `2026-07-03T15:46:59Z`
+- Source HEAD: `2e6240be88a169caea5e40837dac42a0ce4af7df`
+- Generated at: `2026-07-03T19:05:12Z`
 
 ## Primary Workflow
 
@@ -33,9 +33,9 @@ This is a public, sanitized context file for restoring AUTOSINT project context 
 - Available: `True`
 - Active selection policy: `latest_validated_capture_only`
 - Active packet count: `5`
-- History packet count: `639`
-- Latest packet timestamp: `2026-07-03T15:35:47Z`
-- Stale: `False`
+- History packet count: `644`
+- Latest packet timestamp: `2026-07-03T15:58:20Z`
+- Stale: `True`
 - Read-only: `True`
 - Private browser state read: `False`
 - Cookies read: `False`
@@ -61,6 +61,7 @@ The following are local-only and are not mirrored here:
 
 ## Latest Source Commits
 
+- `2e6240b fix(scout): stabilize capture target after ui host install`
 - `20edd96 fix(scout): stabilize capture target after ui host install`
 - `dd90232 feat(ops): add AUTOSINT UI host keepawake monitor`
 - `c938094 fix(scout): prefer scout findings during normalized readiness`
@@ -80,7 +81,6 @@ The following are local-only and are not mirrored here:
 - `bfa8d32 fix(scout): run signed kalshi enrichment without collapsing board`
 - `6af24f8 fix(scout): allow safe accidental packet composer cleanup`
 - `8af1952 fix(scout): harden prompt recovery state machine`
-- `e15ecf5 feat(ops): add sensor architecture map to 24-7 proof`
 
 ## Source Dirty State
 
