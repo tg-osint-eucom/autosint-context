@@ -208,6 +208,16 @@ short-loop or kickstart proof remains useful for debugging, but it does not
 replace natural-cycle proof. Operators can read the current proof and log
 history at `/external-scout/24-7`.
 
+2026-07-03 UI-host update: the browser-based External Scout loop depends on an
+unlocked, awake macOS UI session. AUTOSINT now has a scoped keep-awake
+LaunchAgent path, `com.autosint.ui-host-keepawake`, backed by
+`scripts/run_autosint_ui_host_keepawake.sh` and checked by
+`scripts/check_autosint_ui_host_status.py`. The status artifacts live under
+ignored `artifacts/autosint_ui_host/latest/` and are read by the canonical
+`/external-scout/24-7` proof report. The layer is reversible and does not
+disable password/security policy, run prompt/capture, read private browser
+state, or mutate DB/Evidence/source-config/OSIR/commander-ready paths.
+
 ## Safety Boundary
 
 Workstream tracking is memory and verification only. It does not mutate DB,

@@ -455,6 +455,24 @@ generated_at `2026-06-27T02:00:00Z`; capture receipt
 `20260627T021023Z_capture_receipt.json` promoted five valid packets with
 `validation_error_count=0` and Live Case Board `stale=false`.
 
+Browser-based prompt/capture also requires an unlocked, awake macOS Aqua UI
+session. The AUTOSINT UI-host keep-awake layer is scoped to that requirement:
+`com.autosint.ui-host-keepawake` runs `scripts/run_autosint_ui_host_keepawake.sh`,
+which execs `/usr/bin/caffeinate -dimsu` and writes only ignored logs under
+`artifacts/autosint_ui_host/logs/`. It does not run prompt/capture, read
+browser private state, change FileVault/Keychain/login/security settings, or
+disable password policy. Check status with:
+
+```bash
+.venv/bin/python scripts/check_autosint_ui_host_status.py --once
+cat artifacts/autosint_ui_host/latest/ui_host_status.md
+```
+
+`scripts/report_external_scout_24_7_proof.py` and `/external-scout/24-7` read
+the latest UI-host status artifact. A RED UI-host status blocks 24/7 proof; a
+GREEN or WARN non-blocking status can continue natural-cycle observation while
+separate External Scout health issues are diagnosed.
+
 ## Capture Bridge
 
 Manual status check:
