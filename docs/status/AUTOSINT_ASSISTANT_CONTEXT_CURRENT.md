@@ -7,8 +7,8 @@ This is a public, sanitized context file for restoring AUTOSINT project context 
 - Private code/runtime repo: `tg-osint-eucom/autosint`
 - Public context mirror: `tg-osint-eucom/autosint-context`
 - Source branch: `main`
-- Source HEAD: `2e6240be88a169caea5e40837dac42a0ce4af7df`
-- Generated at: `2026-07-03T19:05:12Z`
+- Source HEAD: `76709bf4ed4000ad8e4889919777124dffa925a0`
+- Generated at: `2026-07-03T23:35:03Z`
 
 ## Primary Workflow
 
@@ -33,9 +33,9 @@ This is a public, sanitized context file for restoring AUTOSINT project context 
 - Available: `True`
 - Active selection policy: `latest_validated_capture_only`
 - Active packet count: `5`
-- History packet count: `644`
-- Latest packet timestamp: `2026-07-03T15:58:20Z`
-- Stale: `True`
+- History packet count: `659`
+- Latest packet timestamp: `2026-07-03T22:58:42Z`
+- Stale: `False`
 - Read-only: `True`
 - Private browser state read: `False`
 - Cookies read: `False`
@@ -61,6 +61,7 @@ The following are local-only and are not mirrored here:
 
 ## Latest Source Commits
 
+- `76709bf fix(scout): safe-skip normalized scout findings capture`
 - `2e6240b fix(scout): stabilize capture target after ui host install`
 - `20edd96 fix(scout): stabilize capture target after ui host install`
 - `dd90232 feat(ops): add AUTOSINT UI host keepawake monitor`
@@ -80,7 +81,6 @@ The following are local-only and are not mirrored here:
 - `f6b709b fix(scout): keep source-lane enrichment follow-up active`
 - `bfa8d32 fix(scout): run signed kalshi enrichment without collapsing board`
 - `6af24f8 fix(scout): allow safe accidental packet composer cleanup`
-- `8af1952 fix(scout): harden prompt recovery state machine`
 
 ## Source Dirty State
 
