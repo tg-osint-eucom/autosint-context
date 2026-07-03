@@ -7,8 +7,8 @@ This is a public, sanitized context file for restoring AUTOSINT project context 
 - Private code/runtime repo: `tg-osint-eucom/autosint`
 - Public context mirror: `tg-osint-eucom/autosint-context`
 - Source branch: `main`
-- Source HEAD: `4a3c26c767d90c2d74fb65e80233735b75d327df`
-- Generated at: `2026-07-02T22:16:32Z`
+- Source HEAD: `c938094f649e063be88cdb56756d23fb22ea3d22`
+- Generated at: `2026-07-03T13:40:24Z`
 
 ## Primary Workflow
 
@@ -33,9 +33,9 @@ This is a public, sanitized context file for restoring AUTOSINT project context 
 - Available: `True`
 - Active selection policy: `latest_validated_capture_only`
 - Active packet count: `5`
-- History packet count: `624`
-- Latest packet timestamp: `2026-07-02T17:46:10Z`
-- Stale: `True`
+- History packet count: `629`
+- Latest packet timestamp: `2026-07-03T12:53:09Z`
+- Stale: `False`
 - Read-only: `True`
 - Private browser state read: `False`
 - Cookies read: `False`
@@ -61,6 +61,7 @@ The following are local-only and are not mirrored here:
 
 ## Latest Source Commits
 
+- `c938094 fix(scout): prefer scout findings during normalized readiness`
 - `4a3c26c fix(scout): fail closed when prompt trigger UI is locked`
 - `7eb9212 fix(scout): keep normalized prompt trigger on findings path`
 - `b72ab88 feat(scout): normalize pro extended scout findings`
@@ -80,7 +81,6 @@ The following are local-only and are not mirrored here:
 - `e15ecf5 feat(ops): add sensor architecture map to 24-7 proof`
 - `5ae30c5 fix(ui): show source urls in 24-7 source health`
 - `9cb6c4d fix(ops): surface packet stall recovery diagnostics`
-- `279f1f5 fix(ui): show retained source health on 24-7 page`
 
 ## Source Dirty State
 
