@@ -7,8 +7,8 @@ This is a public, sanitized context file for restoring AUTOSINT project context 
 - Private code/runtime repo: `tg-osint-eucom/autosint`
 - Public context mirror: `tg-osint-eucom/autosint-context`
 - Source branch: `main`
-- Source HEAD: `ed178200fe6959a68ea16fcc990f9f047bf82e8d`
-- Generated at: `2026-07-04T13:55:31Z`
+- Source HEAD: `a72870ebe7a420f45c35a3c617cb2753fae5a4d3`
+- Generated at: `2026-07-04T15:29:16Z`
 
 ## Primary Workflow
 
@@ -33,9 +33,9 @@ This is a public, sanitized context file for restoring AUTOSINT project context 
 - Available: `True`
 - Active selection policy: `latest_validated_capture_only`
 - Active packet count: `5`
-- History packet count: `674`
-- Latest packet timestamp: `2026-07-04T02:21:55Z`
-- Stale: `True`
+- History packet count: `684`
+- Latest packet timestamp: `2026-07-04T14:59:23Z`
+- Stale: `False`
 - Read-only: `True`
 - Private browser state read: `False`
 - Cookies read: `False`
@@ -61,6 +61,7 @@ The following are local-only and are not mirrored here:
 
 ## Latest Source Commits
 
+- `a72870e fix(scout): verify uncertain prompt submissions`
 - `ed17820 fix(scout): harden ui-host prompt preflight`
 - `760684f fix(scout): dedupe proof captures per natural cycle`
 - `adaf43c fix(scout): harden packet target tab lookup`
@@ -80,7 +81,6 @@ The following are local-only and are not mirrored here:
 - `eb5cc9f fix(ops): surface source adapter credential status`
 - `49a9138 fix(ops): show public prediction adapters in 24-7 proof`
 - `50c8142 fix(scout): close hormuz source gaps with read-only adapters`
-- `ac659f9 fix(scout): preserve active board during enrichment follow-up`
 
 ## Source Dirty State
 
