@@ -6,11 +6,11 @@
     "active_selection_policy": "latest_validated_capture_only",
     "available": true,
     "cookies_read": false,
-    "history_capture_count": 196,
-    "history_packet_count": 689,
-    "latest_capture_generated_at": "2026-07-04T15:51:51Z",
+    "history_capture_count": 197,
+    "history_packet_count": 694,
+    "latest_capture_generated_at": "2026-07-04T16:53:32Z",
     "latest_capture_packet_count": 5,
-    "latest_packet_generated_at": "2026-07-04T15:51:51Z",
+    "latest_packet_generated_at": "2026-07-04T16:53:32Z",
     "local_storage_read": false,
     "mutation_performed": false,
     "private_browser_state_read": false,
@@ -20,9 +20,10 @@
     "status_only": true,
     "validated_packet_count": 5
   },
-  "generated_at": "2026-07-04T17:00:49Z",
+  "generated_at": "2026-07-04T18:14:59Z",
   "havoc_rfi_behavior": "HAVOC/RFI uses External Scout Case Thread current state when available, then falls back to the best validated External Scout packet; canonical cases, Case Genesis, TSOC/HAVOC, source coverage, and provenance remain audit material.",
   "latest_commits": [
+    "5b0e9b5 fix(ui): clarify 24-7 cockpit readiness semantics",
     "8c03178 feat(ui): add 24-7 readiness cockpit",
     "a72870e fix(scout): verify uncertain prompt submissions",
     "ed17820 fix(scout): harden ui-host prompt preflight",
@@ -41,8 +42,7 @@
     "b63a411 fix(ops): reflect telegram session adapter readiness",
     "663c58e fix(ops): synchronize source sensor provider decisions",
     "a480efa fix(ops): add telegram and fmp source adapter checks",
-    "eb5cc9f fix(ops): surface source adapter credential status",
-    "49a9138 fix(ops): show public prediction adapters in 24-7 proof"
+    "eb5cc9f fix(ops): surface source adapter credential status"
   ],
   "launchd_status": "Local-only; not represented in this public mirror.",
   "mirror_repo": "tg-osint-eucom/autosint-context",
@@ -98,7 +98,7 @@
   },
   "source_branch": "main",
   "source_dirty_state": [],
-  "source_head": "8c03178dbb9134e1837189a108f36dae586adaf0",
+  "source_head": "5b0e9b508d2ffcfde32f4c8c93ad18e19092ea1a",
   "source_repo": "tg-osint-eucom/autosint",
   "source_repo_url": "https://github.com/tg-osint-eucom/autosint",
   "supporting_routes": [
