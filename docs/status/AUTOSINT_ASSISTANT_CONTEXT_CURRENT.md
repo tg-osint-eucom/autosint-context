@@ -7,8 +7,8 @@ This is a public, sanitized context file for restoring AUTOSINT project context 
 - Private code/runtime repo: `tg-osint-eucom/autosint`
 - Public context mirror: `tg-osint-eucom/autosint-context`
 - Source branch: `main`
-- Source HEAD: `adaf43cb9d27b5467e5f323a79c7b45c805071ad`
-- Generated at: `2026-07-04T00:23:32Z`
+- Source HEAD: `760684f63e1edb453cfa823913a4c28e48bd3503`
+- Generated at: `2026-07-04T01:26:38Z`
 
 ## Primary Workflow
 
@@ -33,8 +33,8 @@ This is a public, sanitized context file for restoring AUTOSINT project context 
 - Available: `True`
 - Active selection policy: `latest_validated_capture_only`
 - Active packet count: `5`
-- History packet count: `659`
-- Latest packet timestamp: `2026-07-03T22:58:42Z`
+- History packet count: `669`
+- Latest packet timestamp: `2026-07-04T00:51:18Z`
 - Stale: `False`
 - Read-only: `True`
 - Private browser state read: `False`
@@ -61,6 +61,7 @@ The following are local-only and are not mirrored here:
 
 ## Latest Source Commits
 
+- `760684f fix(scout): dedupe proof captures per natural cycle`
 - `adaf43c fix(scout): harden packet target tab lookup`
 - `76709bf fix(scout): safe-skip normalized scout findings capture`
 - `2e6240b fix(scout): stabilize capture target after ui host install`
@@ -80,7 +81,6 @@ The following are local-only and are not mirrored here:
 - `50c8142 fix(scout): close hormuz source gaps with read-only adapters`
 - `ac659f9 fix(scout): preserve active board during enrichment follow-up`
 - `f6b709b fix(scout): keep source-lane enrichment follow-up active`
-- `bfa8d32 fix(scout): run signed kalshi enrichment without collapsing board`
 
 ## Source Dirty State
 
