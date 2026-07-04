@@ -7,8 +7,8 @@ This is a public, sanitized context file for restoring AUTOSINT project context 
 - Private code/runtime repo: `tg-osint-eucom/autosint`
 - Public context mirror: `tg-osint-eucom/autosint-context`
 - Source branch: `main`
-- Source HEAD: `76709bf4ed4000ad8e4889919777124dffa925a0`
-- Generated at: `2026-07-03T23:35:03Z`
+- Source HEAD: `adaf43cb9d27b5467e5f323a79c7b45c805071ad`
+- Generated at: `2026-07-04T00:23:32Z`
 
 ## Primary Workflow
 
@@ -61,6 +61,7 @@ The following are local-only and are not mirrored here:
 
 ## Latest Source Commits
 
+- `adaf43c fix(scout): harden packet target tab lookup`
 - `76709bf fix(scout): safe-skip normalized scout findings capture`
 - `2e6240b fix(scout): stabilize capture target after ui host install`
 - `20edd96 fix(scout): stabilize capture target after ui host install`
@@ -80,7 +81,6 @@ The following are local-only and are not mirrored here:
 - `ac659f9 fix(scout): preserve active board during enrichment follow-up`
 - `f6b709b fix(scout): keep source-lane enrichment follow-up active`
 - `bfa8d32 fix(scout): run signed kalshi enrichment without collapsing board`
-- `6af24f8 fix(scout): allow safe accidental packet composer cleanup`
 
 ## Source Dirty State
 
