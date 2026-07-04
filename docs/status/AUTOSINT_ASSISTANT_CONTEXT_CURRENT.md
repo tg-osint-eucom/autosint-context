@@ -7,8 +7,8 @@ This is a public, sanitized context file for restoring AUTOSINT project context 
 - Private code/runtime repo: `tg-osint-eucom/autosint`
 - Public context mirror: `tg-osint-eucom/autosint-context`
 - Source branch: `main`
-- Source HEAD: `760684f63e1edb453cfa823913a4c28e48bd3503`
-- Generated at: `2026-07-04T01:26:38Z`
+- Source HEAD: `ed178200fe6959a68ea16fcc990f9f047bf82e8d`
+- Generated at: `2026-07-04T13:55:31Z`
 
 ## Primary Workflow
 
@@ -33,9 +33,9 @@ This is a public, sanitized context file for restoring AUTOSINT project context 
 - Available: `True`
 - Active selection policy: `latest_validated_capture_only`
 - Active packet count: `5`
-- History packet count: `669`
-- Latest packet timestamp: `2026-07-04T00:51:18Z`
-- Stale: `False`
+- History packet count: `674`
+- Latest packet timestamp: `2026-07-04T02:21:55Z`
+- Stale: `True`
 - Read-only: `True`
 - Private browser state read: `False`
 - Cookies read: `False`
@@ -61,6 +61,7 @@ The following are local-only and are not mirrored here:
 
 ## Latest Source Commits
 
+- `ed17820 fix(scout): harden ui-host prompt preflight`
 - `760684f fix(scout): dedupe proof captures per natural cycle`
 - `adaf43c fix(scout): harden packet target tab lookup`
 - `76709bf fix(scout): safe-skip normalized scout findings capture`
@@ -80,7 +81,6 @@ The following are local-only and are not mirrored here:
 - `49a9138 fix(ops): show public prediction adapters in 24-7 proof`
 - `50c8142 fix(scout): close hormuz source gaps with read-only adapters`
 - `ac659f9 fix(scout): preserve active board during enrichment follow-up`
-- `f6b709b fix(scout): keep source-lane enrichment follow-up active`
 
 ## Source Dirty State
 
