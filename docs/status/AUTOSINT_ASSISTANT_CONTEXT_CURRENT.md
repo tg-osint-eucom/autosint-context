@@ -7,8 +7,8 @@ This is a public, sanitized context file for restoring AUTOSINT project context 
 - Private code/runtime repo: `tg-osint-eucom/autosint`
 - Public context mirror: `tg-osint-eucom/autosint-context`
 - Source branch: `main`
-- Source HEAD: `75280d58c2ecdb6791a9ce3477cd75e718c7750d`
-- Generated at: `2026-07-05T22:30:10Z`
+- Source HEAD: `e799882bbd0a1e6042db818dbc16b076a37a80ed`
+- Generated at: `2026-07-05T22:32:45Z`
 
 ## Primary Workflow
 
@@ -61,6 +61,7 @@ The following are local-only and are not mirrored here:
 
 ## Latest Source Commits
 
+- `e799882 fix(scout): close packet tab on harvester timeout`
 - `75280d5 fix(scout): add packet v2 renderer hygiene`
 - `e378436 feat(ui): improve AUTOSINT operator cockpit`
 - `3e8f392 fix(ops): harden pro extended scout proof loop`
@@ -80,7 +81,6 @@ The following are local-only and are not mirrored here:
 - `dd90232 feat(ops): add AUTOSINT UI host keepawake monitor`
 - `c938094 fix(scout): prefer scout findings during normalized readiness`
 - `4a3c26c fix(scout): fail closed when prompt trigger UI is locked`
-- `7eb9212 fix(scout): keep normalized prompt trigger on findings path`
 
 ## Source Dirty State
 
