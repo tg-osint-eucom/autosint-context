@@ -7,8 +7,8 @@ This is a public, sanitized context file for restoring AUTOSINT project context 
 - Private code/runtime repo: `tg-osint-eucom/autosint`
 - Public context mirror: `tg-osint-eucom/autosint-context`
 - Source branch: `main`
-- Source HEAD: `3a6a7f75955e00de5493ce419aa7a66b53f35696`
-- Generated at: `2026-07-05T18:49:34Z`
+- Source HEAD: `8542acd077072fdd93ad64484d5f01507ba29f8e`
+- Generated at: `2026-07-05T19:00:38Z`
 
 ## Primary Workflow
 
@@ -61,6 +61,7 @@ The following are local-only and are not mirrored here:
 
 ## Latest Source Commits
 
+- `8542acd fix(ops): stop reharvesting inactive scout findings`
 - `3a6a7f7 fix(ops): support async harvester proof window`
 - `65dd087 fix(ops): harden async findings harvester launchd proof`
 - `cf9da3b feat(scout): add async scout findings harvester`
@@ -80,7 +81,6 @@ The following are local-only and are not mirrored here:
 - `b72ab88 feat(scout): normalize pro extended scout findings`
 - `7275b51 feat(scout): normalize scout findings into strict packets`
 - `6622376 fix(scout): harden stalled response detection`
-- `b63a411 fix(ops): reflect telegram session adapter readiness`
 
 ## Source Dirty State
 

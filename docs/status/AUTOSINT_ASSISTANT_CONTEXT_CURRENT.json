@@ -20,9 +20,10 @@
     "status_only": true,
     "validated_packet_count": 5
   },
-  "generated_at": "2026-07-05T18:49:34Z",
+  "generated_at": "2026-07-05T19:00:38Z",
   "havoc_rfi_behavior": "HAVOC/RFI uses External Scout Case Thread current state when available, then falls back to the best validated External Scout packet; canonical cases, Case Genesis, TSOC/HAVOC, source coverage, and provenance remain audit material.",
   "latest_commits": [
+    "8542acd fix(ops): stop reharvesting inactive scout findings",
     "3a6a7f7 fix(ops): support async harvester proof window",
     "65dd087 fix(ops): harden async findings harvester launchd proof",
     "cf9da3b feat(scout): add async scout findings harvester",
@@ -41,8 +42,7 @@
     "7eb9212 fix(scout): keep normalized prompt trigger on findings path",
     "b72ab88 feat(scout): normalize pro extended scout findings",
     "7275b51 feat(scout): normalize scout findings into strict packets",
-    "6622376 fix(scout): harden stalled response detection",
-    "b63a411 fix(ops): reflect telegram session adapter readiness"
+    "6622376 fix(scout): harden stalled response detection"
   ],
   "launchd_status": "Local-only; not represented in this public mirror.",
   "mirror_repo": "tg-osint-eucom/autosint-context",
@@ -98,7 +98,7 @@
   },
   "source_branch": "main",
   "source_dirty_state": [],
-  "source_head": "3a6a7f75955e00de5493ce419aa7a66b53f35696",
+  "source_head": "8542acd077072fdd93ad64484d5f01507ba29f8e",
   "source_repo": "tg-osint-eucom/autosint",
   "source_repo_url": "https://github.com/tg-osint-eucom/autosint",
   "supporting_routes": [
