@@ -7,8 +7,8 @@ This is a public, sanitized context file for restoring AUTOSINT project context 
 - Private code/runtime repo: `tg-osint-eucom/autosint`
 - Public context mirror: `tg-osint-eucom/autosint-context`
 - Source branch: `main`
-- Source HEAD: `8542acd077072fdd93ad64484d5f01507ba29f8e`
-- Generated at: `2026-07-05T19:00:38Z`
+- Source HEAD: `3e8f392bdf9fa88c61a06499b45cce3ac7197e9e`
+- Generated at: `2026-07-05T19:33:59Z`
 
 ## Primary Workflow
 
@@ -33,8 +33,8 @@ This is a public, sanitized context file for restoring AUTOSINT project context 
 - Available: `True`
 - Active selection policy: `latest_validated_capture_only`
 - Active packet count: `5`
-- History packet count: `725`
-- Latest packet timestamp: `2026-07-05T17:52:18Z`
+- History packet count: `730`
+- Latest packet timestamp: `2026-07-05T18:54:17Z`
 - Stale: `False`
 - Read-only: `True`
 - Private browser state read: `False`
@@ -61,6 +61,7 @@ The following are local-only and are not mirrored here:
 
 ## Latest Source Commits
 
+- `3e8f392 fix(ops): harden pro extended scout proof loop`
 - `8542acd fix(ops): stop reharvesting inactive scout findings`
 - `3a6a7f7 fix(ops): support async harvester proof window`
 - `65dd087 fix(ops): harden async findings harvester launchd proof`
@@ -80,7 +81,6 @@ The following are local-only and are not mirrored here:
 - `7eb9212 fix(scout): keep normalized prompt trigger on findings path`
 - `b72ab88 feat(scout): normalize pro extended scout findings`
 - `7275b51 feat(scout): normalize scout findings into strict packets`
-- `6622376 fix(scout): harden stalled response detection`
 
 ## Source Dirty State
 
