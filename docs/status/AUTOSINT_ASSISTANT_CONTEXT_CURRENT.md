@@ -7,8 +7,8 @@ This is a public, sanitized context file for restoring AUTOSINT project context 
 - Private code/runtime repo: `tg-osint-eucom/autosint`
 - Public context mirror: `tg-osint-eucom/autosint-context`
 - Source branch: `main`
-- Source HEAD: `cf9da3b7e8ccbc34c97f4f939230ee6f15b3ab10`
-- Generated at: `2026-07-05T14:07:23Z`
+- Source HEAD: `65dd087bc9bc08db769bf19f7e44b09f96220ad5`
+- Generated at: `2026-07-05T17:26:10Z`
 
 ## Primary Workflow
 
@@ -33,9 +33,9 @@ This is a public, sanitized context file for restoring AUTOSINT project context 
 - Available: `True`
 - Active selection policy: `latest_validated_capture_only`
 - Active packet count: `5`
-- History packet count: `699`
-- Latest packet timestamp: `2026-07-04T21:08:42Z`
-- Stale: `True`
+- History packet count: `715`
+- Latest packet timestamp: `2026-07-05T15:58:37Z`
+- Stale: `False`
 - Read-only: `True`
 - Private browser state read: `False`
 - Cookies read: `False`
@@ -61,6 +61,7 @@ The following are local-only and are not mirrored here:
 
 ## Latest Source Commits
 
+- `65dd087 fix(ops): harden async findings harvester launchd proof`
 - `cf9da3b feat(scout): add async scout findings harvester`
 - `5b0e9b5 fix(ui): clarify 24-7 cockpit readiness semantics`
 - `8c03178 feat(ui): add 24-7 readiness cockpit`
@@ -80,7 +81,6 @@ The following are local-only and are not mirrored here:
 - `6622376 fix(scout): harden stalled response detection`
 - `b63a411 fix(ops): reflect telegram session adapter readiness`
 - `663c58e fix(ops): synchronize source sensor provider decisions`
-- `a480efa fix(ops): add telegram and fmp source adapter checks`
 
 ## Source Dirty State
 
