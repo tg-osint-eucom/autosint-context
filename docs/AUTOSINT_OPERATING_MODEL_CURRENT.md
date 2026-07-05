@@ -65,6 +65,8 @@ The current proven External Scout path is:
 
 ```text
 ChatGPT Project / Packet-chat prompt trigger in Scout Findings mode
+-> pending generation receipt if Pro Extended starts but is not ready
+-> async Scout Findings harvester checks the same Packet turn
 -> visible Scout Findings JSON or downloadable Scout Findings attachment
 -> deterministic AUTOSINT normalizer
 -> strict packet staging
@@ -85,6 +87,17 @@ normalizes with
 validator-clean packet set with `commander_ready=false` and
 `mutation_performed=false`. Direct ChatGPT strict packets remain candidate
 fallback material, not the preferred Pro Extended machine-output contract.
+
+If Pro Extended starts answering but no Scout Findings `generated_at` is ready
+inside the bounded prompt-trigger wait, the prompt-trigger records
+`scout_findings_pending` under ignored pending-generation artifacts and does
+not submit a duplicate prompt or stop/reload the existing turn. The async
+harvester (`scripts/harvest_external_scout_findings.py`) re-checks that exact
+pending Packet request, extracts a visible Scout Findings JSON/attachment when
+available, runs the deterministic normalizer, and promotes only when
+normalization validates cleanly and the output is newer than inbox. Stale or
+mismatched findings remain recorded as harvest receipts and do not refresh
+active recovery.
 
 ChatGPT Scheduled Tasks remain an active but unverified upstream candidate. On
 2026-06-28, the existing Scheduled Task was updated and resumed, but its proof

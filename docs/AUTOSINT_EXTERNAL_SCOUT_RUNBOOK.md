@@ -106,6 +106,50 @@ no-DB/no-Evidence/no-OSIR/no-commander-ready safety flags. Set
 `AUTOSINT_PROMPT_TRIGGER_SCOUT_FINDINGS_MODE=0` only for explicit strict-packet
 fallback work.
 
+### Async Scout Findings Harvester
+
+Pro Extended can take longer than the bounded prompt-trigger readiness window.
+When a Scout Findings-mode prompt is submitted and generation starts but no
+usable Scout Findings `generated_at` is ready, the prompt-trigger records a
+pending request instead of submitting a duplicate prompt:
+
+```text
+artifacts/external_scout/pending_generation/latest_pending_request.json
+```
+
+The pending receipt records the trigger request id, redacted Packet target,
+freshness deadline, prompt receipt path, and safety flags. It must not include
+cookies, sessions, localStorage/sessionStorage, Chrome profile data, credential
+values, raw Evidence, DB dumps, or private browser state.
+
+The async harvester checks the same configured Packet target without sending a
+new prompt:
+
+```bash
+.venv/bin/python scripts/harvest_external_scout_findings.py --once
+```
+
+If a matching visible `autosint_scout_findings_*.json` attachment or visible
+Scout Findings JSON is found for the pending `trigger_request_id`, the
+harvester saves the source findings under ignored artifacts, runs
+`scripts/normalize_external_scout_findings_to_packets.py`, and promotes only
+when `validation_error_count=0`, the packet is newer than inbox, and the
+finding is still within freshness. If findings are absent, stale, not newer
+than inbox, or have a trigger id mismatch, the harvester writes a receipt and
+does not promote.
+
+Wrapper and LaunchAgent template:
+
+```text
+scripts/run_external_scout_findings_harvester_once.sh
+launchd/com.autosint.external-scout-findings-harvester.plist
+```
+
+The template is not installed or loaded by default. Load/start it only after a
+successful normalized recovery proof and explicit operator approval. Until
+then, run it manually for bounded checks or leave it as a staged production
+template.
+
 On 2026-06-28, the existing `AUTOSINT Daily External Scout` Scheduled
 Task was updated with the strict self-contained prompt and resumed, but the
 proof run was not capturable: the Scheduled Tasks page showed `Выполняется`

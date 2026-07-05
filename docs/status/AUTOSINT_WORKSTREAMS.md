@@ -27,6 +27,7 @@ finding -> validation -> dedupe -> false-positive check -> targeted fix -> tests
 | `source_catalog_policy` | Blocked | Await explicit decision before tracking or mirroring source catalog policy. |
 | `launchd_runtime_health` | Complete | Scheduled capture fired naturally at `:08` with clear receipts and fresh Live Case Board state. |
 | `external_scout_24_7_proof_loop` | Active | Keep `/external-scout/24-7` as the single pinned operator source and require three consecutive natural `:50 -> :08` proof cycles before calling the local Packet-chat loop 24/7-proven. |
+| `external_scout_async_findings_harvester` | Active | Preserve Pro Extended Scout Findings turns as pending work, harvest the same Packet v2 turn later, and promote only fresh validator-clean normalized packets. |
 | `external_scout_multi_case_board` | Complete | Multi-case prompt, partial-promotion guard, rolling current/stale/archive retention, and natural-cycle proof are complete. |
 | `chatgpt_scheduled_tasks_production_path` | Blocked | Existing Scheduled Task output chat is orphaned/unusable, and a guarded Project Packet-chat replacement request returned `TASK_CREATION_BLOCKED_PROJECT_OUTPUT_UNAVAILABLE`. Local prompt trigger remains production upstream until ChatGPT exposes a Project-scoped Scheduled Task output conversation. |
 | `orchestration_prefect_spike` | Planned | Evaluate Prefect as a read-only observability wrapper over the current local loop. |
@@ -207,6 +208,17 @@ hard-fails into one read-only PROVEN/NOT_PROVEN report. Do not call the loop
 short-loop or kickstart proof remains useful for debugging, but it does not
 replace natural-cycle proof. Operators can read the current proof and log
 history at `/external-scout/24-7`.
+
+`external_scout_async_findings_harvester` tracks the Pro Extended timeout path:
+if Scout Findings generation starts but no usable `generated_at` is ready
+inside the bounded prompt-trigger window, AUTOSINT records
+`scout_findings_pending` instead of sending a duplicate prompt. The harvester
+then re-checks the same Packet v2 turn for a matching visible Scout Findings
+JSON/attachment, normalizes it, and promotes only when validation is clean,
+newer-than-inbox, and still fresh. Stale or trigger-mismatched findings stay as
+harvest receipts and do not refresh active recovery. The harvester wrapper and
+LaunchAgent plist are tracked templates only until explicitly approved and
+loaded after proof.
 
 2026-07-03 UI-host update: the browser-based External Scout loop depends on an
 unlocked, awake macOS UI session. AUTOSINT now has a scoped keep-awake
