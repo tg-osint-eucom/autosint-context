@@ -145,10 +145,45 @@ scripts/run_external_scout_findings_harvester_once.sh
 launchd/com.autosint.external-scout-findings-harvester.plist
 ```
 
-The template is not installed or loaded by default. Load/start it only after a
-successful normalized recovery proof and explicit operator approval. Until
-then, run it manually for bounded checks or leave it as a staged production
-template.
+### Packet v2 Async Renderer Hygiene
+
+Packet v2 Pro Extended Scout Findings generation is server-side enough that the
+Chrome renderer does not need to remain open for the full generation window.
+For normalized Scout Findings mode, the wrapper now enables:
+
+```text
+AUTOSINT_PACKET_RELEASE_AFTER_SUBMIT=1
+AUTOSINT_PACKET_REOPEN_FOR_HARVEST=1
+AUTOSINT_PACKET_KEEP_OPEN_THROUGH_CAPTURE=1
+```
+
+The prompt-trigger may release only the exact configured Packet v2 tab after all
+of these gates are true: the target conversation id matched, the user turn was
+verified, generation started, the composer was known cleared, and the pending
+request was written. When that release succeeds, readiness polling is skipped
+and the pending-generation harvester owns the later pickup. Existing pending
+state still blocks duplicate prompts.
+
+The harvester reopens the exact configured target URL or reconstructs a
+`chatgpt.com/c/<conversation_id>` fallback, then revalidates the target before
+extracting visible Scout Findings JSON or an `autosint_scout_findings_*.json`
+attachment. If findings are still absent, the harvester can release the exact
+tab again after confirming the composer is empty. If a normalized promotion
+succeeds and the capture/proof window still needs the tab, it records
+`kept_open_for_capture_window=true` instead of closing the tab.
+
+Receipts record `tab_released_after_submit`, `pending_request_written_before_release`,
+`reopened_for_harvest`, `harvest_target_revalidated`,
+`kept_open_for_capture_window`, `tab_released_after_capture`, and
+`release_skipped_reason`. The lifecycle never closes all Chrome windows, never
+creates a new ChatGPT conversation, never sends a duplicate prompt while a
+pending request is active, and never reads cookies, storage, Chrome profile
+files, credentials, raw Evidence, or DB contents.
+
+Load/start the LaunchAgent only after a successful normalized recovery proof
+and explicit operator approval. On production hosts where it is already loaded,
+verify receipts and health before counting natural-cycle proof. Otherwise, run
+it manually for bounded checks or leave it as a staged production template.
 
 On 2026-06-28, the existing `AUTOSINT Daily External Scout` Scheduled
 Task was updated with the strict self-contained prompt and resumed, but the

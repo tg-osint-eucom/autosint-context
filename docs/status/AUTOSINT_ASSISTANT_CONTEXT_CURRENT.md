@@ -7,8 +7,8 @@ This is a public, sanitized context file for restoring AUTOSINT project context 
 - Private code/runtime repo: `tg-osint-eucom/autosint`
 - Public context mirror: `tg-osint-eucom/autosint-context`
 - Source branch: `main`
-- Source HEAD: `e37843682263aabc9be022f2db0ec7c0834315fc`
-- Generated at: `2026-07-05T20:42:14Z`
+- Source HEAD: `75280d58c2ecdb6791a9ce3477cd75e718c7750d`
+- Generated at: `2026-07-05T22:30:10Z`
 
 ## Primary Workflow
 
@@ -33,8 +33,8 @@ This is a public, sanitized context file for restoring AUTOSINT project context 
 - Available: `True`
 - Active selection policy: `latest_validated_capture_only`
 - Active packet count: `5`
-- History packet count: `730`
-- Latest packet timestamp: `2026-07-05T18:54:17Z`
+- History packet count: `735`
+- Latest packet timestamp: `2026-07-05T19:53:10Z`
 - Stale: `True`
 - Read-only: `True`
 - Private browser state read: `False`
@@ -61,6 +61,7 @@ The following are local-only and are not mirrored here:
 
 ## Latest Source Commits
 
+- `75280d5 fix(scout): add packet v2 renderer hygiene`
 - `e378436 feat(ui): improve AUTOSINT operator cockpit`
 - `3e8f392 fix(ops): harden pro extended scout proof loop`
 - `8542acd fix(ops): stop reharvesting inactive scout findings`
@@ -80,7 +81,6 @@ The following are local-only and are not mirrored here:
 - `c938094 fix(scout): prefer scout findings during normalized readiness`
 - `4a3c26c fix(scout): fail closed when prompt trigger UI is locked`
 - `7eb9212 fix(scout): keep normalized prompt trigger on findings path`
-- `b72ab88 feat(scout): normalize pro extended scout findings`
 
 ## Source Dirty State
 
