@@ -127,11 +127,13 @@ External Scout capture/output rules:
 - Lower-quality packets may append to timeline without replacing best current
   state.
 - Generated artifacts stay under `artifacts/` and are not committed.
-- Do not claim the local Packet-chat prompt/capture loop is 24/7-proven from a
+- Do not claim the local Packet-chat production loop is 24/7-proven from a
   single green run or manual recovery. Use
   `scripts/report_external_scout_24_7_proof.py`; the default gate is three
-  consecutive natural `:50 -> :08` cycles with prompt/capture proof, Live Board
-  `stale=false`, active threads, no RED health, and no eval runtime hard-fails.
+  consecutive natural `:00 -> :28` prompt-to-async-harvester proof cycles, Live
+  Board `stale=false`, active threads, no RED health, and no eval runtime
+  hard-fails. Direct capture remains manual diagnostic/emergency tooling only,
+  not the scheduled production path.
 
 External Scout 24/7 control-page rules:
 

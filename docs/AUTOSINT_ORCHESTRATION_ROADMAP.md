@@ -5,7 +5,7 @@ committing the project to a migration. The current production loop remains the
 local-first External Scout flow:
 
 ```text
-:30 Scout Findings prompt submit -> async harvester -> :00 capture/validator ->
+:00 Scout Findings prompt submit -> :28 async harvester/validator ->
 latest inbox -> Live Case Board -> HAVOC/RFI preview -> context mirror
 ```
 
@@ -34,9 +34,10 @@ AUTOSINT loop right now.
 As of the current inspection, AUTOSINT already has a working local control loop
 with first-party proof artifacts:
 
-- LaunchAgents for prompt trigger and capture.
+- LaunchAgents for prompt trigger and async harvester; direct capture is manual
+  diagnostic tooling.
 - Prompt trigger receipts under ignored External Scout runtime artifacts.
-- Capture receipts and capture logs.
+- Harvest, promotion, and manual diagnostic capture receipts/logs.
 - Strict validation status from the capture package CLI.
 - External Scout thread reports.
 - Live Case Board and HAVOC/RFI read-only routes.
@@ -59,10 +60,11 @@ with bounded receipts.
 V1 spike scope:
 
 - Wrap the existing prompt-trigger status command.
-- Wrap the existing capture status command.
+- Wrap the existing async harvester and manual direct-capture status commands.
 - Wrap thread report dry-run.
 - Wrap context mirror dry-run.
-- Summarize the last prompt/capture/thread state.
+- Summarize the last prompt/harvest/thread state, with direct capture labeled as
+  manual diagnostic state only.
 - Do not replace launchd.
 - Do not perform DB, Evidence, case-link, source-config, OSIR, apply/import, or
   commander-ready mutations.
@@ -74,7 +76,7 @@ one place. It does not mean Prefect owns scheduling yet.
 
 Do not use Airflow first. Airflow is a strong batch-oriented platform for
 developing, scheduling, and monitoring workflows, but it is heavier than the
-current Mac-local prompt/capture loop and introduces more operational surface
+current Mac-local prompt/harvester loop and introduces more operational surface
 than the immediate need requires.
 
 Reconsider Airflow only if AUTOSINT later needs larger batch DAGs, separate
@@ -169,8 +171,8 @@ Flow outline:
 
 ```text
 inspect prompt-trigger receipts
-inspect capture receipts
-run capture status
+inspect harvest and promotion receipts
+run External Scout status
 run thread report dry-run
 run context mirror dry-run
 emit one compact run summary
@@ -219,8 +221,8 @@ without invalid packets updating thread state.
 V0, already present:
 
 - Prompt-trigger receipts.
-- Capture receipts/logs.
-- Capture CLI status.
+- Harvest and promotion receipts/logs.
+- External Scout status.
 - Thread report dry-run.
 - Live Case Board freshness.
 - Workstream report.
@@ -228,7 +230,7 @@ V0, already present:
 
 V1, next:
 
-- Native 24/7 proof report over the latest prompt/capture receipts, health,
+- Native 24/7 proof report over the latest prompt, harvest, promotion receipts, health,
   Live Board state, and eval runtime hard-fails:
 
 ```bash

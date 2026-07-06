@@ -45,7 +45,7 @@ Valid statuses:
 
 ## Verification Examples
 
-- `strict scheduled capture proven` means a natural scheduled run promoted a
+- `strict scheduled production cycle proven` means a natural scheduled run promoted a
   strict valid packet with `validation_error_count=0`.
 - `Live Case Board current` means route/API checks return 200, `board_summary`
   is present, thread count is nonzero, and latest capture is not stale unless

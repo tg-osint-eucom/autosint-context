@@ -239,8 +239,8 @@ must stay visible as continuity and audit memory, not current active truth.
 The desired future upstream is a Project-scoped ChatGPT Scheduled Task that
 emits strict packets into a known output conversation. Until that path is proven
 through natural cycles, the proven upstream remains the local Packet-chat prompt
-trigger in Scout Findings submit-only mode, async harvester, and `:00` capture
-loop.
+trigger in Scout Findings submit-only mode plus the `:28` async harvester
+normalization/promotion loop.
 
 The current production split is:
 
@@ -310,7 +310,7 @@ It should show:
 - Next safe actions.
 - Live Board freshness.
 - Source health by case.
-- Prompt/capture receipts.
+- Prompt, harvest, promotion, and manual diagnostic capture receipts.
 - Eval and health status.
 
 `/external-scout/threads`, HAVOC/RFI, API JSON, receipts, logs, and generated

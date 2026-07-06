@@ -110,8 +110,8 @@ conversation was visible, but dry-run validation found twelve
 `source_relationships` bucket type errors; the prompt was tightened and the
 task was updated, while Packet fallback again promoted five valid packets with capture receipt
 `20260628T200809Z_capture_receipt.json`. Do not treat Scheduled Tasks as
-production-primary until two natural output -> capture cycles pass through the
-dedicated scheduled-task probe or capture path. The same proof found a
+production-primary until repeated natural output -> async validation cycles pass
+through a Project-scoped scheduled-task probe or approved import path. The same proof found a
 strict-valid Scheduled Task result generated_at `2026-06-28T20:05:53Z`, but it
 was not promoted because the Packet fallback had already produced a newer inbox
 packet and because outside-project result chats are not production targets.
@@ -130,10 +130,10 @@ Operational rules:
 - Invalid or schema-drifted captures go to quarantine and do not refresh active reports.
 - `/external-scout` defaults to the latest validated capture only.
 - History remains available through explicit history mode and ignored local artifacts.
-- Capture receipts, logs, inbox files, staging files, quarantine files, and latest generated reports are local-only and ignored.
+- Promotion/manual direct-capture receipts, logs, inbox files, staging files, quarantine files, and latest generated reports are local-only and ignored.
 - The stale rule is currently 90 minutes.
 - ChatGPT scheduled output timing has drifted and may remain visible as
-  `Выполняется` past the local capture window; prove with the scheduled-task
+  `Выполняется` past the expected output window; prove with the scheduled-task
   probe before changing production targets.
 - Do not resume a Scheduled Task that only creates outside-project
   `chatgpt.com/c/...` result chats.

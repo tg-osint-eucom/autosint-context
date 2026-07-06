@@ -68,18 +68,18 @@ See `docs/AUTOSINT_GLOBAL_SENSOR_COVERAGE_POLICY.md` and
 `docs/AUTOSINT_THEATER_WATCH_POLICY.md` for the durable coverage and theater
 watch contract.
 
-## Generation And Capture Timing
+## Generation And Promotion Timing
 
 Target desired upstream:
 
 ```text
 ChatGPT Scheduled Task generates strict output hourly.
-AUTOSINT capture validates the exact configured Scheduled Task output
-conversation at :08.
+AUTOSINT validates the exact configured Project-scoped output through an
+approved async harvester/import path.
 ```
 
 The Scheduled Task production path is the preferred upstream generator once it
-is proven. AUTOSINT remains authoritative: capture, staging, validation,
+is proven. AUTOSINT remains authoritative: staging, normalization, validation,
 quarantine, active inbox selection, Live Case Board freshness, health monitor,
 and eval decide whether output becomes current. ChatGPT Scheduled Task output
 is candidate material only, not Evidence, not OSIR, and not commander-ready.
@@ -294,7 +294,7 @@ Task was updated with the strict self-contained prompt and resumed, but the
 proof run was not capturable: the Scheduled Tasks page showed `Выполняется`
 for more than ten minutes, exposed no run-now control, no output/result chat
 link, and no readable task-associated output conversation, and the Packet chat
-did not advance before the natural `:08` capture. Capture receipt
+did not advance before the historical direct-capture check. Capture receipt
 `20260628T190806Z_capture_receipt.json` correctly selected the Packet chat but
 safe-skipped `older_than_latest_inbox` against generated_at
 `2026-06-28T17:50:30Z`. The local fallback prompt trigger was restored and
@@ -526,7 +526,7 @@ Operator browser surface:
 ```
 
 Keep `/external-scout/24-7` as the single pinned External Scout operator tab.
-It reads prompt-trigger receipts, capture receipts, current health, Live Board
+It reads prompt-trigger, harvest, promotion receipt history, current health, Live Board
 state, current/stale case health, source gaps, enrichment gates, logs, and the
 existing eval summary through the same canonical proof report builder as
 `/api/v1/external-scout/24-7-proof`. `/external-scout/threads`, HAVOC/RFI, JSON,
@@ -611,8 +611,8 @@ output conversation.
 On 2026-06-28 a fallback prompt trigger exposed a wrong-window foreground
 drift: metadata selected the Packet chat, but JavaScript could run in a
 non-target ChatGPT window after Chrome window reordering. The recovery patch
-requires prompt/capture target scripts to revalidate the foreground Packet tab
-before executing JavaScript. Receipt `20260628T174230Z_prompt_trigger_receipt.json`
+requires browser automation target scripts to revalidate the foreground Packet
+tab before executing JavaScript. Receipt `20260628T174230Z_prompt_trigger_receipt.json`
 then proved Packet-chat request-id delivery with
 `strict_packet_validation_error_count=0`; capture receipt
 `20260628T175854Z_capture_receipt.json` promoted four valid packets generated_at
@@ -644,11 +644,11 @@ generated_at `2026-06-27T02:00:00Z`; capture receipt
 `20260627T021023Z_capture_receipt.json` promoted five valid packets with
 `validation_error_count=0` and Live Case Board `stale=false`.
 
-Browser-based prompt/capture also requires an unlocked, awake macOS Aqua UI
+Browser-based prompt/harvester operation also requires an unlocked, awake macOS Aqua UI
 session. The AUTOSINT UI-host keep-awake layer is scoped to that requirement:
 `com.autosint.ui-host-keepawake` runs `scripts/run_autosint_ui_host_keepawake.sh`,
 which execs `/usr/bin/caffeinate -dimsu` and writes only ignored logs under
-`artifacts/autosint_ui_host/logs/`. It does not run prompt/capture, read
+`artifacts/autosint_ui_host/logs/`. It does not run prompt/harvester or direct capture, read
 browser private state, change FileVault/Keychain/login/security settings, or
 disable password policy. Check status with:
 
@@ -770,10 +770,10 @@ External Scout capture and review must not:
 
 ## Recommended Launchd Sequence
 
-1. Verify Chrome visible capture works with dry-run.
-2. Run one approved real capture.
+1. Verify Chrome visible prompt submission and async harvester extraction with dry-run.
+2. Run one approved real prompt-to-harvester promotion.
 3. Verify `--status` reports active packets, zero validation errors, and `stale=false`.
 4. Install launchd only after separate approval.
-5. Schedule local prompt submit at minute `:30`, async harvester checks while
-   pending, and local capture around minute `:00`.
+5. Schedule local prompt submit at minute `:00`; let the async harvester prewarm,
+   check, normalize, and promote at minute `:28`.
 6. Keep launchd logs under ignored local artifacts/logs.

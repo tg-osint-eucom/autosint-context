@@ -29,7 +29,7 @@ availability checks.
 Use Sol, if available, only for high-difficulty reasoning and review tasks:
 
 - hard Codex implementation goals;
-- root-cause debugging across prompts, capture receipts, thread reports, tests,
+- root-cause debugging across prompts, harvest/promotion receipts, thread reports, tests,
   and route output;
 - deep operator-page review;
 - architecture and safety-gate review;

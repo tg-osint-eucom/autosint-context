@@ -40,13 +40,13 @@ finding -> validation -> dedupe -> false-positive check -> targeted fix -> tests
 
 ## Next Recommended Codex Task
 
-Theater-watch summary is verified. The 2026-06-25 short-loop Packet-chat
-prompt/capture proof promoted receipt `20260625T165421Z_capture_receipt.json`
+Theater-watch summary is verified. The 2026-06-25 historical short-loop Packet-chat
+proof promoted receipt `20260625T165421Z_capture_receipt.json`
 with `validation_error_count=0`, generated_at `2026-06-25T16:50:51Z`, five
 valid packets, seven normalized `theater_watch_summary` rows, and three
 `overflow_candidate_cases`.
 
-The next natural `:08` capture also proved the production path. Receipt
+The next historical natural direct-capture run also proved the old production path. Receipt
 `20260625T170810Z_capture_receipt.json` promoted generated_at
 `2026-06-25T16:51:19Z` with `validation_error_count=0`, five valid packets,
 seven normalized theater rows, three overflow candidates, and Live Case Board
@@ -146,8 +146,8 @@ had a stale prompt. The existing task was updated from the current strict local
 prompt artifact and resumed. The first proof window did not produce a usable
 capture target: the task stayed visible as `Выполняется` for more than ten
 minutes, exposed no run-now or result-chat link, did not create a new open
-task-output tab, and did not advance the Packet chat before the natural `:08`
-capture. Capture receipt `20260628T190806Z_capture_receipt.json` correctly
+task-output tab, and did not advance the Packet chat before the historical
+direct-capture check. Capture receipt `20260628T190806Z_capture_receipt.json` correctly
 selected the Packet chat and safe-skipped `older_than_latest_inbox`. The local
 fallback LaunchAgent was restored; prompt receipt
 `20260628T192327Z_prompt_trigger_receipt.json` and capture receipt
@@ -201,8 +201,8 @@ the current Project/Packet conversation; ChatGPT replied exactly
 
 `external_scout_24_7_proof_loop` is now the operator confidence gate for the
 working local Packet-chat production path. It uses
-`scripts/report_external_scout_24_7_proof.py` to bind prompt-trigger receipts,
-capture receipts, health status, Live Board freshness, and eval runtime
+`scripts/report_external_scout_24_7_proof.py` to bind prompt-trigger, harvest,
+promotion receipt history, health status, Live Board freshness, and eval runtime
 hard-fails into one read-only PROVEN/NOT_PROVEN report. Do not call the loop
 24/7-proven until three consecutive natural async prompt -> harvester
 cycles pass. Manual short-loop or kickstart proof remains useful for debugging, but it does not
@@ -220,14 +220,14 @@ harvest receipts and do not refresh active recovery. The harvester wrapper and
 LaunchAgent plist are tracked templates only until explicitly approved and
 loaded after proof.
 
-2026-07-03 UI-host update: the browser-based External Scout loop depends on an
+2026-07-03 UI-host update: the browser-based External Scout prompt/harvester loop depends on an
 unlocked, awake macOS UI session. AUTOSINT now has a scoped keep-awake
 LaunchAgent path, `com.autosint.ui-host-keepawake`, backed by
 `scripts/run_autosint_ui_host_keepawake.sh` and checked by
 `scripts/check_autosint_ui_host_status.py`. The status artifacts live under
 ignored `artifacts/autosint_ui_host/latest/` and are read by the canonical
 `/external-scout/24-7` proof report. The layer is reversible and does not
-disable password/security policy, run prompt/capture, read private browser
+disable password/security policy, run prompt/harvester or direct capture, read private browser
 state, or mutate DB/Evidence/source-config/OSIR/commander-ready paths.
 
 ## Safety Boundary

@@ -38,8 +38,8 @@ Safety boundary: requirements tracking is read-only. It does not mutate DB, raw 
 | SCOV-020 | Retention/history | Current/stale/archive behavior is implemented. | Implemented | `core/external_scout_threads.py` | Continue natural-cycle retention tests. |
 | SCOV-021 | Audit/provenance | Raw packet IDs, URLs, lineage, validation, and legacy linkage remain in Audit Details/provenance. | Implemented | `core/api.py`; `core/havoc_rfi_export.py` | Keep page dumps in review artifacts only. |
 | SCOV-022 | Safety/no-write boundaries | Browser/API/report surfaces are read-only with mutation flags false. | Implemented | `AGENTS.md`; `core/api.py`; release surface tests | Do not add write controls without explicit approval. |
-| SCOV-023 | 24/7 operations | Prompt-trigger/harvester/capture receipts and Live Board freshness are tracked. | Implemented | `config/autosint_workstreams.yml`; capture receipts | Continue :30 submit -> async harvest -> :00 capture monitoring. |
-| SCOV-024 | Buyer/demo readiness | Multi-case board is live; global theater accountability is now visible but needs natural-cycle proof. | Needs test | `/external-scout/threads`; `docs/AUTOSINT_THEATER_WATCH_POLICY.md` | Verify next prompt/capture output includes theater summary and overflow if applicable. |
+| SCOV-023 | 24/7 operations | Prompt-trigger, harvester, promotion, and manual diagnostic capture receipts plus Live Board freshness are tracked. | Implemented | `config/autosint_workstreams.yml`; External Scout receipts | Continue natural :00 prompt -> :28 async harvester monitoring. |
+| SCOV-024 | Buyer/demo readiness | Multi-case board is live; global theater accountability is now visible but needs natural-cycle proof. | Needs test | `/external-scout/threads`; `docs/AUTOSINT_THEATER_WATCH_POLICY.md` | Verify next prompt-to-harvester output includes theater summary and overflow if applicable. |
 
 ## Status Summary
 

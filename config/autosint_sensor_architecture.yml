@@ -506,7 +506,7 @@ status_color_semantics:
   AMBER: Candidate found/not imported, retained/stale follow-up, blocked source URL with public alternatives, optional future
     provider not configured, or non-blocking warning.
   RED: Current active blocker, Live Board stale/active_thread_count_zero, required lane missing from current active thread,
-    configured adapter failing when needed, credential required for current active blocker, or wrong-chat/prompt/capture validation
+    configured adapter failing when needed, credential required for current active blocker, or wrong-chat/prompt/harvester validation
     blocker.
 provider_decision_values:
 - public_first
