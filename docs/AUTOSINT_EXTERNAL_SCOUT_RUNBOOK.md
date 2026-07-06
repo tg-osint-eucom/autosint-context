@@ -218,6 +218,43 @@ Operator discipline for this URL: announce each completed step (`opened`,
 moving to the next one. This is especially important for
 `https://chatgpt.com/g/g-p-6a371bc30550819186bc75d0f5c02dd7/c/6a466c59-1774-83e8-ba01-86406d8922b9`.
 
+#### Packet v2 stale AUTOSINT draft recovery
+
+Observed working recovery on 2026-07-06 after a stale AUTOSINT Scout Findings
+draft blocked the next prompt:
+
+1. Open or select the exact configured Packet v2 tab, then wait for the page to
+   load past `Just a moment...`; do not run extraction against a spinner-only
+   page.
+2. Confirm the visible ChatGPT UI loaded, the URL/conversation id matches the
+   ignored target config, the composer state is known, and no Stop/generation
+   control is active.
+3. Take a visible screenshot when the operator asks for proof. Do not read
+   cookies, sessions, localStorage/sessionStorage, Chrome profile files,
+   Keychain, tokens, credentials, or `.env` values.
+4. Run target dry-run capture with `--require-target`. If it finds only the
+   already-promoted Scout Findings generated_at, treat that as proof the tab is
+   correct but not as new production data.
+5. If the composer contains a stale AUTOSINT machine draft with an
+   `autosint_trigger:*` id, the prompt-trigger preflight may clear it before
+   inserting the new prompt. AUTOSINT text without an `autosint_trigger:*` id
+   remains unknown composer text and must fail closed.
+6. Submit exactly one bounded normalized Scout Findings prompt through the
+   wrapper, not by manually clicking Send. The wrapper should record
+   `preflight_stale_draft_found=true`,
+   `preflight_stale_draft_cleared=true`, `prompt_submitted=true`,
+   `user_turn_verified=true`, `response_started=true`, and
+   `packet_readiness_failure_reason=scout_findings_pending`.
+7. In Scout Findings mode, `scout_findings_pending` with a fresh Live Board is
+   non-blocking pending state. Let the async harvester reopen the same Packet v2
+   turn and collect the JSON when Pro Extended finishes. Do not submit a
+   duplicate prompt while `pending_generation/latest_pending_request.json` is
+   active.
+8. Promote only through the normal validator gate:
+   `normalized_validation_error_count=0`, newer than inbox, matching
+   `trigger_request_id`, no DB/Evidence/source-config/OSIR/apply mutation, and
+   `commander_ready=false`.
+
 This recovery produced the first successful `:30 -> :00` Pro Extended async
 cycle on 2026-07-06: prompt receipt `20260706T153008Z`, Scout Findings
 `generated_at=2026-07-06T15:38:33Z`, harvester/capture receipt
