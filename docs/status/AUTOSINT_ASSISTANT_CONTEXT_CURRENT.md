@@ -7,8 +7,8 @@ This is a public, sanitized context file for restoring AUTOSINT project context 
 - Private code/runtime repo: `tg-osint-eucom/autosint`
 - Public context mirror: `tg-osint-eucom/autosint-context`
 - Source branch: `main`
-- Source HEAD: `9d0c9776b36c7a0ef55b20fbb4298a9410f830bd`
-- Generated at: `2026-07-06T17:04:17Z`
+- Source HEAD: `d50ac9f3ab5e785d3f41f4501904b5f55d5d1b39`
+- Generated at: `2026-07-06T17:39:43Z`
 
 ## Primary Workflow
 
@@ -33,8 +33,8 @@ This is a public, sanitized context file for restoring AUTOSINT project context 
 - Available: `True`
 - Active selection policy: `latest_validated_capture_only`
 - Active packet count: `5`
-- History packet count: `755`
-- Latest packet timestamp: `2026-07-06T15:38:33Z`
+- History packet count: `760`
+- Latest packet timestamp: `2026-07-06T16:54:37Z`
 - Stale: `False`
 - Read-only: `True`
 - Private browser state read: `False`
@@ -61,6 +61,7 @@ The following are local-only and are not mirrored here:
 
 ## Latest Source Commits
 
+- `d50ac9f feat(ops): add source lane green gate export`
 - `9d0c977 docs(scout): record packet v2 stale draft recovery`
 - `1e7f6f0 fix(ops): treat pending scout findings as nonblocking`
 - `346db20 fix(scout): clear stale autosint draft safely`
@@ -80,7 +81,6 @@ The following are local-only and are not mirrored here:
 - `3a6a7f7 fix(ops): support async harvester proof window`
 - `65dd087 fix(ops): harden async findings harvester launchd proof`
 - `cf9da3b feat(scout): add async scout findings harvester`
-- `5b0e9b5 fix(ui): clarify 24-7 cockpit readiness semantics`
 
 ## Source Dirty State
 
