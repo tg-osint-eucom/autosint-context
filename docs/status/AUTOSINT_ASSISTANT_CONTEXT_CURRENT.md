@@ -7,8 +7,8 @@ This is a public, sanitized context file for restoring AUTOSINT project context 
 - Private code/runtime repo: `tg-osint-eucom/autosint`
 - Public context mirror: `tg-osint-eucom/autosint-context`
 - Source branch: `main`
-- Source HEAD: `346db2095f2961534994834c9d94b606e248b29b`
-- Generated at: `2026-07-06T16:47:24Z`
+- Source HEAD: `1e7f6f0a6499139dbff0b601e37c3f8c2c0d65c7`
+- Generated at: `2026-07-06T17:03:27Z`
 
 ## Primary Workflow
 
@@ -61,6 +61,7 @@ The following are local-only and are not mirrored here:
 
 ## Latest Source Commits
 
+- `1e7f6f0 fix(ops): treat pending scout findings as nonblocking`
 - `346db20 fix(scout): clear stale autosint draft safely`
 - `6b670f5 fix(scout): feed source-gap targets into findings prompt`
 - `88077c2 fix(ops): recover packet v2 renderer harvest`
@@ -80,7 +81,6 @@ The following are local-only and are not mirrored here:
 - `cf9da3b feat(scout): add async scout findings harvester`
 - `5b0e9b5 fix(ui): clarify 24-7 cockpit readiness semantics`
 - `8c03178 feat(ui): add 24-7 readiness cockpit`
-- `a72870e fix(scout): verify uncertain prompt submissions`
 
 ## Source Dirty State
 
