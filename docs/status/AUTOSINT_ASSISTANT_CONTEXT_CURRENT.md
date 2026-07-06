@@ -7,8 +7,8 @@ This is a public, sanitized context file for restoring AUTOSINT project context 
 - Private code/runtime repo: `tg-osint-eucom/autosint`
 - Public context mirror: `tg-osint-eucom/autosint-context`
 - Source branch: `main`
-- Source HEAD: `8904ab2d9188fcd2ac3cd19013f9c64d544195db`
-- Generated at: `2026-07-06T21:04:47Z`
+- Source HEAD: `b8e874c3babaa5d9513ffb28aa1f12d8f089cfd1`
+- Generated at: `2026-07-06T21:20:03Z`
 
 ## Primary Workflow
 
@@ -61,6 +61,7 @@ The following are local-only and are not mirrored here:
 
 ## Latest Source Commits
 
+- `b8e874c fix(scout): expand next-run source gap targets`
 - `8904ab2 fix(scout): run source-gap closure after harvest`
 - `f5f7c52 docs(ops): remove legacy external scout capture language`
 - `7ee67ac fix(ops): remove external scout direct capture fallback`
@@ -80,7 +81,6 @@ The following are local-only and are not mirrored here:
 - `75280d5 fix(scout): add packet v2 renderer hygiene`
 - `e378436 feat(ui): improve AUTOSINT operator cockpit`
 - `3e8f392 fix(ops): harden pro extended scout proof loop`
-- `8542acd fix(ops): stop reharvesting inactive scout findings`
 
 ## Source Dirty State
 

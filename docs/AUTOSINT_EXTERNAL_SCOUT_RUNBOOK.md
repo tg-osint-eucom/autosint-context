@@ -149,6 +149,11 @@ candidate URL verification. Fixable `candidate_url_not_imported` and bounded
 follow-up rows can become explicit checked/blocked/deferred lane status through
 `source_gap_closure_notes`; licensed, login-required, or approved-API-only rows
 remain honest nonblocking WARN until an approved source or adapter exists.
+The next natural `:00` Scout Findings prompt also receives bounded source-gap
+context from the canonical `/external-scout/24-7` proof report, with up to five
+active cases and up to 15 prompt-closeable targets per case, so prompt/output
+gaps are closed in the next generation instead of being silently carried forward
+as blank `Not checked` rows.
 
 Wrapper and LaunchAgent template:
 

@@ -107,6 +107,11 @@ cue-only enrichment, inventory refresh, and public URL verification. This closes
 only fixable lane-level gaps through review-only `source_gap_closure_notes`.
 Rows requiring licensed/API/login-only access remain nonblocking WARN, not fake
 GREEN.
+Prompt/output source gaps that require new ChatGPT findings are fed into the
+next natural `:00` Scout Findings prompt from the canonical 24/7 proof report,
+bounded to five active cases and 15 prompt-closeable targets per case. Licensed,
+login-required, or approved-API-only gaps remain visible WARN until an approved
+provider path exists.
 
 ChatGPT Scheduled Tasks remain an active but unverified upstream candidate. On
 2026-06-28, the existing Scheduled Task was updated and resumed, but its proof
