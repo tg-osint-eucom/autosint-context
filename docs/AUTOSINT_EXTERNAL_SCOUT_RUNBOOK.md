@@ -185,6 +185,47 @@ creates a new ChatGPT conversation, never sends a duplicate prompt while a
 pending request is active, and never reads cookies, storage, Chrome profile
 files, credentials, raw Evidence, or DB contents.
 
+#### Packet v2 Page Unresponsive Recovery
+
+Observed working recovery on 2026-07-06:
+
+1. Treat a visible Chrome `Page Unresponsive` dialog for the exact Packet v2
+   tab as a renderer-blocked state, not a validator or provider failure.
+2. Take a visible screenshot first and inspect current receipts before
+   interacting with Chrome.
+3. Confirm the pending request is the same Packet v2 turn; do not send a new
+   prompt and do not create a new chat.
+4. Click `Wait` once on the `Page Unresponsive` dialog.
+5. If the dialog repeats or harvester/capture still reports
+   `applescript_timeout:external_scout_harvest_readiness_probe`, click
+   `Exit Page` only for the exact configured Packet v2 tab.
+6. Immediately renavigate that same tab to the exact configured Packet v2 URL
+   from `artifacts/external_scout/capture_target.json`.
+7. Verify the target conversation id still matches, the visible ChatGPT UI
+   loads past browser checks, and no new prompt was submitted. After opening
+   or renavigating the Packet v2 URL, wait for the page to stabilize before
+   probing it; do not immediately run JS extraction against a still-loading or
+   spinner-only ChatGPT surface.
+8. Let the existing harvester/capture path collect the already-generated Scout
+   Findings JSON or `autosint_scout_findings_*.json` attachment.
+9. Promote only through the normal validator gate:
+   `normalized_validation_error_count=0`, newer than inbox, matching
+   `trigger_request_id`.
+
+Operator discipline for this URL: announce each completed step (`opened`,
+`loaded`, `target matched`, `composer safe`, `Wait clicked`,
+`Exit Page clicked`, `renavigated`, `harvest/capture receipt written`) before
+moving to the next one. This is especially important for
+`https://chatgpt.com/g/g-p-6a371bc30550819186bc75d0f5c02dd7/c/6a466c59-1774-83e8-ba01-86406d8922b9`.
+
+This recovery produced the first successful `:30 -> :00` Pro Extended async
+cycle on 2026-07-06: prompt receipt `20260706T153008Z`, Scout Findings
+`generated_at=2026-07-06T15:38:33Z`, harvester/capture receipt
+`20260706T155941Z`, `validation_error_count=0`, and five packets promoted.
+The recovery used visible UI only and did not read cookies, sessions,
+localStorage/sessionStorage, Chrome profile files, credentials, raw Evidence,
+DB contents, or private browser state.
+
 Load/start the LaunchAgent only after a successful normalized recovery proof
 and explicit operator approval. On production hosts where it is already loaded,
 verify receipts and health before counting natural-cycle proof. Otherwise, run
