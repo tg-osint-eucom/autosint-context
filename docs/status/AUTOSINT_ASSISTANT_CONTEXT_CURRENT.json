@@ -6,11 +6,11 @@
     "active_selection_policy": "latest_validated_capture_only",
     "available": true,
     "cookies_read": false,
-    "history_capture_count": 216,
-    "history_packet_count": 790,
-    "latest_capture_generated_at": "2026-07-06T20:05:37Z",
+    "history_capture_count": 217,
+    "history_packet_count": 795,
+    "latest_capture_generated_at": "2026-07-06T21:05:19Z",
     "latest_capture_packet_count": 5,
-    "latest_packet_generated_at": "2026-07-06T20:05:37Z",
+    "latest_packet_generated_at": "2026-07-06T21:05:19Z",
     "local_storage_read": false,
     "mutation_performed": false,
     "private_browser_state_read": false,
@@ -20,9 +20,10 @@
     "status_only": true,
     "validated_packet_count": 5
   },
-  "generated_at": "2026-07-06T21:20:03Z",
+  "generated_at": "2026-07-06T21:49:19Z",
   "havoc_rfi_behavior": "HAVOC/RFI uses External Scout Case Thread current state when available, then falls back to the best validated External Scout packet; canonical cases, Case Genesis, TSOC/HAVOC, source coverage, and provenance remain audit material.",
   "latest_commits": [
+    "3c3e87a fix(ui): rename external scout cockpit title",
     "b8e874c fix(scout): expand next-run source gap targets",
     "8904ab2 fix(scout): run source-gap closure after harvest",
     "f5f7c52 docs(ops): remove legacy external scout capture language",
@@ -41,8 +42,7 @@
     "4aa60d6 fix(ui): compact external scout cockpit",
     "e799882 fix(scout): close packet tab on harvester timeout",
     "75280d5 fix(scout): add packet v2 renderer hygiene",
-    "e378436 feat(ui): improve AUTOSINT operator cockpit",
-    "3e8f392 fix(ops): harden pro extended scout proof loop"
+    "e378436 feat(ui): improve AUTOSINT operator cockpit"
   ],
   "launchd_status": "Local-only; not represented in this public mirror.",
   "mirror_repo": "tg-osint-eucom/autosint-context",
@@ -98,7 +98,7 @@
   },
   "source_branch": "main",
   "source_dirty_state": [],
-  "source_head": "b8e874c3babaa5d9513ffb28aa1f12d8f089cfd1",
+  "source_head": "3c3e87a31dba78ddda9a9df7315c6c7043ffbf57",
   "source_repo": "tg-osint-eucom/autosint",
   "source_repo_url": "https://github.com/tg-osint-eucom/autosint",
   "supporting_routes": [

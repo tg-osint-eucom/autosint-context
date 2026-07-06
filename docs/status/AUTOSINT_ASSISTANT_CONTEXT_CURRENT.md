@@ -7,8 +7,8 @@ This is a public, sanitized context file for restoring AUTOSINT project context 
 - Private code/runtime repo: `tg-osint-eucom/autosint`
 - Public context mirror: `tg-osint-eucom/autosint-context`
 - Source branch: `main`
-- Source HEAD: `b8e874c3babaa5d9513ffb28aa1f12d8f089cfd1`
-- Generated at: `2026-07-06T21:20:03Z`
+- Source HEAD: `3c3e87a31dba78ddda9a9df7315c6c7043ffbf57`
+- Generated at: `2026-07-06T21:49:19Z`
 
 ## Primary Workflow
 
@@ -33,8 +33,8 @@ This is a public, sanitized context file for restoring AUTOSINT project context 
 - Available: `True`
 - Active selection policy: `latest_validated_capture_only`
 - Active packet count: `5`
-- History packet count: `790`
-- Latest packet timestamp: `2026-07-06T20:05:37Z`
+- History packet count: `795`
+- Latest packet timestamp: `2026-07-06T21:05:19Z`
 - Stale: `False`
 - Read-only: `True`
 - Private browser state read: `False`
@@ -61,6 +61,7 @@ The following are local-only and are not mirrored here:
 
 ## Latest Source Commits
 
+- `3c3e87a fix(ui): rename external scout cockpit title`
 - `b8e874c fix(scout): expand next-run source gap targets`
 - `8904ab2 fix(scout): run source-gap closure after harvest`
 - `f5f7c52 docs(ops): remove legacy external scout capture language`
@@ -80,7 +81,6 @@ The following are local-only and are not mirrored here:
 - `e799882 fix(scout): close packet tab on harvester timeout`
 - `75280d5 fix(scout): add packet v2 renderer hygiene`
 - `e378436 feat(ui): improve AUTOSINT operator cockpit`
-- `3e8f392 fix(ops): harden pro extended scout proof loop`
 
 ## Source Dirty State
 
