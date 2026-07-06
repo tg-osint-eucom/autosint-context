@@ -141,6 +141,15 @@ finding is still within freshness. If findings are absent, stale, not newer
 than inbox, or have a trigger id mismatch, the harvester writes a receipt and
 does not promote.
 
+After a validator-clean harvester promotion, the production wrapper immediately
+runs bounded read-only source-gap closure instead of waiting for the next hourly
+prompt. It refreshes candidate source URL inventory, runs supplemental cue-only
+market/source-gap enrichment, refreshes inventory again, and performs public
+candidate URL verification. Fixable `candidate_url_not_imported` and bounded
+follow-up rows can become explicit checked/blocked/deferred lane status through
+`source_gap_closure_notes`; licensed, login-required, or approved-API-only rows
+remain honest nonblocking WARN until an approved source or adapter exists.
+
 Wrapper and LaunchAgent template:
 
 ```text
@@ -467,9 +476,9 @@ the no-private-state rule. Do not regress to a JSON-only
 
 ## Source URL Inventory
 
-After a successful capture and post-capture enrichment, the wrapper refreshes a
-read-only candidate source URL inventory and public candidate-source
-verification:
+After a successful async harvester promotion or manual diagnostic capture, the
+wrapper refreshes a read-only candidate source URL inventory and public
+candidate-source verification:
 
 ```bash
 .venv/bin/python scripts/build_external_scout_source_url_inventory.py
@@ -497,8 +506,9 @@ operator review, and source-gap triage only. They do not import Evidence, create
 case links, mutate source config, open OSIR, perform apply/import, change
 commander-ready state, use browser cookies/sessions, read Chrome profile state,
 bypass login/CAPTCHA/paywalls, or print credential values. Candidate URLs can
-still appear as follow-up gaps until a read-only adapter or approved import path
-turns the lane into an explicit checked source.
+still appear as follow-up gaps until a read-only adapter, bounded public
+verification, or approved import path turns the lane into an explicit checked
+source.
 
 When a deterministic read-only adapter checks a candidate URL, it may write
 `source_gap_closure_notes` into a supplemental External Scout packet. Those

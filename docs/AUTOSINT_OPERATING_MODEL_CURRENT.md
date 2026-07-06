@@ -73,6 +73,7 @@ ChatGPT Project / Packet-chat prompt trigger in Scout Findings mode
 -> validation
 -> quarantine if invalid
 -> active inbox if valid and newer than latest inbox
+-> immediate read-only source-gap closure for fixable candidate URL / bounded follow-up rows
 -> latest active capture only
 -> /external-scout
 -> /havoc-rfi
@@ -99,6 +100,13 @@ available, runs the deterministic normalizer, and promotes only when
 normalization validates cleanly and the output is newer than inbox. Stale or
 mismatched findings remain recorded as harvest receipts and do not refresh
 active recovery.
+
+After a clean harvester promotion, the wrapper immediately runs bounded
+read-only source-gap closure: candidate source URL inventory, supplemental
+cue-only enrichment, inventory refresh, and public URL verification. This closes
+only fixable lane-level gaps through review-only `source_gap_closure_notes`.
+Rows requiring licensed/API/login-only access remain nonblocking WARN, not fake
+GREEN.
 
 ChatGPT Scheduled Tasks remain an active but unverified upstream candidate. On
 2026-06-28, the existing Scheduled Task was updated and resumed, but its proof
