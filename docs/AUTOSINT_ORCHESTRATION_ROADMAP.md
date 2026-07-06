@@ -237,7 +237,7 @@ V1, next:
 
 - Browser/API views: `/external-scout/24-7` and
   `/api/v1/external-scout/24-7-proof`.
-- Three consecutive natural async prompt -> harvester -> capture cycles are
+- Three consecutive natural async prompt -> harvester cycles are
   required before calling the local Packet-chat production path 24/7-proven.
 - AUTOSINT run observability remains on the same `/external-scout/24-7`
   route over local receipts/status artifacts.

@@ -151,23 +151,44 @@ launchd/com.autosint.external-scout-findings-harvester.plist
 ### Packet v2 Async Renderer Hygiene
 
 Packet v2 Pro Extended Scout Findings generation must not keep the prompt
-trigger attached to one busy renderer while the model thinks. For normalized
-Scout Findings mode, the wrapper now defaults to:
+trigger or harvester attached to one busy renderer while the model thinks.
+The production browser lifecycle is:
+
+1. At `:00`, run the normalized Scout Findings prompt trigger.
+2. Wait until the user turn is verified and generation has started.
+3. Capture a visible screenshot proof under ignored
+   `artifacts/external_scout/prompt_trigger_screenshots/`.
+4. Release only the exact configured Packet v2 tab.
+5. At `:28`, reopen or renavigate only the exact configured Packet v2 URL.
+6. Wait for the page to stabilize and capture a visible pre-harvest screenshot
+   proof under ignored `artifacts/external_scout/harvest_screenshots/`.
+7. Harvest matching Scout Findings, normalize, promote only through validator
+   gates, capture a post-harvest screenshot proof, and release only the exact
+   Packet v2 tab.
+
+For normalized Scout Findings mode, the wrappers now default to:
 
 ```text
-AUTOSINT_PACKET_RELEASE_AFTER_SUBMIT=1
+AUTOSINT_PACKET_RELEASE_AFTER_SUBMIT=0 in the prompt wrapper until screenshot proof is captured
+AUTOSINT_PACKET_RELEASE_AFTER_SUBMIT=1 in the harvester wrapper after harvest
 AUTOSINT_PACKET_REOPEN_FOR_HARVEST=1
 AUTOSINT_PACKET_KEEP_OPEN_THROUGH_CAPTURE=0
+AUTOSINT_PROMPT_TRIGGER_SCREENSHOT_PROOF=1
+AUTOSINT_FINDINGS_PREWARM_BEFORE_HARVEST=1
+AUTOSINT_FINDINGS_PREWARM_SETTLE_SECONDS=60
+AUTOSINT_FINDINGS_PREWARM_READINESS_PROBE=0
+AUTOSINT_FINDINGS_TRUST_PREWARM_READY=1
+AUTOSINT_FINDINGS_SCREENSHOT_PROOF=1
 ```
 
 The prompt-trigger command also uses `--scout-findings-submit-only` in Scout
 Findings mode. If exact-tab release is unsafe or skipped, the wrapper still
 exits after pending-request recording; the harvester owns delayed extraction.
-The prompt-trigger may release only the exact configured Packet v2 tab after
+The prompt wrapper may release only the exact configured Packet v2 tab after
 all of these gates are true: the target conversation id matched, the user turn
-was verified, generation started, the composer was known cleared, and the
-pending request was written. Existing pending state still blocks duplicate
-prompts.
+was verified, generation started, the pending request was written, and the
+visible screenshot proof step completed or was explicitly skipped by flag.
+Existing pending state still blocks duplicate prompts.
 
 The harvester reopens the exact configured target URL or reconstructs a
 `chatgpt.com/c/<conversation_id>` fallback, then revalidates the target before
@@ -388,7 +409,7 @@ The helper writes only the ignored runtime env file, sets file mode `0600`, and
 reports only env-name presence. It must not be used to ingest browser cookies,
 sessions, Chrome profiles, localStorage/sessionStorage, `.env` dumps, or
 credential files. After the checker reports the required Kalshi env names are
-visible, run post-capture enrichment or wait for the next capture wrapper.
+visible, run post-harvest enrichment or wait for the next async harvester.
 
 A pinned logged-in Kalshi browser tab is allowed for human review only.
 AUTOSINT 24/7 enrichment must use public/API adapters and must not read browser

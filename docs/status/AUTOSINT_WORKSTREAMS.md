@@ -25,8 +25,8 @@ finding -> validation -> dedupe -> false-positive check -> targeted fix -> tests
 | `pir_hunter_thread_overlay` | Planned | Design PIR Hunter as a priority-question overlay on Live Case Board threads. |
 | `havoc_rfi_thread_current` | Active | Keep HAVOC/RFI consuming thread current state before packet fallback. |
 | `source_catalog_policy` | Blocked | Await explicit decision before tracking or mirroring source catalog policy. |
-| `launchd_runtime_health` | Complete | Scheduled capture has fired naturally with clear receipts and fresh Live Case Board state; the async target schedule is `:30` prompt submit, harvester checks while pending, and `:00` capture. |
-| `external_scout_24_7_proof_loop` | Active | Keep `/external-scout/24-7` as the single pinned operator source and require three consecutive natural async prompt -> harvester -> capture proof cycles before calling the local Packet-chat loop 24/7-proven. |
+| `launchd_runtime_health` | Complete | Scheduled direct capture remains available as manual diagnostic tooling only; the async production schedule is `:00` prompt submit and `:28` Packet v2 prewarm/harvest. |
+| `external_scout_24_7_proof_loop` | Active | Keep `/external-scout/24-7` as the single pinned operator source and require three consecutive natural async prompt -> harvester proof cycles before calling the local Packet-chat loop 24/7-proven. |
 | `external_scout_async_findings_harvester` | Active | Preserve Pro Extended Scout Findings turns as pending work, harvest the same Packet v2 turn later, and promote only fresh validator-clean normalized packets. |
 | `external_scout_multi_case_board` | Complete | Multi-case prompt, partial-promotion guard, rolling current/stale/archive retention, and natural-cycle proof are complete. |
 | `chatgpt_scheduled_tasks_production_path` | Blocked | Existing Scheduled Task output chat is orphaned/unusable, and a guarded Project Packet-chat replacement request returned `TASK_CREATION_BLOCKED_PROJECT_OUTPUT_UNAVAILABLE`. Local prompt trigger remains production upstream until ChatGPT exposes a Project-scoped Scheduled Task output conversation. |
@@ -204,7 +204,7 @@ working local Packet-chat production path. It uses
 `scripts/report_external_scout_24_7_proof.py` to bind prompt-trigger receipts,
 capture receipts, health status, Live Board freshness, and eval runtime
 hard-fails into one read-only PROVEN/NOT_PROVEN report. Do not call the loop
-24/7-proven until three consecutive natural async prompt -> harvester -> capture
+24/7-proven until three consecutive natural async prompt -> harvester
 cycles pass. Manual short-loop or kickstart proof remains useful for debugging, but it does not
 replace natural-cycle proof. Operators can read the current proof and log
 history at `/external-scout/24-7`.
