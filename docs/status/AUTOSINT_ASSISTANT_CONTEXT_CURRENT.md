@@ -7,8 +7,8 @@ This is a public, sanitized context file for restoring AUTOSINT project context 
 - Private code/runtime repo: `tg-osint-eucom/autosint`
 - Public context mirror: `tg-osint-eucom/autosint-context`
 - Source branch: `main`
-- Source HEAD: `4aa60d6bb7c00b05a834d47e3008d9aece98abe8`
-- Generated at: `2026-07-05T22:48:19Z`
+- Source HEAD: `aa9f6b35bfa91f0f1edde168d47e22dbd7cff482`
+- Generated at: `2026-07-06T00:23:58Z`
 
 ## Primary Workflow
 
@@ -61,6 +61,7 @@ The following are local-only and are not mirrored here:
 
 ## Latest Source Commits
 
+- `aa9f6b3 style(ui): apply black mesa external scout skin`
 - `4aa60d6 fix(ui): compact external scout cockpit`
 - `e799882 fix(scout): close packet tab on harvester timeout`
 - `75280d5 fix(scout): add packet v2 renderer hygiene`
@@ -80,7 +81,6 @@ The following are local-only and are not mirrored here:
 - `2e6240b fix(scout): stabilize capture target after ui host install`
 - `20edd96 fix(scout): stabilize capture target after ui host install`
 - `dd90232 feat(ops): add AUTOSINT UI host keepawake monitor`
-- `c938094 fix(scout): prefer scout findings during normalized readiness`
 
 ## Source Dirty State
 
