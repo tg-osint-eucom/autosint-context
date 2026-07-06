@@ -7,8 +7,8 @@ This is a public, sanitized context file for restoring AUTOSINT project context 
 - Private code/runtime repo: `tg-osint-eucom/autosint`
 - Public context mirror: `tg-osint-eucom/autosint-context`
 - Source branch: `main`
-- Source HEAD: `b945e8fa80d4b75f19fd14270712400448091e68`
-- Generated at: `2026-07-06T03:48:44Z`
+- Source HEAD: `197d551e1f8b3967ee1c87ed93775985323564fd`
+- Generated at: `2026-07-06T15:35:04Z`
 
 ## Primary Workflow
 
@@ -33,8 +33,8 @@ This is a public, sanitized context file for restoring AUTOSINT project context 
 - Available: `True`
 - Active selection policy: `latest_validated_capture_only`
 - Active packet count: `5`
-- History packet count: `740`
-- Latest packet timestamp: `2026-07-06T03:19:19Z`
+- History packet count: `750`
+- Latest packet timestamp: `2026-07-06T14:58:43Z`
 - Stale: `False`
 - Read-only: `True`
 - Private browser state read: `False`
@@ -61,6 +61,8 @@ The following are local-only and are not mirrored here:
 
 ## Latest Source Commits
 
+- `197d551 fix(ops): split scout submit from async harvest`
+- `4b48a73 test(scout): assert keep-open renderer default`
 - `b945e8f fix(scout): keep packet v2 open for async harvest`
 - `43e881d fix(scout): wait for packet v2 harvest readiness`
 - `aa9f6b3 style(ui): apply black mesa external scout skin`
@@ -79,8 +81,6 @@ The following are local-only and are not mirrored here:
 - `ed17820 fix(scout): harden ui-host prompt preflight`
 - `760684f fix(scout): dedupe proof captures per natural cycle`
 - `adaf43c fix(scout): harden packet target tab lookup`
-- `76709bf fix(scout): safe-skip normalized scout findings capture`
-- `2e6240b fix(scout): stabilize capture target after ui host install`
 
 ## Source Dirty State
 

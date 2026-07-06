@@ -239,7 +239,8 @@ must stay visible as continuity and audit memory, not current active truth.
 The desired future upstream is a Project-scoped ChatGPT Scheduled Task that
 emits strict packets into a known output conversation. Until that path is proven
 through natural cycles, the proven upstream remains the local Packet-chat prompt
-trigger and `:08` capture loop.
+trigger in Scout Findings submit-only mode, async harvester, and `:00` capture
+loop.
 
 The current production split is:
 

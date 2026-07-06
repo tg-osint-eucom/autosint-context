@@ -105,7 +105,7 @@ com.autosint.external-scout-capture
 Schedule:
 
 ```text
-minute :08 each hour
+minute :00 each hour
 ```
 
 The wrapper calls the package CLI and writes wrapper logs under ignored capture logs. The job should run in the Aqua user session so AppleScript can reach visible Chrome UI. It must not inspect browser storage.

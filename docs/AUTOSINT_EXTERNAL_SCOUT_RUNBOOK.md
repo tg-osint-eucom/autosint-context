@@ -108,10 +108,13 @@ fallback work.
 
 ### Async Scout Findings Harvester
 
-Pro Extended can take longer than the bounded prompt-trigger readiness window.
-When a Scout Findings-mode prompt is submitted and generation starts but no
-usable Scout Findings `generated_at` is ready, the prompt-trigger records a
-pending request instead of submitting a duplicate prompt:
+Pro Extended can take longer than a bounded prompt-trigger readiness window.
+In Scout Findings mode, the prompt-trigger is submit-only by default: once the
+exact Packet target is verified, the user turn is verified, generation starts,
+and a pending request is written, the wrapper exits instead of polling the
+renderer for ready output. This keeps the Chrome renderer, launchd job, and
+prompt-trigger lock from being held for the full Pro Extended generation. The
+pending request is written here:
 
 ```text
 artifacts/external_scout/pending_generation/latest_pending_request.json
@@ -147,20 +150,22 @@ launchd/com.autosint.external-scout-findings-harvester.plist
 
 ### Packet v2 Async Renderer Hygiene
 
-Packet v2 Pro Extended Scout Findings generation proved more reliable when the
-exact Packet tab remains open after verified submit. For normalized Scout
-Findings mode, the wrapper now defaults to:
+Packet v2 Pro Extended Scout Findings generation must not keep the prompt
+trigger attached to one busy renderer while the model thinks. For normalized
+Scout Findings mode, the wrapper now defaults to:
 
 ```text
-AUTOSINT_PACKET_RELEASE_AFTER_SUBMIT=0
+AUTOSINT_PACKET_RELEASE_AFTER_SUBMIT=1
 AUTOSINT_PACKET_REOPEN_FOR_HARVEST=1
-AUTOSINT_PACKET_KEEP_OPEN_THROUGH_CAPTURE=1
+AUTOSINT_PACKET_KEEP_OPEN_THROUGH_CAPTURE=0
 ```
 
-`AUTOSINT_PACKET_RELEASE_AFTER_SUBMIT=1` remains an explicit override only. If
-enabled, the prompt-trigger may release only the exact configured Packet v2 tab
-after all of these gates are true: the target conversation id matched, the user
-turn was verified, generation started, the composer was known cleared, and the
+The prompt-trigger command also uses `--scout-findings-submit-only` in Scout
+Findings mode. If exact-tab release is unsafe or skipped, the wrapper still
+exits after pending-request recording; the harvester owns delayed extraction.
+The prompt-trigger may release only the exact configured Packet v2 tab after
+all of these gates are true: the target conversation id matched, the user turn
+was verified, generation started, the composer was known cleared, and the
 pending request was written. Existing pending state still blocks duplicate
 prompts.
 
@@ -245,17 +250,20 @@ output -> capture cycles pass. If ChatGPT Scheduled Tasks cannot expose a
 stable readable output conversation, keep them as unverified product input and
 continue using the local prompt-trigger loop as the production upstream.
 
-Current proven fallback timing:
+Current async local fallback timing:
 
 ```text
-Prompt trigger every hour at :50.
-Capture every hour at :08.
+Prompt trigger every hour at :30.
+Scout Findings harvester checks every 5 minutes.
+Capture every hour at :00.
 ```
 
-The local prompt trigger posts the strict Daily Scout prompt to the visible
-Packet chat and waits for `packet_ready_for_capture=true`. It is fallback,
-not the desired primary path. Capture then validates and promotes the latest
-strict packet, or safely skips when the visible packet is already in the inbox.
+The local prompt trigger posts the Scout Findings prompt to the visible Packet
+chat, records `scout_findings_pending`, and exits after verified generation
+start. It is fallback, not the desired Scheduled Task primary path. The async
+harvester reopens the exact Packet target, extracts matching Scout Findings
+when ready, normalizes and promotes validator-clean packets, and capture safely
+skips when the normalized packet is already in the inbox.
 
 ## Runtime Adapter Environment
 
@@ -430,11 +438,14 @@ unless `--no-write` is passed.
 
 Default pass criteria:
 
-- three consecutive natural `:50 -> :08` cycles are schedule-aligned;
+- three consecutive natural async cycles are schedule-aligned from prompt to
+  harvester to capture;
 - each cycle has prompt submitted, user turn verified, request-id visibility,
-  `packet_ready_for_capture=true`, and prompt validation errors equal zero;
-- capture selects the Packet chat and either promotes or safely skips an
-  equivalent already-ingested packet with validation errors equal zero;
+  `scout_findings_pending=true`, and no duplicate prompt while pending;
+- the harvester finds matching Scout Findings or an attachment, runs the
+  normalizer, and records `normalized_validation_error_count=0`;
+- capture either promotes or safely skips an equivalent already-ingested packet
+  with validation errors equal zero;
 - current health is not `RED`;
 - Live Board is `stale=false`;
 - active thread count is greater than zero;
@@ -664,5 +675,6 @@ External Scout capture and review must not:
 2. Run one approved real capture.
 3. Verify `--status` reports active packets, zero validation errors, and `stale=false`.
 4. Install launchd only after separate approval.
-5. Schedule local capture around minute `:08`.
+5. Schedule local prompt submit at minute `:30`, async harvester checks while
+   pending, and local capture around minute `:00`.
 6. Keep launchd logs under ignored local artifacts/logs.

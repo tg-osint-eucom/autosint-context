@@ -89,11 +89,12 @@ validator-clean packet set with `commander_ready=false` and
 fallback material, not the preferred Pro Extended machine-output contract.
 
 If Pro Extended starts answering but no Scout Findings `generated_at` is ready
-inside the bounded prompt-trigger wait, the prompt-trigger records
-`scout_findings_pending` under ignored pending-generation artifacts and does
-not submit a duplicate prompt or stop/reload the existing turn. The async
-harvester (`scripts/harvest_external_scout_findings.py`) re-checks that exact
-pending Packet request, extracts a visible Scout Findings JSON/attachment when
+immediately after verified submit, the prompt-trigger records
+`scout_findings_pending` under ignored pending-generation artifacts and exits
+instead of waiting on the same Pro Extended renderer. It does not submit a
+duplicate prompt or stop/reload the existing turn. The async harvester
+(`scripts/harvest_external_scout_findings.py`) re-checks that exact pending
+Packet request, extracts a visible Scout Findings JSON/attachment when
 available, runs the deterministic normalizer, and promotes only when
 normalization validates cleanly and the output is newer than inbox. Stale or
 mismatched findings remain recorded as harvest receipts and do not refresh
@@ -138,14 +139,16 @@ Operational rules:
   `chatgpt.com/c/...` result chats.
 - The local Packet-chat loop is not considered 24/7-proven from a single green
   run. Use `scripts/report_external_scout_24_7_proof.py` and require three
-  consecutive natural `:50 -> :08` proof cycles before declaring 24/7 readiness.
+  consecutive natural async prompt -> harvester -> capture proof cycles before
+  declaring 24/7 readiness.
 - Operators should keep `/external-scout/24-7` as the single pinned External
   Scout operator tab. It reads the same canonical proof report as
   `/api/v1/external-scout/24-7-proof` and includes Live Board freshness,
   current/stale case health, source gaps, enrichment gates, logs, and drill-down
   links. `/external-scout/threads`, `/external-scout`, and HAVOC/RFI are
   read-only drill-downs, not separate control surfaces.
-- Planned local AUTOSINT capture timing is minute `:08` of each hour.
+- Planned async local AUTOSINT timing is prompt at minute `:30`, harvester
+  checks every five minutes while pending, and capture at minute `:00`.
 - The launchd template may exist locally, but installing/loading launchd is a separate approval.
 
 ## HAVOC/RFI Packet-Driven Behavior

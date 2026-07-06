@@ -5,7 +5,7 @@ committing the project to a migration. The current production loop remains the
 local-first External Scout flow:
 
 ```text
-:50 prompt trigger -> Packet chat strict output -> :08 capture -> validator ->
+:30 Scout Findings prompt submit -> async harvester -> :00 capture/validator ->
 latest inbox -> Live Case Board -> HAVOC/RFI preview -> context mirror
 ```
 
@@ -237,8 +237,8 @@ V1, next:
 
 - Browser/API views: `/external-scout/24-7` and
   `/api/v1/external-scout/24-7-proof`.
-- Three consecutive natural `:50 -> :08` cycles are required before calling
-  the local Packet-chat production path 24/7-proven.
+- Three consecutive natural async prompt -> harvester -> capture cycles are
+  required before calling the local Packet-chat production path 24/7-proven.
 - AUTOSINT run observability remains on the same `/external-scout/24-7`
   route over local receipts/status artifacts.
 - Clear last-success, last-failure, freshness, and skipped/quarantined counts.
