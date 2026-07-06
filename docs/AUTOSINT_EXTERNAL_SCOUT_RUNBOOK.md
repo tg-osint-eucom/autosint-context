@@ -147,22 +147,22 @@ launchd/com.autosint.external-scout-findings-harvester.plist
 
 ### Packet v2 Async Renderer Hygiene
 
-Packet v2 Pro Extended Scout Findings generation is server-side enough that the
-Chrome renderer does not need to remain open for the full generation window.
-For normalized Scout Findings mode, the wrapper now enables:
+Packet v2 Pro Extended Scout Findings generation proved more reliable when the
+exact Packet tab remains open after verified submit. For normalized Scout
+Findings mode, the wrapper now defaults to:
 
 ```text
-AUTOSINT_PACKET_RELEASE_AFTER_SUBMIT=1
+AUTOSINT_PACKET_RELEASE_AFTER_SUBMIT=0
 AUTOSINT_PACKET_REOPEN_FOR_HARVEST=1
 AUTOSINT_PACKET_KEEP_OPEN_THROUGH_CAPTURE=1
 ```
 
-The prompt-trigger may release only the exact configured Packet v2 tab after all
-of these gates are true: the target conversation id matched, the user turn was
-verified, generation started, the composer was known cleared, and the pending
-request was written. When that release succeeds, readiness polling is skipped
-and the pending-generation harvester owns the later pickup. Existing pending
-state still blocks duplicate prompts.
+`AUTOSINT_PACKET_RELEASE_AFTER_SUBMIT=1` remains an explicit override only. If
+enabled, the prompt-trigger may release only the exact configured Packet v2 tab
+after all of these gates are true: the target conversation id matched, the user
+turn was verified, generation started, the composer was known cleared, and the
+pending request was written. Existing pending state still blocks duplicate
+prompts.
 
 The harvester reopens the exact configured target URL or reconstructs a
 `chatgpt.com/c/<conversation_id>` fallback, then revalidates the target before
