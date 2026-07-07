@@ -7,8 +7,8 @@ This is a public, sanitized context file for restoring AUTOSINT project context 
 - Private code/runtime repo: `tg-osint-eucom/autosint`
 - Public context mirror: `tg-osint-eucom/autosint-context`
 - Source branch: `main`
-- Source HEAD: `733094173317b57123e78689d4dd6da3f6376c61`
-- Generated at: `2026-07-07T02:54:32Z`
+- Source HEAD: `4d045170747a821e3e68c656e203d15d73a23ec4`
+- Generated at: `2026-07-07T03:48:56Z`
 
 ## Primary Workflow
 
@@ -33,8 +33,8 @@ This is a public, sanitized context file for restoring AUTOSINT project context 
 - Available: `True`
 - Active selection policy: `latest_validated_capture_only`
 - Active packet count: `5`
-- History packet count: `820`
-- Latest packet timestamp: `2026-07-07T02:06:41Z`
+- History packet count: `825`
+- Latest packet timestamp: `2026-07-07T03:03:13Z`
 - Stale: `False`
 - Read-only: `True`
 - Private browser state read: `False`
@@ -61,6 +61,7 @@ The following are local-only and are not mirrored here:
 
 ## Latest Source Commits
 
+- `4d04517 fix(ui): harden autosint app tab navigation`
 - `7330941 fix(ui): unify autosint app navigation`
 - `20537cd fix(ui): render proof data inside autosint app`
 - `3a19546 fix(ui): keep external scout app fresh`
@@ -80,7 +81,6 @@ The following are local-only and are not mirrored here:
 - `4b48a73 test(scout): assert keep-open renderer default`
 - `b945e8f fix(scout): keep packet v2 open for async harvest`
 - `43e881d fix(scout): wait for packet v2 harvest readiness`
-- `aa9f6b3 style(ui): apply black mesa external scout skin`
 
 ## Source Dirty State
 
