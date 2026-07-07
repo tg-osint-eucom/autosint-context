@@ -7,8 +7,8 @@ This is a public, sanitized context file for restoring AUTOSINT project context 
 - Private code/runtime repo: `tg-osint-eucom/autosint`
 - Public context mirror: `tg-osint-eucom/autosint-context`
 - Source branch: `main`
-- Source HEAD: `557c0f4a40bef06f424a3834bb0ca5e12aa9a488`
-- Generated at: `2026-07-06T22:49:59Z`
+- Source HEAD: `3a195462ab914d0fe98d3d4baa84fdaa3ffe0ffa`
+- Generated at: `2026-07-07T00:42:27Z`
 
 ## Primary Workflow
 
@@ -33,8 +33,8 @@ This is a public, sanitized context file for restoring AUTOSINT project context 
 - Available: `True`
 - Active selection policy: `latest_validated_capture_only`
 - Active packet count: `5`
-- History packet count: `800`
-- Latest packet timestamp: `2026-07-06T22:04:52Z`
+- History packet count: `810`
+- Latest packet timestamp: `2026-07-07T00:05:50Z`
 - Stale: `False`
 - Read-only: `True`
 - Private browser state read: `False`
@@ -61,6 +61,7 @@ The following are local-only and are not mirrored here:
 
 ## Latest Source Commits
 
+- `3a19546 fix(ui): keep external scout app fresh`
 - `557c0f4 fix(ui): keep autosint app navigation local`
 - `3c3e87a fix(ui): rename external scout cockpit title`
 - `b8e874c fix(scout): expand next-run source gap targets`
@@ -80,7 +81,6 @@ The following are local-only and are not mirrored here:
 - `aa9f6b3 style(ui): apply black mesa external scout skin`
 - `4aa60d6 fix(ui): compact external scout cockpit`
 - `e799882 fix(scout): close packet tab on harvester timeout`
-- `75280d5 fix(scout): add packet v2 renderer hygiene`
 
 ## Source Dirty State
 
