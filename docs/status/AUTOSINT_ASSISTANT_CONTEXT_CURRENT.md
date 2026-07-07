@@ -7,8 +7,8 @@ This is a public, sanitized context file for restoring AUTOSINT project context 
 - Private code/runtime repo: `tg-osint-eucom/autosint`
 - Public context mirror: `tg-osint-eucom/autosint-context`
 - Source branch: `main`
-- Source HEAD: `e11b60ff61ba9578b97f98f0fc2d3a4ce60bc4f9`
-- Generated at: `2026-07-07T12:25:28Z`
+- Source HEAD: `6f9fd458fd40b9694b30d39aaea15dd72f60286e`
+- Generated at: `2026-07-07T12:50:20Z`
 
 ## Primary Workflow
 
@@ -33,8 +33,8 @@ This is a public, sanitized context file for restoring AUTOSINT project context 
 - Available: `True`
 - Active selection policy: `latest_validated_capture_only`
 - Active packet count: `5`
-- History packet count: `865`
-- Latest packet timestamp: `2026-07-07T11:02:55Z`
+- History packet count: `870`
+- Latest packet timestamp: `2026-07-07T12:03:07Z`
 - Stale: `False`
 - Read-only: `True`
 - Private browser state read: `False`
@@ -61,6 +61,7 @@ The following are local-only and are not mirrored here:
 
 ## Latest Source Commits
 
+- `6f9fd45 fix(scout): preserve market cue checks after harvest`
 - `e11b60f fix(scout): show next checks in thread readout`
 - `4d04517 fix(ui): harden autosint app tab navigation`
 - `7330941 fix(ui): unify autosint app navigation`
@@ -80,7 +81,6 @@ The following are local-only and are not mirrored here:
 - `88077c2 fix(ops): recover packet v2 renderer harvest`
 - `197d551 fix(ops): split scout submit from async harvest`
 - `4b48a73 test(scout): assert keep-open renderer default`
-- `b945e8f fix(scout): keep packet v2 open for async harvest`
 
 ## Source Dirty State
 
