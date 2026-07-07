@@ -7,8 +7,8 @@ This is a public, sanitized context file for restoring AUTOSINT project context 
 - Private code/runtime repo: `tg-osint-eucom/autosint`
 - Public context mirror: `tg-osint-eucom/autosint-context`
 - Source branch: `main`
-- Source HEAD: `20537cdfcf72bc0a06faabea659b74ca0985c6ca`
-- Generated at: `2026-07-07T02:24:09Z`
+- Source HEAD: `733094173317b57123e78689d4dd6da3f6376c61`
+- Generated at: `2026-07-07T02:54:32Z`
 
 ## Primary Workflow
 
@@ -33,8 +33,8 @@ This is a public, sanitized context file for restoring AUTOSINT project context 
 - Available: `True`
 - Active selection policy: `latest_validated_capture_only`
 - Active packet count: `5`
-- History packet count: `815`
-- Latest packet timestamp: `2026-07-07T01:06:41Z`
+- History packet count: `820`
+- Latest packet timestamp: `2026-07-07T02:06:41Z`
 - Stale: `False`
 - Read-only: `True`
 - Private browser state read: `False`
@@ -61,6 +61,7 @@ The following are local-only and are not mirrored here:
 
 ## Latest Source Commits
 
+- `7330941 fix(ui): unify autosint app navigation`
 - `20537cd fix(ui): render proof data inside autosint app`
 - `3a19546 fix(ui): keep external scout app fresh`
 - `557c0f4 fix(ui): keep autosint app navigation local`
@@ -80,7 +81,6 @@ The following are local-only and are not mirrored here:
 - `b945e8f fix(scout): keep packet v2 open for async harvest`
 - `43e881d fix(scout): wait for packet v2 harvest readiness`
 - `aa9f6b3 style(ui): apply black mesa external scout skin`
-- `4aa60d6 fix(ui): compact external scout cockpit`
 
 ## Source Dirty State
 
