@@ -7,8 +7,8 @@ This is a public, sanitized context file for restoring AUTOSINT project context 
 - Private code/runtime repo: `tg-osint-eucom/autosint`
 - Public context mirror: `tg-osint-eucom/autosint-context`
 - Source branch: `main`
-- Source HEAD: `d482ef6183868db3f9dfe83a2f1d330108558e1e`
-- Generated at: `2026-07-07T14:45:53Z`
+- Source HEAD: `5bae9b0ffea2adec7b55939d5540f92026f9fdb0`
+- Generated at: `2026-07-08T16:21:23Z`
 
 ## Primary Workflow
 
@@ -33,8 +33,8 @@ This is a public, sanitized context file for restoring AUTOSINT project context 
 - Available: `True`
 - Active selection policy: `latest_validated_capture_only`
 - Active packet count: `5`
-- History packet count: `880`
-- Latest packet timestamp: `2026-07-07T14:06:44Z`
+- History packet count: `960`
+- Latest packet timestamp: `2026-07-08T15:34:04Z`
 - Stale: `False`
 - Read-only: `True`
 - Private browser state read: `False`
@@ -61,6 +61,7 @@ The following are local-only and are not mirrored here:
 
 ## Latest Source Commits
 
+- `5bae9b0 fix(ui): keep autosint app navigation fresh`
 - `d482ef6 feat(scout): add lane anomaly watch`
 - `5b03358 fix(scout): show concrete market cue facts`
 - `6f9fd45 fix(scout): preserve market cue checks after harvest`
@@ -80,7 +81,6 @@ The following are local-only and are not mirrored here:
 - `1e7f6f0 fix(ops): treat pending scout findings as nonblocking`
 - `346db20 fix(scout): clear stale autosint draft safely`
 - `6b670f5 fix(scout): feed source-gap targets into findings prompt`
-- `88077c2 fix(ops): recover packet v2 renderer harvest`
 
 ## Source Dirty State
 
