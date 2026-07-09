@@ -7,8 +7,8 @@ This is a public, sanitized context file for restoring AUTOSINT project context 
 - Private code/runtime repo: `tg-osint-eucom/autosint`
 - Public context mirror: `tg-osint-eucom/autosint-context`
 - Source branch: `main`
-- Source HEAD: `5bae9b0ffea2adec7b55939d5540f92026f9fdb0`
-- Generated at: `2026-07-08T16:21:23Z`
+- Source HEAD: `7d7471db70a849959b7e58fc7fd217ce14fe4b5a`
+- Generated at: `2026-07-09T18:30:46Z`
 
 ## Primary Workflow
 
@@ -33,9 +33,9 @@ This is a public, sanitized context file for restoring AUTOSINT project context 
 - Available: `True`
 - Active selection policy: `latest_validated_capture_only`
 - Active packet count: `5`
-- History packet count: `960`
-- Latest packet timestamp: `2026-07-08T15:34:04Z`
-- Stale: `False`
+- History packet count: `1035`
+- Latest packet timestamp: `2026-07-09T16:07:02Z`
+- Stale: `True`
 - Read-only: `True`
 - Private browser state read: `False`
 - Cookies read: `False`
@@ -61,6 +61,8 @@ The following are local-only and are not mirrored here:
 
 ## Latest Source Commits
 
+- `7d7471d fix(ui): explain operator pause data mode`
+- `16157fb fix(scout): accept lane anomaly dry-run alias`
 - `5bae9b0 fix(ui): keep autosint app navigation fresh`
 - `d482ef6 feat(scout): add lane anomaly watch`
 - `5b03358 fix(scout): show concrete market cue facts`
@@ -79,8 +81,6 @@ The following are local-only and are not mirrored here:
 - `d50ac9f feat(ops): add source lane green gate export`
 - `9d0c977 docs(scout): record packet v2 stale draft recovery`
 - `1e7f6f0 fix(ops): treat pending scout findings as nonblocking`
-- `346db20 fix(scout): clear stale autosint draft safely`
-- `6b670f5 fix(scout): feed source-gap targets into findings prompt`
 
 ## Source Dirty State
 
