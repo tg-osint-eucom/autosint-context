@@ -7,8 +7,8 @@ This is a public, sanitized context file for restoring AUTOSINT project context 
 - Private code/runtime repo: `tg-osint-eucom/autosint`
 - Public context mirror: `tg-osint-eucom/autosint-context`
 - Source branch: `main`
-- Source HEAD: `b9ce2dc8a9181f8c5c7eca9a4e2f84b666e5b8e0`
-- Generated at: `2026-07-16T23:37:42Z`
+- Source HEAD: `3f095d0abc6a9db751b5370acb27fef06f7e8aa4`
+- Generated at: `2026-07-16T23:51:07Z`
 
 ## Primary Workflow
 
@@ -61,6 +61,7 @@ The following are local-only and are not mirrored here:
 
 ## Latest Source Commits
 
+- `3f095d0 fix(release): reject override references in final csv`
 - `b9ce2dc fix(preservation): distinguish foreign defense stocks`
 - `845b4ce fix(release): include final conflict matrix`
 - `ab33a80 feat(release): build coherent runtime restore snapshot`
@@ -80,7 +81,6 @@ The following are local-only and are not mirrored here:
 - `2870d6c docs: add canonical AUTOSINT documentation index`
 - `3457593 docs(arch): add Lattice-inspired AUTOSINT reference`
 - `7d7471d fix(ui): explain operator pause data mode`
-- `16157fb fix(scout): accept lane anomaly dry-run alias`
 
 ## Pending Decisions
 
