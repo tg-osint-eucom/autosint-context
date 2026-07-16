@@ -1,6 +1,10 @@
 # AUTOSINT Theater Watch Policy
 
-The Theater Watch Policy prevents External Scout from becoming an arbitrary global `top 5` feed. The Live Case Board may still show up to five emitted packets per cycle, but every major theater must be explicitly accounted for through `theater_watch_summary`.
+The Theater Watch Policy prevents External Scout from becoming an arbitrary
+global top-case feed. Case counts are read from the versioned
+`config/autosint_system_contract.yml`: the current natural default is 1-3 and
+the configured absolute maximum is 5. Every major theater must still be
+explicitly accounted for through `theater_watch_summary`.
 
 This is a read-only policy. It does not create Evidence, case links, source-config changes, OSIR exports, apply/import paths, launchd changes, or commander-ready outputs.
 
@@ -28,7 +32,9 @@ Each row should say:
 - source_families_checked
 - next_check
 
-If more than five important cases exist, the top five become packets and the rest go into `overflow_candidate_cases` with a clear reason.
+When credible cases exceed the configured absolute maximum, emitted cases stay
+within that maximum and the rest go into `overflow_candidate_cases` with a
+clear reason.
 
 ## Starter Theater Policies
 

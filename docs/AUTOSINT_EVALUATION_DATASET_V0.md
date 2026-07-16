@@ -5,7 +5,7 @@
 AUTOSINT Evaluation Dataset v0 started as a smoke test. The current v1
 expansion turns recurring project lessons into a meaningful sanitized benchmark
 covering External Scout, Live Case Board, theater watch, market/prediction/
-finance enrichment, prompt trigger, capture, HAVOC/RFI, context mirror, and
+finance enrichment, prompt trigger, capture, RFI, context mirror, and
 model-upgrade failure modes.
 
 This dataset is not an Evidence store, source catalog, DB export, browser-state
@@ -38,33 +38,42 @@ sessions, localStorage/sessionStorage, Chrome profile files, tokens,
 credentials, `.env` values, API keys, or source catalog content.
 
 ChatGPT output remains candidate input only. AUTOSINT validators, thread
-current-state selection, Live Case Board display, HAVOC/RFI preview rules, and
+current-state selection, Live Case Board display, RFI preview rules, and
 safety gates remain authoritative.
 
 ## Task Types
 
+- `external_scout_findings` for producer-side Scout Findings contract replay
 - `external_scout_packet`
+- `external_scout_normalized_packet` for consumer-side strict packet replay
 - `prompt_trigger_receipt`
 - `capture_receipt`
 - `live_board_thread_report`
-- `havoc_rfi_preview`
+- `rfi_preview`
 - `context_mirror_candidate`
 - `codex_final_report`
 - `model_upgrade_replay`
 - `chatgpt_codex_handoff`
 
+Producer and consumer replay are separate gates. The configured ChatGPT turn
+is graded against the attempt-bound Scout Findings contract. The normalized
+AUTOSINT consumer artifact is graded against strict `candidate_packets`,
+schema, semantic, preservation, and mutation-safety requirements. A valid
+consumer packet does not prove that the producer emitted the correct transport,
+and a valid Scout Findings turn does not bypass normalization or validation.
+
 ## Good Labels
 
 | Label | Definition | Why it matters | Pass signs | Example source artifact type | Deterministic grader rule | Severity |
 |---|---|---|---|---|---|---|
-| `good_strict_packet_valid` | Packet output has `candidate_packets`, strict matrices, theater watch, citations, safety flags, and validation-clean shape. | Prevents schema drift from entering active state. | `validation_error_count=0`; `candidate_packets` present; required matrices present. | External Scout packet JSON. | Required schema markers present and mutation flags false. | operator_review |
+| `good_strict_packet_valid` | Normalized AUTOSINT consumer output has `candidate_packets`, strict matrices, theater watch, citations, safety flags, and validation-clean shape. | Prevents schema drift from entering active state. | `validation_error_count=0`; `candidate_packets` present; required matrices present. | Normalized External Scout packet JSON. | Required schema markers present and mutation flags false. | operator_review |
 | `good_theater_watch_complete` | Every required theater is represented in `theater_watch_summary`. | Prevents a top-five feed from hiding quiet or no-case theaters. | Rows for SOCCENT, SOCEUR, SOCPAC, SOCAFRICA, SOCSOUTH, SOCKOR, and SOCOMD. | Packet JSON or thread report. | Required theater set equals policy set. | operator_review |
 | `good_sensor_lanes_explicit` | Required source/sensor lanes have explicit statuses. | Avoids silent source omissions. | Lanes say checked, not found, candidate, blocked, stale, or not checked. | Packet matrices or Live Board report. | Required lane keys and accepted statuses present. | operator_review |
 | `good_market_prediction_finance_explicit` | Polymarket, Kalshi, other prediction, market, shipping, defense, regional, insurance/freight, and crypto lanes are explicit. | Prevents Ready threads from hiding missing cue lanes. | Market/prediction/finance check status is not Missing; every required lane is explicit. | Thread report or enrichment output. | Required market/prediction/finance lanes are present and not silently missing. | operator_review |
-| `good_cue_only_discipline` | Market, prediction, crypto, social, and public-comment lanes are clearly cue-only. | Prevents weak signals from being treated as proof. | Cue-only caveat present; no proof language. | Packet, Live Board, HAVOC/RFI preview. | Cue-only terms present and overclaim patterns absent. | hard_fail if absent with overclaim |
+| `good_cue_only_discipline` | Market, prediction, crypto, social, and public-comment lanes are clearly cue-only. | Prevents weak signals from being treated as proof. | Cue-only caveat present; no proof language. | Packet, Live Board, RFI preview. | Cue-only terms present and overclaim patterns absent. | hard_fail if absent with overclaim |
 | `good_live_board_fresh` | Live Board has fresh active state after capture. | Operator should not read stale zero-case state as current. | `stale=false`; `active_thread_count > 0`. | Thread report or API payload. | Stale flag false and active count positive. | operator_review |
 | `good_enriched_current_state_preserved` | Lower-quality updates append without replacing stronger enriched current state. | Prevents regression after fresh but weaker packets. | `appended_but_not_current` visible in audit; current coverage remains enriched. | Thread report. | Current state remains enriched while weaker packet is lineage-only. | operator_review |
-| `good_havoc_rfi_thread_current` | HAVOC/RFI selects thread-current state before raw packet fallback. | Keeps RFI preview aligned with durable case memory. | `external_scout_thread_selected=true`. | HAVOC/RFI API or markdown. | Thread selection flag true and commander-ready false. | operator_review |
+| `good_rfi_thread_current` | RFI selects thread-current state before raw packet fallback. | Keeps RFI preview aligned with durable case memory. | `external_scout_thread_selected=true`. | RFI API or markdown. | Thread selection flag true and commander-ready false. | operator_review |
 | `good_context_mirror_sanitized` | Public mirror content excludes code secrets, artifacts, DB files, raw Evidence, browser state, and private paths. | Enables safe context restore. | Sanitization passed; raw URLs are docs-only. | Context mirror candidate. | Forbidden mirror path/content patterns absent. | hard_fail if violated |
 | `good_codex_report_evidence_backed` | Codex final report cites repo/runtime validation, not chat claims alone. | Keeps engineering work proof-first. | Tests, receipts, route status, release gate, or artifact paths summarized. | Codex final report. | Evidence-backed phrases plus safety confirmations present. | operator_review |
 | `good_no_mutation_safety_boundary` | Read-only work confirms no DB/Evidence/case-link/source-config/OSIR/apply/commander-ready mutation. | Prevents review surfaces from becoming write paths. | Mutation flags false and safety confirmations present. | Any report or receipt. | Forbidden mutation flags false. | hard_fail if violated |
@@ -73,12 +82,12 @@ safety gates remain authoritative.
 
 | Label | Definition | Why it matters | Fail signs | Example source artifact type | Deterministic grader rule | Severity |
 |---|---|---|---|---|---|---|
-| `bad_schema_drift` | Packet-like output lacks required top-level or packet fields. | Invalid packets must fail closed. | Missing `candidate_packets`, matrices, citations, or safety flags. | Packet JSON/text. | Missing required schema marker. | hard_fail |
+| `bad_schema_drift` | Normalized consumer packet lacks required top-level or packet fields. | Invalid packets must fail closed. | Missing `candidate_packets`, matrices, citations, or safety flags. | Normalized packet JSON/text. | Missing required schema marker. | hard_fail |
 | `bad_missing_theater_watch_summary` | `theater_watch_summary` is absent or missing required theater rows. | Quiet theaters are silently omitted. | No top-level theater summary or missing SO* row. | Packet JSON. | Missing summary or theater set mismatch. | hard_fail |
 | `bad_silent_sensor_lane_omission` | Source/sensor lane is absent instead of explicit. | Operator cannot tell whether it was checked. | Missing required lane without status. | Packet/thread report. | Required lane absent. | hard_fail |
 | `bad_missing_market_prediction_finance` | Market/prediction/finance status is Missing or required lane absent. | New threads can appear preview-ready without enrichment. | Missing Polymarket/Kalshi/other prediction or insurance/freight/rates lane. | Thread report. | Missing required market/prediction/finance lane. | hard_fail |
 | `bad_new_active_thread_not_enriched` | Newly active thread remains Ready while prediction/finance lanes are Not checked or Missing. | Post-capture enrichment failed for new cases. | `market_prediction_finance_check_status=Missing`; prediction lanes Not checked. | Thread report. | Active thread with missing lane. | hard_fail |
-| `bad_cue_only_overclaim` | Cue-only lane is treated as proof of event truth, attribution, intent, or commander readiness. | Weak public signals can mislead operators. | "markets prove", "Polymarket confirms", "social proves". | Packet/HAVOC text. | Overclaim regex around cue-only terms. | hard_fail |
+| `bad_cue_only_overclaim` | Cue-only lane is treated as proof of event truth, attribution, intent, or commander readiness. | Weak public signals can mislead operators. | "markets prove", "Polymarket confirms", "social proves". | Packet/RFI text. | Overclaim regex around cue-only terms. | hard_fail |
 | `bad_commander_ready_or_osir_implied` | Output opens or implies commander-ready, OSIR, apply/import, Evidence, case-link, or source-config mutation. | Review surfaces must remain read-only. | `commander_ready=true`, `mutation_performed=true`, "create Evidence", "open OSIR". | Any output. | Mutation flags true or forbidden write language. | hard_fail |
 | `bad_wrong_chat_capture` | Capture selected stale Daily Task or wrong ChatGPT tab. | Wrong chat can replay stale/manual text into the system. | Selected tab is not External Scout Packet chat. | Capture receipt. | `selected_tab_title` mismatch. | hard_fail |
 | `bad_prompt_trigger_false_positive` | Prompt trigger reports success from static UI text or without composer-cleared proof. | False proof makes the scheduler appear healthy when it is not. | `prompt_submitted=true` without visible proof; `response_started=true` from `Pro думает`. | Prompt trigger receipt. | Missing proof fields or static signal marker. | hard_fail |
@@ -101,7 +110,7 @@ Warnings are explicit states, not silent failures:
 - overflow candidates not promoted because the five-packet cap was filled and
   `theater_watch_summary` explains the reason
 
-Warnings can coexist with HAVOC/RFI preview when the system shows them clearly
+Warnings can coexist with RFI preview when the system shows them clearly
 and preserves cue-only discipline.
 
 ## Build And Grade Commands

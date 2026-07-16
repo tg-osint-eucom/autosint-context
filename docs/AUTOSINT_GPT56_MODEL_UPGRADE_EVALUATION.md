@@ -2,16 +2,48 @@
 
 ## BLUF
 
-GPT-5.6 model-family adoption is an evaluation workstream only. AUTOSINT does
-not replace its current prompt, capture, validation, Live Case Board, or
-HAVOC/RFI loop until availability, replay quality, latency, cost, and safety
-gates are proven in non-production evaluation.
+The ChatGPT Project policy requires `GPT-5.6 Sol Pro` and records the operator's
+selection as `OPERATOR_CONFIRMED`. That policy does not prove per-cycle model
+attribution and does not approve an AUTOSINT API-model migration. Any scripted
+API adoption remains an evaluation workstream until availability, replay
+quality, latency, cost, reliability, and safety gates pass.
 
-Current official source checked:
+Current official sources checked:
 
-- <https://openai.com/index/previewing-gpt-5-6-sol/>
+- <https://openai.com/index/gpt-5-6/>
+- <https://help.openai.com/en/articles/20001354>
+- <https://help.openai.com/en/articles/9624314-model-release-notes>
+- <https://developers.openai.com/api/docs/models/gpt-5.6-sol>
 
-Treat public model announcements as product input, not AUTOSINT runtime truth.
+## Official Availability Baseline
+
+Last verified against official OpenAI sources: 2026-07-16.
+
+OpenAI announced GPT-5.6 general availability on 2026-07-09 across ChatGPT,
+Codex, and the OpenAI API, with a gradual account rollout. The Help Center
+documents `GPT-5.6 Sol Pro` as the highest-capability ChatGPT option for
+difficult and long-running tasks. The minimum clients documented for Codex
+access are:
+
+- ChatGPT desktop app in Codex mode: `26.707.30751`;
+- Codex CLI: `0.144.0`.
+
+The documented product split is:
+
+- GPT-5.6 Sol powers eligible ChatGPT reasoning options and Sol Pro powers the
+  Pro option on eligible plans;
+- Sol, Terra, and Luna availability varies by ChatGPT, Work, Codex, API,
+  product plan, rollout state, and workspace access;
+- managed-workspace administrators may control which models members can use.
+
+Official product availability does not prove access for a specific ChatGPT
+account, Codex workspace, or API organization. Record host/client versions and
+safe local model metadata under ignored operator-reading artifacts. Confirm a
+private model picker manually when necessary, and do not inspect browser
+sessions or private account state. Do not call an API or read an API key merely
+to prove availability without separate explicit approval.
+
+Treat public model documentation as product input, not AUTOSINT runtime truth.
 Before any migration, verify actual access in the relevant surface:
 
 - ChatGPT Project model picker, if used manually.
@@ -24,9 +56,11 @@ availability checks.
 
 ## Candidate Model Roles
 
-### Sol
+### Sol / Sol Pro
 
-Use Sol, if available, only for high-difficulty reasoning and review tasks:
+The operator-required ChatGPT Project selection is Sol Pro. For any separate
+non-production API or Codex evaluation, Sol is the candidate for
+high-difficulty reasoning and review tasks:
 
 - hard Codex implementation goals;
 - root-cause debugging across prompts, harvest/promotion receipts, thread reports, tests,
@@ -35,8 +69,8 @@ Use Sol, if available, only for high-difficulty reasoning and review tasks:
 - architecture and safety-gate review;
 - adversarial review of packet/schema drift.
 
-Sol should not be the default hourly packet-generation model without a separate
-cost, latency, and reliability proof.
+The Project selection does not establish an API model id, API organization
+access, or per-cycle attribution. Those require separate approved evidence.
 
 ### Terra
 
@@ -44,7 +78,7 @@ Use Terra, if available, as the first candidate for routine AUTOSINT work:
 
 - External Scout prompt-quality evaluation;
 - non-production packet replay;
-- thread and HAVOC/RFI preview review;
+- thread and RFI preview review;
 - routine source-gap summaries;
 - workstream status synthesis.
 
@@ -62,7 +96,7 @@ Use Luna, if available, only for low-risk helper tasks:
 - log/receipt triage;
 - low-cost smoke review.
 
-Luna output must not drive packet promotion, thread-current selection, HAVOC/RFI
+Luna output must not drive packet promotion, thread-current selection, RFI
 readiness, OSIR, Evidence, case links, source config, apply/import, or
 commander-ready status.
 
@@ -87,7 +121,7 @@ Run model candidates only against sanitized, ignored, non-production inputs:
 
 - previous operator page dumps;
 - sanitized thread report snapshots;
-- sanitized HAVOC/RFI preview payloads;
+- sanitized RFI preview payloads;
 - tracked docs;
 - generated evaluation prompts that do not contain secrets, DB rows, raw
   Evidence bodies, browser state, or source catalog content.
@@ -96,10 +130,18 @@ No replay output may write to External Scout inbox, staging, quarantine, latest,
 DB, Evidence, case links, source config, OSIR, apply/import, launchd, or
 commander-ready state.
 
-### 3. Strict Packet Contract Replay
+### 3. Producer And Consumer Contract Replay
 
-For any candidate model used to generate External Scout-style output, evaluate
-against the current strict packet requirements:
+Evaluate the two stages separately:
+
+1. Producer replay: Scout Findings must satisfy the system-contract identity,
+   inline-primary/attachment-fallback transport, case, theater, lane, and
+   semantic-row requirements.
+2. Consumer replay: deterministic normalization must produce strict packets
+   satisfying the schema, semantic validator, and preservation guard.
+
+Direct `candidate_packets` generation is tested only as the explicit fallback
+mode. Consumer requirements include:
 
 - `candidate_packets` top-level object;
 - `case_coverage_matrix`;
@@ -120,7 +162,7 @@ The validator and thread report remain authoritative. A model is not accepted
 because it sounds better; it is accepted only if it validates and improves or
 preserves operator usefulness.
 
-### 4. Live Case Board And HAVOC/RFI Replay
+### 4. Live Case Board And RFI Replay
 
 Evaluate whether outputs preserve current operator behavior:
 
@@ -128,7 +170,7 @@ Evaluate whether outputs preserve current operator behavior:
 - stale and archived threads remain separated;
 - source checks and follow-up gaps remain explicit;
 - market/prediction/finance lanes remain explicit and cue-only;
-- HAVOC/RFI uses thread-current state;
+- RFI uses thread-current state;
 - commander-ready remains `false`;
 - OSIR remains closed;
 - no Evidence/case-link/source-config/apply/import path is introduced.

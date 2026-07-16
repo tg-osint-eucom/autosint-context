@@ -48,15 +48,15 @@ Read-only drill-down routes:
 
 - `/mission-control`
 - `/external-scout/threads`
-- `/havoc-rfi/SOCCENT`
+- `/rfi/SOCCENT`
 
 Supporting/read-only routes:
 
 - `/external-scout`
 - `/api/v1/external-scout/live-case-board`
 - `/api/v1/external-scout/threads`
-- `/api/v1/havoc-rfi/SOCCENT`
-- `/tsoc-havoc`
+- `/api/v1/rfi/SOCCENT`
+- `/rfi`
 - canonical, evidence-passport, PIR, OSIR preview, agent, source-health, and
   audit routes when a task explicitly needs them.
 
@@ -66,13 +66,13 @@ separate approved frontend thread restores them.
 
 ## Current Product Direction
 
-AUTOSINT is a local-first External Scout and HAVOC/RFI operator review stack.
+AUTOSINT is a local-first External Scout and RFI operator review stack.
 The External Scout Live Case Board is the current operator case board.
 
 Core workflow:
 
 ```text
-Mission Control -> External Scout Live Case Board -> TSOC/HAVOC -> HAVOC/RFI -> future controlled approval
+Mission Control -> External Scout Live Case Board -> RFI -> future controlled approval
 ```
 
 Current rules:
@@ -80,7 +80,7 @@ Current rules:
 - ChatGPT packets are candidate input only.
 - `/external-scout/threads` is durable case/thread memory.
 - `/external-scout` is the latest active packet inbox/support view.
-- HAVOC/RFI consumes External Scout thread-current state first, then falls back
+- RFI consumes External Scout thread-current state first, then falls back
   to validated packets only when thread state is unavailable.
 - OSIR, Evidence writes, case-link writes, source-config changes,
   apply/import, and commander-ready promotion remain closed unless a future
@@ -118,8 +118,11 @@ Temporal Guardian, OSIR, and sensor-registry discipline.
 External Scout capture/output rules:
 
 - The ChatGPT Project is a workspace; AUTOSINT threads are case memory.
-- The Packet/Daily Scout output must use strict JSON/Markdown and the current
-  source/sensor coverage contract.
+- The configured Packet chat produces attempt-bound Scout Findings JSON using
+  the versioned system contract. AUTOSINT deterministically normalizes those
+  findings into strict candidate packets before validation and promotion.
+  Direct `candidate_packets` output is an explicit fallback/replay mode only;
+  it is never a simultaneous second production default.
 - Capture writes only ignored runtime artifacts: staging, inbox, quarantine,
   latest, receipts, and logs.
 - Invalid or schema-drifted captures fail closed and do not update current
@@ -144,7 +147,7 @@ External Scout 24/7 control-page rules:
   source for External Scout 24/7 state. New operator sections should read from
   the canonical proof report builder unless there is an explicit architecture
   change.
-- `/external-scout/threads`, `/havoc-rfi/SOCCENT`, JSON routes, logs, and
+- `/external-scout/threads`, `/rfi/SOCCENT`, JSON routes, logs, and
   artifacts are read-only drill-downs or verification views, not separate
   control surfaces.
 
@@ -183,7 +186,7 @@ intent, insider activity, OSIR release, or commander-ready status.
 
 For AUTOSINT source/sensor work, treat the sensor architecture as a durable
 system contract. Before changing External Scout prompts, source-health logic,
-enrichment, adapters, Live Board source status, HAVOC/RFI source fields, or any
+enrichment, adapters, Live Board source status, RFI source fields, or any
 source/sensor-related workflow, read:
 
 - `docs/AUTOSINT_SENSOR_ARCHITECTURE_V1.md`
@@ -195,7 +198,7 @@ source/sensor-related workflow, read:
 
 Core rule: ChatGPT External Scout discovers broadly; AUTOSINT validates
 strictly; adapters verify deterministically; Live Board is case memory; health
-monitor watches the loop; HAVOC/RFI previews only. Nothing becomes Evidence,
+monitor watches the loop; RFI previews only. Nothing becomes Evidence,
 OSIR, case-linked, applied/imported, or commander-ready without a future
 explicit approval gate.
 
@@ -240,7 +243,7 @@ finance enrichment is in scope:
 - insurance / freight / rates
 - crypto / risk
 
-These lanes remain cue-only. They may support HAVOC/RFI preview context, but
+These lanes remain cue-only. They may support RFI preview context, but
 they do not create Evidence, case links, source-config changes, OSIR release,
 apply/import, or commander-ready status.
 
@@ -251,7 +254,7 @@ AUTOSINT runtime truth. The current model-upgrade evaluation source of truth is
 `docs/AUTOSINT_GPT56_MODEL_UPGRADE_EVALUATION.md`.
 
 Do not change production prompts, External Scout capture behavior, validator
-authority, Live Case Board readiness, HAVOC/RFI selection, or scheduled model
+authority, Live Case Board readiness, RFI selection, or scheduled model
 defaults for a new model family until a non-production replay has proven:
 
 - actual model availability in the intended ChatGPT, Codex, or API surface;
@@ -378,7 +381,7 @@ Operator-facing language should answer:
 - Where?
 - Why it matters?
 - What changed?
-- What is ready for HAVOC/RFI preview?
+- What is ready for RFI preview?
 - What remains cue-only or missing?
 - What next?
 

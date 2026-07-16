@@ -1,0 +1,218 @@
+schema_version: 1
+contract_version: autosint-system-contract-v1
+generated_policy_owner: config/autosint_system_contract.yml
+
+product:
+  app_name: AUTOSINT
+  current_term: RFI
+  workflow:
+  - Mission Control
+  - External Scout
+  - Threads
+  - RFI
+  - future controlled approval
+  rfi_policy:
+    read_only: true
+    analyst_review_only: true
+    candidate_input_only: true
+    evidence: false
+    osir: false
+    apply_import: false
+    commander_ready: false
+
+navigation:
+  top_navigation:
+  - Mission Control
+  - External Scout
+  - Threads
+  - Proof Data
+  - RFI
+  current_rfi_route: /rfi
+  current_rfi_workspace_route: /rfi/{workspace}
+  current_rfi_api_route: /api/v1/rfi
+  current_rfi_workspace_api_route: /api/v1/rfi/{workspace}
+  removed_routes_must_404: true
+  compatibility_redirects_allowed: false
+
+external_scout:
+  producer_mode: scout_findings_normalized
+  strict_candidate_packets: fallback_only
+  normalized_output: strict_candidate_packets
+  assistant_output_required_identity_fields:
+  - system_contract_version
+  - trigger_request_id
+  - generation_attempt_id
+  - generation_attempt_number
+
+output_transport:
+  contract_version: autosint_scout_findings_transport_v1
+  primary_transport: inline_fenced_json
+  fallback_transport: downloadable_json_attachment
+  never_emit_both_full_payloads: true
+  identity_bound: true
+
+request_lifecycle:
+  binding_contract_version: autosint_request_binding_v1
+  exact_root_and_attempt_match_required: true
+  output_must_postdate_prompt: true
+  output_must_be_newer_than_inbox: true
+  duplicate_submit_on_page_global_busy: false
+  page_global_busy_without_attempt_ownership: ambiguous_fail_closed
+
+case_policy:
+  default_case_min: 1
+  default_case_max: 3
+  absolute_case_max: 5
+  recovery_case_count: 1
+  cycle_aggregate_binding: primary_case_only
+
+theater_policy:
+  theater_count: 7
+  required_theaters:
+  - SOCCENT
+  - SOCEUR
+  - SOCPAC
+  - SOCAFRICA
+  - SOCSOUTH
+  - SOCKOR
+  - SOCOMD
+
+source_lane_policy:
+  operational_lane_count: 19
+  required_lanes:
+  - lane_id: official_advisory
+    lane_label: Official / Advisory
+  - lane_id: public_news
+    lane_label: Public News / Wires / Trade Press
+  - lane_id: multilingual_regional
+    lane_label: Multilingual / Regional
+  - lane_id: social_osint
+    lane_label: Social OSINT / Public Reaction
+  - lane_id: traffic_movement
+    lane_label: Traffic / Movement
+  - lane_id: satellite_geospatial
+    lane_label: Satellite / Geospatial
+  - lane_id: weather_environment
+    lane_label: Weather / Environment
+  - lane_id: prediction_polymarket
+    lane_label: Polymarket
+  - lane_id: prediction_kalshi
+    lane_label: Kalshi
+  - lane_id: prediction_other
+    lane_label: Manifold / Other Prediction Markets
+  - lane_id: broad_market
+    lane_label: Broad Market
+  - lane_id: oil_energy
+    lane_label: Oil / Energy
+  - lane_id: shipping_tanker
+    lane_label: Shipping / Tanker
+  - lane_id: insurance_freight_rates
+    lane_label: Insurance / Freight / Rates
+  - lane_id: defense_large_cap
+    lane_label: Defense Large-Cap
+  - lane_id: defense_mid_small
+    lane_label: Defense Mid/Small
+  - lane_id: regional_markets
+    lane_label: Regional Markets
+  - lane_id: crypto_risk
+    lane_label: Crypto / Risk
+  - lane_id: public_comments
+    lane_label: Public Comments / Reaction
+  required_prediction_rows:
+  - polymarket
+  - kalshi
+  - other_prediction_markets
+  required_market_finance_rows:
+  - broad_market
+  - oil_energy
+  - shipping_tanker
+  - insurance_freight_rates
+  - defense_large_cap
+  - defense_mid_small
+  - regional_market
+  - crypto_risk
+  required_semantic_row_fields:
+  - status
+  - summary
+  - source_urls
+  - metrics
+  - what_it_suggests
+  - what_it_does_not_prove
+  - collection_gap
+  - next_check
+  - cue_only
+
+status_vocabulary:
+  source_statuses:
+  - Checked and found
+  - Checked and not found
+  - Candidate found, not imported
+  - Not checked
+  - Stale
+  - Blocked / login required
+  source_rollup_fields:
+  - coverage_status
+  - follow_up_statuses
+  - blocked_source_count
+  - candidate_source_count
+  - stale_source_count
+  - checked_source_count
+  priority_enum_forbidden: true
+
+model_policy:
+  required_model_label: GPT-5.6 Sol Pro
+  selection_status: OPERATOR_CONFIRMED
+  policy_status: OPERATOR_CONFIRMED_REQUIRED_MODEL
+  account_setting_machine_verification: NOT_PERFORMED
+  cycle_model_attribution: RECEIPT_REQUIRED
+  api_model_id: NOT_INFERRED
+
+proof_policy:
+  proof_target_consecutive_natural_cycles: 3
+  manual_recovery_counts: false
+  direct_capture_counts: false
+  live_board_stale_required: false
+  active_threads_minimum: 1
+  health_red_allowed: false
+  eval_runtime_hard_fails_allowed: false
+
+capability_truth_policy:
+  allowed_statuses:
+  - ABSENT
+  - DOCUMENTED_ONLY
+  - PARTIAL
+  - IMPLEMENTED_UNTESTED
+  - IMPLEMENTED_TESTED
+  - OPERATIONALLY_PROVEN
+  - APP_INTEGRATED
+  - DEGRADED
+  - GATED_DISABLED
+  - LEGACY_REMOVED
+  - NOT_APPLICABLE
+  - UNVERIFIED
+  forbidden_bare_statuses:
+  - IMPLEMENTED
+  - COMPLETE
+  - DONE
+
+degraded_mode_policy:
+  api_read_only_available_under_contract_red: true
+  operator_status_label: CONTRACT_CONFLICT_RED
+  prompt_blocked_under_contract_red: true
+  harvester_blocked_under_contract_red: true
+  warn_blocks_runtime: false
+
+safety_policy:
+  candidate_input_only: true
+  commander_ready: false
+  mutation_performed: false
+  browser_private_state_read: false
+  db_mutation: false
+  evidence_mutation: false
+  case_link_mutation: false
+  osir_apply_import: false
+
+referenced_contracts:
+  sensor_architecture: config/autosint_sensor_architecture.yml
+  sensor_registry: config/sensor_registry.json
+  workstreams: config/autosint_workstreams.yml

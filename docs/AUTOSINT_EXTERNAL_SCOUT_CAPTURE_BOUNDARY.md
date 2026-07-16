@@ -1,5 +1,19 @@
 # AUTOSINT External Scout Capture Boundary
 
+- Status: Historical implementation boundary; direct capture is manual-only
+- Authority: Supporting boundary, not production schedule authority
+- Owner: External Scout capture package
+- Last reviewed: 2026-07-15
+- Runtime truth: No
+- Supersedes: None
+- Superseded by: [External Scout Runbook](AUTOSINT_EXTERNAL_SCOUT_RUNBOOK.md) for current production timing and output mode
+- Related: [Primary Workflow](AUTOSINT_PRIMARY_WORKFLOW.md), [Documentation Conflicts](status/AUTOSINT_DOCUMENTATION_CONFLICTS.md)
+
+This document preserves the direct-capture package boundary. It does not define
+the current production loop. The production loop is prompt at `:00`, async
+harvester at `:28`, Scout Findings normalization, validation, and promotion.
+Direct capture remains manual diagnostic or emergency tooling only.
+
 ## Responsibility
 
 The External Scout capture subsystem is the local bridge between the visible ChatGPT `AUTOSINT External Scout` Project output and AUTOSINT's read-only packet review artifacts.
@@ -10,7 +24,7 @@ It is implemented as a service-ready package inside this repo:
 src/autosint_external_scout_capture/
 ```
 
-The launchd wrapper remains:
+The historical/manual wrapper remains:
 
 ```text
 scripts/run_external_scout_capture_once.sh
@@ -66,7 +80,7 @@ The capture subsystem must not:
 - Perform apply/import.
 - Open commander-ready gates.
 - Add frontend write controls.
-- Call API/UI/HAVOC/RFI internals directly.
+- Call API/UI/RFI internals directly.
 
 ## Consumption Boundary
 
@@ -74,7 +88,7 @@ AUTOSINT core surfaces consume validated packet reports and thread reports only.
 
 - `core/api.py` renders packet/thread review surfaces.
 - Case Threads group validated packet history.
-- HAVOC/RFI consumes thread current state first and packet fallback second.
+- RFI consumes thread current state first and packet fallback second.
 
 Those layers should not call AppleScript, Chrome automation, launchd logic, or browser-visible capture code.
 
@@ -94,21 +108,25 @@ Compatibility CLI:
 .venv/bin/python scripts/capture_chatgpt_external_scout_visible.py --status
 ```
 
-## Launchd Behavior
+## Historical Launchd Behavior (Superseded)
 
-Launchd label:
+The package was originally designed around this launchd label:
 
 ```text
 com.autosint.external-scout-capture
 ```
 
-Schedule:
+The retired design schedule was:
 
 ```text
-minute :00 each hour
+minute :00 each hour (superseded; not the production schedule)
 ```
 
-The wrapper calls the package CLI and writes wrapper logs under ignored capture logs. The job should run in the Aqua user session so AppleScript can reach visible Chrome UI. It must not inspect browser storage.
+Do not use this label as a scheduled production fallback. Current production
+timing is owned by the prompt trigger and async harvester described in the
+runbook. A manually approved diagnostic invocation may call the package CLI and
+write ignored capture logs in the Aqua user session; it must not inspect browser
+storage.
 
 The legacy `com.autosint.operator.scheduler` should remain disabled.
 
@@ -125,7 +143,12 @@ Important receipt states:
 
 All receipt privacy and mutation flags must remain false.
 
-## Manual Proof Commands
+## Manual Diagnostic Commands
+
+Commands that use `--once` or the wrapper can interact with visible browser UI
+and require explicit current-task approval. They do not count toward natural
+production proof. Read-only status/report commands remain the preferred audit
+path.
 
 ```bash
 PYTHONPATH=src:. .venv/bin/python -m autosint_external_scout_capture.cli --status
@@ -142,8 +165,8 @@ Route smoke:
 /external-scout
 /external-scout/threads
 /api/v1/external-scout/threads
-/havoc-rfi/SOCCENT
-/api/v1/havoc-rfi/SOCCENT
+/rfi/SOCCENT
+/api/v1/rfi/SOCCENT
 ```
 
 ## Future Separate Service Criteria
@@ -152,7 +175,7 @@ Only consider extracting this subsystem to a separate repo or service when all a
 
 - The CLI contract is stable.
 - Capture tests pass independently.
-- The package has no imports from `core/api.py` or HAVOC/RFI internals.
+- The package has no imports from `core/api.py` or RFI internals.
 - Launchd calls only the package CLI.
 - Capture output schema is versioned.
 - Context mirror and runbooks document the boundary.

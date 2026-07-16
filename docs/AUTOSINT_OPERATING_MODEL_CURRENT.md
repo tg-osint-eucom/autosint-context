@@ -1,341 +1,237 @@
 # AUTOSINT Operating Model Current
 
-AUTOSINT is a local-first operational intelligence review stack. ChatGPT External Scout collects public candidate packets, while AUTOSINT validates, quality-checks, normalizes, deduplicates, previews source candidates, maps topics into theater/workspaces, and produces HAVOC/RFI package previews.
+- Status: Current
+- Authority: Canonical architecture
+- Owner: AUTOSINT Architecture
+- Last reviewed: 2026-07-16
+- Runtime truth: No; live state requires current receipts and reports
+- Supersedes: Historical multi-shell and direct-packet operating summaries
+- Superseded by: None
+- Related: [System Contract](status/AUTOSINT_SYSTEM_CONTRACT_CURRENT.md), [Primary Workflow](AUTOSINT_PRIMARY_WORKFLOW.md), [External Scout Runbook](AUTOSINT_EXTERNAL_SCOUT_RUNBOOK.md)
 
-ChatGPT packets are candidate input only. Nothing becomes Evidence, no case link is created, no source configuration is changed, and no OSIR or commander-ready gate opens without a future explicit controlled approval workflow. Market, social OSINT, prediction-market, crypto, and public-comment material remains cue-only context.
+## Purpose
 
-Repo-level Codex execution rules, including the active autopush gate and
-Codex context/memory source-of-truth rule, are maintained in `AGENTS.md`.
-Codex memories are helper recall only; durable project rules must be tracked in
-`AGENTS.md` or repo docs, and current thread context is temporary.
+AUTOSINT is a local-first operator review system. It accepts public candidate
+input, validates and organizes it, preserves provenance and degraded states,
+and exposes one read-only operating picture. Candidate material remains outside
+Evidence, OSIR, apply/import, and commander-ready authority.
 
-ChatGPT Project operating rules are maintained in
-`docs/AUTOSINT_CHATGPT_PROJECT_OPERATING_MODEL.md`. The key rule is that
-AUTOSINT Live Case Board threads are durable case memory, while ChatGPT Project
-chats are controlled workspaces only.
+Cross-cutting invariants are machine-readable in
+`config/autosint_system_contract.yml`. Detailed sensor and workstream truth
+remains in the referenced registries rather than being duplicated here.
 
-For substantial multi-step work, use `/goal` so objectives, validation gates,
-and stop conditions are explicit. After meaningful commits that change
-workflow, architecture, validation status, or operator behavior, refresh the
-public `autosint-context` mirror.
+## One Operator Shell
 
-## Primary Operator Workflow
-
-The current primary workflow is:
-
-```text
-Mission Control -> External Scout 24/7 Control Page -> Live Case Board drill-down -> TSOC/HAVOC -> HAVOC/RFI -> future controlled approval
-```
-
-Primary browser routes:
-
-- `/mission-control`
-- `/external-scout/24-7`
-- `/external-scout/threads`
-- `/tsoc-havoc`
-- `/havoc-rfi/SOCCENT`
-
-Supporting and audit routes:
-
-- `/external-scout`
-- `/api/v1/external-scout/24-7-proof`
-- `/case-genesis`
-- `/canonical-cases`
-- `/api/v1/cases/{case_id}/osir`
-- `/api/v1/cases/{case_id}/evidence-passport`
-- `/api/v1/cases/{case_id}/audit-bundle`
-- `/api/v1/pirs`
-- `/api/v1/pir-observations`
-- `/api/v1/overwatch`
-- `/api/v1/agent-feed`
-- `/api/v1/agent-threads/{thread_id}`
-- `/api/v1/agent-roster`
-
-Removed legacy browser routes:
-
-- `/dagrbook`
-- `/moltbook`
-- `/control-plane`
-
-These legacy routes should remain removed from primary navigation unless a future frontend-thread rebuild explicitly restores them.
-
-## External Scout Pipeline
-
-The current proven External Scout path is:
+The current operator path is:
 
 ```text
-ChatGPT Project / Packet-chat prompt trigger in Scout Findings mode
--> pending generation receipt if Pro Extended starts but is not ready
--> async Scout Findings harvester checks the same Packet turn
--> visible Scout Findings JSON or downloadable Scout Findings attachment
--> deterministic AUTOSINT normalizer
--> strict packet staging
--> validation
--> quarantine if invalid
--> active inbox if valid and newer than latest inbox
--> immediate read-only source-gap closure for fixable candidate URL / bounded follow-up rows
--> latest active capture only
--> /external-scout
--> /havoc-rfi
+Mission Control
+-> External Scout
+-> Threads
+-> RFI
+-> future controlled approval
 ```
 
-As of 2026-07-02, Pro Extended is treated as a source-discovery/findings
-generator rather than the strict-packet author. The prompt-trigger wrapper
-defaults to `--scout-findings-mode`; it accepts current Scout Findings JSON or
-the visible `autosint_scout_findings_YYYYMMDDTHHMMSSZ.json` attachment,
-normalizes with
-`scripts/normalize_external_scout_findings_to_packets.py`, and promotes only a
-validator-clean packet set with `commander_ready=false` and
-`mutation_performed=false`. Direct ChatGPT strict packets remain candidate
-fallback material, not the preferred Pro Extended machine-output contract.
+Primary routes:
 
-If Pro Extended starts answering but no Scout Findings `generated_at` is ready
-immediately after verified submit, the prompt-trigger records
-`scout_findings_pending` under ignored pending-generation artifacts and exits
-instead of waiting on the same Pro Extended renderer. It does not submit a
-duplicate prompt or stop/reload the existing turn. The async harvester
-(`scripts/harvest_external_scout_findings.py`) re-checks that exact pending
-Packet request, extracts a visible Scout Findings JSON/attachment when
-available, runs the deterministic normalizer, and promotes only when
-normalization validates cleanly and the output is newer than inbox. Stale or
-mismatched findings remain recorded as harvest receipts and do not refresh
-active recovery.
+- `/mission-control`: workflow launch page.
+- `/external-scout/24-7`: single pinned External Scout proof and health page.
+- `/external-scout`: validated packet inbox/support view.
+- `/external-scout/threads`: durable thread-current and Live Case Board.
+- `/external-scout/24-7/proof-data`: styled same-source proof view.
+- `/rfi`: theater/workspace overview.
+- `/rfi/{workspace}`: read-only selected-thread/case preview.
 
-After a clean harvester promotion, the wrapper immediately runs bounded
-read-only source-gap closure: candidate source URL inventory, supplemental
-cue-only enrichment, inventory refresh, and public URL verification. This closes
-only fixable lane-level gaps through review-only `source_gap_closure_notes`.
-Rows requiring licensed/API/login-only access remain nonblocking WARN, not fake
-GREEN.
-Prompt/output source gaps that require new ChatGPT findings are fed into the
-next natural `:00` Scout Findings prompt from the canonical 24/7 proof report,
-bounded to five active cases and 15 prompt-closeable targets per case. Licensed,
-login-required, or approved-API-only gaps remain visible WARN until an approved
-provider path exists.
+The machine-readable RFI routes are `/api/v1/rfi` and
+`/api/v1/rfi/{workspace}`. There is no compatibility route or second dashboard
+for the superseded product vocabulary.
 
-ChatGPT Scheduled Tasks remain an active but unverified upstream candidate. On
-2026-06-28, the existing Scheduled Task was updated and resumed, but its proof
-run did not expose a capturable output conversation or advance the Packet chat
-before `:08`; the local Packet-chat trigger restored the board with receipt
-`20260628T192327Z_prompt_trigger_receipt.json` and capture receipt
-`20260628T193810Z_capture_receipt.json`. A later outside-project task-result
-conversation was visible, but dry-run validation found twelve
-`source_relationships` bucket type errors; the prompt was tightened and the
-task was updated, while Packet fallback again promoted five valid packets with capture receipt
-`20260628T200809Z_capture_receipt.json`. Do not treat Scheduled Tasks as
-production-primary until repeated natural output -> async validation cycles pass
-through a Project-scoped scheduled-task probe or approved import path. The same proof found a
-strict-valid Scheduled Task result generated_at `2026-06-28T20:05:53Z`, but it
-was not promoted because the Packet fallback had already produced a newer inbox
-packet and because outside-project result chats are not production targets.
-This means proof must avoid upstream competition and must stay inside the
-AUTOSINT External Scout Project; otherwise Packet fallback remains the correct
-production source. The current live Scheduled Task state is paused, which is
-intentional containment until ChatGPT can produce output in the Project Packet
-chat or another Project-scoped output conversation. After the outside-project
-result chat was deleted, the visible task editor was checked read-only and
-showed no output chat, Project, or conversation target selector, so there is no
-safe UI control currently available to bind the task to the Project Packet chat.
+## External Scout Producer And Consumer
 
-Operational rules:
+The configured Packet chat is the producer workspace. ChatGPT produces Scout
+Findings under the exact pending request and generation attempt. AUTOSINT then
+normalizes the findings into strict candidate packets.
 
-- Valid captures go through staging and validation before inbox promotion.
-- Invalid or schema-drifted captures go to quarantine and do not refresh active reports.
-- `/external-scout` defaults to the latest validated capture only.
-- History remains available through explicit history mode and ignored local artifacts.
-- Promotion/manual direct-capture receipts, logs, inbox files, staging files, quarantine files, and latest generated reports are local-only and ignored.
-- The stale rule is currently 90 minutes.
-- ChatGPT scheduled output timing has drifted and may remain visible as
-  `Выполняется` past the expected output window; prove with the scheduled-task
-  probe before changing production targets.
-- Do not resume a Scheduled Task that only creates outside-project
-  `chatgpt.com/c/...` result chats.
-- The local Packet-chat loop is not considered 24/7-proven from a single green
-  run. Use `scripts/report_external_scout_24_7_proof.py` and require three
-  consecutive natural async prompt -> harvester proof cycles before declaring
-  24/7 readiness.
-- Operators should keep `/external-scout/24-7` as the single pinned External
-  Scout operator tab. It reads the same canonical proof report as
-  `/api/v1/external-scout/24-7-proof` and includes Live Board freshness,
-  current/stale case health, source gaps, enrichment gates, logs, and drill-down
-  links. `/external-scout/threads`, `/external-scout`, and HAVOC/RFI are
-  read-only drill-downs, not separate control surfaces.
-- Planned async local AUTOSINT timing is prompt at minute `:00` and exact
-  Packet v2 prewarm/harvest at minute `:28`. Direct capture remains available
-  as manual diagnostic/emergency tooling only, not as a scheduled production
-  fallback.
-- The launchd template may exist locally, but installing/loading launchd is a separate approval.
+- Producer mode: `scout_findings_normalized`.
+- Direct strict packets: fallback/replay only.
+- Primary transport: `inline_fenced_json`.
+- Fallback transport: `downloadable_json_attachment` only when inline cannot
+  be produced.
+- Both full payloads in one response: forbidden.
+- Natural cases: 1-3 by default, absolute maximum 5.
+- Explicit bounded recovery: exactly 1 case.
 
-## HAVOC/RFI Packet-Driven Behavior
+The scheduled local prompt trigger and scheduled async harvester are runtime
+actors under one contract. ChatGPT Scheduled Tasks are not a separate producer
+authority. Runtime load state belongs in current launchd/receipt reports, not
+this architecture document.
 
-HAVOC/RFI packages select the best validated External Scout packet by workspace. SOCCENT selects a Hormuz / Strait of Hormuz / Iran Gulf maritime-risk packet when present.
+## Request And Attempt Lifecycle
 
-The package leads with External Scout operator fields:
+Every cycle persists:
 
-- BLUF
-- What Changed
-- So What
-- Source Relationships
-- Traffic / Logistics
-- Market Reaction
-- Prediction-Market Reaction
-- Geospatial Context
-- Weather Context
-- Decision
-- Collection Plan
-- System Status
+- system contract version and SHA;
+- root trigger request id;
+- generation attempt id and number;
+- producer and requested transport;
+- case policy and model policy fields.
 
-Canonical cases, Case Genesis, TSOC/HAVOC, source coverage, and provenance remain available as Audit Details or supporting material. If no suitable External Scout packet exists, HAVOC/RFI falls back to committed baseline TSOC/canonical/case-genesis material and should clearly state that no validated External Scout packet was selected.
+Page-global busy without exact attempt ownership is ambiguous. It cannot
+authorize a second submit, clear pending state, create a replacement root, or
+prove useful progress. The harvester fails closed on stale, mismatched,
+wrong-attempt, wrong-contract, or expired output.
 
-## External Scout Live Case Board
+## Validation And Promotion
 
-`/external-scout/threads` is the External Scout Live Case Board drill-down. The
-pinned operational view is `/external-scout/24-7`, which reads the same
-AUTOSINT proof/report chain and shows the Live Board state, current/stale case
-source health, and source-gap queues in one place. `/external-scout` remains
-the latest active packet inbox and support view.
+The candidate path is:
 
-The Live Case Board:
+```text
+Scout Findings
+-> staging
+-> deterministic normalization
+-> structural validation
+-> semantic validation
+-> preservation validation
+-> freshness/newer-than-inbox gate
+-> inbox promotion or quarantine/skip
+-> thread-current selection
+```
 
-- Groups packets by stable topic.
-- Appends new captures to existing topic threads.
-- Shows what changed since the previous capture.
-- Maintains per-topic timelines and previous packets.
-- Marks threads as New, Updated, Stale, Escalating, or Needs Review.
-- Keeps latest-capture topics current, keeps recently unupdated topics current
-  inside the active window, retains older unupdated topics as stale tracked
-  threads until the 72-hour tracked window expires, and moves older threads to
-  audit/history.
-- Treats supplemental enrichment packets as thread-lane overlays; they can
-  improve current thread source status, but they do not define or shrink the
-  active capture universe.
-- Lets HAVOC/RFI consume current thread state before raw-packet fallback.
-- Shows theater watch summaries when supplied by strict output:
-  SOCCENT, SOCEUR, SOCPAC, SOCAFRICA, SOCSOUTH, SOCKOR, and SOCOMD must be
-  explicitly checked, no-case, or omitted/overflow with a reason.
-- Keeps omitted or overflow candidate cases visible as review context without
-  letting them replace active validated thread state.
+Promotion requires all three error counters to be zero:
 
-ChatGPT Project chats must not replace this board as case memory. The scheduled
-Daily Scout chat is machine-output only, `AUTOSINT System Control` is the
-human/admin workspace, and optional `CASE - <topic>` chats are human-created
-deep dives only for important cases.
+- `structural_validation_error_count`
+- `semantic_validation_error_count`
+- `preservation_error_count`
 
-Initial thread topics include:
+A structurally generated `Not checked` row is honest accounting, not proof of
+collection. Invalid output never updates active state.
 
-- Hormuz / Strait of Hormuz / Iran Gulf maritime risk
-- Lebanon / Israel / Hezbollah ceasefire
-- Ukraine refinery and energy strikes
-- Taiwan grey-zone activity
-- Scarborough Shoal
-- Niamey airport
+## Sensor And Source Contract
 
-## Global Sensor Coverage
+The global sensor policy distinguishes 13 canonical categories from 19
+operational lanes. Every required lane must be explicitly accounted for using
+the versioned source-status vocabulary. This includes:
 
-External Scout packets must not silently omit required source/sensor lanes.
-The policy is tracked in `docs/AUTOSINT_GLOBAL_SENSOR_COVERAGE_POLICY.md` and
-`config/autosint_sensor_coverage_policy.yml`.
+- three prediction-market rows: Polymarket, Kalshi, and Manifold / Other
+  Prediction Markets;
+- eight market/finance rows including `insurance_freight_rates`;
+- seven configured theater rows.
 
-Required packet output includes explicit rows for case coverage,
-market/finance, prediction markets, multilingual/regional context, traffic and
-movement, geospatial/satellite, weather/environment, social/public reaction,
-and cue-only lanes. Each row must use an explicit state such as checked and
-found, checked and not found, candidate found but not imported, not checked,
-stale, or blocked/login required.
+Coverage truth is multi-dimensional:
 
-Theater watch behavior is tracked in `docs/AUTOSINT_THEATER_WATCH_POLICY.md`
-and `config/autosint_theater_watch_policy.yml`. ChatGPT output may emit up to
-five active packets, but the theater watch summary must still report what was
-checked across all major theaters and list omitted or overflow candidates when
-the credible case set exceeds the active packet limit.
+- `coverage_status`
+- `follow_up_statuses`
+- `blocked_source_count`
+- `candidate_source_count`
+- `stale_source_count`
+- `checked_source_count`
 
-## Agents, PIR, And Legacy Surfaces
+A valid checked source is not downgraded because another source is blocked,
+candidate-only, or stale. Those follow-ups remain visible WARN items.
 
-PIR Hunter is active as a backend/API/MCP support capability, not a primary browser workflow. It should become a priority-question / exception layer connected to External Scout and TSOC/HAVOC.
+Markets, finance, prediction markets, crypto, social OSINT, and public comments
+are cue-only. They cannot independently prove attribution, causality, intent,
+closure, Evidence, OSIR, case linkage, or commander-ready status.
 
-Operator Hub and Operator Scheduler are supporting source-gap and discovery systems. They must remain isolated from `core.worker` unless explicitly approved.
+## Threads And Live Case Board
 
-Agent Exchange is audit/provenance and case-assist infrastructure. Agent write tools must remain gated and disabled unless a future controlled approval path explicitly enables them.
+`/external-scout/threads` owns durable thread-current state. Current, retained,
+stale, archived, unavailable, and no-data states remain distinct. A retained
+thread can preserve continuity but cannot masquerade as a fresh packet.
 
-MOLTBook/DAGRBook browser routes have been removed from the current primary browser path. DAGRBook assets and helper code remain preserved for future frontend-thread work.
+Thread selection prefers the newest validator-clean current packet while
+preserving historical lineage and source gaps. RFI consumes thread-current
+state first and validated packet fallback only when thread-current is
+unavailable.
 
-## Source Policy
+## RFI
 
-Serious-case priority source families:
+RFI renders a read-only operator preview.
 
-- Official / Advisory
-- Public News
-- Traffic / Movement
-- Satellite / Geospatial, where relevant
+- `/rfi` owns theater/workspace organization.
+- `/rfi/{workspace}` owns selected case/thread preview.
+- RFI is analyst-review-only and candidate-input-only.
+- RFI does not create Evidence, mutate cases or sources, open OSIR, perform
+  apply/import, or set commander-ready state.
 
-Cue-only source families:
+## Proof And Health
 
-- Social OSINT
-- Telegram / X / Reddit
-- Markets / Finance
-- Prediction Markets
-- Crypto / on-chain
-- Public comments
+The canonical proof reporter requires three consecutive eligible natural
+prompt-to-async-harvester cycles. Each cycle separately proves prompt
+submission, user-turn persistence, response start, exact output identity,
+normalization, structural/semantic/preservation success, promotion, board
+freshness, active threads, and no RED health.
 
-Conditional source roles:
+Manual recovery and direct capture never advance proof. A known operator pause
+explains interruption but invalidates current proof until natural cycles
+rebuild it. Current proof count, health, launchd state, packet timestamp, and
+thread counts belong in current reports and receipts, not this document.
 
-- Etherscan: crypto/on-chain cue only.
-- ReliefWeb: humanitarian/logistics context only.
-- NASA FIRMS: geospatial/thermal cue only; API checks require local `NASA_FIRMS_MAP_KEY`.
-- Sentinel/Copernicus: geospatial context.
-- AIS/GFW/PortWatch: traffic/movement; Global Fishing Watch token goes through ignored runtime env.
-- OpenSky/ADS-B: aviation movement; OAuth2 client credentials go through ignored runtime env when configured, with anonymous public REST as bounded fallback.
-- Financial Modeling Prep: market/finance quote and profile context; `FMP_API_KEY` goes through ignored runtime env and remains cue-only.
-- Polymarket/Kalshi: probability/sentiment cue only.
+## Contract Guard And Degraded Mode
 
-## What Not To Delete Yet
+The deterministic Contract Guard runs at API startup and before scheduled
+prompt/harvester browser action. It also participates in proof, health,
+Operator Terminal, release validation, and context-mirror preflight.
 
-Do not remove these until replacements are designed and validated:
+- WARN is visible and does not block normal runtime.
+- RED blocks scheduled actors before browser action.
+- AUTOSINT.app and read-only APIs remain available under RED with
+  `CONTRACT_CONFLICT_RED`.
 
-- Canonical cases.
-- Case Genesis.
-- Evidence passports.
-- OSIR gates and OSIR policy surfaces.
-- Source coverage and source discovery scripts.
-- Source registries and sensor registry files.
-- DAGRBook assets/helpers.
-- Agent harness.
-- Operator Scheduler.
-- PIR Hunter / Overwatch APIs.
+The Operator Terminal is read-only. It displays contract load, pass, warning,
+manual-setting verification, and conflict events. It has no command input,
+reset control, or automatic fixer.
 
-## Likely Future Cleanup Candidates
+## Capability Truth
 
-Likely deprecate or delete later after replacement:
+Capabilities use the evidence-qualified vocabulary defined by the system
+contract. Code existence alone does not prove app integration or operational
+proof. `APP_INTEGRATED` requires a registered route, navigation path, rendered
+state, canonical source, focused tests, and honest current/no-data/degraded
+states. `OPERATIONALLY_PROVEN` additionally requires receipt-backed runtime
+evidence.
 
-- Old debug browser routes already removed from entrypoints.
-- Low-level pages not in the primary workflow.
-- Duplicate source-discovery UI if External Scout fully replaces it.
-- Stale report-only artifacts after migration into Source Library/audit.
-- Duplicated HAVOC wording builders if packet-driven mode remains stable.
-- Legacy Moltbook wording after Agent Exchange terminology fully replaces it.
+Current bounded classifications include:
+
+- External Scout and RFI operator routes: read-only app surfaces with focused
+  route tests; current runtime still depends on receipts.
+- PIR Hunter: advisory/read support; it does not redefine External Scout proof.
+- Agent Exchange: storage/read provenance and gated writes; no autonomous
+  recipient/delivery claim without transport evidence.
+- Operator Hub: candidate discovery/status support, not Evidence.
+- Operator Scheduler: backend/write-capable and execution-gated; no normal UI
+  execution path.
+- `/moltbook`, `/dagrbook`, and `/control-plane`: `LEGACY_REMOVED` routes.
+
+## Model Policy
+
+The required ChatGPT Project label is `GPT-5.6 Sol Pro`, with selection status
+`OPERATOR_CONFIRMED`. Account-setting machine verification is not performed,
+cycle attribution requires an approved receipt, and no API model id is inferred.
+Model evaluation remains separate from runtime recovery and production API
+migration.
+
+## Proposed Architecture Boundary
+
+The Lattice-inspired reference architecture, target data lifecycle, trust
+model, latency SLO, and orchestration roadmap are proposals with
+`Runtime truth: No`. They do not prove current implementation.
+
+Canonical event and provenance contracts come before any future GraphRAG,
+graph database, vector database, new event bus, or autonomous agent transport.
+Those remain `EVALUATE_LATER` and are outside this operating model.
 
 ## Safety Boundary
 
-Current safety boundary:
+AUTOSINT review surfaces are read-only by default. No normal operator path in
+this model authorizes:
 
-- No DB mutation from review pages.
-- No raw Evidence mutation.
-- No case-link mutation.
-- No source config mutation.
-- No OSIR bypass.
-- No apply/import path.
-- No commander-ready promotion.
-- ChatGPT packets are candidate input only.
-- Market, social OSINT, prediction-market, crypto, and public-comment data are cue-only.
+- DB or raw Evidence mutation;
+- case-link or source-config mutation;
+- OSIR bypass or apply/import;
+- commander-ready promotion;
+- browser-private-state, credential, token, or `.env` value access;
+- autonomous PIR/Agent writes or Operator Scheduler execution.
 
-## One-Page Mental Model
-
-```text
-ChatGPT Scout finds public signals.
-AUTOSINT validates packets.
-External Scout shows candidate packets.
-TSOC/HAVOC groups by theater.
-HAVOC/RFI writes operator preview.
-OSIR blocks commander-ready.
-Future approval imports selected source URLs.
-```
+`commander_ready=false` and `mutation_performed=false` are preserved throughout
+External Scout and RFI candidate handling.

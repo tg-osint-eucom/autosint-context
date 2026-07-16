@@ -8,6 +8,8 @@ The private runtime/code repository is `tg-osint-eucom/autosint`. Use this mirro
 
 - Repo-level Codex operating instructions in `AGENTS.md`.
 - Current AUTOSINT operating model.
+- Canonical generated system contract and machine-readable contract config.
+- Documentation authority, index, and conflict register.
 - Primary workflow reference.
 - External Scout runbook.
 - ChatGPT Project operating model.
@@ -36,7 +38,7 @@ This repository intentionally excludes:
 
 ## Current AUTOSINT Workflow
 
-`Mission Control -> External Scout -> TSOC/HAVOC -> HAVOC/RFI -> future controlled approval`
+`Mission Control -> External Scout -> Threads -> RFI -> future controlled approval`
 
 AUTOSINT treats ChatGPT External Scout packets as candidate input only. Packets are validated, normalized, deduplicated, and reviewed before any future controlled approval path. Market, crypto, prediction-market, social, and public-comment material remains cue-only context.
 
@@ -45,24 +47,15 @@ AUTOSINT treats ChatGPT External Scout packets as candidate input only. Packets 
 For context recovery, read these files in order:
 
 1. `AGENTS.md`
-2. `docs/AUTOSINT_OPERATING_MODEL_CURRENT.md`
-3. `docs/AUTOSINT_PRIMARY_WORKFLOW.md`
-4. `docs/AUTOSINT_EXTERNAL_SCOUT_RUNBOOK.md`
-5. `docs/AUTOSINT_CHATGPT_PROJECT_OPERATING_MODEL.md`
-6. `docs/AUTOSINT_LONG_RUNNING_WORK_MODEL.md`
-7. `docs/AUTOSINT_ORCHESTRATION_ROADMAP.md`
-8. `docs/AUTOSINT_EXTERNAL_SCOUT_CAPTURE_BOUNDARY.md`
-9. `docs/AUTOSINT_SENSOR_ARCHITECTURE_V1.md`
-10. `config/autosint_sensor_architecture.yml`
-11. `docs/AUTOSINT_GLOBAL_SENSOR_COVERAGE_POLICY.md`
-12. `docs/AUTOSINT_THEATER_WATCH_POLICY.md`
-13. `docs/AUTOSINT_MARKET_PREDICTION_FINANCE_POLICY.md`
-14. `docs/AUTOSINT_GPT56_MODEL_UPGRADE_EVALUATION.md`
-15. `docs/AUTOSINT_EVALUATION_DATASET_V0.md`
-16. `docs/AUTOSINT_CHATGPT_CODEX_HANDOFF_QUEUE.md`
-17. `docs/product/AUTOSINT_SENSOR_COVERAGE_REQUIREMENTS_TRACE.md`
-18. `docs/status/AUTOSINT_WORKSTREAMS.md`
-19. `docs/status/AUTOSINT_ASSISTANT_CONTEXT_CURRENT.md`
-20. `docs/status/AUTOSINT_CONTEXT_INDEX.md`
+2. `config/autosint_system_contract.yml`
+3. `docs/status/AUTOSINT_SYSTEM_CONTRACT_CURRENT.md`
+4. `docs/AUTOSINT_OPERATING_MODEL_CURRENT.md`
+5. `docs/AUTOSINT_PRIMARY_WORKFLOW.md`
+6. `docs/AUTOSINT_EXTERNAL_SCOUT_RUNBOOK.md`
+7. `docs/AUTOSINT_CHATGPT_PROJECT_OPERATING_MODEL.md`
+8. `docs/status/AUTOSINT_DOCUMENTATION_AUTHORITY.md`
+9. `docs/status/AUTOSINT_DOCUMENTATION_INDEX.md`
+10. `docs/status/AUTOSINT_DOCUMENTATION_CONFLICTS.md`
+11. `docs/status/AUTOSINT_CONTEXT_INDEX.md`
 
 This repo is documentation-only. Do not treat it as a runtime source, package source, artifact store, or evidence store.

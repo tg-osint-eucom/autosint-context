@@ -1,6 +1,6 @@
 # AUTOSINT Global Sensor Coverage Policy
 
-This policy defines the source and sensor lanes that every serious External Scout case must account for before it can be treated as preview-safe on the Live Case Board or in HAVOC/RFI.
+This policy defines the source and sensor lanes that every serious External Scout case must account for before it can be treated as preview-safe on the Live Case Board or in RFI.
 
 AUTOSINT still treats every External Scout packet as candidate input only. This policy does not authorize DB writes, raw Evidence writes, case links, source-config mutation, OSIR export, apply/import, commander-ready promotion, credentialed collection, login bypass, CAPTCHA bypass, or private browser-state access.
 
@@ -16,6 +16,10 @@ Every lane must report one of these statuses:
 - `Not checked`
 - `Stale`
 - `Blocked / login required`
+
+Explicit `Not checked`, `Stale`, or `Blocked / login required` is honest lane
+accounting only. It does not prove that collection was performed, that the lane
+is complete, or that a provider adapter is healthy.
 
 If a lane is cue-only, the packet must say so. Markets, crypto, prediction markets, social OSINT, and public comments cannot independently prove closure, reopening, attribution, causality, intent, insider activity, or commander-ready status.
 

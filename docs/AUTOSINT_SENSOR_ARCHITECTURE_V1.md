@@ -1,5 +1,14 @@
 # AUTOSINT Sensor Architecture v1
 
+- Status: Current architecture contract
+- Authority: Canonical sensor architecture; tracked config decides exact inventory
+- Owner: AUTOSINT Sensor Architecture
+- Last reviewed: 2026-07-15
+- Runtime truth: No; provider health requires current receipt-backed checks
+- Supersedes: Collapsed source-family-only sensor descriptions
+- Superseded by: None
+- Related: [System Contract](status/AUTOSINT_SYSTEM_CONTRACT_CURRENT.md), [Sensor Question Bank](../config/sensor_question_bank.yml), [Global Sensor Coverage Policy](AUTOSINT_GLOBAL_SENSOR_COVERAGE_POLICY.md), [Documentation Index](status/AUTOSINT_DOCUMENTATION_INDEX.md)
+
 AUTOSINT Sensor Architecture v1 is the durable contract for how External Scout
 discovers public signals, how AUTOSINT validates them, and how the operator sees
 the loop on the pinned `/external-scout/24-7` page.
@@ -17,7 +26,7 @@ AUTOSINT validates strictly.
 Adapters verify deterministically.
 Live Board remembers cases.
 Health monitor watches the loop.
-HAVOC/RFI previews only.
+RFI previews only.
 Nothing becomes Evidence, OSIR, case-linked, applied/imported, or commander-ready
 without a future explicit approval gate.
 ```
@@ -44,21 +53,22 @@ WORLD / PUBLIC SIGNALS
 |-- A. ChatGPT External Scout upstream
 |   |-- theater watch for SOCCENT, SOCEUR, SOCPAC, SOCAFRICA, SOCSOUTH, SOCKOR, SOCOMD
 |   |-- source/sensor itinerary per serious case
-|   |-- up to five candidate_packets
+|   |-- Scout Findings for 1-3 serious cases by default, absolute maximum 5
 |   |-- theater_watch_summary for all required theaters
-|   |-- overflow_candidate_cases when more than five credible cases exist
-|   `-- strict JSON first, concise Markdown second
+|   |-- overflow_candidate_cases when credible cases exceed the configured maximum
+|   `-- machine-readable Scout Findings plus bounded operator summary
 |
-|-- B. AUTOSINT Capture Layer
-|   |-- Packet chat / scheduled task output / future API output
-|   |-- request-id readiness checks
-|   |-- scroll-to-latest and Copy Response fallback when visible-browser extraction is ambiguous
-|   |-- dry-run validation
-|   `-- real capture only when validation path is safe
+|-- B. AUTOSINT Attempt-Bound Harvester / Normalizer
+|   |-- exact pending request and trigger_request_id match
+|   |-- current-turn Scout Findings extraction
+|   |-- deterministic Scout Findings -> candidate_packets normalization
+|   |-- direct capture retained as manual diagnostic tooling only
+|   `-- mismatched, stale, expired, or wrong-turn output fails closed
 |
 |-- C. AUTOSINT Validator / Gate
-|   |-- schema validation
-|   |-- required field validation
+|   |-- structural schema/field validation
+|   |-- semantic completeness validation
+|   |-- raw-to-normalized preservation validation
 |   |-- source/sensor lane validation
 |   |-- theater_watch_summary validation
 |   |-- market/prediction/finance validation
@@ -70,7 +80,8 @@ WORLD / PUBLIC SIGNALS
 |-- D. Promotion / Quarantine
 |   |-- valid packets -> inbox
 |   |-- invalid packets -> quarantine
-|   |-- mixed packet set -> partial promotion
+|   |-- a promoted packet must have structural, semantic, and preservation errors all zero
+|   |-- a mixed set may promote only independently clean packets; failed packets remain quarantined
 |   `-- invalid packets never update active case state
 |
 |-- E. Thread Builder / Case Memory
@@ -97,7 +108,7 @@ WORLD / PUBLIC SIGNALS
 |-- G. Operator Surfaces
 |   |-- /external-scout/24-7 single pinned proof / health / source-health page
 |   |-- /external-scout/threads drill-down case memory
-|   `-- /havoc-rfi/SOCCENT analyst-review-only preview
+|   `-- /rfi/SOCCENT analyst-review-only preview
 |
 `-- H. Health / Eval / Alerts
     |-- health monitor GREEN/WARN/RED
@@ -107,6 +118,18 @@ WORLD / PUBLIC SIGNALS
 ```
 
 ## Source / Sensor Itinerary
+
+### Inventory Hierarchy
+
+The inventory has three non-conflicting levels. Exact membership is derived
+from tracked config, not this narrative:
+
+- 13 canonical operator categories in coverage policy.
+- 19 operational collection lanes in `config/autosint_sensor_architecture.yml`.
+- 52 registry/question-bank sensors in the current tracked registry.
+
+The table below is a collapsed operator presentation. It is not a replacement
+for the 19-lane configuration or the 52-sensor registry.
 
 Every serious case should account for these lanes. If a source cannot be
 checked, blocked, stale, or unavailable, report that explicitly.
@@ -157,22 +180,24 @@ Optional future providers are architecture references, not current blockers,
 unless a current active thread requires that lane and no public/configured path
 can satisfy the check.
 
-## Current Provider Truth Table
+## Provider Decision Contract
 
-This table is the current source/provider decision contract. Credential rows
-show presence/status only and never values.
+This table records intended provider tier and implementation boundary. It does
+not assert current configuration, credentials, HTTP status, or runtime health.
+Those claims require current safe status output and receipts; credential values
+must never appear.
 
-| Provider / lane | Decision | Current state |
+| Provider / lane | Decision | Implementation boundary |
 |---|---|---|
-| Polymarket | `public_api` / `not_blocking` | Public Gamma API adapter present at `gamma-api.polymarket.com`; key not required; browser page blocking does not make the adapter blocked. |
-| Manifold | `public_api` / `not_blocking` | Public GET API present at `api.manifold.markets`; key not required. |
-| Kalshi | `configured_api` / `not_blocking` when env names are complete | Env-gated read-only signed adapter; credential presence/status only; no browser session or logged-in tab used for ingest. |
-| Global Fishing Watch | `configured_api` / `not_blocking` | Traffic/movement adapter configured; token presence/status only; smoke OK. |
-| OpenSky | `configured_api` / `not_blocking` | Aviation movement adapter configured; OAuth2 token path works; `states/all` smoke returned 200. |
-| Financial Modeling Prep | `configured_api` / `not_blocking` | Finance quote adapter configured; AAPL profile, SPY quote, and search-symbol smoke returned 200. |
-| Telegram public pages | `public_first` / `not_blocking` | Configured public `t.me` pages returned HTTP 200. |
-| Telegram approved Telethon public-channel reads | `configured_api` / `not_blocking` | `TELEGRAM_API_ID`, `TELEGRAM_API_HASH`, approved channel names, and the ignored local Telethon session are present; no browser cookies, logged-in tabs, localStorage/sessionStorage, Chrome profile files, or private browser state are used. |
-| NASA FIRMS | `optional_later` | Unresolved/not tested unless `NASA_FIRMS_MAP_KEY` is present and smoke passes. |
+| Polymarket | `public_api` | Public read-only API candidate; browser-page blocking is a separate condition. |
+| Manifold | `public_api` | Public read-only API candidate. |
+| Kalshi | `configured_api` | Read-only signed-adapter path; configuration status must be checked without exposing values. |
+| Global Fishing Watch | `configured_api` | Read-only traffic/movement adapter path; runtime health is separately proven. |
+| OpenSky | `configured_api` | Read-only aviation adapter path; runtime health is separately proven. |
+| Financial Modeling Prep | `configured_api` | Read-only finance adapter path; runtime health is separately proven. |
+| Telegram public pages | `public_first` | Public-page checks only; no private browser or account state. |
+| Approved Telegram public-channel adapter | `configured_api` | Allowlisted public-channel reads only; configuration status is not documented here. |
+| NASA FIRMS | `optional_later` | Optional deterministic geospatial path after an approved configuration and smoke test. |
 
 Optional future providers are not current blockers: licensed Reuters/news,
 X/Twitter API, Reddit API, arbitrary Telegram scraping, translation/search API,
@@ -234,22 +259,15 @@ existing case when the canonical topic repeats with new source-family,
 market/social/geospatial, or theater-watch changes. Stale and archived states
 must stay visible as continuity and audit memory, not current active truth.
 
-## Upstream Choices
+## Upstream Contract
 
-The desired future upstream is a Project-scoped ChatGPT Scheduled Task that
-emits strict packets into a known output conversation. Until that path is proven
-through natural cycles, the proven upstream remains the local Packet-chat prompt
-trigger in Scout Findings submit-only mode plus the `:28` async harvester
-normalization/promotion loop.
+The current producer is the local scheduled Packet-chat prompt trigger in Scout
+Findings mode, followed by the `:28` scheduled async harvester and deterministic
+normalization/promotion loop. ChatGPT Scheduled Tasks are not a separate
+producer contract. Direct strict packets remain explicit fallback/replay only.
 
-The current production split is:
-
-```text
-Scheduled Task = desired primary upstream after proof
-Local prompt trigger = production fallback / current proven upstream
-AUTOSINT capture and validator = source of truth
-Live Board = durable case memory
-```
+The producer, transport, lifecycle, default/maximum case count, required rows,
+and proof target are versioned in `config/autosint_system_contract.yml`.
 
 ## API / Key Decision Tree
 
@@ -265,8 +283,9 @@ adapters only when repeatability, metrics, or persistent gaps justify them.
 - X/Twitter and social OSINT: ChatGPT public check first. Public Telegram
   `t.me` pages may be checked through plain public URL reads; approved Telegram
   Telethon public-channel reads may be used when the ignored runtime env and
-  local session file are present. Telegram Telethon/session collection is an
-  approved local setup and must not use private browser state.
+  separately approved API-client session artifact is present. Such an API
+  client artifact is not browser session state, does not authorize reading a
+  browser profile, and remains outside this documentation/runtime audit.
 - Finance/stocks: public checks first; provider key later if quote reliability
   demands it. Financial Modeling Prep stable API may be used through ignored
   runtime env as `FMP_API_KEY` for read-only market/finance context.
@@ -313,5 +332,5 @@ It should show:
 - Prompt, harvest, promotion, and manual diagnostic capture receipts.
 - Eval and health status.
 
-`/external-scout/threads`, HAVOC/RFI, API JSON, receipts, logs, and generated
+`/external-scout/threads`, RFI, API JSON, receipts, logs, and generated
 artifacts remain drill-down verification views, not separate control surfaces.

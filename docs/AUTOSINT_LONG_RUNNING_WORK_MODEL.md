@@ -14,7 +14,7 @@ commander-ready outputs, install launchd jobs, or read private browser state.
 ## Purpose
 
 AUTOSINT has several active workstreams: External Scout capture, Live Case
-Board, strict packet contracts, HAVOC/RFI thread-current behavior, context
+Board, strict packet contracts, RFI thread-current behavior, context
 mirror freshness, capture isolation, PIR overlays, source policy, and runtime
 health. These should be tracked as explicit workstreams with verification gates
 instead of being rediscovered from chat history.
@@ -45,14 +45,18 @@ Valid statuses:
 
 ## Verification Examples
 
-- `strict scheduled production cycle proven` means a natural scheduled run promoted a
-  strict valid packet with `validation_error_count=0`.
+- `full eligible natural cycle proven` means the scheduled prompt produced
+  exact attempt-bound Scout Findings, the scheduled async harvester matched
+  that output, deterministic normalization ran, structural/semantic/
+  preservation errors were all zero, promotion succeeded, the board remained
+  fresh with active threads, health had no RED, and the cycle was neither
+  manual nor recovery-assisted.
 - `Live Case Board current` means route/API checks return 200, `board_summary`
   is present, thread count is nonzero, and latest capture is not stale unless
   the source output itself is stale.
 - `context mirror current` means the public mirror includes the latest private
   source-of-truth docs and the mirror sanitization gate passed.
-- `HAVOC/RFI thread-current selected` means the HAVOC/RFI preview consumes
+- `RFI thread-current selected` means the RFI preview consumes
   thread current state before raw packet fallback and remains review-only.
 
 ## Daybreak / Patch-Style Quality Loop

@@ -17,7 +17,7 @@ No active thread may silently omit a required market/prediction/finance lane. Ea
 
 ## Cue-Only Boundary
 
-Markets, prediction markets, crypto, social posts, and public comments are cue-only. They may support HAVOC/RFI preview context, but they never prove closure, reopening, intent, causality, attribution, insider activity, or commander-ready status. They do not open OSIR, create Evidence, create case links, mutate source config, or perform apply/import.
+Markets, prediction markets, crypto, social posts, and public comments are cue-only. They may support RFI preview context, but they never prove closure, reopening, intent, causality, attribution, insider activity, or commander-ready status. They do not open OSIR, create Evidence, create case links, mutate source config, or perform apply/import.
 
 ## Required Lanes
 
@@ -58,11 +58,11 @@ Every lane should record:
 
 ## Operator Display
 
-The Live Case Board and HAVOC/RFI surfaces distinguish:
+The Live Case Board and RFI surfaces distinguish:
 
 - `Required Coverage Matrix`: required schema sections are present and preview-safe.
 - `Source Checks`: broader source lanes are fully checked or still partial.
 - `Market/Prediction/Finance Check Status`: strict market/prediction/finance lane completeness.
 - `Follow-up Gaps`: remaining source or lane checks that need attention.
 
-`Ready for HAVOC/RFI Preview` can coexist with `Market/Prediction/Finance Check Status: Partial`; preview readiness is not commander-ready status.
+`Ready for RFI Preview` can coexist with `Market/Prediction/Finance Check Status: Partial`; preview readiness is not commander-ready status.

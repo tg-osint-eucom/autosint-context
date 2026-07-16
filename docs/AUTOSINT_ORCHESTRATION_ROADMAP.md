@@ -1,23 +1,33 @@
 # AUTOSINT Orchestration Roadmap
 
+- Status: Proposed; current implementation evidence is identified separately
+- Authority: Proposed orchestration direction; current code and proof reporter own implementation truth
+- Owner: AUTOSINT Architecture
+- Last reviewed: 2026-07-15
+- Runtime truth: No
+- Supersedes: Tool-first orchestration proposals
+- Superseded by: None
+- Related: [Lattice-Inspired Reference Architecture](AUTOSINT_LATTICE_INSPIRED_REFERENCE_ARCHITECTURE.md), [Documentation Index](status/AUTOSINT_DOCUMENTATION_INDEX.md)
+
 This roadmap records the next architecture layer for AUTOSINT without
 committing the project to a migration. The current production loop remains the
 local-first External Scout flow:
 
 ```text
 :00 Scout Findings prompt submit -> :28 async harvester/validator ->
-latest inbox -> Live Case Board -> HAVOC/RFI preview -> context mirror
+latest inbox -> Live Case Board -> RFI preview -> context mirror
 ```
 
 ## Current Verdict
 
 Do not bring the full orchestration and agent-tooling stack into AUTOSINT at
-once. The immediate need is observability over the proven local loop, not a
-replacement of the loop.
+once. The immediate need is observability over the implemented local loop, with
+live proof assessed from current receipts rather than assumed from architecture.
 
 Recommended staged path:
 
-1. Native External Scout 24/7 proof reporter over local receipts and health.
+1. Keep the implemented native External Scout 24/7 proof reporter as the
+   canonical same-source proof path.
 2. Prefect spike for local workflow observability if the native report needs a
    run-history helper feeding the same `/external-scout/24-7` source.
 3. LangGraph design later for controlled, read-only stateful agent loops.
@@ -29,18 +39,19 @@ Recommended staged path:
 Do not make Airflow, Dagster, CrewAI, AutoGen, n8n, LangSmith, or Arize the core
 AUTOSINT loop right now.
 
-## Current Evidence
+## Implementation Evidence (Not Live Runtime)
 
-As of the current inspection, AUTOSINT already has a working local control loop
-with first-party proof artifacts:
+Tracked code and tests implement a local control loop with first-party proof
+artifacts. Whether the loop is currently healthy must be decided from current
+receipts and the canonical proof report:
 
-- LaunchAgents for prompt trigger and async harvester; direct capture is manual
-  diagnostic tooling.
+- LaunchAgent templates/wrappers for prompt trigger and async harvester; loaded
+  state is runtime evidence, while direct capture is manual diagnostic tooling.
 - Prompt trigger receipts under ignored External Scout runtime artifacts.
 - Harvest, promotion, and manual diagnostic capture receipts/logs.
 - Strict validation status from the capture package CLI.
 - External Scout thread reports.
-- Live Case Board and HAVOC/RFI read-only routes.
+- Live Case Board and RFI read-only routes.
 - Workstream registry and status report.
 - Sanitized public context mirror publishing.
 
@@ -87,7 +98,7 @@ workers, larger external integrations, or organization-wide scheduling.
 Do not use Dagster first. Dagster is attractive for asset-centric data products,
 lineage, and materialization, but AUTOSINT's current blocker is operational
 proof and local loop observability. It may become useful if External Scout
-outputs, source coverage, case briefs, and HAVOC/RFI packages become formally
+outputs, source coverage, case briefs, and RFI packages become formally
 versioned data assets.
 
 ### LangGraph
@@ -99,7 +110,7 @@ orchestration. Good future fits:
 - Source-gap hunter.
 - Coverage completeness reviewer.
 - Thread reviewer.
-- HAVOC/RFI readiness reviewer.
+- RFI readiness reviewer.
 
 Rules:
 
@@ -122,7 +133,7 @@ capture orchestration. Good future corpus:
 - Operator page dumps.
 - Source coverage exports.
 - External Scout case briefs.
-- HAVOC/RFI previews.
+- RFI previews.
 - Receipt summaries.
 
 The first spike should be a local, sanitized read-only index over allowlisted
@@ -205,16 +216,17 @@ Stop conditions:
 
 ## Multi-Case Live Board Workstream
 
-The one-case board gap is being addressed by a bounded multi-case feature:
-the local trigger prompt requests up to five strict current packets, valid
-packet subsets from mixed captures can be promoted while invalid packet subsets
-are quarantined, and `/external-scout/threads` keeps recent non-updated topics
-visible as stale tracked threads before archival.
+Tracked code supports the bounded multi-case surface: the local trigger requests
+1-3 Scout Findings cases by default up to the configured absolute maximum of 5,
+normalization produces strict packets, validator-clean output may promote, and
+`/external-scout/threads` keeps recent non-updated topics visible under the
+configured freshness/retention rules. This is implementation evidence, not live
+runtime proof.
 
-Completion still requires proof, not just code: a short trigger -> dry-run
-capture -> real capture loop must show strict valid multi-packet or explained
-fewer-topic output, and a natural cycle must then keep the board current
-without invalid packets updating thread state.
+Completion still requires natural-cycle proof, not just code: scheduled prompt,
+exact Scout Findings attempt, scheduled async harvester, normalization,
+structural/semantic/preservation validation, promotion, and fresh board state
+must all be receipt-backed without recovery assistance.
 
 ## Monitoring Path
 
@@ -228,7 +240,7 @@ V0, already present:
 - Workstream report.
 - Context mirror status.
 
-V1, next:
+V1, current implementation reference (not live proof):
 
 - Native 24/7 proof report over the latest prompt, harvest, promotion receipts, health,
   Live Board state, and eval runtime hard-fails:
@@ -256,7 +268,8 @@ V3, after agents:
 
 ## Reference Basis
 
-This roadmap is based on current official documentation categories:
+External tool links below were reviewed 2026-07-16 for category-level context.
+They do not prove installed capability, current access, or an AUTOSINT decision:
 
 - Prefect: Python workflow orchestration, schedules, state tracking, retries,
   and monitoring. Reference: https://docs.prefect.io/v3/get-started

@@ -7,20 +7,20 @@ This is a public, sanitized context file for restoring AUTOSINT project context 
 - Private code/runtime repo: `tg-osint-eucom/autosint`
 - Public context mirror: `tg-osint-eucom/autosint-context`
 - Source branch: `main`
-- Source HEAD: `7d7471db70a849959b7e58fc7fd217ce14fe4b5a`
-- Generated at: `2026-07-09T18:30:46Z`
+- Source HEAD: `06476b88f9b7a7583acf0adaeb1dea12e05b2ea1`
+- Generated at: `2026-07-16T16:51:14Z`
 
 ## Primary Workflow
 
-`Mission Control -> External Scout -> TSOC/HAVOC -> HAVOC/RFI -> future controlled approval`
+`Mission Control -> External Scout -> Threads -> RFI -> future controlled approval`
 
 ## Primary Route Roles
 
 - `/mission-control`: operator launch page and workflow overview.
 - `/external-scout`: latest active validated External Scout packet review.
 - `/external-scout/threads`: 24/7 External Scout Live Case Board over durable topic threads.
-- `/tsoc-havoc`: theater/workspace organization.
-- `/havoc-rfi/SOCCENT`: thread-current HAVOC/RFI preview with raw-packet fallback.
+- `/rfi`: theater/workspace organization.
+- `/rfi/SOCCENT`: thread-current RFI preview with raw-packet fallback.
 
 ## Supporting And Audit Surfaces
 
@@ -32,18 +32,18 @@ This is a public, sanitized context file for restoring AUTOSINT project context 
 
 - Available: `True`
 - Active selection policy: `latest_validated_capture_only`
-- Active packet count: `5`
-- History packet count: `1035`
-- Latest packet timestamp: `2026-07-09T16:07:02Z`
+- Active packet count: `1`
+- History packet count: `1069`
+- Latest packet timestamp: `2026-07-16T11:02:02Z`
 - Stale: `True`
 - Read-only: `True`
 - Private browser state read: `False`
 - Cookies read: `False`
 - Local storage read: `False`
 
-## HAVOC/RFI Behavior
+## RFI Behavior
 
-HAVOC/RFI uses External Scout Case Thread current state when available, then falls back to the best validated External Scout packet; canonical cases, Case Genesis, TSOC/HAVOC, source coverage, and provenance remain audit material.
+RFI uses External Scout Case Thread current state when available, then falls back to the best validated External Scout packet; canonical cases, Case Genesis, source coverage, and provenance remain audit material.
 
 ## Capture Bridge
 
@@ -61,6 +61,17 @@ The following are local-only and are not mirrored here:
 
 ## Latest Source Commits
 
+- `06476b8 test(docs): enforce documentation and package consistency`
+- `47e1618 docs: consolidate canonical AUTOSINT operating truth`
+- `57f8077 fix(sensors): enforce semantic and preservation gates`
+- `9f92afe refactor(rfi): consolidate operational preview under RFI`
+- `b9333e9 feat(core): add canonical AUTOSINT system contract guard`
+- `68c9812 fix(scout): preserve prompt lifecycle and duplicate guards`
+- `198bb02 docs(scout): remove private packet identifiers`
+- `328abba docs: deprecate legacy and duplicate guidance`
+- `ec5be89 docs: align current External Scout and system terminology`
+- `2870d6c docs: add canonical AUTOSINT documentation index`
+- `3457593 docs(arch): add Lattice-inspired AUTOSINT reference`
 - `7d7471d fix(ui): explain operator pause data mode`
 - `16157fb fix(scout): accept lane anomaly dry-run alias`
 - `5bae9b0 fix(ui): keep autosint app navigation fresh`
@@ -70,21 +81,6 @@ The following are local-only and are not mirrored here:
 - `e11b60f fix(scout): show next checks in thread readout`
 - `4d04517 fix(ui): harden autosint app tab navigation`
 - `7330941 fix(ui): unify autosint app navigation`
-- `20537cd fix(ui): render proof data inside autosint app`
-- `3a19546 fix(ui): keep external scout app fresh`
-- `557c0f4 fix(ui): keep autosint app navigation local`
-- `3c3e87a fix(ui): rename external scout cockpit title`
-- `b8e874c fix(scout): expand next-run source gap targets`
-- `8904ab2 fix(scout): run source-gap closure after harvest`
-- `f5f7c52 docs(ops): remove legacy external scout capture language`
-- `7ee67ac fix(ops): remove external scout direct capture fallback`
-- `d50ac9f feat(ops): add source lane green gate export`
-- `9d0c977 docs(scout): record packet v2 stale draft recovery`
-- `1e7f6f0 fix(ops): treat pending scout findings as nonblocking`
-
-## Source Dirty State
-
-- clean
 
 ## Pending Decisions
 
