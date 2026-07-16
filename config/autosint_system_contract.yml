@@ -40,6 +40,7 @@ external_scout:
   normalized_output: strict_candidate_packets
   assistant_output_required_identity_fields:
   - system_contract_version
+  - system_contract_sha256
   - trigger_request_id
   - generation_attempt_id
   - generation_attempt_number
@@ -141,6 +142,7 @@ source_lane_policy:
   - collection_gap
   - next_check
   - cue_only
+  - collection_complete
 
 status_vocabulary:
   source_statuses:

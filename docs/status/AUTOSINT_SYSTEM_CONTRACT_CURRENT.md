@@ -6,7 +6,7 @@ Generated from `config/autosint_system_contract.yml`; do not edit by hand.
 ## Identity
 
 - Contract version: `autosint-system-contract-v1`
-- Contract SHA-256: `9e5d34088ca36f39378bd068a92ed04dab12fdff4fd793079cd0fd88d3575d4c`
+- Contract SHA-256: `1d4727830f703af25a2094c359325271ba65b6985e0a19639f86b94984830d30`
 - Policy owner: `config/autosint_system_contract.yml`
 
 ## External Scout
@@ -48,6 +48,7 @@ ChatGPT produces Scout Findings. AUTOSINT deterministically normalizes them into
 - `public_comments`: Public Comments / Reaction
 
 Required prediction rows include `other_prediction_markets` (Manifold / Other Prediction Markets). Required market/finance rows include `insurance_freight_rates`.
+Required semantic row fields: `status`, `summary`, `source_urls`, `metrics`, `what_it_suggests`, `what_it_does_not_prove`, `collection_gap`, `next_check`, `cue_only`, `collection_complete`.
 
 ## Model Policy
 

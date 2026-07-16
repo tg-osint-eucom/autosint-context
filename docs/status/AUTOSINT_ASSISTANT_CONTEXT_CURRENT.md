@@ -7,8 +7,8 @@ This is a public, sanitized context file for restoring AUTOSINT project context 
 - Private code/runtime repo: `tg-osint-eucom/autosint`
 - Public context mirror: `tg-osint-eucom/autosint-context`
 - Source branch: `main`
-- Source HEAD: `06476b88f9b7a7583acf0adaeb1dea12e05b2ea1`
-- Generated at: `2026-07-16T16:51:14Z`
+- Source HEAD: `b9ce2dc8a9181f8c5c7eca9a4e2f84b666e5b8e0`
+- Generated at: `2026-07-16T23:37:42Z`
 
 ## Primary Workflow
 
@@ -33,9 +33,9 @@ This is a public, sanitized context file for restoring AUTOSINT project context 
 - Available: `True`
 - Active selection policy: `latest_validated_capture_only`
 - Active packet count: `1`
-- History packet count: `1069`
-- Latest packet timestamp: `2026-07-16T11:02:02Z`
-- Stale: `True`
+- History packet count: `1071`
+- Latest packet timestamp: `2026-07-16T23:03:01Z`
+- Stale: `False`
 - Read-only: `True`
 - Private browser state read: `False`
 - Cookies read: `False`
@@ -61,6 +61,13 @@ The following are local-only and are not mirrored here:
 
 ## Latest Source Commits
 
+- `b9ce2dc fix(preservation): distinguish foreign defense stocks`
+- `845b4ce fix(release): include final conflict matrix`
+- `ab33a80 feat(release): build coherent runtime restore snapshot`
+- `7c73e01 test(docs): enforce coherent review snapshots`
+- `7339df2 feat(scout): trace semantic fields across operator surfaces`
+- `7ba962b fix(contract): enforce structured runtime descriptors`
+- `fc0b152 fix(scout): release terminal normalized output guard`
 - `06476b8 test(docs): enforce documentation and package consistency`
 - `47e1618 docs: consolidate canonical AUTOSINT operating truth`
 - `57f8077 fix(sensors): enforce semantic and preservation gates`
@@ -74,13 +81,6 @@ The following are local-only and are not mirrored here:
 - `3457593 docs(arch): add Lattice-inspired AUTOSINT reference`
 - `7d7471d fix(ui): explain operator pause data mode`
 - `16157fb fix(scout): accept lane anomaly dry-run alias`
-- `5bae9b0 fix(ui): keep autosint app navigation fresh`
-- `d482ef6 feat(scout): add lane anomaly watch`
-- `5b03358 fix(scout): show concrete market cue facts`
-- `6f9fd45 fix(scout): preserve market cue checks after harvest`
-- `e11b60f fix(scout): show next checks in thread readout`
-- `4d04517 fix(ui): harden autosint app tab navigation`
-- `7330941 fix(ui): unify autosint app navigation`
 
 ## Pending Decisions
 
