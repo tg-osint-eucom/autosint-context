@@ -6,11 +6,11 @@
     "active_selection_policy": "latest_validated_capture_only",
     "available": true,
     "cookies_read": false,
-    "history_capture_count": 289,
-    "history_packet_count": 1071,
-    "latest_capture_generated_at": "2026-07-16T23:03:01Z",
+    "history_capture_count": 290,
+    "history_packet_count": 1072,
+    "latest_capture_generated_at": "2026-07-17T00:06:33Z",
     "latest_capture_packet_count": 1,
-    "latest_packet_generated_at": "2026-07-16T23:03:01Z",
+    "latest_packet_generated_at": "2026-07-17T00:06:33Z",
     "local_storage_read": false,
     "mutation_performed": false,
     "private_browser_state_read": false,
@@ -20,8 +20,9 @@
     "status_only": true,
     "validated_packet_count": 1
   },
-  "generated_at": "2026-07-17T00:13:57Z",
+  "generated_at": "2026-07-17T00:30:25Z",
   "latest_commits": [
+    "fe6c0b2 fix(ui): describe empty enrichment gate scope",
     "0ea7710 fix(ui): render validation status without runtime artifacts",
     "3f095d0 fix(release): reject override references in final csv",
     "b9ce2dc fix(preservation): distinguish foreign defense stocks",
@@ -40,8 +41,7 @@
     "198bb02 docs(scout): remove private packet identifiers",
     "328abba docs: deprecate legacy and duplicate guidance",
     "ec5be89 docs: align current External Scout and system terminology",
-    "2870d6c docs: add canonical AUTOSINT documentation index",
-    "3457593 docs(arch): add Lattice-inspired AUTOSINT reference"
+    "2870d6c docs: add canonical AUTOSINT documentation index"
   ],
   "launchd_status": "Local-only; not represented in this public mirror.",
   "mirror_repo": "tg-osint-eucom/autosint-context",
@@ -106,7 +106,7 @@
     "no_source_config_mutation": true
   },
   "source_branch": "main",
-  "source_head": "0ea77100c8219761eca0d5a75ec49c03d0e08790",
+  "source_head": "fe6c0b27e1efbf003abf0a20987ce1e35cead26a",
   "source_repo": "tg-osint-eucom/autosint",
   "source_repo_url": "https://github.com/tg-osint-eucom/autosint",
   "supporting_routes": [

@@ -7,8 +7,8 @@ This is a public, sanitized context file for restoring AUTOSINT project context 
 - Private code/runtime repo: `tg-osint-eucom/autosint`
 - Public context mirror: `tg-osint-eucom/autosint-context`
 - Source branch: `main`
-- Source HEAD: `0ea77100c8219761eca0d5a75ec49c03d0e08790`
-- Generated at: `2026-07-17T00:13:57Z`
+- Source HEAD: `fe6c0b27e1efbf003abf0a20987ce1e35cead26a`
+- Generated at: `2026-07-17T00:30:25Z`
 
 ## Primary Workflow
 
@@ -33,8 +33,8 @@ This is a public, sanitized context file for restoring AUTOSINT project context 
 - Available: `True`
 - Active selection policy: `latest_validated_capture_only`
 - Active packet count: `1`
-- History packet count: `1071`
-- Latest packet timestamp: `2026-07-16T23:03:01Z`
+- History packet count: `1072`
+- Latest packet timestamp: `2026-07-17T00:06:33Z`
 - Stale: `False`
 - Read-only: `True`
 - Private browser state read: `False`
@@ -61,6 +61,7 @@ The following are local-only and are not mirrored here:
 
 ## Latest Source Commits
 
+- `fe6c0b2 fix(ui): describe empty enrichment gate scope`
 - `0ea7710 fix(ui): render validation status without runtime artifacts`
 - `3f095d0 fix(release): reject override references in final csv`
 - `b9ce2dc fix(preservation): distinguish foreign defense stocks`
@@ -80,7 +81,6 @@ The following are local-only and are not mirrored here:
 - `328abba docs: deprecate legacy and duplicate guidance`
 - `ec5be89 docs: align current External Scout and system terminology`
 - `2870d6c docs: add canonical AUTOSINT documentation index`
-- `3457593 docs(arch): add Lattice-inspired AUTOSINT reference`
 
 ## Pending Decisions
 
