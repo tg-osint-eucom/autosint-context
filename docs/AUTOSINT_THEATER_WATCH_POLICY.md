@@ -10,7 +10,8 @@ This is a read-only policy. It does not create Evidence, case links, source-conf
 
 ## Required Theater Summary
 
-Each External Scout cycle should include a top-level `theater_watch_summary` row for every major workspace:
+Every normal natural cycle uses `cycle_scope=GLOBAL_THEATER_SWEEP` and includes
+exactly one top-level `theater_watch_summary` row for each workspace:
 
 - `SOCCENT`
 - `SOCEUR`
@@ -20,21 +21,74 @@ Each External Scout cycle should include a top-level `theater_watch_summary` row
 - `SOCKOR`
 - `SOCOMD`
 
-Each row should say:
+Every row includes:
 
-- theater
-- checked true/false
-- active_case_found true/false
-- emitted_packet_id if a packet was emitted
-- omitted_reason if no packet was emitted
-- top_candidate_topic if no packet was emitted
-- top_watched_topics
-- source_families_checked
-- next_check
+- `theater`
+- `checked`
+- `sweep_status`
+- `window_start`
+- `window_end`
+- `active_case_found`
+- `emitted_packet_id`
+- `top_candidate_topic`
+- `top_watched_topics`
+- `candidate_count`
+- `source_families_checked`
+- `coverage_gaps`
+- `deep_dive_recommended`
+- `next_check`
+
+`Checked and found` and `Checked and not found` require `checked=true` and a
+nonempty source-family itinerary. `Not checked`, `Stale`, and
+`Blocked / login required` require `checked=false`, an explicit coverage gap,
+and a next check. A missing, duplicate, or unknown theater row is a structural
+failure. Seven rows present does not mean seven theaters checked.
+
+Explicit bounded recovery uses `cycle_scope=FOCUSED_THEATER_DEEP_DIVE`, exactly
+one honest theater row, `recovery_assisted=true`, and
+`natural_cycle_eligible=false`. It does not claim global coverage and does not
+advance rotation.
 
 When credible cases exceed the configured absolute maximum, emitted cases stay
 within that maximum and the rest go into `overflow_candidate_cases` with a
 clear reason.
+
+## Deep-Dive Rotation
+
+Tracked code selects one oldest-due mandatory theater for each successful
+global cycle. A distinct current-priority theater may occupy the second slot;
+one severe or fast-changing theater may occupy the optional third slot.
+
+Only a naturally eligible, validator-clean, preservation-clean, promoted
+`GLOBAL_THEATER_SWEEP` with complete coverage advances ignored rotation state.
+Failed, quarantined, recovery-assisted, manual, or incomplete cycles do not.
+Priority selection never replaces the mandatory due theater. Each theater is
+due once within seven successful global cycles.
+
+## Cross-Theater Identity
+
+Every emitted case carries `global_event_key`, `primary_theater`,
+`supporting_theaters`, `duplicate_of`, and `cross_theater_reason`. One
+real-world event has one primary case/thread; supporting theaters retain a
+reference to that same thread.
+
+Korea Peninsula events use `SOCKOR` as primary and may add `SOCPAC` as
+supporting context. `SOCOMD` is the `cross_theater_strategic_rollup`; regional
+events keep their regional primary and may add `SOCOMD` as supporting command
+context. `SOCOMD` is primary only for a genuinely global, command-wide, or
+cross-theater event.
+
+## Separate Truth Dimensions
+
+- Runtime proof remains the canonical three-consecutive-natural-cycle
+  reliability proof.
+- `global_theater_coverage_status` reports `COMPLETE`, `INCOMPLETE`, `STALE`,
+  or `UNKNOWN` for the current collection window.
+- `deep_dive_rotation_status` reports `CURRENT`, `DUE`, `OVERDUE`, or
+  `UNINITIALIZED`.
+
+`PROVEN` does not imply seven theaters were checked. One explicit `Not checked`
+row makes coverage WARN/incomplete but does not by itself reset runtime proof.
 
 ## Starter Theater Policies
 

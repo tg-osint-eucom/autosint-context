@@ -78,6 +78,22 @@ theater_policy:
   - SOCKOR
   - SOCOMD
 
+theater_cycle_policy:
+  normal_cycle_mode: GLOBAL_THEATER_SWEEP
+  recovery_cycle_mode: FOCUSED_THEATER_DEEP_DIVE
+  allowed_cycle_scopes:
+  - GLOBAL_THEATER_SWEEP
+  - FOCUSED_THEATER_DEEP_DIVE
+  required_theater_count: 7
+  rotation_window_successful_cycles: 7
+  mandatory_rotation_slots_per_cycle: 1
+  priority_slots_per_cycle: 1
+  optional_severe_slots_per_cycle: 1
+  default_case_min: 1
+  default_case_max: 3
+  absolute_case_max: 5
+  bounded_recovery_case_count: 1
+
 source_lane_policy:
   operational_lane_count: 19
   required_lanes:
@@ -215,6 +231,7 @@ safety_policy:
   osir_apply_import: false
 
 referenced_contracts:
+  theater_watch: config/autosint_theater_watch.yml
   sensor_architecture: config/autosint_sensor_architecture.yml
   sensor_registry: config/sensor_registry.json
   workstreams: config/autosint_workstreams.yml

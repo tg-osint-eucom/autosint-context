@@ -99,7 +99,11 @@ The scheduled prompt actor:
    attempt number, contract version, and contract SHA.
 5. Requests 1-3 current cases by default, never more than the configured
    absolute maximum of 5.
-6. Requests all seven theater rows and all 19 operational lane rows.
+6. Requests `GLOBAL_THEATER_SWEEP`, exactly seven real bounded theater rows,
+   one mandatory oldest-due deep dive, a distinct priority deep dive when
+   available, and an optional severe third slot. The full 19-lane matrix is
+   required for emitted cases; non-emitted theater rows use compact source
+   family accounting.
 7. Writes a sanitized prompt receipt and pending metadata.
 
 Cycle-level `source_checks`, `market_checks`, `prediction_market_checks`, and
@@ -152,6 +156,11 @@ A visible Stop control alone proves none of these states.
 Natural output contains 1-3 current cases by default and no more than 5.
 Explicit bounded recovery, when separately approved, requests exactly 1 case.
 
+Natural output uses `cycle_scope=GLOBAL_THEATER_SWEEP`. It has exactly one row
+for each canonical theater and never uses `Not checked` as a placeholder.
+Recovery output uses `cycle_scope=FOCUSED_THEATER_DEEP_DIVE`, one honest theater
+row, `recovery_assisted=true`, and `natural_cycle_eligible=false`.
+
 Every cycle accounts for:
 
 - seven theaters: `SOCCENT`, `SOCEUR`, `SOCPAC`, `SOCAFRICA`, `SOCSOUTH`,
@@ -162,6 +171,20 @@ Every cycle accounts for:
 - market/finance rows `broad_market`, `oil_energy`, `shipping_tanker`,
   `insurance_freight_rates`, `defense_large_cap`, `defense_mid_small`,
   `regional_market`, and `crypto_risk`.
+
+Every global theater row includes `theater`, `checked`, `sweep_status`,
+`window_start`, `window_end`, `active_case_found`, `emitted_packet_id`,
+`top_candidate_topic`, `top_watched_topics`, `candidate_count`,
+`source_families_checked`, `coverage_gaps`, `deep_dive_recommended`, and
+`next_check`. Missing, duplicate, or unknown theater rows fail closed. An
+explicit `Not checked` row is visible incomplete coverage and requires a gap
+reason plus next check.
+
+Every performed deep-dive slot includes theater, selection reason, checked
+source families, and a global event key. Every emitted case includes one stable
+`global_event_key`, one primary theater, supporting theater references,
+duplicate lineage, and a cross-theater reason. Repeated event keys fail closed;
+supporting references do not create additional active threads.
 
 Required semantic row fields:
 
@@ -202,6 +225,9 @@ Promotion requires:
 structural_validation_error_count=0
 semantic_validation_error_count=0
 preservation_error_count=0
+global_coverage_validation_error_count=0
+theater_semantic_error_count=0
+cross_theater_duplicate_count=0
 normalizer_run=true
 promoted_to_inbox=true
 ```
@@ -246,6 +272,12 @@ PYTHONPATH=src:. .venv/bin/python -m autosint_external_scout_capture.cli --statu
 runtime hard-fail. A manual or recovery-assisted cycle does not count. A
 single new natural cycle may accept a runtime code change but does not replace
 the canonical 3/3 proof gate.
+
+Global theater coverage and deep-dive rotation are separate from canonical
+runtime reliability proof. `PROVEN 3/3` does not mean seven theaters were
+checked. Explicit `Not checked`, `Stale`, or blocked rows may produce coverage
+WARN while a receipt-clean natural cycle remains proof eligible. Missing rows,
+semantic row errors, or cross-theater duplicates block promotion.
 
 Do not merge fields from receipts with different timestamps. Report the latest
 prompt, harvest, promotion, thread, health, and proof snapshots separately when

@@ -7,8 +7,8 @@ This is a public, sanitized context file for restoring AUTOSINT project context 
 - Private code/runtime repo: `tg-osint-eucom/autosint`
 - Public context mirror: `tg-osint-eucom/autosint-context`
 - Source branch: `main`
-- Source HEAD: `a4f27f8815e714130874532b941964708b434f7a`
-- Generated at: `2026-07-17T01:11:45Z`
+- Source HEAD: `faba895563bec5f6b67d2d36517d5f6b700f04c0`
+- Generated at: `2026-07-17T13:45:51Z`
 
 ## Primary Workflow
 
@@ -32,9 +32,9 @@ This is a public, sanitized context file for restoring AUTOSINT project context 
 
 - Available: `True`
 - Active selection policy: `latest_validated_capture_only`
-- Active packet count: `1`
-- History packet count: `1072`
-- Latest packet timestamp: `2026-07-17T00:06:33Z`
+- Active packet count: `2`
+- History packet count: `1093`
+- Latest packet timestamp: `2026-07-17T13:09:36Z`
 - Stale: `False`
 - Read-only: `True`
 - Private browser state read: `False`
@@ -61,6 +61,10 @@ The following are local-only and are not mirrored here:
 
 ## Latest Source Commits
 
+- `faba895 docs(scout): align theater watch and Project Instructions`
+- `388176c feat(ui): show global theater watch coverage`
+- `e49a914 feat(scout): add rotating theater deep dives`
+- `5f65fb9 feat(scout): add global seven-theater sweep contract`
 - `a4f27f8 fix(release): archive declared window-only screenshot`
 - `91ba4a6 fix(ui): preserve enrichment gate scope with custom notes`
 - `fe6c0b2 fix(ui): describe empty enrichment gate scope`
@@ -77,10 +81,6 @@ The following are local-only and are not mirrored here:
 - `47e1618 docs: consolidate canonical AUTOSINT operating truth`
 - `57f8077 fix(sensors): enforce semantic and preservation gates`
 - `9f92afe refactor(rfi): consolidate operational preview under RFI`
-- `b9333e9 feat(core): add canonical AUTOSINT system contract guard`
-- `68c9812 fix(scout): preserve prompt lifecycle and duplicate guards`
-- `198bb02 docs(scout): remove private packet identifiers`
-- `328abba docs: deprecate legacy and duplicate guidance`
 
 ## Pending Decisions
 

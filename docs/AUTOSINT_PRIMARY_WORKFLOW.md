@@ -66,6 +66,10 @@ DAGRBook assets and helpers may remain in the repo for future frontend-thread wo
 - The exact configured Packet chat is machine-output only. It produces Scout
   Findings under the current system contract; AUTOSINT normalizes them into
   strict candidate packets. Direct strict packets are fallback/replay only.
+- Every normal natural Packet turn performs one bounded seven-theater sweep in
+  that same chat. It does not create one chat, collector, proof builder, or
+  dashboard per theater. Coverage and deep-dive rotation remain separate from
+  the canonical runtime proof streak.
 - Optional `CASE - <topic>` chats must start from AUTOSINT thread data and are not source of truth.
 - AUTOSINT validates, normalizes, deduplicates, maps, previews, and gates.
 - RFI should lead with validated External Scout operator fields when a suitable packet exists.

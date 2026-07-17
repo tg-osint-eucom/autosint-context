@@ -73,7 +73,17 @@ Every output includes:
 - Natural response: 1-3 current cases by default.
 - Absolute maximum: 5 cases.
 - Explicit bounded recovery: exactly 1 case.
-- All seven configured theaters are accounted for every cycle.
+- Normal natural cycles use `GLOBAL_THEATER_SWEEP` and account for all seven
+  configured theaters with exactly one real bounded row each. Explicit bounded
+  recovery uses `FOCUSED_THEATER_DEEP_DIVE`, one theater row, and is not global
+  coverage or proof eligible.
+- Each successful complete global cycle performs the mandatory oldest-due
+  rotation deep dive, a distinct priority deep dive when available, and at
+  most one severe-event deep dive. Failed, incomplete, manual, or
+  recovery-assisted cycles do not advance rotation.
+- Cross-theater events use one primary case/thread and supporting theater
+  references. Korea uses `SOCKOR` primary with `SOCPAC` support; `SOCOMD` is
+  command rollup unless an event is genuinely command-wide.
 - All 19 configured operational lanes are accounted for every cycle.
 - `Manifold / Other Prediction Markets` and
   `insurance_freight_rates` are required first-class rows.

@@ -97,11 +97,18 @@ Scout Findings
 -> thread-current selection
 ```
 
-Promotion requires all three error counters to be zero:
+Promotion requires the three core error counters to be zero:
 
 - `structural_validation_error_count`
 - `semantic_validation_error_count`
 - `preservation_error_count`
+
+The theater contract also exposes fail-closed diagnostics, all of which must
+be zero:
+
+- `global_coverage_validation_error_count`
+- `theater_semantic_error_count`
+- `cross_theater_duplicate_count`
 
 A structurally generated `Not checked` row is honest accounting, not proof of
 collection. Invalid output never updates active state.
@@ -115,7 +122,8 @@ the versioned source-status vocabulary. This includes:
 - three prediction-market rows: Polymarket, Kalshi, and Manifold / Other
   Prediction Markets;
 - eight market/finance rows including `insurance_freight_rates`;
-- seven configured theater rows.
+- seven configured theater rows. Row presence is structural accounting; it is
+  not equivalent to seven theaters checked.
 
 Coverage truth is multi-dimensional:
 
@@ -161,6 +169,12 @@ prompt-to-async-harvester cycles. Each cycle separately proves prompt
 submission, user-turn persistence, response start, exact output identity,
 normalization, structural/semantic/preservation success, promotion, board
 freshness, active threads, and no RED health.
+
+Runtime proof, global theater coverage, and deep-dive rotation are separate
+truth dimensions. The proof target remains three consecutive eligible natural
+cycles. Coverage independently reports `COMPLETE`, `INCOMPLETE`, `STALE`, or
+`UNKNOWN`; rotation independently reports `CURRENT`, `DUE`, `OVERDUE`, or
+`UNINITIALIZED`. `PROVEN` never implies seven theaters were checked.
 
 Manual recovery and direct capture never advance proof. A known operator pause
 explains interruption but invalidates current proof until natural cycles

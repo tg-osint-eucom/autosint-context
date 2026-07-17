@@ -6,7 +6,7 @@ Generated from `config/autosint_system_contract.yml`; do not edit by hand.
 ## Identity
 
 - Contract version: `autosint-system-contract-v1`
-- Contract SHA-256: `1d4727830f703af25a2094c359325271ba65b6985e0a19639f86b94984830d30`
+- Contract SHA-256: `d9370a4eee824686cac62021a67c04fdc7a9e1b1261535d6c4a21ee4e0f2000d`
 - Policy owner: `config/autosint_system_contract.yml`
 
 ## External Scout
@@ -25,6 +25,9 @@ ChatGPT produces Scout Findings. AUTOSINT deterministically normalizes them into
 ## Theater And Lane Policy
 
 - Required theaters (7): `SOCCENT`, `SOCEUR`, `SOCPAC`, `SOCAFRICA`, `SOCSOUTH`, `SOCKOR`, `SOCOMD`
+- Natural cycle scope: `GLOBAL_THEATER_SWEEP`; recovery scope: `FOCUSED_THEATER_DEEP_DIVE`
+- Deep-dive rotation: one mandatory oldest-due slot per successful global cycle; every theater due within `7` successful cycles
+- Deep-dive capacity: `1` rotation + `1` distinct priority + up to `1` severe slot
 - Operational lanes: `19`
 
 - `official_advisory`: Official / Advisory
