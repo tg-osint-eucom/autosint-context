@@ -7,8 +7,8 @@ This is a public, sanitized context file for restoring AUTOSINT project context 
 - Private code/runtime repo: `tg-osint-eucom/autosint`
 - Public context mirror: `tg-osint-eucom/autosint-context`
 - Source branch: `main`
-- Source HEAD: `faba895563bec5f6b67d2d36517d5f6b700f04c0`
-- Generated at: `2026-07-17T13:45:51Z`
+- Source HEAD: `717e9dd399fe9aee4d85a28b2f756e878205424f`
+- Generated at: `2026-07-17T15:08:51Z`
 
 ## Primary Workflow
 
@@ -33,8 +33,8 @@ This is a public, sanitized context file for restoring AUTOSINT project context 
 - Available: `True`
 - Active selection policy: `latest_validated_capture_only`
 - Active packet count: `2`
-- History packet count: `1093`
-- Latest packet timestamp: `2026-07-17T13:09:36Z`
+- History packet count: `1095`
+- Latest packet timestamp: `2026-07-17T14:04:47Z`
 - Stale: `False`
 - Read-only: `True`
 - Private browser state read: `False`
@@ -44,6 +44,10 @@ This is a public, sanitized context file for restoring AUTOSINT project context 
 ## RFI Behavior
 
 RFI uses External Scout Case Thread current state when available, then falls back to the best validated External Scout packet; canonical cases, Case Genesis, source coverage, and provenance remain audit material.
+
+## Global Theater Watch
+
+Global Seven-Theater Watch and rotating deep dives are implemented and have receipt-backed live Packet-output verification. The same-source operator projection reports rows present, theaters swept, verified-complete coverage, candidate-only theaters, performed deep dives, and rotation credits separately. Configured bounded sweep only. This does not assert exhaustive coverage of all world events.
 
 ## Capture Bridge
 
@@ -61,6 +65,8 @@ The following are local-only and are not mirrored here:
 
 ## Latest Source Commits
 
+- `717e9dd docs: refresh theater-watch runtime context`
+- `26192e3 feat(ui): clarify theater coverage and rotation credit`
 - `faba895 docs(scout): align theater watch and Project Instructions`
 - `388176c feat(ui): show global theater watch coverage`
 - `e49a914 feat(scout): add rotating theater deep dives`
@@ -79,15 +85,12 @@ The following are local-only and are not mirrored here:
 - `fc0b152 fix(scout): release terminal normalized output guard`
 - `06476b8 test(docs): enforce documentation and package consistency`
 - `47e1618 docs: consolidate canonical AUTOSINT operating truth`
-- `57f8077 fix(sensors): enforce semantic and preservation gates`
-- `9f92afe refactor(rfi): consolidate operational preview under RFI`
 
 ## Pending Decisions
 
 - Keep the mirror refreshed after major workflow changes.
 - Install/load hourly capture only after separate operator approval.
 - External Scout Live Case Board v1 is implemented; use /external-scout/threads as the 24/7 thread board.
-- Global sensor coverage policy is implemented; theater_watch_summary still needs live Packet-output verification.
 - Design controlled approval before Evidence or case-link mutation.
 
 ## Safety Boundary

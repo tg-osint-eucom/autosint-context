@@ -8,6 +8,9 @@ explicitly accounted for through `theater_watch_summary`.
 
 This is a read-only policy. It does not create Evidence, case links, source-config changes, OSIR exports, apply/import paths, launchd changes, or commander-ready outputs.
 
+Configured bounded sweep only.
+This does not assert exhaustive coverage of all world events.
+
 ## Required Theater Summary
 
 Every normal natural cycle uses `cycle_scope=GLOBAL_THEATER_SWEEP` and includes
@@ -44,6 +47,17 @@ nonempty source-family itinerary. `Not checked`, `Stale`, and
 and a next check. A missing, duplicate, or unknown theater row is a structural
 failure. Seven rows present does not mean seven theaters checked.
 
+The same-source proof object reports these dimensions separately:
+
+- `theaters_required`: the configured seven-theater set;
+- `theaters_swept`: rows actually checked in the current bounded window;
+- `theaters_verified_complete`: swept rows with `Checked and found` or
+  `Checked and not found` status;
+- `theaters_candidate_only`: swept rows with candidates that were not
+  imported;
+- `theaters_not_checked`, `theaters_stale`, and `theaters_blocked`: explicit
+  incomplete states.
+
 Explicit bounded recovery uses `cycle_scope=FOCUSED_THEATER_DEEP_DIVE`, exactly
 one honest theater row, `recovery_assisted=true`, and
 `natural_cycle_eligible=false`. It does not claim global coverage and does not
@@ -64,6 +78,24 @@ Only a naturally eligible, validator-clean, preservation-clean, promoted
 Failed, quarantined, recovery-assisted, manual, or incomplete cycles do not.
 Priority selection never replaces the mandatory due theater. Each theater is
 due once within seven successful global cycles.
+
+Every reported deep-dive slot exposes `deep_dive_performed`,
+`rotation_credit_eligible`, `rotation_credit_awarded`, and
+`rotation_credit_reason`. Only the mandatory oldest-due slot can receive
+rotation credit. The stable reason vocabulary is:
+
+- `credited_complete_natural_cycle`
+- `global_coverage_incomplete`
+- `recovery_assisted`
+- `cycle_ineligible`
+- `validation_failed`
+- `promotion_failed`
+- `duplicate_event`
+- `missing_deep_dive_evidence`
+
+These fields explain the existing strict policy; they do not relax or alter
+rotation eligibility. A performed deep dive is not automatically a credited
+deep dive.
 
 ## Cross-Theater Identity
 

@@ -6,11 +6,11 @@
     "active_selection_policy": "latest_validated_capture_only",
     "available": true,
     "cookies_read": false,
-    "history_capture_count": 301,
-    "history_packet_count": 1093,
-    "latest_capture_generated_at": "2026-07-17T13:09:36Z",
+    "history_capture_count": 302,
+    "history_packet_count": 1095,
+    "latest_capture_generated_at": "2026-07-17T14:04:47Z",
     "latest_capture_packet_count": 2,
-    "latest_packet_generated_at": "2026-07-17T13:09:36Z",
+    "latest_packet_generated_at": "2026-07-17T14:04:47Z",
     "local_storage_read": false,
     "mutation_performed": false,
     "private_browser_state_read": false,
@@ -20,8 +20,10 @@
     "status_only": true,
     "validated_packet_count": 2
   },
-  "generated_at": "2026-07-17T13:45:51Z",
+  "generated_at": "2026-07-17T15:08:51Z",
   "latest_commits": [
+    "717e9dd docs: refresh theater-watch runtime context",
+    "26192e3 feat(ui): clarify theater coverage and rotation credit",
     "faba895 docs(scout): align theater watch and Project Instructions",
     "388176c feat(ui): show global theater watch coverage",
     "e49a914 feat(scout): add rotating theater deep dives",
@@ -39,9 +41,7 @@
     "7ba962b fix(contract): enforce structured runtime descriptors",
     "fc0b152 fix(scout): release terminal normalized output guard",
     "06476b8 test(docs): enforce documentation and package consistency",
-    "47e1618 docs: consolidate canonical AUTOSINT operating truth",
-    "57f8077 fix(sensors): enforce semantic and preservation gates",
-    "9f92afe refactor(rfi): consolidate operational preview under RFI"
+    "47e1618 docs: consolidate canonical AUTOSINT operating truth"
   ],
   "launchd_status": "Local-only; not represented in this public mirror.",
   "mirror_repo": "tg-osint-eucom/autosint-context",
@@ -50,7 +50,6 @@
     "Keep the mirror refreshed after major workflow changes.",
     "Install/load hourly capture only after separate operator approval.",
     "External Scout Live Case Board v1 is implemented; use /external-scout/threads as the 24/7 thread board.",
-    "Global sensor coverage policy is implemented; theater_watch_summary still needs live Packet-output verification.",
     "Design controlled approval before Evidence or case-link mutation."
   ],
   "primary_routes": [
@@ -106,7 +105,7 @@
     "no_source_config_mutation": true
   },
   "source_branch": "main",
-  "source_head": "faba895563bec5f6b67d2d36517d5f6b700f04c0",
+  "source_head": "717e9dd399fe9aee4d85a28b2f756e878205424f",
   "source_repo": "tg-osint-eucom/autosint",
   "source_repo_url": "https://github.com/tg-osint-eucom/autosint",
   "supporting_routes": [
@@ -114,5 +113,6 @@
     "/case-genesis",
     "/api/v1/cases/{case_id}/osir",
     "/api/v1/agent-feed"
-  ]
+  ],
+  "theater_watch_status": "Global Seven-Theater Watch and rotating deep dives are implemented and have receipt-backed live Packet-output verification. The same-source operator projection reports rows present, theaters swept, verified-complete coverage, candidate-only theaters, performed deep dives, and rotation credits separately. Configured bounded sweep only. This does not assert exhaustive coverage of all world events."
 }
