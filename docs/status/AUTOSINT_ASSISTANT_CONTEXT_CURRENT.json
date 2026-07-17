@@ -20,8 +20,9 @@
     "status_only": true,
     "validated_packet_count": 1
   },
-  "generated_at": "2026-07-17T00:52:20Z",
+  "generated_at": "2026-07-17T01:11:45Z",
   "latest_commits": [
+    "a4f27f8 fix(release): archive declared window-only screenshot",
     "91ba4a6 fix(ui): preserve enrichment gate scope with custom notes",
     "fe6c0b2 fix(ui): describe empty enrichment gate scope",
     "0ea7710 fix(ui): render validation status without runtime artifacts",
@@ -40,8 +41,7 @@
     "b9333e9 feat(core): add canonical AUTOSINT system contract guard",
     "68c9812 fix(scout): preserve prompt lifecycle and duplicate guards",
     "198bb02 docs(scout): remove private packet identifiers",
-    "328abba docs: deprecate legacy and duplicate guidance",
-    "ec5be89 docs: align current External Scout and system terminology"
+    "328abba docs: deprecate legacy and duplicate guidance"
   ],
   "launchd_status": "Local-only; not represented in this public mirror.",
   "mirror_repo": "tg-osint-eucom/autosint-context",
@@ -106,7 +106,7 @@
     "no_source_config_mutation": true
   },
   "source_branch": "main",
-  "source_head": "91ba4a68b3d3b92ae68648fbe729fefd18048299",
+  "source_head": "a4f27f8815e714130874532b941964708b434f7a",
   "source_repo": "tg-osint-eucom/autosint",
   "source_repo_url": "https://github.com/tg-osint-eucom/autosint",
   "supporting_routes": [

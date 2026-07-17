@@ -7,8 +7,8 @@ This is a public, sanitized context file for restoring AUTOSINT project context 
 - Private code/runtime repo: `tg-osint-eucom/autosint`
 - Public context mirror: `tg-osint-eucom/autosint-context`
 - Source branch: `main`
-- Source HEAD: `91ba4a68b3d3b92ae68648fbe729fefd18048299`
-- Generated at: `2026-07-17T00:52:20Z`
+- Source HEAD: `a4f27f8815e714130874532b941964708b434f7a`
+- Generated at: `2026-07-17T01:11:45Z`
 
 ## Primary Workflow
 
@@ -61,6 +61,7 @@ The following are local-only and are not mirrored here:
 
 ## Latest Source Commits
 
+- `a4f27f8 fix(release): archive declared window-only screenshot`
 - `91ba4a6 fix(ui): preserve enrichment gate scope with custom notes`
 - `fe6c0b2 fix(ui): describe empty enrichment gate scope`
 - `0ea7710 fix(ui): render validation status without runtime artifacts`
@@ -80,7 +81,6 @@ The following are local-only and are not mirrored here:
 - `68c9812 fix(scout): preserve prompt lifecycle and duplicate guards`
 - `198bb02 docs(scout): remove private packet identifiers`
 - `328abba docs: deprecate legacy and duplicate guidance`
-- `ec5be89 docs: align current External Scout and system terminology`
 
 ## Pending Decisions
 
