@@ -3,7 +3,7 @@
 - Status: Current
 - Authority: Canonical architecture
 - Owner: AUTOSINT Architecture
-- Last reviewed: 2026-07-16
+- Last reviewed: 2026-07-18
 - Runtime truth: No; live state requires current receipts and reports
 - Supersedes: Historical multi-shell and direct-packet operating summaries
 - Superseded by: None
@@ -109,7 +109,13 @@ be zero:
 - `global_coverage_validation_error_count`
 - `theater_semantic_error_count`
 - `cross_theater_duplicate_count`
+- `theater_source_check_validation_error_count`
+- `theater_closure_validation_error_count`
+- `candidate_as_coverage_error_count`
 
+`minimum_family_gap_count` is a separate honest-incompleteness diagnostic. It
+does not block promotion by itself when every required family result is present
+and valid, but coverage remains incomplete and rotation receives no credit.
 A structurally generated `Not checked` row is honest accounting, not proof of
 collection. Invalid output never updates active state.
 
@@ -136,6 +142,38 @@ Coverage truth is multi-dimensional:
 
 A valid checked source is not downgraded because another source is blocked,
 candidate-only, or stale. Those follow-ups remain visible WARN items.
+
+Under `autosint-system-contract-v2.1`, theater completion is evidence-backed
+per minimum family. Top-level `theater_source_checks` is cycle-scoped and
+separate from primary-case `source_checks`. Every theater `family_results` row
+uses references from the same output, theater, and source family. Only evidence
+references credited to `Checked and found` or `Checked and not found`
+completion must be current-window. Stale and candidate follow-up references
+are allowed, remain incomplete, and never receive completion credit. Exact
+method and public-access enums come from the system contract; generic method
+prose, candidate URLs, and HTTP availability never prove coverage.
+`approved_read_only_adapter` remains runtime-gated and cannot complete a family
+without a trusted current adapter result reference.
+
+Machine-owned `source_check_completion_basis_by_primary_status` supplies the
+exact mapping. Each V2.1 check also carries `completion_basis`:
+`substantive_content` pairs only with `Checked and found`,
+`bounded_no_result` only with `Checked and not found`, and `none` only with
+candidate, blocked, stale, or not-checked states. Source-check `result_summary`
+and `check_method_note` are informational only. Opaque `source_check_id` and
+`evidence_refs` values must match `^[A-Za-z0-9][A-Za-z0-9:_-]{0,95}$`; URLs
+and token-shaped identifiers fail closed. Found completion still requires a
+safe public URL or trusted adapter result. Not-found completion requires a safe
+public itinerary URL or trusted adapter result, zero validated found sources,
+and a family result with `checked_not_found=true` whose summary contains
+`no credible current result was found`; that phrase alone is never proof.
+
+AUTOSINT derives canonical primary and coverage status, all source counts,
+currentness, and `theater_verified_complete`. A valid honest incomplete family
+may promote with `minimum_family_gap_count>0`, but it remains incomplete and
+receives no rotation credit. Historical `autosint-system-contract-v2` /
+`autosint-theater-closure-v1` rows remain legacy replay context with closure
+status `UNKNOWN`; they are never reinterpreted as typed V2.1 evidence.
 
 Markets, finance, prediction markets, crypto, social OSINT, and public comments
 are cue-only. They cannot independently prove attribution, causality, intent,
@@ -174,7 +212,10 @@ Runtime proof, global theater coverage, and deep-dive rotation are separate
 truth dimensions. The proof target remains three consecutive eligible natural
 cycles. Coverage independently reports `COMPLETE`, `INCOMPLETE`, `STALE`, or
 `UNKNOWN`; rotation independently reports `CURRENT`, `DUE`, `OVERDUE`, or
-`UNINITIALIZED`. `PROVEN` never implies seven theaters were checked.
+`UNINITIALIZED`. One receipt-backed naturally scheduled V2.1 cycle may establish
+typed-contract natural acceptance, but it neither establishes nor implies the
+canonical 3/3 `PROVEN` reliability state. No current acceptance or proof claim
+is made by this tracked architecture document.
 
 Manual recovery and direct capture never advance proof. A known operator pause
 explains interruption but invalidates current proof until natural cycles

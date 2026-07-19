@@ -7,8 +7,8 @@ This is a public, sanitized context file for restoring AUTOSINT project context 
 - Private code/runtime repo: `tg-osint-eucom/autosint`
 - Public context mirror: `tg-osint-eucom/autosint-context`
 - Source branch: `main`
-- Source HEAD: `717e9dd399fe9aee4d85a28b2f756e878205424f`
-- Generated at: `2026-07-17T15:08:51Z`
+- Source HEAD: `a0a81bac1bc959eb28186967a06b8df129e4990e`
+- Generated at: `2026-07-19T01:36:56Z`
 
 ## Primary Workflow
 
@@ -32,10 +32,10 @@ This is a public, sanitized context file for restoring AUTOSINT project context 
 
 - Available: `True`
 - Active selection policy: `latest_validated_capture_only`
-- Active packet count: `2`
-- History packet count: `1095`
-- Latest packet timestamp: `2026-07-17T14:04:47Z`
-- Stale: `False`
+- Active packet count: `1`
+- History packet count: `1103`
+- Latest packet timestamp: `2026-07-18T20:05:02Z`
+- Stale: `True`
 - Read-only: `True`
 - Private browser state read: `False`
 - Cookies read: `False`
@@ -65,6 +65,11 @@ The following are local-only and are not mirrored here:
 
 ## Latest Source Commits
 
+- `a0a81ba docs(scout): define typed evidence and machine-owned identity`
+- `9a3c641 feat(ui): render closure evidence and identity diagnostics`
+- `893b4ff fix(scout): make contract identity machine-owned`
+- `db01b5d fix(scout): require typed evidence-backed theater closure`
+- `a612ff4 fix(ops): add controlled External Scout maintenance helper`
 - `717e9dd docs: refresh theater-watch runtime context`
 - `26192e3 feat(ui): clarify theater coverage and rotation credit`
 - `faba895 docs(scout): align theater watch and Project Instructions`
@@ -80,11 +85,6 @@ The following are local-only and are not mirrored here:
 - `845b4ce fix(release): include final conflict matrix`
 - `ab33a80 feat(release): build coherent runtime restore snapshot`
 - `7c73e01 test(docs): enforce coherent review snapshots`
-- `7339df2 feat(scout): trace semantic fields across operator surfaces`
-- `7ba962b fix(contract): enforce structured runtime descriptors`
-- `fc0b152 fix(scout): release terminal normalized output guard`
-- `06476b8 test(docs): enforce documentation and package consistency`
-- `47e1618 docs: consolidate canonical AUTOSINT operating truth`
 
 ## Pending Decisions
 

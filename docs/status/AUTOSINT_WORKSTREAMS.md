@@ -4,11 +4,11 @@
 - Status: Current projection
 - Authority: Supporting status; `config/autosint_workstreams.yml` is the structured source
 - Owner: AUTOSINT Workstreams
-- Last reviewed: 2026-07-16
+- Last reviewed: 2026-07-18
 - Runtime truth: No; current runtime requires receipts and canonical reports
 - Supersedes: Mixed current projection and embedded runtime-history narrative
 - Superseded by: None
-- Source config SHA-256: `de170de77713d1ac4bc52e0d772090bc3ffe84e5ae398ab3f7cb29cb32c1c218`
+- Source config SHA-256: `aa7631ad02edeb5e919ef10f4b53aa32a3879b4e0f93edb80ce8d3201c4ad0ce`
 
 This generated projection exposes only durable planning identity and status.
 Detailed registry notes are planning context, not current runtime proof. Dated
@@ -21,7 +21,7 @@ generated reports and are never merged into this table.
 | `external_scout_live_case_board` | External Scout Live Case Board | `Active` | /external-scout/24-7 with /external-scout/threads drill-down |
 | `case_coverage_matrix` | Strict case coverage matrix | `Active` | External Scout validator / thread rollups |
 | `global_sensor_coverage_policy` | Global source and sensor coverage policy | `Active` | External Scout validator / Live Case Board / prompt contract |
-| `theater_watch_summary` | Global seven-theater sweep, cross-theater dedup, and rotating deep dives | `Complete` | External Scout prompt/normalizer/validator / same-source /external-scout/24-7 panel |
+| `theater_watch_summary` | Global seven-theater sweep, cross-theater dedup, and rotating deep dives | `Active` | External Scout prompt/normalizer/validator / same-source /external-scout/24-7 panel |
 | `chatgpt_project_operating_model` | ChatGPT Project operating model | `Complete` | ChatGPT Project / docs |
 | `context_mirror_automation` | Public context mirror automation | `Active` | scripts/publish_autosint_context_mirror.py |
 | `external_scout_capture_isolation` | External Scout capture subsystem isolation | `Complete` | autosint_external_scout_capture package |

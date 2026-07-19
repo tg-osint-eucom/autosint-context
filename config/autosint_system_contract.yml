@@ -1,5 +1,5 @@
-schema_version: 1
-contract_version: autosint-system-contract-v1
+schema_version: 2
+contract_version: autosint-system-contract-v2.1
 generated_policy_owner: config/autosint_system_contract.yml
 
 product:
@@ -93,6 +93,195 @@ theater_cycle_policy:
   default_case_max: 3
   absolute_case_max: 5
   bounded_recovery_case_count: 1
+
+theater_closure_policy:
+  contract_version: autosint-theater-closure-v2.1
+  assistant_source_check_collection_field: theater_source_checks
+  assistant_source_check_fields:
+  - source_check_id
+  - theater
+  - source_family
+  - primary_status
+  - check_method
+  - checked_at
+  - window_start
+  - window_end
+  - current_window
+  - public_access_mode
+  - completion_basis
+  - source_urls
+  - result_summary
+  - limitations
+  - next_check
+  assistant_source_check_optional_fields:
+  - check_method_note
+  - adapter_result_ref
+  assistant_source_check_field_types:
+    source_check_id: string
+    theater: string
+    source_family: string
+    primary_status: string
+    check_method: string
+    checked_at: string
+    window_start: string
+    window_end: string
+    current_window: boolean
+    public_access_mode: string
+    completion_basis: string
+    source_urls: array[string]
+    result_summary: string
+    limitations: array[string]
+    next_check: string
+  assistant_source_check_optional_field_types:
+    check_method_note: string
+    adapter_result_ref: string
+  assistant_family_result_fields:
+  - source_family
+  - reported_primary_status
+  - reported_coverage_status
+  - evidence_refs
+  - checked_not_found
+  - follow_up_statuses
+  - result_summary
+  - limitations
+  - next_check
+  assistant_family_result_field_types:
+    source_family: string
+    reported_primary_status: string
+    reported_coverage_status: string
+    evidence_refs: array[string]
+    checked_not_found: boolean
+    follow_up_statuses: array[string]
+    result_summary: string
+    limitations: array[string]
+    next_check: string
+  canonical_family_result_fields:
+  - source_family
+  - reported_primary_status
+  - reported_coverage_status
+  - evidence_refs
+  - canonical_primary_status
+  - canonical_coverage_status
+  - primary_status
+  - coverage_status
+  - follow_up_statuses
+  - check_method_codes
+  - public_access_modes
+  - checked_at
+  - current_window
+  - checked_source_count
+  - validated_source_count
+  - candidate_source_count
+  - blocked_source_count
+  - stale_source_count
+  - checked_not_found
+  - result_summary
+  - limitations
+  - next_check
+  - receipt_basename
+  theater_closure_evidence_fields:
+  - theater
+  - sweep_window_start
+  - sweep_window_end
+  - minimum_source_families_required
+  - minimum_source_families_completed
+  - family_results
+  - verified_source_count
+  - checked_not_found_count
+  - candidate_follow_up_count
+  - blocked_follow_up_count
+  - stale_follow_up_count
+  - current_coverage_status
+  - theater_verified_complete
+  - limitations
+  - next_check
+  - generated_at
+  - source_cycle_id_hash
+  - mutation_performed
+  source_check_method_codes:
+  - bounded_official_advisory_review
+  - bounded_public_news_review
+  - bounded_multilingual_regional_review
+  - approved_read_only_adapter
+  - not_checked
+  source_check_completion_basis_codes:
+  - substantive_content
+  - bounded_no_result
+  - none
+  source_check_completion_basis_by_primary_status:
+    Checked and found: substantive_content
+    Checked and not found: bounded_no_result
+    Candidate found, not imported: none
+    Not checked: none
+    Stale: none
+    Blocked / login required: none
+  source_check_id_pattern: ^[A-Za-z0-9][A-Za-z0-9:_-]{0,95}$
+  public_access_modes:
+  - public_no_login
+  - approved_read_only_adapter
+  - blocked_login_or_license
+  - candidate_only
+  - not_checked
+  source_family_allowed_check_methods:
+    Official / Advisory:
+    - bounded_official_advisory_review
+    - approved_read_only_adapter
+    Public News:
+    - bounded_public_news_review
+    - approved_read_only_adapter
+    Multilingual / Regional:
+    - bounded_multilingual_regional_review
+    - approved_read_only_adapter
+  completion_public_access_modes:
+  - public_no_login
+  - approved_read_only_adapter
+  checked_and_not_found_required_summary_phrase: no credible current result was found
+  source_check_ids_unique_required: true
+  evidence_refs_nonempty_required: true
+  evidence_refs_unique_required: true
+  evidence_refs_same_output_required: true
+  evidence_refs_same_theater_required: true
+  evidence_refs_same_source_family_required: true
+  completion_requires_current_window_evidence: true
+  checked_and_found_requires_source_url_or_adapter_result_ref: true
+  approved_adapter_result_ref_requires_runtime_resolution: true
+  assistant_reported_counts_authoritative: false
+  assistant_reported_status_authoritative: false
+  family_coverage_statuses:
+  - COMPLETE
+  - INCOMPLETE
+  - STALE
+  - UNKNOWN
+  complete_primary_statuses:
+  - Checked and found
+  - Checked and not found
+  incomplete_primary_statuses:
+  - Candidate found, not imported
+  - Not checked
+  - Stale
+  - Blocked / login required
+  follow_up_statuses:
+  - Candidate found, not imported
+  - Blocked / login required
+  - Stale
+  validation_counter_fields:
+  - theater_closure_validation_error_count
+  - candidate_as_coverage_error_count
+  - minimum_family_gap_count
+  promotion_gate_fields:
+  - theater_closure_validation_error_count
+  - candidate_as_coverage_error_count
+  typed_theater_evidence_promotion_gate_fields:
+  - theater_source_check_validation_error_count
+  checked_and_found_min_validated_sources: 1
+  checked_and_not_found_requires_bounded_check_method: true
+  current_result_requires_checked_at: true
+  current_result_requires_current_window: true
+  candidate_follow_up_downgrades_primary: false
+  minimum_family_gap_blocks_promotion: false
+  legacy_v1_coverage_status: UNKNOWN
+  legacy_v1_verified_complete: false
+  source_cycle_id_hash_algorithm: sha256_canonical_json_v1
 
 source_lane_policy:
   operational_lane_count: 19

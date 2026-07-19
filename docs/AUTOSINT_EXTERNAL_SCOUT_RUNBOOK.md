@@ -3,7 +3,7 @@
 - Status: Current
 - Authority: Canonical runbook
 - Owner: External Scout
-- Last reviewed: 2026-07-16
+- Last reviewed: 2026-07-18
 - Runtime truth: Only when paired with current receipts and canonical reports
 - Supersedes: Direct-capture scheduling, direct-packet default, and embedded incident transcripts
 - Superseded by: None
@@ -95,8 +95,10 @@ The scheduled prompt actor:
 1. Loads the canonical system contract.
 2. Runs the Contract Guard before any browser action.
 3. Refuses a duplicate when a non-terminal exact pending request exists.
-4. Binds the prompt to the configured target, root request, generation attempt,
-   attempt number, contract version, and contract SHA.
+4. Records the loader-selected contract as `expected_system_contract_*`, then
+   binds the pending request to that exact receipt identity as
+   `bound_system_contract_*`, together with the configured target hash, root
+   request, generation attempt, and attempt number.
 5. Requests 1-3 current cases by default, never more than the configured
    absolute maximum of 5.
 6. Requests `GLOBAL_THEATER_SWEEP`, exactly seven real bounded theater rows,
@@ -109,9 +111,23 @@ The scheduled prompt actor:
 Cycle-level `source_checks`, `market_checks`, `prediction_market_checks`, and
 `multilingual_checks` bind only to the first primary finding. Secondary
 findings carry their own rows; the normalizer does not copy primary-case
-metrics into them.
+metrics into them. Under `autosint-system-contract-v2.1`, top-level
+`theater_source_checks` is separate cycle-scoped theater evidence and never
+inherits that primary-case binding.
 
-Required cycle identity fields are:
+The four contract identity roles are machine-owned:
+
+- `expected_system_contract_*`: selected by the AUTOSINT loader and recorded
+  in the prompt receipt.
+- `bound_system_contract_*`: copied by AUTOSINT from the prompt receipt into
+  pending and harvest state.
+- `reported_system_contract_*`: copied from model output for diagnostics only.
+- `validation_system_contract_*`: selected by AUTOSINT from `bound_*` and used
+  for schema, validator, normalizer, promotion, and proof decisions.
+
+Legacy `system_contract_*` fields remain validation aliases for historical
+receipts and replay fixtures. They do not give the model authority to select a
+validator. Required cycle identity and policy fields are:
 
 - `system_contract_version`
 - `system_contract_sha256`
@@ -175,10 +191,51 @@ Every cycle accounts for:
 Every global theater row includes `theater`, `checked`, `sweep_status`,
 `window_start`, `window_end`, `active_case_found`, `emitted_packet_id`,
 `top_candidate_topic`, `top_watched_topics`, `candidate_count`,
-`source_families_checked`, `coverage_gaps`, `deep_dive_recommended`, and
+`source_families_checked`, `family_results`, `coverage_gaps`,
+`deep_dive_recommended`, and
 `next_check`. Missing, duplicate, or unknown theater rows fail closed. An
 explicit `Not checked` row is visible incomplete coverage and requires a gap
 reason plus next check.
+
+Every `family_results` array contains exactly one result for each configured
+minimum family: `Official / Advisory`, `Public News`, and
+`Multilingual / Regional`. Its `evidence_refs` values must resolve to
+`source_check_id` rows from top-level `theater_source_checks`. Every evidence
+reference must resolve within the same output, theater, and source family. Only
+evidence references credited to `Checked and found` or `Checked and not found`
+completion must be current-window. Stale and candidate follow-up references
+are allowed, remain incomplete, and never receive completion credit.
+
+Exact `check_method` values are `bounded_official_advisory_review`,
+`bounded_public_news_review`, `bounded_multilingual_regional_review`,
+`approved_read_only_adapter`, and `not_checked`. Exact `public_access_mode`
+values are `public_no_login`, `approved_read_only_adapter`,
+`blocked_login_or_license`, `candidate_only`, and `not_checked`. Generic prose
+in `check_method`, candidate URLs, and HTTP availability never prove coverage.
+An adapter row remains `GATED_DISABLED` unless `adapter_result_ref` resolves to
+a trusted current AUTOSINT runtime record.
+
+Machine-owned `source_check_completion_basis_by_primary_status` supplies the
+exact mapping. Every V2.1 check has `completion_basis`: `substantive_content` pairs only
+with `Checked and found`, `bounded_no_result` only with `Checked and not
+found`, and `none` only with candidate, blocked, stale, or not-checked states.
+Any mismatch is a hard validation error, not a downgrade. Source-check
+`result_summary` and `check_method_note` are informational only. Opaque
+`source_check_id` and `evidence_refs` values match
+`^[A-Za-z0-9][A-Za-z0-9:_-]{0,95}$`; URLs and token-shaped values are invalid
+IDs.
+
+`Checked and found` completes only with `completion_basis=substantive_content`
+and qualifying current referenced evidence. `Checked and not found` completes
+only with `completion_basis=bounded_no_result`, a referenced bounded
+current-window attempt, a safe public itinerary URL or trusted adapter result,
+and zero validated found sources. Its family result must set
+`checked_not_found=true` and contain `no credible current result was found`;
+the phrase alone is only a consistency requirement. AUTOSINT
+derives canonical primary and coverage status, checked, validated, candidate,
+blocked, and stale counts, currentness, and theater completion. Candidate,
+blocked, stale, and not-checked results remain honest incomplete follow-ups and
+never count as proof or downgrade a completed primary.
 
 Every performed deep-dive slot includes theater, selection reason, checked
 source families, and a global event key. Every emitted case includes one stable
@@ -209,8 +266,9 @@ The scheduled harvester:
 
 1. Loads the same system contract and runs the guard before browser action.
 2. Requires the exact configured target and pending request.
-3. Requires matching `system_contract_version`, root request, generation
-   attempt id, and attempt number.
+3. Before browser access, requires prompt `expected_*` to match pending
+   `bound_*`, requires the bound contract to be loadable, and requires matching
+   target hash, root request, generation attempt id, and attempt number.
 4. Requires output newer than the prompt and newer than the active inbox.
 5. Accepts the primary inline transport or the fallback attachment transport,
    never two competing full payloads.
@@ -218,6 +276,13 @@ The scheduled harvester:
 7. Applies structural, semantic, and preservation gates.
 8. Promotes only if every gate passes; otherwise it skips or quarantines and
    leaves active state unchanged.
+
+The model-reported contract identity remains required by the current output
+policy. Missing reported version or SHA fails closed. If both are present but
+differ from the machine-bound identity, the harvester preserves both values,
+records `reported_contract_identity_status=MISMATCH` with `severity=WARN`, and
+continues with `validation_system_contract_* = bound_system_contract_*`. That
+reported mismatch alone does not block normalization or promotion.
 
 Promotion requires:
 
@@ -228,9 +293,19 @@ preservation_error_count=0
 global_coverage_validation_error_count=0
 theater_semantic_error_count=0
 cross_theater_duplicate_count=0
+theater_source_check_validation_error_count=0
+theater_closure_validation_error_count=0
+candidate_as_coverage_error_count=0
 normalizer_run=true
 promoted_to_inbox=true
 ```
+
+`minimum_family_gap_count` may remain nonzero only for valid honest incomplete
+coverage. It is not a promotion gate by itself; it prevents theater completion
+and therefore prevents rotation credit, but a structurally and semantically
+valid packet may still promote and refresh current state. A missing or malformed
+required family also increments `theater_closure_validation_error_count` and
+fails closed.
 
 Schema-clean output is insufficient when required semantic rows or provider
 notes were dropped.
@@ -270,8 +345,10 @@ PYTHONPATH=src:. .venv/bin/python -m autosint_external_scout_capture.cli --statu
 `PROVEN` requires three consecutive eligible natural cycles, Live Board
 `stale=false`, active threads greater than zero, no RED health, and no eval
 runtime hard-fail. A manual or recovery-assisted cycle does not count. A
-single new natural cycle may accept a runtime code change but does not replace
-the canonical 3/3 proof gate.
+single receipt-backed naturally scheduled `autosint-system-contract-v2.1`
+cycle may establish natural acceptance of the typed contract, but it does not
+replace or imply the canonical 3/3 proof gate. Until such a cycle is observed,
+report V2.1 natural acceptance as not yet proven.
 
 Global theater coverage and deep-dive rotation are separate from canonical
 runtime reliability proof. `PROVEN 3/3` does not mean seven theaters were
@@ -288,12 +365,16 @@ they differ.
 Classify the exact receipt-backed failure before taking action:
 
 - contract guard RED;
+- prompt expected versus pending bound contract mismatch;
+- missing or unsupported machine-bound contract identity;
 - duplicate blocked by pending request;
 - target or request/attempt mismatch;
 - output predates prompt or active inbox;
 - active without observed progress;
 - stopped, stalled, or expired generation;
 - transport mismatch or duplicate full payloads;
+- missing model-reported contract identity (hard fail), while a present stale
+  model-reported identity is diagnostic-only WARN;
 - normalization failure;
 - structural validation failure;
 - semantic validation failure;

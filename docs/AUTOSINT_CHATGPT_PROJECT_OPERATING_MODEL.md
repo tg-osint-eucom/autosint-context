@@ -3,7 +3,7 @@
 - Status: Current
 - Authority: Canonical workflow
 - Owner: External Scout
-- Last reviewed: 2026-07-16
+- Last reviewed: 2026-07-18
 - Runtime truth: No; current cycles require receipts and the proof reporter
 - Supersedes: Direct strict-packet default and Scheduled Task incident narratives
 - Superseded by: None
@@ -64,6 +64,7 @@ does not establish identity.
 Every output includes:
 
 - `system_contract_version`
+- `system_contract_sha256`
 - `trigger_request_id`
 - `generation_attempt_id`
 - `generation_attempt_number`
@@ -91,6 +92,59 @@ Every output includes:
 `Not checked`, `Stale`, and `Blocked / login required` are honest states. A
 normalizer-generated `Not checked` row provides structural accounting but does
 not prove that collection occurred or that the lane is complete.
+
+Under `autosint-system-contract-v2.1`, top-level `theater_source_checks` is
+cycle-scoped theater evidence. It is separate from the primary-case
+`source_checks` collection. Every theater row returns `family_results` with
+exactly one result for each configured minimum family: `Official / Advisory`,
+`Public News`, and `Multilingual / Regional`.
+
+`check_method` uses only `bounded_official_advisory_review`,
+`bounded_public_news_review`, `bounded_multilingual_regional_review`,
+`approved_read_only_adapter`, or `not_checked`. `public_access_mode` uses only
+`public_no_login`, `approved_read_only_adapter`,
+`blocked_login_or_license`, `candidate_only`, or `not_checked`. Generic prose
+belongs only in optional `check_method_note` and never proves a check.
+
+Machine-owned `source_check_completion_basis_by_primary_status` supplies the
+exact status pairing. Every V2.1 source-check row also has `completion_basis`
+value
+`substantive_content`, `bounded_no_result`, or `none`. The first pairs only
+with `Checked and found`, the second only with `Checked and not found`, and
+`none` only with candidate, blocked, stale, or not-checked states. A mismatch
+is a hard validation error, never a downgrade. Source-check `result_summary`
+and `check_method_note` are informational only. Opaque `source_check_id` and
+`evidence_refs` values must match `^[A-Za-z0-9][A-Za-z0-9:_-]{0,95}$`; URLs,
+JWTs, signed strings, and IDs containing `/`, `.`, `?`, `=`, or `@` are
+invalid.
+
+Each family result reports `reported_primary_status`,
+`reported_coverage_status`, and `evidence_refs`. Every evidence reference must
+resolve within the same output, theater, and source family. Only evidence
+references credited to `Checked and found` or `Checked and not found`
+completion must be current-window. Stale and candidate follow-up references
+are allowed, remain incomplete, and never receive completion credit. AUTOSINT
+derives canonical status, checked, validated, candidate, blocked, and stale
+counts, plus theater completion; assistant-reported values are not authoritative.
+
+`Checked and found` requires `completion_basis=substantive_content` and
+qualifying current referenced evidence. `Checked and not found` requires
+`completion_basis=bounded_no_result`, a referenced bounded current-window
+attempt, zero validated found sources, and a safe public itinerary URL or
+trusted adapter result. Its family result must also set
+`checked_not_found=true` and contain `no credible current result was found`;
+that phrase alone never proves completion. Candidate URLs,
+HTTP availability, snippets, titles, blocked pages, and generic prose never
+close a family. An `approved_read_only_adapter` row completes only when its
+`adapter_result_ref` resolves to a trusted current AUTOSINT runtime record;
+otherwise that path is `GATED_DISABLED` and incomplete.
+
+Structurally and semantically valid honest incomplete coverage may promote and
+refresh current state, but it cannot claim theater completion or rotation
+credit. One receipt-backed naturally scheduled V2.1 acceptance establishes
+contract acceptance only; canonical `PROVEN` still requires three consecutive
+eligible natural cycles under the proof reporter. This document claims neither
+current acceptance nor current proof.
 
 ## Required Project Model Policy
 
