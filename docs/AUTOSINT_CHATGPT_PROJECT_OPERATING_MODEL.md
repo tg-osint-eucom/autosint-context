@@ -69,6 +69,13 @@ Every output includes:
 - `generation_attempt_id`
 - `generation_attempt_number`
 
+These remain required producer fields, but AUTOSINT does not grant them
+validation authority. A present, mismatching, missing, or malformed
+model-reported contract identity is preserved as diagnostic metadata only.
+The machine-owned expected, bound, and validation chain selects schema,
+normalizer, validator, promotion, proof, and rotation authority; all substantive
+gates remain fail closed.
+
 ## Case, Theater, And Source Accounting
 
 - Natural response: 1-3 current cases by default.

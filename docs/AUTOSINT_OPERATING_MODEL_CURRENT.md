@@ -79,7 +79,9 @@ Every cycle persists:
 Page-global busy without exact attempt ownership is ambiguous. It cannot
 authorize a second submit, clear pending state, create a replacement root, or
 prove useful progress. The harvester fails closed on stale, mismatched,
-wrong-attempt, wrong-contract, or expired output.
+wrong-attempt, machine-owned contract conflict, or expired output. A
+model-reported contract mismatch, omission, or malformed value is diagnostic
+only and cannot select validation authority.
 
 ## Validation And Promotion
 
@@ -112,6 +114,9 @@ be zero:
 - `theater_source_check_validation_error_count`
 - `theater_closure_validation_error_count`
 - `candidate_as_coverage_error_count`
+
+Machine-owned contract identity adds the required fail-closed promotion gate
+`machine_contract_identity_error_count=0`.
 
 `minimum_family_gap_count` is a separate honest-incompleteness diagnostic. It
 does not block promotion by itself when every required family result is present

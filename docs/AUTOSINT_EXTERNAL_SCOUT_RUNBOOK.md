@@ -115,7 +115,9 @@ metrics into them. Under `autosint-system-contract-v2.1`, top-level
 `theater_source_checks` is separate cycle-scoped theater evidence and never
 inherits that primary-case binding.
 
-The four contract identity roles are machine-owned:
+The four contract identity roles are explicit. Expected, bound, and validation
+identity values are machine-owned; the reported values are model-originated
+diagnostic metadata:
 
 - `expected_system_contract_*`: selected by the AUTOSINT loader and recorded
   in the prompt receipt.
@@ -277,12 +279,18 @@ The scheduled harvester:
 8. Promotes only if every gate passes; otherwise it skips or quarantines and
    leaves active state unchanged.
 
-The model-reported contract identity remains required by the current output
-policy. Missing reported version or SHA fails closed. If both are present but
-differ from the machine-bound identity, the harvester preserves both values,
-records `reported_contract_identity_status=MISMATCH` with `severity=WARN`, and
-continues with `validation_system_contract_* = bound_system_contract_*`. That
-reported mismatch alone does not block normalization or promotion.
+The model-reported contract identity remains required by the producer output
+policy, but its value or absence never selects validation authority. The
+harvester preserves the reported value or explicit missing state and classifies
+it as `MATCH`, `MISMATCH`, `MISSING_VERSION`, `MISSING_SHA`, `MISSING_BOTH`, or
+`MALFORMED`. `reported_identity_severity` is `INFO` for `MATCH` and `WARN` for
+every other state; `reported_contract_identity_severity` remains a compatibility
+alias. Every state is `diagnostic_only=true`. No reported-identity state
+independently blocks normalization, promotion, proof eligibility, or rotation
+when the complete machine-owned identity chain and every substantive gate pass.
+AUTOSINT continues with
+`validation_system_contract_* = bound_system_contract_*`; it never backfills a
+missing reported value from the bound value.
 
 Promotion requires:
 
@@ -296,6 +304,7 @@ cross_theater_duplicate_count=0
 theater_source_check_validation_error_count=0
 theater_closure_validation_error_count=0
 candidate_as_coverage_error_count=0
+machine_contract_identity_error_count=0
 normalizer_run=true
 promoted_to_inbox=true
 ```
@@ -373,14 +382,22 @@ Classify the exact receipt-backed failure before taking action:
 - active without observed progress;
 - stopped, stalled, or expired generation;
 - transport mismatch or duplicate full payloads;
-- missing model-reported contract identity (hard fail), while a present stale
-  model-reported identity is diagnostic-only WARN;
+- model-reported contract identity `MATCH` (diagnostic INFO), or mismatch,
+  missing, and malformed states (diagnostic WARN only);
 - normalization failure;
 - structural validation failure;
 - semantic validation failure;
 - preservation failure;
 - promotion freshness failure;
 - stale board, zero active threads, health RED, or eval hard-fail.
+
+V2.3 diagnostic-only handling applies only to new cycles processed by the
+current V2.3 runtime. A receipt that terminally failed before V2.3 remains
+`failed`: AUTOSINT does not retroactively reclassify it, grant V2.3
+implementation acceptance or natural proof credit, advance rotation, or create
+a promotion after the fact. Any historical replay, if one is ever explicitly
+authorized, must be separately labeled as replay and must not alter production
+proof history.
 
 Do not loop blindly. Scheduled actors own pending output. Recovery requires an
 explicit current authorization and never counts as natural proof.

@@ -7,8 +7,8 @@ This is a public, sanitized context file for restoring AUTOSINT project context 
 - Private code/runtime repo: `tg-osint-eucom/autosint`
 - Public context mirror: `tg-osint-eucom/autosint-context`
 - Source branch: `main`
-- Source HEAD: `a0a81bac1bc959eb28186967a06b8df129e4990e`
-- Generated at: `2026-07-19T01:36:56Z`
+- Source HEAD: `c8db2d6f934331888eb968899635343a6695f2b3`
+- Generated at: `2026-07-19T14:36:04Z`
 
 ## Primary Workflow
 
@@ -33,9 +33,9 @@ This is a public, sanitized context file for restoring AUTOSINT project context 
 - Available: `True`
 - Active selection policy: `latest_validated_capture_only`
 - Active packet count: `1`
-- History packet count: `1103`
-- Latest packet timestamp: `2026-07-18T20:05:02Z`
-- Stale: `True`
+- History packet count: `1114`
+- Latest packet timestamp: `2026-07-19T14:06:10Z`
+- Stale: `False`
 - Read-only: `True`
 - Private browser state read: `False`
 - Cookies read: `False`
@@ -65,6 +65,9 @@ The following are local-only and are not mirrored here:
 
 ## Latest Source Commits
 
+- `c8db2d6 docs(scout): clarify machine and reported identity policy`
+- `ce90101 feat(ui): show reported identity diagnostics`
+- `9f7c4f4 fix(scout): make reported contract identity diagnostic-only`
 - `a0a81ba docs(scout): define typed evidence and machine-owned identity`
 - `9a3c641 feat(ui): render closure evidence and identity diagnostics`
 - `893b4ff fix(scout): make contract identity machine-owned`
@@ -82,9 +85,6 @@ The following are local-only and are not mirrored here:
 - `0ea7710 fix(ui): render validation status without runtime artifacts`
 - `3f095d0 fix(release): reject override references in final csv`
 - `b9ce2dc fix(preservation): distinguish foreign defense stocks`
-- `845b4ce fix(release): include final conflict matrix`
-- `ab33a80 feat(release): build coherent runtime restore snapshot`
-- `7c73e01 test(docs): enforce coherent review snapshots`
 
 ## Pending Decisions
 
