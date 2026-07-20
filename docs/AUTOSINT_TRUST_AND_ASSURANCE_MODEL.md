@@ -2,6 +2,7 @@
 
 - Status: Proposed
 - Authority: Safety and assurance design proposal
+- Version: 1.0
 - Owner: AUTOSINT Assurance
 - Last reviewed: 2026-07-15
 - Runtime truth: No; evidence must be checked per run

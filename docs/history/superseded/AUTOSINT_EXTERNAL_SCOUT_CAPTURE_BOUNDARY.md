@@ -1,13 +1,16 @@
 # AUTOSINT External Scout Capture Boundary
 
-- Status: Historical implementation boundary; direct capture is manual-only
+- Status: Archived superseded historical implementation boundary; direct capture is manual-only
 - Authority: Supporting boundary, not production schedule authority
+- Version: 1.0
 - Owner: External Scout capture package
 - Last reviewed: 2026-07-15
+- Archived at: 2026-07-19
+- Original path: `docs/AUTOSINT_EXTERNAL_SCOUT_CAPTURE_BOUNDARY.md`
 - Runtime truth: No
 - Supersedes: None
-- Superseded by: [External Scout Runbook](AUTOSINT_EXTERNAL_SCOUT_RUNBOOK.md) for current production timing and output mode
-- Related: [Primary Workflow](AUTOSINT_PRIMARY_WORKFLOW.md), [Documentation Conflicts](status/AUTOSINT_DOCUMENTATION_CONFLICTS.md)
+- Superseded by: [External Scout Runbook](../../AUTOSINT_EXTERNAL_SCOUT_RUNBOOK.md) for current production timing and output mode
+- Related: [Primary Workflow](../../AUTOSINT_PRIMARY_WORKFLOW.md), [Documentation Conflicts](../../status/AUTOSINT_DOCUMENTATION_CONFLICTS.md)
 
 This document preserves the direct-capture package boundary. It does not define
 the current production loop. The production loop is prompt at `:00`, async

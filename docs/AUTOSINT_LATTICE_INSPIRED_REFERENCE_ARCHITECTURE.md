@@ -2,6 +2,7 @@
 
 - Status: Proposed
 - Authority: Target architecture proposal
+- Version: 1.0
 - Owner: AUTOSINT Architecture
 - Last reviewed: 2026-07-15
 - Runtime truth: No; this document does not claim implementation

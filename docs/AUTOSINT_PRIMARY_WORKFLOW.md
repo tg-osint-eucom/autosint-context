@@ -2,6 +2,7 @@
 
 - Status: Current
 - Authority: Canonical operator workflow
+- Version: 2.1
 - Owner: AUTOSINT Operator Experience
 - Last reviewed: 2026-07-15
 - Runtime truth: No; route availability and live health require current checks

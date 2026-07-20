@@ -2,6 +2,7 @@
 
 - Status: Supporting implementation trace; point-in-time status rows require revalidation
 - Authority: Requirements trace only; code/config/tests decide implementation truth
+- Version: 2.1
 - Owner: AUTOSINT Sensor Architecture
 - Last reviewed: 2026-07-15
 - Runtime truth: No
@@ -13,8 +14,8 @@ This trace converts the Case Threads buyer/operator questions into concrete requ
 
 Inputs:
 
-- `docs/product/AUTOSINT_CASE_THREADS_BUYER_QUESTIONS.md`
-- `docs/product/AUTOSINT_CASE_THREADS_DESIGN_V1.md`
+- `docs/history/superseded/AUTOSINT_CASE_THREADS_BUYER_QUESTIONS.md`
+- `docs/history/superseded/AUTOSINT_CASE_THREADS_DESIGN_V1.md`
 - `docs/product/AUTOSINT_LIVE_CASE_BOARD_ACCEPTANCE_TRACE.md`
 - `docs/AUTOSINT_GLOBAL_SENSOR_COVERAGE_POLICY.md`
 - `docs/AUTOSINT_THEATER_WATCH_POLICY.md`

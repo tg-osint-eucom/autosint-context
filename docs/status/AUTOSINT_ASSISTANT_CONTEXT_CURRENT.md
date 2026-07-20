@@ -7,8 +7,8 @@ This is a public, sanitized context file for restoring AUTOSINT project context 
 - Private code/runtime repo: `tg-osint-eucom/autosint`
 - Public context mirror: `tg-osint-eucom/autosint-context`
 - Source branch: `main`
-- Source HEAD: `c8db2d6f934331888eb968899635343a6695f2b3`
-- Generated at: `2026-07-19T14:36:04Z`
+- Source HEAD: `16509cb138a6f1496f0743f480ab8b11025b2d65`
+- Generated at: `2026-07-20T03:44:46Z`
 
 ## Primary Workflow
 
@@ -33,9 +33,9 @@ This is a public, sanitized context file for restoring AUTOSINT project context 
 - Available: `True`
 - Active selection policy: `latest_validated_capture_only`
 - Active packet count: `1`
-- History packet count: `1114`
-- Latest packet timestamp: `2026-07-19T14:06:10Z`
-- Stale: `False`
+- History packet count: `1122`
+- Latest packet timestamp: `2026-07-20T02:10:50Z`
+- Stale: `True`
 - Read-only: `True`
 - Private browser state read: `False`
 - Cookies read: `False`
@@ -65,26 +65,26 @@ The following are local-only and are not mirrored here:
 
 ## Latest Source Commits
 
-- `c8db2d6 docs(scout): clarify machine and reported identity policy`
-- `ce90101 feat(ui): show reported identity diagnostics`
-- `9f7c4f4 fix(scout): make reported contract identity diagnostic-only`
-- `a0a81ba docs(scout): define typed evidence and machine-owned identity`
-- `9a3c641 feat(ui): render closure evidence and identity diagnostics`
-- `893b4ff fix(scout): make contract identity machine-owned`
-- `db01b5d fix(scout): require typed evidence-backed theater closure`
-- `a612ff4 fix(ops): add controlled External Scout maintenance helper`
-- `717e9dd docs: refresh theater-watch runtime context`
-- `26192e3 feat(ui): clarify theater coverage and rotation credit`
-- `faba895 docs(scout): align theater watch and Project Instructions`
-- `388176c feat(ui): show global theater watch coverage`
-- `e49a914 feat(scout): add rotating theater deep dives`
-- `5f65fb9 feat(scout): add global seven-theater sweep contract`
-- `a4f27f8 fix(release): archive declared window-only screenshot`
-- `91ba4a6 fix(ui): preserve enrichment gate scope with custom notes`
-- `fe6c0b2 fix(ui): describe empty enrichment gate scope`
-- `0ea7710 fix(ui): render validation status without runtime artifacts`
-- `3f095d0 fix(release): reject override references in final csv`
-- `b9ce2dc fix(preservation): distinguish foreign defense stocks`
+- `16509cb docs(release): preserve pilot acceptance boundary`
+- `9050d29 docs(release): document cleared PostgreSQL and UI gates`
+- `f7e43d4 fix(ui): preserve canonical current database state in RFI`
+- `cb34103 test(ui): enforce real rendered UAT and screenshot integrity`
+- `40571c8 fix(ui): add canonical state and specialized system projections`
+- `f37dbae fix(db): build and validate isolated AUTOSINT PostgreSQL`
+- `429ac2c fix(db): honor preserved PGDATA for isolated managed PostgreSQL`
+- `1cf6680 fix(architecture): refresh canonical registry projections`
+- `bd3c60d test(architecture): enforce Production Foundation invariants`
+- `9762cbb feat(ui): add feature-flagged operator UI V2 shell`
+- `4e9025b docs(ui): define operator-first UI V2`
+- `3860652 feat(generation): add replay-enabled ScoutGenerationService`
+- `232ed5b docs(history): archive superseded material`
+- `74b94f9 docs(governance): rewrite AGENTS constitution`
+- `f915429 fix(mcp): bind canonical server and enforce read-only default`
+- `7f505d5 feat(agent-room): add agent collaboration room`
+- `8edc99c feat(agent-runtime): add bounded agent runtime and event store`
+- `593f71e feat(pir): implement read-only PIR Hunter workflow`
+- `e0e6f0d feat(collection): add capability and collection registry`
+- `979073a docs(architecture): define Production Architecture V2.1`
 
 ## Pending Decisions
 

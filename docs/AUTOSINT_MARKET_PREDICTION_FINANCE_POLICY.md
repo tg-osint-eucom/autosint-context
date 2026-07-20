@@ -1,5 +1,14 @@
 # AUTOSINT Market Prediction Finance Policy
 
+- Status: Current policy
+- Authority: Canonical cue-only market, prediction, finance, shipping, and risk policy
+- Version: 2.1
+- Owner: External Scout
+- Last reviewed: 2026-07-19
+- Supersedes: Optional or proof-capable treatment of market and prediction lanes
+- Superseded by: None
+- Runtime truth: No; current lane status requires compatible current typed evidence
+
 This policy makes market, prediction-market, finance, defense-equity, shipping, insurance, regional-market, and crypto/risk checks a persistent cue-only enrichment layer for every active External Scout Live Case Board thread.
 
 ## Core Rule

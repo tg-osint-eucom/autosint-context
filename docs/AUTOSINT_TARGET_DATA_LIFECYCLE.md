@@ -2,6 +2,7 @@
 
 - Status: Proposed
 - Authority: Target data contract proposal
+- Version: 1.0
 - Owner: AUTOSINT Data Platform
 - Last reviewed: 2026-07-15
 - Runtime truth: No; target state only

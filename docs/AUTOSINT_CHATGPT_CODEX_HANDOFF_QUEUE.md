@@ -1,5 +1,14 @@
 # AUTOSINT ChatGPT-Codex Handoff Queue
 
+- Status: Current supporting workflow
+- Authority: Canonical sanitized file-handoff boundary
+- Version: 2.1
+- Owner: AUTOSINT Operations
+- Last reviewed: 2026-07-19
+- Supersedes: Manual private-chat scraping and unbounded handoff exports
+- Superseded by: None
+- Runtime truth: No; queued files are review inputs and never prove live runtime
+
 ## Purpose
 
 This document defines a safe file-based handoff queue for moving sanitized

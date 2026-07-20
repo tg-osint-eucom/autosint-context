@@ -1,5 +1,14 @@
 # AUTOSINT Global Sensor Coverage Policy
 
+- Status: Current policy
+- Authority: Canonical global sensor coverage policy
+- Version: 2.1
+- Owner: AUTOSINT Sensor Architecture
+- Last reviewed: 2026-07-19
+- Supersedes: Source-family-only coverage requirements
+- Superseded by: None
+- Runtime truth: No; checked coverage requires compatible current typed evidence
+
 This policy defines the source and sensor lanes that every serious External Scout case must account for before it can be treated as preview-safe on the Live Case Board or in RFI.
 
 AUTOSINT still treats every External Scout packet as candidate input only. This policy does not authorize DB writes, raw Evidence writes, case links, source-config mutation, OSIR export, apply/import, commander-ready promotion, credentialed collection, login bypass, CAPTCHA bypass, or private browser-state access.

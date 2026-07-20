@@ -2,6 +2,7 @@
 
 - Status: Current
 - Authority: Canonical runbook
+- Version: 2.1
 - Owner: External Scout
 - Last reviewed: 2026-07-18
 - Runtime truth: Only when paired with current receipts and canonical reports

@@ -2,6 +2,7 @@
 
 - Status: Proposed; current implementation evidence is identified separately
 - Authority: Proposed orchestration direction; current code and proof reporter own implementation truth
+- Version: 1.0
 - Owner: AUTOSINT Architecture
 - Last reviewed: 2026-07-15
 - Runtime truth: No

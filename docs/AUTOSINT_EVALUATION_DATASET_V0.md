@@ -1,5 +1,14 @@
 # AUTOSINT Evaluation Dataset v0 / v1 Expansion
 
+- Status: Proposed evaluation design with tracked synthetic fixtures
+- Authority: Evaluation dataset design proposal; schemas/tests decide implemented coverage
+- Version: 1.0
+- Owner: AUTOSINT Evaluation
+- Last reviewed: 2026-07-19
+- Supersedes: Smoke-test-only evaluation scope
+- Superseded by: None
+- Runtime truth: NO; synthetic evaluation fixtures do not prove current production behavior
+
 ## Purpose
 
 AUTOSINT Evaluation Dataset v0 started as a smoke test. The current v1

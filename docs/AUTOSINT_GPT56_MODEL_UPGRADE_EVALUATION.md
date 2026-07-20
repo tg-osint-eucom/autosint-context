@@ -1,5 +1,14 @@
 # AUTOSINT GPT-5.6 Model Upgrade Evaluation
 
+- Status: Proposed evaluation plan; migration not approved
+- Authority: Model-upgrade evaluation proposal; official OpenAI documentation and replay evidence decide eligibility
+- Version: 1.0
+- Owner: AUTOSINT Evaluation
+- Last reviewed: 2026-07-19
+- Supersedes: Model availability inferred from product announcements or UI selection
+- Superseded by: None
+- Runtime truth: NO; no API availability, migration, or per-cycle attribution is proven here
+
 ## BLUF
 
 The ChatGPT Project policy requires `GPT-5.6 Sol Pro` and records the operator's

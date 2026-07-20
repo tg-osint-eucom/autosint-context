@@ -2,6 +2,7 @@
 
 - Status: Proposed
 - Authority: Reliability design proposal
+- Version: 1.0
 - Owner: AUTOSINT Reliability
 - Last reviewed: 2026-07-15
 - Runtime truth: No; thresholds require baseline and approval

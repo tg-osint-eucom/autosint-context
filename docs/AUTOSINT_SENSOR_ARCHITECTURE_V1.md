@@ -2,6 +2,7 @@
 
 - Status: Current architecture contract
 - Authority: Canonical sensor architecture; tracked config decides exact inventory
+- Version: 1.0
 - Owner: AUTOSINT Sensor Architecture
 - Last reviewed: 2026-07-15
 - Runtime truth: No; provider health requires current receipt-backed checks

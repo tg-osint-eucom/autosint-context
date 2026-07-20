@@ -2,6 +2,7 @@
 
 - Status: Current
 - Authority: Canonical architecture
+- Version: 2.1
 - Owner: AUTOSINT Architecture
 - Last reviewed: 2026-07-18
 - Runtime truth: No; live state requires current receipts and reports

@@ -2,6 +2,7 @@
 
 - Status: Current
 - Authority: Canonical workflow
+- Version: 2.1
 - Owner: External Scout
 - Last reviewed: 2026-07-18
 - Runtime truth: No; current cycles require receipts and the proof reporter

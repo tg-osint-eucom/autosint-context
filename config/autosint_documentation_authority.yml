@@ -1,0 +1,286 @@
+schema_version: autosint.documentation_authority.v2.1
+reviewed_at: '2026-07-19'
+authority_document: docs/status/AUTOSINT_DOCUMENTATION_AUTHORITY.md
+index_document: docs/status/AUTOSINT_DOCUMENTATION_INDEX.md
+conflict_document: docs/status/AUTOSINT_DOCUMENTATION_CONFLICTS.md
+current_state_document: docs/status/AUTOSINT_CURRENT_STATE.md
+architecture_decision_document: docs/architecture/AUTOSINT_ARCHITECTURE_DECISIONS_V2_1.md
+workstream_source: config/autosint_workstreams.yml
+workstream_projection: docs/status/AUTOSINT_WORKSTREAMS.md
+required_metadata:
+  - Status
+  - Authority
+  - Version
+  - Owner
+  - Last reviewed
+  - Supersedes
+  - Superseded by
+  - Runtime truth
+generated_metadata_exceptions:
+  - path: docs/status/AUTOSINT_SYSTEM_CONTRACT_CURRENT.md
+    reason: Machine-generated contract view retains contract version, policy owner, and SHA identity; canonical metadata is owned by config/autosint_system_contract.yml and the documentation authority bundle.
+    required_identity_labels:
+      - Contract version
+      - Contract SHA-256
+      - Policy owner
+required_architecture_decisions:
+  - V21-ADR-001
+  - V21-ADR-002
+  - V21-ADR-003
+  - V21-ADR-004
+  - V21-ADR-005
+  - V21-ADR-006
+  - V21-ADR-007
+  - V21-ADR-008
+  - V21-ADR-009
+  - V21-ADR-010
+required_v2_1_workstreams:
+  - production_foundation_v2_1
+  - postgres_local_data_plane_v2_1
+  - capability_registry_v2_1
+  - production_architecture_v2_1
+  - pir_hunter_v2_1
+  - bounded_agent_runtime_v1
+  - agent_collaboration_room_v1
+  - scout_generation_service_v1
+  - mcp_canonicalization_v1
+  - operator_ui_v2
+  - documentation_authority_v2_1
+documents:
+  - path: docs/AUTOSINT_OPERATING_MODEL_CURRENT.md
+    authority_class: CANONICAL_ARCHITECTURE
+    truth_scope: CURRENT
+    mirror_input: true
+  - path: docs/AUTOSINT_PRIMARY_WORKFLOW.md
+    authority_class: CANONICAL_WORKFLOW
+    truth_scope: CURRENT
+    mirror_input: true
+  - path: docs/AUTOSINT_EXTERNAL_SCOUT_RUNBOOK.md
+    authority_class: CANONICAL_RUNBOOK
+    truth_scope: CURRENT
+    mirror_input: true
+  - path: docs/AUTOSINT_CHATGPT_PROJECT_OPERATING_MODEL.md
+    authority_class: CANONICAL_WORKFLOW
+    truth_scope: CURRENT
+    mirror_input: true
+  - path: docs/AUTOSINT_SENSOR_ARCHITECTURE_V1.md
+    authority_class: CANONICAL_ARCHITECTURE
+    truth_scope: CURRENT
+    mirror_input: true
+  - path: docs/AUTOSINT_GLOBAL_SENSOR_COVERAGE_POLICY.md
+    authority_class: CANONICAL_POLICY
+    truth_scope: CURRENT
+    mirror_input: true
+  - path: docs/AUTOSINT_THEATER_WATCH_POLICY.md
+    authority_class: CANONICAL_POLICY
+    truth_scope: CURRENT
+    mirror_input: true
+  - path: docs/AUTOSINT_MARKET_PREDICTION_FINANCE_POLICY.md
+    authority_class: CANONICAL_POLICY
+    truth_scope: CURRENT
+    mirror_input: true
+  - path: docs/AUTOSINT_LONG_RUNNING_WORK_MODEL.md
+    authority_class: SUPPORTING_REFERENCE
+    truth_scope: CURRENT
+    mirror_input: true
+  - path: docs/AUTOSINT_CHATGPT_CODEX_HANDOFF_QUEUE.md
+    authority_class: SUPPORTING_REFERENCE
+    truth_scope: CURRENT
+    mirror_input: true
+  - path: docs/AUTOSINT_CONTEXT_MIRROR_RUNBOOK.md
+    authority_class: CANONICAL_RUNBOOK
+    truth_scope: CURRENT
+    mirror_input: true
+  - path: docs/AUTOSINT_EVALUATION_DATASET_V0.md
+    authority_class: DESIGN_PROPOSAL
+    truth_scope: PROPOSAL
+    mirror_input: true
+  - path: docs/AUTOSINT_GPT56_MODEL_UPGRADE_EVALUATION.md
+    authority_class: DESIGN_PROPOSAL
+    truth_scope: PROPOSAL
+    mirror_input: true
+  - path: docs/AUTOSINT_ORCHESTRATION_ROADMAP.md
+    authority_class: DESIGN_PROPOSAL
+    truth_scope: PROPOSAL
+    mirror_input: true
+  - path: docs/AUTOSINT_LATTICE_INSPIRED_REFERENCE_ARCHITECTURE.md
+    authority_class: DESIGN_PROPOSAL
+    truth_scope: PROPOSAL
+    mirror_input: true
+  - path: docs/AUTOSINT_TARGET_DATA_LIFECYCLE.md
+    authority_class: DESIGN_PROPOSAL
+    truth_scope: PROPOSAL
+    mirror_input: true
+  - path: docs/AUTOSINT_TRUST_AND_ASSURANCE_MODEL.md
+    authority_class: DESIGN_PROPOSAL
+    truth_scope: PROPOSAL
+    mirror_input: true
+  - path: docs/AUTOSINT_LATENCY_AND_RESILIENCE_SLO.md
+    authority_class: DESIGN_PROPOSAL
+    truth_scope: PROPOSAL
+    mirror_input: true
+  - path: docs/product/AUTOSINT_LIVE_CASE_BOARD_ACCEPTANCE_TRACE.md
+    authority_class: SUPPORTING_REFERENCE
+    truth_scope: CURRENT
+    mirror_input: false
+  - path: docs/product/AUTOSINT_SENSOR_COVERAGE_REQUIREMENTS_TRACE.md
+    authority_class: SUPPORTING_REFERENCE
+    truth_scope: CURRENT
+    mirror_input: true
+  - path: docs/product/AUTOSINT_OPERATOR_INFORMATION_HIERARCHY_V2.md
+    authority_class: CANONICAL_PRODUCT_TARGET
+    truth_scope: PARTIAL_TARGET
+    mirror_input: true
+  - path: docs/status/AUTOSINT_DOCUMENTATION_AUTHORITY.md
+    authority_class: CANONICAL_RULE
+    truth_scope: CURRENT
+    mirror_input: true
+  - path: docs/status/AUTOSINT_DOCUMENTATION_INDEX.md
+    authority_class: CANONICAL_RULE
+    truth_scope: CURRENT
+    mirror_input: true
+  - path: docs/status/AUTOSINT_DOCUMENTATION_CONFLICTS.md
+    authority_class: SUPPORTING_REFERENCE
+    truth_scope: CURRENT
+    mirror_input: true
+  - path: docs/status/AUTOSINT_CURRENT_STATE.md
+    authority_class: CURRENT_STATUS
+    truth_scope: CURRENT
+    mirror_input: true
+  - path: docs/status/AUTOSINT_WORKSTREAMS.md
+    authority_class: GENERATED_CURRENT
+    truth_scope: CURRENT
+    mirror_input: true
+  - path: docs/status/AUTOSINT_SYSTEM_CONTRACT_CURRENT.md
+    authority_class: GENERATED_CURRENT
+    truth_scope: CURRENT
+    mirror_input: true
+    metadata_mode: generated_identity
+  - path: docs/status/AUTOSINT_CAPABILITY_REGISTRY_CURRENT.md
+    authority_class: GENERATED_CURRENT
+    truth_scope: CURRENT
+    mirror_input: true
+  - path: docs/status/AUTOSINT_COLLECTION_PLANE_CURRENT.md
+    authority_class: GENERATED_CURRENT
+    truth_scope: CURRENT
+    mirror_input: true
+  - path: docs/status/EXTERNAL_SCOUT_PROJECT_INSTRUCTIONS_SYNC.md
+    authority_class: SUPPORTING_REFERENCE
+    truth_scope: CURRENT
+    mirror_input: false
+  - path: docs/architecture/AUTOSINT_ARCHITECTURE_DECISIONS_V2_1.md
+    authority_class: CANONICAL_ARCHITECTURE
+    truth_scope: TARGET
+    mirror_input: true
+  - path: docs/architecture/AUTOSINT_PRODUCTION_ARCHITECTURE_V2_1.md
+    authority_class: CANONICAL_TARGET_ARCHITECTURE
+    truth_scope: TARGET
+    mirror_input: true
+  - path: docs/architecture/AUTOSINT_CONTROL_PLANE_V2.md
+    authority_class: CANONICAL_TARGET_ARCHITECTURE
+    truth_scope: TARGET
+    mirror_input: false
+  - path: docs/architecture/AUTOSINT_AGENT_RUNTIME_V1.md
+    authority_class: CANONICAL_TARGET_ARCHITECTURE
+    truth_scope: PARTIAL_TARGET
+    mirror_input: false
+  - path: docs/architecture/AUTOSINT_PIR_HUNTER_V1.md
+    authority_class: CANONICAL_TARGET_ARCHITECTURE
+    truth_scope: PARTIAL_TARGET
+    mirror_input: false
+  - path: docs/architecture/AUTOSINT_AGENT_COLLABORATION_ROOM_V1.md
+    authority_class: CANONICAL_TARGET_ARCHITECTURE
+    truth_scope: PARTIAL_TARGET
+    mirror_input: false
+  - path: docs/architecture/AUTOSINT_SENSOR_AND_COLLECTION_PLANE_V2.md
+    authority_class: CANONICAL_TARGET_ARCHITECTURE
+    truth_scope: TARGET
+    mirror_input: false
+  - path: docs/architecture/AUTOSINT_VALIDATION_AND_PROVENANCE_V2.md
+    authority_class: CANONICAL_TARGET_ARCHITECTURE
+    truth_scope: TARGET
+    mirror_input: false
+  - path: docs/architecture/AUTOSINT_DATA_PLANE_V2.md
+    authority_class: CANONICAL_TARGET_ARCHITECTURE
+    truth_scope: TARGET
+    mirror_input: false
+  - path: docs/architecture/AUTOSINT_OBSERVABILITY_PLANE_V1.md
+    authority_class: CANONICAL_TARGET_ARCHITECTURE
+    truth_scope: TARGET
+    mirror_input: false
+  - path: docs/architecture/AUTOSINT_OPERATOR_UI_V2.md
+    authority_class: CANONICAL_TARGET_ARCHITECTURE
+    truth_scope: PARTIAL_TARGET
+    mirror_input: false
+  - path: docs/architecture/AUTOSINT_SECURITY_AND_DEPLOYMENT_V2.md
+    authority_class: CANONICAL_TARGET_ARCHITECTURE
+    truth_scope: TARGET
+    mirror_input: false
+  - path: docs/architecture/AUTOSINT_MIGRATION_FROM_BROWSER_RUNTIME.md
+    authority_class: CANONICAL_TARGET_ARCHITECTURE
+    truth_scope: TARGET
+    mirror_input: true
+  - path: docs/architecture/AUTOSINT_SCOUT_GENERATION_SERVICE_V1.md
+    authority_class: CURRENT_IMPLEMENTATION_CONTRACT
+    truth_scope: PARTIAL_TARGET
+    mirror_input: true
+  - path: docs/architecture/AUTOSINT_MCP_BOUNDARY_V1.md
+    authority_class: CURRENT_IMPLEMENTATION_CONTRACT
+    truth_scope: CURRENT
+    mirror_input: true
+  - path: docs/operations/AUTOSINT_POSTGRES_LOCAL_DEVELOPMENT.md
+    authority_class: CANONICAL_RUNBOOK
+    truth_scope: CURRENT
+    mirror_input: true
+  - path: docs/operations/AUTOSINT_DATABASE_MIGRATIONS.md
+    authority_class: CANONICAL_RUNBOOK
+    truth_scope: CURRENT
+    mirror_input: true
+  - path: docs/operations/AUTOSINT_DATABASE_BACKUP_AND_RESTORE.md
+    authority_class: CANONICAL_RUNBOOK
+    truth_scope: CURRENT
+    mirror_input: true
+  - path: docs/operations/AUTOSINT_PRODUCTION_ACCEPTANCE.md
+    authority_class: CANONICAL_POLICY
+    truth_scope: CURRENT
+    mirror_input: true
+  - path: docs/operations/AUTOSINT_RELEASE_RUNBOOK.md
+    authority_class: CANONICAL_RUNBOOK
+    truth_scope: CURRENT
+    mirror_input: false
+  - path: docs/operations/AUTOSINT_INCIDENT_RESPONSE.md
+    authority_class: CANONICAL_RUNBOOK
+    truth_scope: CURRENT
+    mirror_input: false
+  - path: docs/operations/AUTOSINT_STAGING_SOAK_PLAN.md
+    authority_class: CANONICAL_RUNBOOK
+    truth_scope: PROPOSAL
+    mirror_input: false
+  - path: docs/history/README.md
+    authority_class: HISTORICAL_NAVIGATION
+    truth_scope: CURRENT
+    mirror_input: true
+  - path: docs/history/superseded/README.md
+    authority_class: HISTORICAL_NAVIGATION
+    truth_scope: CURRENT
+    mirror_input: false
+  - path: docs/history/superseded/AUTOSINT_EXTERNAL_SCOUT_CAPTURE_BOUNDARY.md
+    authority_class: HISTORICAL_RECORD
+    truth_scope: CURRENT
+    mirror_input: true
+  - path: docs/history/superseded/AUTOSINT_CASE_THREADS_DESIGN_V1.md
+    authority_class: HISTORICAL_RECORD
+    truth_scope: CURRENT
+    mirror_input: false
+  - path: docs/history/superseded/AUTOSINT_CASE_THREADS_BUYER_QUESTIONS.md
+    authority_class: HISTORICAL_RECORD
+    truth_scope: CURRENT
+    mirror_input: false
+  - path: docs/history/incidents/README.md
+    authority_class: HISTORICAL_NAVIGATION
+    truth_scope: CURRENT
+    mirror_input: false
+  - path: docs/history/migrations/README.md
+    authority_class: HISTORICAL_NAVIGATION
+    truth_scope: CURRENT
+    mirror_input: false

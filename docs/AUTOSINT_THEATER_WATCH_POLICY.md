@@ -1,5 +1,14 @@
 # AUTOSINT Theater Watch Policy
 
+- Status: Current policy
+- Authority: Canonical theater-watch policy
+- Version: 2.1
+- Owner: External Scout
+- Last reviewed: 2026-07-19
+- Supersedes: Unbounded global-feed and candidate-only theater-closure rules
+- Superseded by: None
+- Runtime truth: No; current theater coverage requires compatible cycle-scoped typed evidence
+
 The Theater Watch Policy prevents External Scout from becoming an arbitrary
 global top-case feed. Case counts are read from the versioned
 `config/autosint_system_contract.yml`: the current natural default is 1-3 and

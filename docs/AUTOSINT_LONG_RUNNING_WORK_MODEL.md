@@ -1,5 +1,14 @@
 # AUTOSINT Long-Running Work Model
 
+- Status: Current supporting workflow
+- Authority: Supporting continuity model; canonical workflow and current receipts remain authoritative
+- Version: 2.1
+- Owner: AUTOSINT Operations
+- Last reviewed: 2026-07-19
+- Supersedes: Thread-only long-running task conventions
+- Superseded by: None
+- Runtime truth: No; task continuity never substitutes for current repository or receipt evidence
+
 AUTOSINT work should survive long chats, handoffs, scheduled runs, and context
 loss. The durable operating loop is:
 

@@ -10,11 +10,13 @@ The private runtime/code repository is `tg-osint-eucom/autosint`. Use this mirro
 - Current AUTOSINT operating model.
 - Canonical generated system contract and machine-readable contract config.
 - Documentation authority, index, and conflict register.
+- Current repository-versus-target state and accepted V2.1 architecture decisions.
+- Production Architecture V2.1 target, explicitly separated from runtime truth.
 - Primary workflow reference.
 - External Scout runbook.
 - ChatGPT Project operating model.
 - Long-running workstream model.
-- External Scout capture boundary.
+- Archived External Scout capture boundary for historical provenance only.
 - Sensor architecture v1 and machine-readable lane/provider matrix.
 - Global sensor coverage policy.
 - Theater watch policy.
@@ -56,6 +58,9 @@ For context recovery, read these files in order:
 8. `docs/status/AUTOSINT_DOCUMENTATION_AUTHORITY.md`
 9. `docs/status/AUTOSINT_DOCUMENTATION_INDEX.md`
 10. `docs/status/AUTOSINT_DOCUMENTATION_CONFLICTS.md`
-11. `docs/status/AUTOSINT_CONTEXT_INDEX.md`
+11. `docs/status/AUTOSINT_CURRENT_STATE.md`
+12. `docs/architecture/AUTOSINT_ARCHITECTURE_DECISIONS_V2_1.md`
+13. `docs/architecture/AUTOSINT_PRODUCTION_ARCHITECTURE_V2_1.md`
+14. `docs/status/AUTOSINT_CONTEXT_INDEX.md`
 
 This repo is documentation-only. Do not treat it as a runtime source, package source, artifact store, or evidence store.
