@@ -7,8 +7,8 @@ This is a public, sanitized context file for restoring AUTOSINT project context 
 - Private code/runtime repo: `tg-osint-eucom/autosint`
 - Public context mirror: `tg-osint-eucom/autosint-context`
 - Source branch: `main`
-- Source HEAD: `16509cb138a6f1496f0743f480ab8b11025b2d65`
-- Generated at: `2026-07-20T03:44:46Z`
+- Source HEAD: `76ff62482f6abe025e48a672bad8cc38d97c0086`
+- Generated at: `2026-07-20T22:03:38Z`
 
 ## Primary Workflow
 
@@ -33,9 +33,9 @@ This is a public, sanitized context file for restoring AUTOSINT project context 
 - Available: `True`
 - Active selection policy: `latest_validated_capture_only`
 - Active packet count: `1`
-- History packet count: `1122`
-- Latest packet timestamp: `2026-07-20T02:10:50Z`
-- Stale: `True`
+- History packet count: `1133`
+- Latest packet timestamp: `2026-07-20T21:03:11Z`
+- Stale: `False`
 - Read-only: `True`
 - Private browser state read: `False`
 - Cookies read: `False`
@@ -65,6 +65,14 @@ The following are local-only and are not mirrored here:
 
 ## Latest Source Commits
 
+- `76ff624 docs(mirror): remove sanitizer-reserved wording`
+- `5fae35f test(ui): execute hostile payload through final DOM redaction`
+- `42edc21 fix(agent-room): preserve run source and filter truth`
+- `f421c1e test(ui): enforce operator and technical separation`
+- `09bcdfd docs(demo): add controlled AUTOSINT briefing package`
+- `b20e059 feat(agent-room): improve typed collaboration projection`
+- `3247555 feat(pir): improve operator PIR projection`
+- `dccf2c1 feat(ui): add operator briefing case and sensor experience`
 - `16509cb docs(release): preserve pilot acceptance boundary`
 - `9050d29 docs(release): document cleared PostgreSQL and UI gates`
 - `f7e43d4 fix(ui): preserve canonical current database state in RFI`
@@ -77,14 +85,6 @@ The following are local-only and are not mirrored here:
 - `9762cbb feat(ui): add feature-flagged operator UI V2 shell`
 - `4e9025b docs(ui): define operator-first UI V2`
 - `3860652 feat(generation): add replay-enabled ScoutGenerationService`
-- `232ed5b docs(history): archive superseded material`
-- `74b94f9 docs(governance): rewrite AGENTS constitution`
-- `f915429 fix(mcp): bind canonical server and enforce read-only default`
-- `7f505d5 feat(agent-room): add agent collaboration room`
-- `8edc99c feat(agent-runtime): add bounded agent runtime and event store`
-- `593f71e feat(pir): implement read-only PIR Hunter workflow`
-- `e0e6f0d feat(collection): add capability and collection registry`
-- `979073a docs(architecture): define Production Architecture V2.1`
 
 ## Pending Decisions
 

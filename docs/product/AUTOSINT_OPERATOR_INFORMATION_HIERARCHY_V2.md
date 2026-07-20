@@ -39,6 +39,30 @@ next checks. Raw JSON, identifiers, URL lists, hashes, counters, and provenance
 remain inside a collapsed Audit disclosure. The preview uses text-only DOM
 rendering for payload data, so response values are not interpreted as HTML.
 
+## Controlled Briefing Mode
+
+`operator_briefing_mode_enabled=false` adds no route while the parent UI flag
+is off. When both flags are explicitly enabled for an isolated loopback
+preview, the same shell presents a sanitized `FIXTURE` mission, curated case
+briefings, all 19 canonical operational sensor lanes, a fixture PIR board, the
+existing deterministic Agent event replay, and a same-bundle RFI summary.
+
+The operator layer remains `MISSION | WATCH | CASES | PIR | AGENTS | RFI`.
+`SYSTEM` is secondary and starts collapsed. Every briefing page permanently
+states that fixture/replay/current/retained/stale sources are distinct and
+that no exhaustive coverage or operational authority is claimed.
+
+The hierarchy is fail-closed:
+
+- `Not checked` registry rows are not collection;
+- cue-only rows remain cue-only;
+- candidate rows remain unimported;
+- fixture freshness is not live currentness;
+- Agent events with no typed case link render `NO_TYPED_CASE_LINK`;
+- model or Agent text alone cannot answer a PIR;
+- no private path, receipt name, unredacted Evidence content, full hash, or write control
+  belongs in the default briefing view.
+
 ## Control Boundary
 
 The preview has links and read-only filters only. It contains no form, command
